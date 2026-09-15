@@ -7,6 +7,7 @@ Thư mục này lưu trữ nhật ký công việc chi tiết theo từng ngày 
 | Ngày | Tiêu đề / Nội dung chính | File chi tiết | Trạng thái |
 | :---: | :--- | :---: | :---: |
 | **2026-09-14** | Khởi tạo dự án, phân tích đề bài, thiết kế kiến trúc Go CGO + ES, cấu trúc thư mục | [2026-09-14.md](2026-09-14.md) | ✅ Hoàn thành |
+| **2026-09-15** | Lý thuyết Search Engine & Code mô phỏng Inverted Index, BM25 thuần Go | [2026-09-15.md](2026-09-15.md) | ⏳ Đang thực hiện |
 
 ---
 
