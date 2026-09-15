@@ -24,6 +24,12 @@ Hiểu được cách dữ liệu được chia nhỏ, đánh chỉ mục và x�
   * [Practical BM25: The BM25 Algorithm and its Variables (Elastic Blog)](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables)  
     *Hiểu cách ES tính điểm: TF (tần suất từ), IDF (độ hiếm của từ) và Document Length Normalization.*
 
+* **📖 Sách Chuyên Sâu (PDF Nội Bộ Dự Án)**:
+  * [Introduction to Information Retrieval (PDF)](irbookonlinereading.pdf) — *Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze (Cambridge University Press)*  
+    *Giáo trình "kinh thánh" về Information Retrieval. Đọc trọng tâm: Chương 1-2 (Cấu trúc Inverted Index, Postings list, Dictionary), Chương 6-11 (Mô hình vector, TF-IDF, thuật toán BM25 và Ranking).*
+  * [Elasticsearch: The Definitive Guide (PDF)](elasticsearch-the-definitive-guide.pdf) — *Clinton Gormley, Zachary Tong (O'Reilly)*  
+    *Sách hướng dẫn toàn diện nhất về Elasticsearch. Đọc trọng tâm: Phần Inside a Shard (Inverted Index, Segments), Phần Getting Started with Languages & Analysis, và Phần Controlling Relevance.*
+
 ---
 
 ## 🇻🇳 2. Bài Toán Tách Từ Tiếng Việt & Cốc Cốc Tokenizer
