@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	// Import package nội bộ trong dự án theo tên module khai báo ở go.mod
@@ -28,9 +29,27 @@ import (
 //    - Lệnh "break" dùng để thoát khỏi vòng lặp khi người dùng gõ "exit".
 // ============================================================================
 
+func findDictDir() string {
+	candidates := []string{
+		"data/dicts/coccoc",
+		"../../data/dicts/coccoc",
+		"../data/dicts/coccoc",
+	}
+	for _, c := range candidates {
+		abs, err := filepath.Abs(c)
+		if err == nil {
+			if _, err := os.Stat(filepath.Join(abs, "multiterm_trie.dump")); err == nil {
+				return abs
+			}
+		}
+	}
+	return "data/dicts/coccoc"
+}
+
 func main() {
 	fmt.Println("================================================================================")
 	fmt.Println("    CONG CU TIM KIEM TIN NHAN TIENG VIET TUONG TAC (INTERACTIVE SEARCH REPL)    ")
+	fmt.Println("       TICH HOP DONG THOI: STANDARD, MOCK VN, VA COCCOC TOKENIZER (CGO)         ")
 	fmt.Println("================================================================================")
 	fmt.Println()
 
@@ -46,18 +65,32 @@ func main() {
 		{ID: 8, Content: "Hôm nay mình bận đi làm thêm từ sáng đến tối"},
 	}
 
-	// 2. Khởi tạo 2 bộ phân tích từ vựng (Analyzer)
+	// 2. Khởi tạo các bộ phân tích từ vựng (Analyzers)
 	stdAnalyzer := &invertedindex.StandardAnalyzer{}
 	vnAnalyzer := invertedindex.NewVietnameseAnalyzer()
 
-	// 3. Khởi tạo 2 Inverted Index trong RAM
+	// Khởi tạo Cốc Cốc Tokenizer
+	dictPath := findDictDir()
+	coccocAnalyzer, err := invertedindex.NewCoccocAnalyzer(dictPath, false)
+	hasCoccoc := (err == nil)
+	if !hasCoccoc {
+		fmt.Printf("⚠️ Không thể tải Cốc Cốc Tokenizer (%v). Chạy ở chế độ cơ bản.\n", err)
+	} else {
+		fmt.Println("✅ Đã nạp thành công Cốc Cốc Tokenizer (CGO & Double-Array Trie)!")
+	}
+
+	// 3. Khởi tạo Inverted Index trong RAM
 	stdIndex := invertedindex.NewInvertedIndex()
 	vnIndex := invertedindex.NewInvertedIndex()
+	coccocIndex := invertedindex.NewInvertedIndex()
 
-	// 4. Nạp dữ liệu vào cả 2 Index
+	// 4. Nạp dữ liệu vào các Index
 	for _, msg := range sampleMessages {
 		stdIndex.AddDocument(msg, stdAnalyzer)
 		vnIndex.AddDocument(msg, vnAnalyzer)
+		if hasCoccoc {
+			coccocIndex.AddDocument(msg, coccocAnalyzer)
+		}
 	}
 
 	// Hiển thị danh sách tin nhắn hiện có trong hệ thống
@@ -114,16 +147,26 @@ func main() {
 		resStd := stdIndex.Search(input, stdAnalyzer)
 		printResults(resStd)
 
-		// 2. Tìm trên Vietnamese Index (Tách từ ghép - Cốc Cốc Tokenizer)
-		fmt.Println("\n[B] VIETNAMESE ANALYZER (Tách từ ghép tiếng Việt):")
+		// 2. Tìm trên Vietnamese Mock Index (Hardcoded list)
+		fmt.Println("\n[B] MOCK VIETNAMESE ANALYZER (Từ điển thủ công):")
 		tokensVn := vnAnalyzer.Analyze(input)
 		fmt.Printf("    -> Tokens được tạo ra: %v\n", tokensVn)
 		resVn := vnIndex.Search(input, vnAnalyzer)
 		printResults(resVn)
 
-		// 3. Tìm không dấu (Unaccent Search)
+		// 3. Tìm trên Cốc Cốc Tokenizer Index (Production Engine)
+		var resCoccoc []invertedindex.SearchResult
+		if hasCoccoc {
+			fmt.Println("\n[C] COCCOC TOKENIZER ANALYZER (C++ CGO Double-Array Trie):")
+			tokensCoccoc := coccocAnalyzer.Analyze(input)
+			fmt.Printf("    -> Tokens được tạo ra: %v\n", tokensCoccoc)
+			resCoccoc = coccocIndex.Search(input, coccocAnalyzer)
+			printResults(resCoccoc)
+		}
+
+		// 4. Tìm không dấu (Unaccent Search)
 		unaccentQuery := invertedindex.RemoveDiacritics(input)
-		fmt.Printf("\n[C] UNACCENT SEARCH (Tìm kiếm không dấu): \"%s\"\n", unaccentQuery)
+		fmt.Printf("\n[D] UNACCENT SEARCH (Tìm kiếm không dấu): \"%s\"\n", unaccentQuery)
 		matchCount := 0
 		for _, doc := range sampleMessages {
 			docUnaccent := invertedindex.RemoveDiacritics(doc.Content)
@@ -136,8 +179,12 @@ func main() {
 			fmt.Println("    (Không có tin nhắn nào khớp không dấu)")
 		}
 
-		// 4. Đưa ra nhận xét tự động so sánh
-		printComparisonAnalysis(input, resStd, resVn)
+		// 5. Đưa ra nhận xét tự động so sánh
+		targetRes := resVn
+		if hasCoccoc {
+			targetRes = resCoccoc
+		}
+		printComparisonAnalysis(input, resStd, targetRes)
 	}
 }
 
@@ -171,7 +218,7 @@ func printComparisonAnalysis(query string, stdRes, vnRes []invertedindex.SearchR
 	} else if len(vnRes) > 0 {
 		fmt.Println("  -> Vietnamese Search nhận diện chính xác cấu trúc từ vựng tiếng Việt, điểm số tập trung đúng tài liệu mục tiêu.")
 	} else {
-		fmt.Println("  -> Không có kết quả trực tiếp từ index có dấu, hãy xem kết quả ở mục [C] Unaccent Search.")
+		fmt.Println("  -> Không có kết quả trực tiếp từ index có dấu, hãy xem kết quả ở mục Unaccent Search.")
 	}
 	fmt.Println(strings.Repeat("-", 75))
 }

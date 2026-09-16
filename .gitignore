@@ -5,7 +5,12 @@
 *.so
 *.dylib
 *.a
+*.dump
 demo.exe
+demo
+
+# Temporary / Third-party clones
+temp_coccoc/
 
 # Go build & test
 [a-zA-Z0-9]*.[0-9]
