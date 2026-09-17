@@ -8,7 +8,8 @@ Thư mục này lưu trữ nhật ký công việc chi tiết theo từng ngày 
 | :---: | :--- | :---: | :---: |
 | **2026-09-14** | Khởi tạo dự án, phân tích đề bài, thiết kế kiến trúc Go CGO + ES, cấu trúc thư mục | [2026-09-14.md](2026-09-14.md) | ✅ Hoàn thành |
 | **2026-09-15** | Lý thuyết Search Engine & Code mô phỏng Inverted Index, BM25 thuần Go | [2026-09-15.md](2026-09-15.md) | ✅ Hoàn thành |
-| **2026-09-16** | Tích hợp Cốc Cốc Tokenizer thật (C++ + CGO trong Go) & Docker Build | [2026-09-16.md](2026-09-16.md) | ⏳ Kế hoạch tiếp theo |
+| **2026-09-16** | Tích hợp Cốc Cốc Tokenizer thật (C++ + CGO trong Go) & Nghiên cứu IR Book Chap 1-3 | [2026-09-16.md](2026-09-16.md) | ✅ Hoàn thành |
+| **2026-09-17** | Thực hành toàn diện Golang (W3Schools), Đào sâu luồng `pkg/`, Nghiên cứu IR Book Chap 6-7 | [2026-09-17.md](2026-09-17.md) | ✅ Hoàn thành |
 
 ---
 

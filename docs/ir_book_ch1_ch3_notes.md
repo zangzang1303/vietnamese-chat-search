@@ -100,7 +100,7 @@ INTERSECT(<t1, t2, ..., tn>):
     return result
 ```
 
-> **💬 Lời bình của tôi:** Chỗ sắp xếp theo tần suất xuất hiện $df$ tăng dần này rất thông minh. Giả sử tìm `thời_khóa_biểu AND học`, từ `thời_khóa_biểu` hiếm hơn nhiều nên kết quả trung gian lọc ra ngay chỉ 1-2 tài liệu, không mất công duyệt hàng nghìn tin nhắn chứa từ `học`. Hôm qua mình code chưa có bước sắp xếp này, cần lưu ý tối ưu sau.
+> **Cmt** Chỗ sắp xếp theo tần suất xuất hiện $df$ tăng dần này em thấy hay. Giả sử tìm `thời_khóa_biểu AND học`, từ `thời_khóa_biểu` hiếm hơn nhiều nên kết quả trung gian lọc ra ngay chỉ 1-2 tài liệu, không mất công duyệt hàng nghìn tin nhắn chứa từ `học`.
 
 ---
 
@@ -118,7 +118,7 @@ INTERSECT(<t1, t2, ..., tn>):
   * **Stemming:** Sử dụng quy tắc thô chặt bỏ đuôi từ (ví dụ: *Porter Stemmer* biến *automation, automatic* $\rightarrow$ *automat*).
   * **Lemmatization:** Sử dụng từ điển và phân tích hình thái học để đưa từ về dạng nguyên thể chuẩn (Lemma) (ví dụ: *saw* $\rightarrow$ *see*).
 
-> **💬 Lời bình của tôi:** Đoạn này giải thích chuẩn bài toán mình đang gặp: tiếng Anh chỉ cần tách theo space là ra từ đơn, nhưng tiếng Việt nếu coi mỗi space là 1 token thì chết chắc ở từ ghép. Thảo nào Elasticsearch mặc định không dùng được cho chat tiếng Việt nếu thiếu tokenizer chuyên dụng như Cốc Cốc.
+> **Cmt** Đoạn này giải thích chuẩn bài toán mình đang làm: tiếng Anh chỉ cần tách theo space là ra từ đơn, nhưng tiếng Việt nếu coi mỗi space là 1 token thì khó ở từ ghép. 
 
 ---
 
@@ -184,7 +184,7 @@ DICTIONARY          POSTINGS LIST WITH POSITIONS
 
 * **Proximity Search (`/k` operator):** Tìm kiếm hai từ xuất hiện cách nhau trong khoảng $k$ vị trí. Positional Index giải quyết triệt để bài toán này với độ phức tạp thời gian $\Theta(T)$ ($T$ là tổng số token trong toàn bộ tập tài liệu).
 
-> **💬 Lời bình của tôi:** Lúc làm `pkg/invertedindex` hôm trước mình có lưu mảng `Positions: []int` trong Posting mà chưa hình dung hết ứng dụng ngoài việc demo. Đọc đến đây mới sáng tỏ: nhờ có vị trí từng từ mà hệ thống mới hỗ trợ tìm cụm từ chính xác dạng `"cà phê"` hoặc tìm 2 từ cách nhau tối đa $k$ chữ.
+> **Cmt** Nhờ có vị trí từng từ mà hệ thống mới hỗ trợ tìm cụm từ chính xác dạng `"cà phê"` hoặc tìm 2 từ cách nhau tối đa $k$ chữ.
 
 ---
 
@@ -217,7 +217,7 @@ PERMUTERM VOCABULARY               ORIGINAL TERM
 * Để xử lý `re*ve`, hệ thống thực hiện truy vấn Boolean trên 3-gram index: **`$re AND ve$`**.
 * **Post-filtering (Lọc sau):** Kiểm tra lại tập kết quả ứng viên với mẫu chuỗi gốc `re*ve` để loại bỏ các kết quả dương tính giả (false positives).
 
-> **💬 Lời bình của tôi:** Khái niệm $k$-gram ở đây chính là nền tảng cho Edge N-gram trong Elasticsearch mà tài liệu yêu cầu dùng cho tính năng tìm kiếm dở từ (Partial matching: gõ `cà ph` ra `cà phê`).
+> **Cmt** Khái niệm $k$-gram ở đây chính là nền tảng cho Edge N-gram trong Elasticsearch mà tài liệu yêu cầu dùng cho tính năng tìm kiếm dở từ (Partial matching: gõ `cà ph` ra `cà phê`).
 
 ---
 
@@ -253,7 +253,6 @@ $$\text{Jaccard}(q, t) = \frac{|A \cap B|}{|A \cup B|} = \frac{|A \cap B|}{|A| +
 #### C. Sửa lỗi theo Ngữ cảnh (Context-Sensitive Spelling Correction)
 Xử lý các trường hợp các từ đứng riêng lẻ đều đúng chính tả nhưng sai ngữ cảnh (ví dụ: *"flew form Heathrow"* $\rightarrow$ *"flew from Heathrow"*). Sử dụng thống kê tần suất biword/ngram trong **Query Logs** hoặc toàn bộ tập văn bản để chọn phương án sửa phù hợp nhất.
 
-> **💬 Lời bình của tôi:** Phần sửa lỗi này liên quan trực tiếp đến cái lỗi `hocj sinh` mình vừa test chiều nay! Nếu áp dụng khoảng cách Levenshtein hoặc quy tắc chuyển đổi phím Telex thì hệ thống hoàn toàn có thể tự gợi ý hoặc sửa từ `hocj` thành `học`.
 
 ---
 
