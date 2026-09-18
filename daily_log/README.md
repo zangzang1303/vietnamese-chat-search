@@ -10,6 +10,7 @@ Thư mục này lưu trữ nhật ký công việc chi tiết theo từng ngày 
 | **2026-09-15** | Lý thuyết Search Engine & Code mô phỏng Inverted Index, BM25 thuần Go | [2026-09-15.md](2026-09-15.md) | ✅ Hoàn thành |
 | **2026-09-16** | Tích hợp Cốc Cốc Tokenizer thật (C++ + CGO trong Go) & Nghiên cứu IR Book Chap 1-3 | [2026-09-16.md](2026-09-16.md) | ✅ Hoàn thành |
 | **2026-09-17** | Thực hành toàn diện Golang (W3Schools), Đào sâu luồng `pkg/`, Nghiên cứu IR Book Chap 6-7 | [2026-09-17.md](2026-09-17.md) | ✅ Hoàn thành |
+| **2026-09-18** | Kiến trúc hệ thống, DAT & Viterbi deep-dive, Hệ thống Real-Time Chat & Re-indexing Web UI | [2026-09-18.md](2026-09-18.md) | ✅ Hoàn thành |
 
 ---
 
