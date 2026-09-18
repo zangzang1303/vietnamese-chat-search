@@ -6,6 +6,7 @@ Dự án nghiên cứu và phát triển giải pháp **tối ưu hóa tìm ki�
 > - [REQUIREMENTS.md](REQUIREMENTS.md): Đề bài và yêu cầu gốc của bài toán.
 > - [TASKS.md](TASKS.md): Bảng phân rã chi tiết toàn bộ các task công việc (WBS & Checklist).
 > - [daily_log/](daily_log/): Thư mục nhật ký công việc và tiến độ theo từng ngày.
+> - [docs/architecture.md](docs/architecture.md): Bản vẽ và giải thích chi tiết kiến trúc toàn hệ thống.
 > - [docs/references.md](docs/references.md): Danh mục tài liệu đọc và nghiên cứu chuyên sâu.
 
 ---

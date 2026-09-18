@@ -25,6 +25,9 @@ type SearchResult struct {
 // - queryText: Câu người dùng nhập vào ô tìm kiếm (ví dụ: "học sinh")
 // - analyzer: Bộ phân tích dùng để bóc tách câu query (phải tương thích với dữ liệu lúc index)
 func (idx *InvertedIndex) Search(queryText string, analyzer Analyzer) []SearchResult {
+	idx.mu.RLock()
+	defer idx.mu.RUnlock()
+
 	// BƯỚC 1: Phân tích câu query thành danh sách các token
 	// Ví dụ: query "học sinh" qua VietnameseAnalyzer -> ["học_sinh"]
 	tokens := analyzer.Analyze(queryText)

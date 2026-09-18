@@ -1,27 +1,24 @@
 package invertedindex
 
+import (
+	"sort"
+)
+
 // ============================================================================
-// KIẾN THỨC GO CƠ BẢN:
-// 1. Hàm "make()":
-//    - Map và Slice trong Go là kiểu tham chiếu (reference type).
-//    - Nếu chỉ khai báo `var m map[string]int` thì giá trị mặc định là `nil`.
-//      Nếu bạn ghi dữ liệu vào một map nil (m["a"] = 1), Go sẽ PANIC (crash app)!
-//    - Vì vậy, luôn luôn dùng `make(map[...])` để cấp phát vùng nhớ trước khi dùng.
-// 2. Con trỏ (Pointer) trong Receiver:
-//    - `(idx *InvertedIndex)`: Dấu `*` có nghĩa là hàm này nhận một con trỏ tới struct.
-//    - Nhờ con trỏ, hàm có thể SỬA ĐỔI TRỰC TIẾP dữ liệu bên trong `idx`.
-//    - Nếu không dùng `*`, Go sẽ tạo một BẢN SAO của struct, mọi thao tác sửa đổi
-//      sẽ bị hủy bỏ khi hàm chạy xong!
-// 3. Ép kiểu tường minh (Explicit Casting):
-//    - Go cực kỳ nghiêm ngặt về kiểu dữ liệu: không tự động đổi int thành float!
-//    - Để chia lấy số thập phân: bắt buộc viết `float64(a) / float64(b)`.
+// KIẾN THỨC GO CƠ BẢN VỀ CẬP NHẬT CHỈ MỤC & ĐA LUỒNG:
+// 1. "sync.RWMutex" (Read-Write Mutex):
+//    - Lock(): Dành cho thao tác ghi/sửa (Add/Update/Delete). Chỉ duy nhất 1 goroutine
+//      được ghi tại một thời điểm, các luồng khác phải xếp hàng đợi.
+//    - RLock(): Dành cho thao tác đọc/tìm kiếm (Search/GetStats). Nhiều luồng có thể
+//      đọc song song cùng lúc, giúp tối ưu hiệu năng tối đa.
+// 2. Nguyên tắc "Update = Delete + Add" trong Search Engine:
+//    - Trong Lucene/Elasticsearch, cập nhật tài liệu không phải là sửa đè tại chỗ.
+//    - Hệ thống sẽ đánh dấu xóa (Tombstone) bản ghi cũ, sau đó nạp bản ghi mới.
 // ============================================================================
 
 // NewInvertedIndex là hàm khởi tạo để tạo ra một Inverted Index rỗng trong RAM
 func NewInvertedIndex() *InvertedIndex {
-	// Trả về địa chỉ (&) của struct mới được cấp phát vùng nhớ
 	return &InvertedIndex{
-		// Cấp phát bộ nhớ cho các map bằng hàm make()
 		Dictionary:  make(map[string][]Posting),
 		Documents:   make(map[int]Document),
 		DocLengths:  make(map[int]int),
@@ -29,50 +26,169 @@ func NewInvertedIndex() *InvertedIndex {
 	}
 }
 
-// AddDocument thực hiện đánh chỉ mục một tài liệu vào Inverted Index
-// Tham số:
-// - doc: tin nhắn cần index (chứa ID và Content)
-// - analyzer: bộ phân tích từ vựng muốn dùng (Standard hoặc Vietnamese)
+// deleteDocumentInternal xóa một tài liệu khỏi chỉ mục (Hàm private, gọi khi đã có Lock)
+func (idx *InvertedIndex) deleteDocumentInternal(docID int) bool {
+	// Kiểm tra tài liệu có tồn tại trong hệ thống không
+	_, exists := idx.Documents[docID]
+	if !exists {
+		return false
+	}
+
+	// 1. Giảm tổng số token toàn hệ thống và xóa thông tin độ dài
+	oldLength := idx.DocLengths[docID]
+	idx.TotalTokens -= oldLength
+	delete(idx.DocLengths, docID)
+	delete(idx.Documents, docID)
+
+	// 2. Dọn dẹp Posting List của tất cả các Term
+	// Duyệt qua Dictionary để tìm và gỡ bỏ Posting của docID này
+	for term, postings := range idx.Dictionary {
+		newPostings := make([]Posting, 0, len(postings))
+		for _, p := range postings {
+			if p.DocID != docID {
+				newPostings = append(newPostings, p)
+			}
+		}
+
+		if len(newPostings) == 0 {
+			// Nếu từ này không còn xuất hiện ở bất kỳ tài liệu nào khác -> xóa hẳn key khỏi Dictionary
+			delete(idx.Dictionary, term)
+		} else {
+			idx.Dictionary[term] = newPostings
+		}
+	}
+
+	return true
+}
+
+// DeleteDocument xóa một tài liệu theo DocID (Thread-safe)
+func (idx *InvertedIndex) DeleteDocument(docID int) bool {
+	idx.mu.Lock()
+	defer idx.mu.Unlock()
+	return idx.deleteDocumentInternal(docID)
+}
+
+// AddDocument thực hiện đánh chỉ mục một tài liệu vào Inverted Index (Hỗ trợ Upsert an toàn)
 func (idx *InvertedIndex) AddDocument(doc Document, analyzer Analyzer) {
+	idx.mu.Lock()
+	defer idx.mu.Unlock()
+
+	// Nếu tài liệu đã từng tồn tại, ta dọn sạch phiên bản cũ trước để tránh trùng lặp Posting
+	if _, exists := idx.Documents[doc.ID]; exists {
+		idx.deleteDocumentInternal(doc.ID)
+	}
+
 	// BƯỚC 1: Bóc tách nội dung câu thành danh sách các từ vựng (tokens)
-	// Ví dụ: "em học sinh đi học" -> ["em", "học_sinh", "đi", "học"]
 	tokens := analyzer.Analyze(doc.Content)
 
 	// BƯỚC 2: Lưu lại tài liệu gốc và thống kê độ dài (|D|)
 	idx.Documents[doc.ID] = doc
-	idx.DocLengths[doc.ID] = len(tokens) // Số lượng token trong câu này
-	idx.TotalTokens += len(tokens)       // Cộng dồn vào tổng số token toàn hệ thống
+	idx.DocLengths[doc.ID] = len(tokens)
+	idx.TotalTokens += len(tokens)
 
 	// BƯỚC 3: Thu thập các vị trí (Positions) của từng token trong câu này
-	// Ví dụ với từ "học": xuất hiện ở vị trí thứ 1 và thứ 3 -> termPositions["học"] = [1, 3]
 	termPositions := make(map[string][]int)
 	for pos, token := range tokens {
-		// append() tự động mở rộng mảng khi thêm phần tử mới
 		termPositions[token] = append(termPositions[token], pos)
 	}
 
-	// BƯỚC 4: Tạo Posting và chèn vào Posting List của từng Term trong Inverted Index
+	// BƯỚC 4: Tạo Posting và chèn vào Posting List của từng Term
 	for token, positions := range termPositions {
 		posting := Posting{
 			DocID:         doc.ID,
-			TermFrequency: len(positions), // Tần suất từ (TF) chính là số lần xuất hiện
-			Positions:     positions,      // Danh sách vị trí
+			TermFrequency: len(positions),
+			Positions:     positions,
 		}
-
-		// idx.Dictionary[token] là slice các Posting.
-		// append() sẽ thêm posting của tài liệu này vào cuối danh sách của từ đó!
 		idx.Dictionary[token] = append(idx.Dictionary[token], posting)
 	}
 }
 
+// UpdateDocument cập nhật nội dung tin nhắn và tự động re-index lại
+func (idx *InvertedIndex) UpdateDocument(doc Document, analyzer Analyzer) {
+	// AddDocument đã có sẵn logic tự xóa bản cũ nếu ID đã tồn tại
+	idx.AddDocument(doc, analyzer)
+}
+
 // AvgDocLength tính toán độ dài trung bình của tất cả tài liệu trong index (avgdl)
-// Công thức: avgdl = Tổng số token của tất cả tài liệu / Tổng số tài liệu
 func (idx *InvertedIndex) AvgDocLength() float64 {
-	// Nếu chưa có tài liệu nào, trả về 0 để tránh lỗi chia cho 0 (Divide by Zero)
+	// Lưu ý: Hàm này thường được gọi trong ngữ cảnh đã có RLock
 	if len(idx.Documents) == 0 {
 		return 0
 	}
-
-	// Ép kiểu sang float64 để thực hiện phép chia lấy số thực chính xác
 	return float64(idx.TotalTokens) / float64(len(idx.Documents))
+}
+
+// GetStats trả về thống kê tổng quan của Inverted Index
+func (idx *InvertedIndex) GetStats() IndexStats {
+	idx.mu.RLock()
+	defer idx.mu.RUnlock()
+
+	avgdl := 0.0
+	if len(idx.Documents) > 0 {
+		avgdl = float64(idx.TotalTokens) / float64(len(idx.Documents))
+	}
+
+	return IndexStats{
+		TotalDocuments: len(idx.Documents),
+		TotalTerms:     len(idx.Dictionary),
+		TotalTokens:    idx.TotalTokens,
+		AvgDocLength:   avgdl,
+	}
+}
+
+// GetAllDocuments trả về danh sách tất cả Document đã được sắp xếp theo ID
+func (idx *InvertedIndex) GetAllDocuments() []Document {
+	idx.mu.RLock()
+	defer idx.mu.RUnlock()
+
+	docs := make([]Document, 0, len(idx.Documents))
+	for _, doc := range idx.Documents {
+		docs = append(docs, doc)
+	}
+
+	sort.Slice(docs, func(i, j int) bool {
+		return docs[i].ID < docs[j].ID
+	})
+
+	return docs
+}
+
+// InspectDocument trả về chi tiết các tokens và postings của một Document cụ thể
+func (idx *InvertedIndex) InspectDocument(docID int, analyzer Analyzer) *DocumentIndexDetails {
+	idx.mu.RLock()
+	defer idx.mu.RUnlock()
+
+	doc, exists := idx.Documents[docID]
+	if !exists {
+		return nil
+	}
+
+	tokens := analyzer.Analyze(doc.Content)
+	var postingList []TermPostingInfo
+
+	// Thu thập các posting thuộc về docID này
+	for term, postings := range idx.Dictionary {
+		for _, p := range postings {
+			if p.DocID == docID {
+				postingList = append(postingList, TermPostingInfo{
+					Term:          term,
+					TermFrequency: p.TermFrequency,
+					Positions:     p.Positions,
+				})
+			}
+		}
+	}
+
+	// Sắp xếp các term theo bảng chữ cái để hiển thị đẹp mắt
+	sort.Slice(postingList, func(i, j int) bool {
+		return postingList[i].Term < postingList[j].Term
+	})
+
+	return &DocumentIndexDetails{
+		DocID:       docID,
+		Content:     doc.Content,
+		Length:      idx.DocLengths[docID],
+		Tokens:      tokens,
+		PostingList: postingList,
+	}
 }
