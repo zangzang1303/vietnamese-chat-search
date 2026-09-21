@@ -29,7 +29,8 @@ Hiểu được cách dữ liệu được chia nhỏ, đánh chỉ mục và x�
     *Giáo trình "kinh thánh" về Information Retrieval. Đọc trọng tâm: Chương 1-2 (Cấu trúc Inverted Index, Postings list, Dictionary), Chương 6-11 (Mô hình vector, TF-IDF, thuật toán BM25 và Ranking).*  
     * 👉 **[Bản Ghi Chú & Tóm Tắt Chi Tiết Chương 1, 2, 3](ir_book_ch1_ch3_notes.md)**
   * [Elasticsearch: The Definitive Guide (PDF)](elasticsearch-the-definitive-guide.pdf) — *Clinton Gormley, Zachary Tong (O'Reilly)*  
-    *Sách hướng dẫn toàn diện nhất về Elasticsearch. Đọc trọng tâm: Phần Inside a Shard (Inverted Index, Segments), Phần Getting Started with Languages & Analysis, và Phần Controlling Relevance.*
+    *Sách hướng dẫn toàn diện nhất về Elasticsearch. Đọc trọng tâm: Phần Inside a Shard (Inverted Index, Segments), Phần Getting Started with Languages & Analysis, và Phần Controlling Relevance.*  
+    * 👉 **[Bản Ghi Chú & Đúc Kết Chuyên Sâu Áp Dụng Vào Dự Án](elasticsearch_definitive_guide_notes.md)**
 
 ---
 

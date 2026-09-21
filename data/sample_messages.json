@@ -1,0 +1,1181 @@
+[
+  {
+    "id": 1,
+    "sender": "Nguyễn Văn An",
+    "room": "general",
+    "content": "Các em học sinh trường THPT Chu Văn An vừa đạt giải nhất kỳ thi quốc gia.",
+    "category": "trap_hoc_sinh_true",
+    "created_at": "2026-09-15T08:55:00Z",
+    "updated_at": "2026-09-15T08:55:00Z"
+  },
+  {
+    "id": 2,
+    "sender": "Trần Thị Mai",
+    "room": "general",
+    "content": "Năm học này nhà trường có chính sách miễn giảm học phí cho học sinh nghèo.",
+    "category": "trap_hoc_sinh_true",
+    "created_at": "2026-09-15T09:50:00Z",
+    "updated_at": "2026-09-15T09:50:00Z"
+  },
+  {
+    "id": 3,
+    "sender": "Lê Hoàng Nam",
+    "room": "general",
+    "content": "Đoàn xe đưa các bạn học sinh đi dã ngoại đã xuất phát từ 6 giờ sáng.",
+    "category": "trap_hoc_sinh_true",
+    "created_at": "2026-09-15T10:45:00Z",
+    "updated_at": "2026-09-15T10:45:00Z"
+  },
+  {
+    "id": 4,
+    "sender": "Phạm Minh Đức",
+    "room": "general",
+    "content": "Hội khuyến học vừa trao học bổng cho 50 bạn học sinh giỏi vượt khó.",
+    "category": "trap_hoc_sinh_true",
+    "created_at": "2026-09-15T11:40:00Z",
+    "updated_at": "2026-09-15T11:40:00Z"
+  },
+  {
+    "id": 5,
+    "sender": "Đặng Thu Thảo",
+    "room": "engineering",
+    "content": "Khoa Công nghệ thông tin chuẩn bị đón 500 bạn tân sinh viên nhập học vào ngày mai.",
+    "category": "trap_hoc_sinh_false_sinh_vien",
+    "created_at": "2026-09-15T12:35:00Z",
+    "updated_at": "2026-09-15T12:35:00Z"
+  },
+  {
+    "id": 6,
+    "sender": "Bùi Quang Huy",
+    "room": "engineering",
+    "content": "Câu lạc bộ sinh viên nghiên cứu khoa học đang mở đơn đăng ký thành viên mới.",
+    "category": "trap_hoc_sinh_false_sinh_vien",
+    "created_at": "2026-09-15T13:30:00Z",
+    "updated_at": "2026-09-15T13:30:00Z"
+  },
+  {
+    "id": 7,
+    "sender": "Vũ Thanh Tùng",
+    "room": "random",
+    "content": "Ký túc xá sinh viên đợt này vừa được sửa sang lại phòng tự học rất sạch sẽ.",
+    "category": "trap_hoc_sinh_false_sinh_vien",
+    "created_at": "2026-09-15T14:25:00Z",
+    "updated_at": "2026-09-15T14:25:00Z"
+  },
+  {
+    "id": 8,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "announcements",
+    "content": "Cả nước thành kính tưởng niệm các anh hùng liệt sĩ đã anh dũng hy sinh vì tổ quốc.",
+    "category": "trap_hoc_sinh_false_hy_sinh",
+    "created_at": "2026-09-15T15:20:00Z",
+    "updated_at": "2026-09-15T15:20:00Z"
+  },
+  {
+    "id": 9,
+    "sender": "Ngô Bảo Châu",
+    "room": "announcements",
+    "content": "Bộ phim tài liệu ghi lại sự hy sinh thầm lặng của các y bác sĩ tuyến đầu.",
+    "category": "trap_hoc_sinh_false_hy_sinh",
+    "created_at": "2026-09-15T15:15:00Z",
+    "updated_at": "2026-09-15T15:15:00Z"
+  },
+  {
+    "id": 10,
+    "sender": "Hoàng Kim Yến",
+    "room": "random",
+    "content": "Hôm nay là sinh nhật của anh Tuấn bên đội Backend, mọi người nhớ ghé phòng ăn bánh nhé!",
+    "category": "trap_hoc_sinh_false_sinh_nhat",
+    "created_at": "2026-09-15T16:10:00Z",
+    "updated_at": "2026-09-15T16:10:00Z"
+  },
+  {
+    "id": 11,
+    "sender": "Dương Quốc Bảo",
+    "room": "random",
+    "content": "Cuối tuần này em định tổ chức sinh nhật cho con gái ở khu vui chơi.",
+    "category": "trap_hoc_sinh_false_sinh_nhat",
+    "created_at": "2026-09-15T17:05:00Z",
+    "updated_at": "2026-09-15T17:05:00Z"
+  },
+  {
+    "id": 12,
+    "sender": "Lê Hải Đăng",
+    "room": "engineering",
+    "content": "Tuần này mình bận ôn thi lấy chứng chỉ AWS nên xin phép nghỉ học buổi tối.",
+    "category": "trap_hoc_sinh_false_hoc",
+    "created_at": "2026-09-15T18:00:00Z",
+    "updated_at": "2026-09-15T18:00:00Z"
+  },
+  {
+    "id": 13,
+    "sender": "Phan Tuyết Mai",
+    "room": "general",
+    "content": "Khóa đào tạo kỹ năng mềm sẽ bắt đầu học từ thứ Năm tuần này.",
+    "category": "trap_hoc_sinh_false_hoc",
+    "created_at": "2026-09-15T18:55:00Z",
+    "updated_at": "2026-09-15T18:55:00Z"
+  },
+  {
+    "id": 14,
+    "sender": "Nguyễn Văn An",
+    "room": "random",
+    "content": "Sáng mai 8h30 anh em ra quán cà phê đối diện công ty ngồi chém gió tí nhé.",
+    "category": "trap_ca_phe_true",
+    "created_at": "2026-09-15T19:50:00Z",
+    "updated_at": "2026-09-15T19:50:00Z"
+  },
+  {
+    "id": 15,
+    "sender": "Trần Thị Mai",
+    "room": "random",
+    "content": "Uống cà phê sữa đá nhiều quá dạo này bị mất ngủ các bác ạ.",
+    "category": "trap_ca_phe_true",
+    "created_at": "2026-09-15T20:45:00Z",
+    "updated_at": "2026-09-15T20:45:00Z"
+  },
+  {
+    "id": 16,
+    "sender": "Lê Hoàng Nam",
+    "room": "general",
+    "content": "Quán cà phê mới mở view hồ Tây cực kỳ yên tĩnh để làm việc từ xa.",
+    "category": "trap_ca_phe_true",
+    "created_at": "2026-09-15T21:40:00Z",
+    "updated_at": "2026-09-15T21:40:00Z"
+  },
+  {
+    "id": 17,
+    "sender": "Phạm Minh Đức",
+    "room": "engineering",
+    "content": "Mang cho anh một ly cà phê đen không đường lên phòng họp số 3 với.",
+    "category": "trap_ca_phe_true",
+    "created_at": "2026-09-15T22:35:00Z",
+    "updated_at": "2026-09-15T22:35:00Z"
+  },
+  {
+    "id": 18,
+    "sender": "Đặng Thu Thảo",
+    "room": "announcements",
+    "content": "Ban giám đốc nghiêm khắc phê bình các trường hợp đi làm muộn không lý do.",
+    "category": "trap_ca_phe_false_phe_binh",
+    "created_at": "2026-09-15T22:30:00Z",
+    "updated_at": "2026-09-15T22:30:00Z"
+  },
+  {
+    "id": 19,
+    "sender": "Bùi Quang Huy",
+    "room": "engineering",
+    "content": "Trong buổi họp Retrospective, chúng ta góp ý xây dựng chứ không phê bình cá nhân.",
+    "category": "trap_ca_phe_false_phe_binh",
+    "created_at": "2026-09-15T23:25:00Z",
+    "updated_at": "2026-09-15T23:25:00Z"
+  },
+  {
+    "id": 20,
+    "sender": "Vũ Thanh Tùng",
+    "room": "announcements",
+    "content": "Đề xuất nâng cấp cụm máy chủ Elasticsearch đã được ban lãnh đạo phê chuẩn.",
+    "category": "trap_ca_phe_false_phe_chuan",
+    "created_at": "2026-09-16T00:20:00Z",
+    "updated_at": "2026-09-16T00:20:00Z"
+  },
+  {
+    "id": 21,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "hr-admin",
+    "content": "Kế hoạch ngân sách quý 4 đã được giám đốc tài chính phê duyệt và phê chuẩn.",
+    "category": "trap_ca_phe_false_phe_chuan",
+    "created_at": "2026-09-16T01:15:00Z",
+    "updated_at": "2026-09-16T01:15:00Z"
+  },
+  {
+    "id": 22,
+    "sender": "Ngô Bảo Châu",
+    "room": "random",
+    "content": "Bữa trưa nay nhà ăn có món súp thịt bò hầm cà rốt và khoai tây ngon tuyệt.",
+    "category": "trap_ca_phe_false_ca_rot",
+    "created_at": "2026-09-16T02:10:00Z",
+    "updated_at": "2026-09-16T02:10:00Z"
+  },
+  {
+    "id": 23,
+    "sender": "Hoàng Kim Yến",
+    "room": "random",
+    "content": "Trưa nay ăn bún đậu mắm tôm có thêm đĩa cà pháo giòn tan chuẩn vị.",
+    "category": "trap_ca_phe_false_ca_phao",
+    "created_at": "2026-09-16T03:05:00Z",
+    "updated_at": "2026-09-16T03:05:00Z"
+  },
+  {
+    "id": 24,
+    "sender": "Dương Quốc Bảo",
+    "room": "hr-admin",
+    "content": "Đội hậu cần vừa chuyển 20 bộ bàn ghế làm việc mới về văn phòng tầng 5.",
+    "category": "trap_ban_ghe_true",
+    "created_at": "2026-09-16T04:00:00Z",
+    "updated_at": "2026-09-16T04:00:00Z"
+  },
+  {
+    "id": 25,
+    "sender": "Lê Hải Đăng",
+    "room": "hr-admin",
+    "content": "Phòng họp lớn đang thiếu bàn ghế, nhờ admin bố trí thêm trước giờ họp.",
+    "category": "trap_ban_ghe_true",
+    "created_at": "2026-09-16T04:55:00Z",
+    "updated_at": "2026-09-16T04:55:00Z"
+  },
+  {
+    "id": 26,
+    "sender": "Phan Tuyết Mai",
+    "room": "hr-admin",
+    "content": "Thanh lý bớt một số bàn ghế cũ để lấy diện tích làm khu pantry sinh hoạt chung.",
+    "category": "trap_ban_ghe_true",
+    "created_at": "2026-09-16T04:50:00Z",
+    "updated_at": "2026-09-16T04:50:00Z"
+  },
+  {
+    "id": 27,
+    "sender": "Nguyễn Văn An",
+    "room": "engineering",
+    "content": "Chiều nay 14h team mình ngồi lại bàn bạc về giải pháp phân tán dữ liệu nhé.",
+    "category": "trap_ban_ghe_false_ban_bac",
+    "created_at": "2026-09-16T05:45:00Z",
+    "updated_at": "2026-09-16T05:45:00Z"
+  },
+  {
+    "id": 28,
+    "sender": "Trần Thị Mai",
+    "room": "general",
+    "content": "Vấn đề lương thưởng cần được bàn bạc kỹ lưỡng với trưởng bộ phận.",
+    "category": "trap_ban_ghe_false_ban_bac",
+    "created_at": "2026-09-16T06:40:00Z",
+    "updated_at": "2026-09-16T06:40:00Z"
+  },
+  {
+    "id": 29,
+    "sender": "Lê Hoàng Nam",
+    "room": "random",
+    "content": "Mọi người tập trung làm việc, đừng đứng ngoài hành lang bàn tán chuyện không đâu.",
+    "category": "trap_ban_ghe_false_ban_tan",
+    "created_at": "2026-09-16T07:35:00Z",
+    "updated_at": "2026-09-16T07:35:00Z"
+  },
+  {
+    "id": 30,
+    "sender": "Phạm Minh Đức",
+    "room": "hr-admin",
+    "content": "Ghế công thái học của mình bị hỏng piston, nhờ IT đổi giúp cái ghế xoay khác.",
+    "category": "trap_ban_ghe_false_ghe",
+    "created_at": "2026-09-16T08:30:00Z",
+    "updated_at": "2026-09-16T08:30:00Z"
+  },
+  {
+    "id": 31,
+    "sender": "Đặng Thu Thảo",
+    "room": "engineering",
+    "content": "Tài liệu kỹ thuật này đang trong giai đoạn bàn thảo nội bộ, chưa công bố ra ngoài.",
+    "category": "trap_ban_ghe_false_ban_thao",
+    "created_at": "2026-09-16T09:25:00Z",
+    "updated_at": "2026-09-16T09:25:00Z"
+  },
+  {
+    "id": 32,
+    "sender": "Bùi Quang Huy",
+    "room": "random",
+    "content": "Tối qua bản tin thời sự VTV1 vừa đưa tin về bước tiến AI tại Việt Nam.",
+    "category": "trap_thoi_su_true",
+    "created_at": "2026-09-16T10:20:00Z",
+    "updated_at": "2026-09-16T10:20:00Z"
+  },
+  {
+    "id": 33,
+    "sender": "Vũ Thanh Tùng",
+    "room": "general",
+    "content": "Chương trình thời sự lúc 19h có phóng sự rất hay về thị trường công nghệ.",
+    "category": "trap_thoi_su_true",
+    "created_at": "2026-09-16T11:15:00Z",
+    "updated_at": "2026-09-16T11:15:00Z"
+  },
+  {
+    "id": 34,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "engineering",
+    "content": "Dự án này cần phân bổ thời gian hợp lý giữa việc làm tính năng và viết unit test.",
+    "category": "trap_thoi_su_false_thoi_gian",
+    "created_at": "2026-09-16T12:10:00Z",
+    "updated_at": "2026-09-16T12:10:00Z"
+  },
+  {
+    "id": 35,
+    "sender": "Ngô Bảo Châu",
+    "room": "hr-admin",
+    "content": "Hôm nay em xin phép về sớm 30 phút vì gia đình có chút việc gia sự cần giải quyết.",
+    "category": "trap_thoi_su_false_gia_su",
+    "created_at": "2026-09-16T12:05:00Z",
+    "updated_at": "2026-09-16T12:05:00Z"
+  },
+  {
+    "id": 36,
+    "sender": "Hoàng Kim Yến",
+    "room": "engineering",
+    "content": "Đội trực On-call vừa xử lý xong sự cố nghẽn mạng lúc 3 giờ sáng.",
+    "category": "trap_thoi_su_false_su_co",
+    "created_at": "2026-09-16T13:00:00Z",
+    "updated_at": "2026-09-16T13:00:00Z"
+  },
+  {
+    "id": 37,
+    "sender": "Dương Quốc Bảo",
+    "room": "general",
+    "content": "Tình hình kinh tế thế giới cuối năm được dự báo sẽ có nhiều biến động.",
+    "category": "trap_kinh_te_true",
+    "created_at": "2026-09-16T13:55:00Z",
+    "updated_at": "2026-09-16T13:55:00Z"
+  },
+  {
+    "id": 38,
+    "sender": "Lê Hải Đăng",
+    "room": "general",
+    "content": "Chính phủ vừa ban hành gói hỗ trợ kích cầu phục hồi kinh tế vĩ mô.",
+    "category": "trap_kinh_te_true",
+    "created_at": "2026-09-16T14:50:00Z",
+    "updated_at": "2026-09-16T14:50:00Z"
+  },
+  {
+    "id": 39,
+    "sender": "Phan Tuyết Mai",
+    "room": "random",
+    "content": "Chuyện lương thưởng là vấn đề tế nhị, chúng ta không nên hỏi công khai.",
+    "category": "trap_kinh_te_false_te_nhi",
+    "created_at": "2026-09-16T15:45:00Z",
+    "updated_at": "2026-09-16T15:45:00Z"
+  },
+  {
+    "id": 40,
+    "sender": "Nguyễn Văn An",
+    "room": "engineering",
+    "content": "Anh Nam có nhiều năm kinh nghiệm lập trình Go và tối ưu cơ sở dữ liệu.",
+    "category": "trap_kinh_te_false_kinh_nghiem",
+    "created_at": "2026-09-16T16:40:00Z",
+    "updated_at": "2026-09-16T16:40:00Z"
+  },
+  {
+    "id": 41,
+    "sender": "Trần Thị Mai",
+    "room": "general",
+    "content": "Kinh tế thị trường đòi hỏi các doanh nghiệp phải không ngừng đổi mới sáng tạo.",
+    "category": "trap_kinh_te_true",
+    "created_at": "2026-09-16T17:35:00Z",
+    "updated_at": "2026-09-16T17:35:00Z"
+  },
+  {
+    "id": 42,
+    "sender": "Lê Hoàng Nam",
+    "room": "hr-admin",
+    "content": "Mọi người kiểm tra lại thông tin trên ứng dụng bảo hiểm xã hội VssID nhé.",
+    "category": "trap_bao_hiem_true",
+    "created_at": "2026-09-16T18:30:00Z",
+    "updated_at": "2026-09-16T18:30:00Z"
+  },
+  {
+    "id": 43,
+    "sender": "Phạm Minh Đức",
+    "room": "hr-admin",
+    "content": "Công ty vừa nâng cấp gói bảo hiểm y tế cao cấp cho toàn bộ nhân viên chính thức.",
+    "category": "trap_bao_hiem_true",
+    "created_at": "2026-09-16T18:25:00Z",
+    "updated_at": "2026-09-16T18:25:00Z"
+  },
+  {
+    "id": 44,
+    "sender": "Đặng Thu Thảo",
+    "room": "general",
+    "content": "Không đeo đồ bảo hộ khi vào khu vực công trường là hành vi rất nguy hiểm.",
+    "category": "trap_bao_hiem_false_nguy_hiem",
+    "created_at": "2026-09-16T19:20:00Z",
+    "updated_at": "2026-09-16T19:20:00Z"
+  },
+  {
+    "id": 45,
+    "sender": "Bùi Quang Huy",
+    "room": "announcements",
+    "content": "Nhắc nhở mọi người tuân thủ quy tắc an ninh, báo ngay cho bảo vệ khi thấy người lạ.",
+    "category": "trap_bao_hiem_false_bao_ve",
+    "created_at": "2026-09-16T20:15:00Z",
+    "updated_at": "2026-09-16T20:15:00Z"
+  },
+  {
+    "id": 46,
+    "sender": "Vũ Thanh Tùng",
+    "room": "engineering",
+    "content": "Hệ thống cơ sở dữ liệu sẽ tạm dừng để bảo trì định kỳ từ 0h đến 2h sáng.",
+    "category": "trap_bao_hiem_false_bao_tri",
+    "created_at": "2026-09-16T21:10:00Z",
+    "updated_at": "2026-09-16T21:10:00Z"
+  },
+  {
+    "id": 47,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "engineering",
+    "content": "Team chúng ta đang tập trung phát triển bộ tách từ tiếng Việt dựa trên Cốc Cốc.",
+    "category": "trap_phat_trien_true",
+    "created_at": "2026-09-16T22:05:00Z",
+    "updated_at": "2026-09-16T22:05:00Z"
+  },
+  {
+    "id": 48,
+    "sender": "Ngô Bảo Châu",
+    "room": "general",
+    "content": "Đầu tư vào con người là yếu tố then chốt để công ty phát triển bền vững.",
+    "category": "trap_phat_trien_true",
+    "created_at": "2026-09-16T23:00:00Z",
+    "updated_at": "2026-09-16T23:00:00Z"
+  },
+  {
+    "id": 49,
+    "sender": "Hoàng Kim Yến",
+    "room": "engineering",
+    "content": "Phiên bản v2.0 của ứng dụng di động dự kiến sẽ được phát hành vào thứ Sáu.",
+    "category": "trap_phat_trien_false_phat_hanh",
+    "created_at": "2026-09-16T23:55:00Z",
+    "updated_at": "2026-09-16T23:55:00Z"
+  },
+  {
+    "id": 50,
+    "sender": "Dương Quốc Bảo",
+    "room": "engineering",
+    "content": "Kế hoạch triển khai hệ thống lên hạ tầng Kubernetes đã sẵn sàng thực hiện.",
+    "category": "trap_phat_trien_false_trien_khai",
+    "created_at": "2026-09-17T00:50:00Z",
+    "updated_at": "2026-09-17T00:50:00Z"
+  },
+  {
+    "id": 51,
+    "sender": "Lê Hải Đăng",
+    "room": "general",
+    "content": "Trời nóng bức thế này thèm một ly trà sữa chân trâu đường đen quá.",
+    "category": "unaccent_tra_sua",
+    "created_at": "2026-09-17T01:45:00Z",
+    "updated_at": "2026-09-17T01:45:00Z"
+  },
+  {
+    "id": 52,
+    "sender": "Phan Tuyết Mai",
+    "room": "general",
+    "content": "Chiều nay 15h chúng mình cùng nhau order trà sữa Gong Cha nhé.",
+    "category": "unaccent_tra_sua",
+    "created_at": "2026-09-17T01:40:00Z",
+    "updated_at": "2026-09-17T01:40:00Z"
+  },
+  {
+    "id": 53,
+    "sender": "Nguyễn Văn An",
+    "room": "random",
+    "content": "Ai có cốc nước chè xanh hoặc trà đá không cho mình xin một ngụm.",
+    "category": "unaccent_tra_da",
+    "created_at": "2026-09-17T02:35:00Z",
+    "updated_at": "2026-09-17T02:35:00Z"
+  },
+  {
+    "id": 54,
+    "sender": "Trần Thị Mai",
+    "room": "general",
+    "content": "Nhớ mang theo máy tính xách tay và sạc khi sang phòng hội thảo.",
+    "category": "unaccent_may_tinh",
+    "created_at": "2026-09-17T03:30:00Z",
+    "updated_at": "2026-09-17T03:30:00Z"
+  },
+  {
+    "id": 55,
+    "sender": "Lê Hoàng Nam",
+    "room": "engineering",
+    "content": "Máy tính bàn của em vừa bị màn hình xanh, chắc phải cài lại hệ điều hành.",
+    "category": "unaccent_may_tinh",
+    "created_at": "2026-09-17T04:25:00Z",
+    "updated_at": "2026-09-17T04:25:00Z"
+  },
+  {
+    "id": 56,
+    "sender": "Phạm Minh Đức",
+    "room": "general",
+    "content": "Chào bạn, hôm nay bạn có rảnh để đi ăn trưa cùng phòng không?",
+    "category": "tone_ban_ban_be",
+    "created_at": "2026-09-17T05:20:00Z",
+    "updated_at": "2026-09-17T05:20:00Z"
+  },
+  {
+    "id": 57,
+    "sender": "Đặng Thu Thảo",
+    "room": "general",
+    "content": "Cửa hàng này bán đồ văn phòng phẩm giá rất rẻ và phục vụ chu đáo.",
+    "category": "tone_ban_ban_hang",
+    "created_at": "2026-09-17T06:15:00Z",
+    "updated_at": "2026-09-17T06:15:00Z"
+  },
+  {
+    "id": 58,
+    "sender": "Bùi Quang Huy",
+    "room": "general",
+    "content": "Bản thiết kế giao diện Figma vừa được cập nhật thêm một số trang mới.",
+    "category": "tone_ban_ban_ve",
+    "created_at": "2026-09-17T07:10:00Z",
+    "updated_at": "2026-09-17T07:10:00Z"
+  },
+  {
+    "id": 59,
+    "sender": "Vũ Thanh Tùng",
+    "room": "general",
+    "content": "Bàn phím cơ này gõ rất êm tay, phù hợp làm việc trong văn phòng yên tĩnh.",
+    "category": "tone_ban_ban_phim",
+    "created_at": "2026-09-17T08:05:00Z",
+    "updated_at": "2026-09-17T08:05:00Z"
+  },
+  {
+    "id": 60,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "engineering",
+    "content": "Chúng ta cần tối ưu hóa bộ nhớ RAM trước khi đưa dịch vụ vào vận hành.",
+    "category": "partial_toi_uu",
+    "created_at": "2026-09-17T08:00:00Z",
+    "updated_at": "2026-09-17T08:00:00Z"
+  },
+  {
+    "id": 61,
+    "sender": "Ngô Bảo Châu",
+    "room": "engineering",
+    "content": "Thuật toán tìm kiếm đã được tối ưu đạt thời gian phản hồi dưới 50 mili-giây.",
+    "category": "partial_toi_uu",
+    "created_at": "2026-09-17T08:55:00Z",
+    "updated_at": "2026-09-17T08:55:00Z"
+  },
+  {
+    "id": 62,
+    "sender": "Hoàng Kim Yến",
+    "room": "engineering",
+    "content": "Tài liệu đặc tả kiến trúc phần mềm đã được cập nhật trên Wiki nội bộ.",
+    "category": "partial_kien_truc",
+    "created_at": "2026-09-17T09:50:00Z",
+    "updated_at": "2026-09-17T09:50:00Z"
+  },
+  {
+    "id": 63,
+    "sender": "Dương Quốc Bảo",
+    "room": "engineering",
+    "content": "Kiến trúc Microservices giúp các đội nhóm làm việc độc lập và mở rộng dễ dàng.",
+    "category": "partial_kien_truc",
+    "created_at": "2026-09-17T10:45:00Z",
+    "updated_at": "2026-09-17T10:45:00Z"
+  },
+  {
+    "id": 64,
+    "sender": "Lê Hải Đăng",
+    "room": "engineering",
+    "content": "Chúng ta cần viết thêm kịch bản kiểm thử tự động để bảo đảm chất lượng code.",
+    "category": "partial_kiem_thu",
+    "created_at": "2026-09-17T11:40:00Z",
+    "updated_at": "2026-09-17T11:40:00Z"
+  },
+  {
+    "id": 65,
+    "sender": "Phan Tuyết Mai",
+    "room": "engineering",
+    "content": "Môi trường kiểm thử UAT đã sẵn sàng để khách hàng vào trải nghiệm.",
+    "category": "partial_kiem_thu",
+    "created_at": "2026-09-17T12:35:00Z",
+    "updated_at": "2026-09-17T12:35:00Z"
+  },
+  {
+    "id": 66,
+    "sender": "Nguyễn Văn An",
+    "room": "engineering",
+    "content": "Nhớ cấu hình biến môi trường CGO_ENABLED=1 trước khi biên dịch mã nguồn Go.",
+    "category": "tech_go_cgo",
+    "created_at": "2026-09-17T13:30:00Z",
+    "updated_at": "2026-09-17T13:30:00Z"
+  },
+  {
+    "id": 67,
+    "sender": "Trần Thị Mai",
+    "room": "engineering",
+    "content": "Cốc Cốc Tokenizer sử dụng cấu trúc Double-Array Trie để tối ưu bộ nhớ RAM.",
+    "category": "tech_coccoc_dat",
+    "created_at": "2026-09-17T14:25:00Z",
+    "updated_at": "2026-09-17T14:25:00Z"
+  },
+  {
+    "id": 68,
+    "sender": "Lê Hoàng Nam",
+    "room": "engineering",
+    "content": "Thuật toán Viterbi tìm đường đi tối ưu xác suất cao nhất trong Word Lattice.",
+    "category": "tech_viterbi",
+    "created_at": "2026-09-17T15:20:00Z",
+    "updated_at": "2026-09-17T15:20:00Z"
+  },
+  {
+    "id": 69,
+    "sender": "Phạm Minh Đức",
+    "room": "engineering",
+    "content": "Elasticsearch 8.x khuyến nghị sử dụng thư viện client chính thức của Elastic.",
+    "category": "tech_elasticsearch",
+    "created_at": "2026-09-17T15:15:00Z",
+    "updated_at": "2026-09-17T15:15:00Z"
+  },
+  {
+    "id": 70,
+    "sender": "Đặng Thu Thảo",
+    "room": "engineering",
+    "content": "Công thức Okapi BM25 sử dụng tham số k1 để bão hòa tần suất từ và b để phạt độ dài.",
+    "category": "tech_bm25",
+    "created_at": "2026-09-17T16:10:00Z",
+    "updated_at": "2026-09-17T16:10:00Z"
+  },
+  {
+    "id": 71,
+    "sender": "Bùi Quang Huy",
+    "room": "engineering",
+    "content": "Đã merge Pull Request tối ưu hàm DeleteDocument vào nhánh chính main.",
+    "category": "tech_git_pr",
+    "created_at": "2026-09-17T17:05:00Z",
+    "updated_at": "2026-09-17T17:05:00Z"
+  },
+  {
+    "id": 72,
+    "sender": "Vũ Thanh Tùng",
+    "room": "engineering",
+    "content": "Cụm Docker Compose đã cấu hình Elasticsearch ở cổng 9200 và Kibana ở cổng 5601.",
+    "category": "tech_docker",
+    "created_at": "2026-09-17T18:00:00Z",
+    "updated_at": "2026-09-17T18:00:00Z"
+  },
+  {
+    "id": 73,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "engineering",
+    "content": "Cơ chế Atomic Upsert giải quyết triệt để vấn đề duplicate posting khi sửa tin.",
+    "category": "tech_atomic_upsert",
+    "created_at": "2026-09-17T18:55:00Z",
+    "updated_at": "2026-09-17T18:55:00Z"
+  },
+  {
+    "id": 74,
+    "sender": "Ngô Bảo Châu",
+    "room": "engineering",
+    "content": "Kiểm tra lại chỉ số P99 Latency của API search sau khi nạp 50 nghìn bản ghi.",
+    "category": "tech_benchmark",
+    "created_at": "2026-09-17T19:50:00Z",
+    "updated_at": "2026-09-17T19:50:00Z"
+  },
+  {
+    "id": 75,
+    "sender": "Hoàng Kim Yến",
+    "room": "engineering",
+    "content": "Cần bổ sung chỉ mục Edge N-gram cho trường content_partial để phục vụ autocomplete.",
+    "category": "tech_ngram",
+    "created_at": "2026-09-17T20:45:00Z",
+    "updated_at": "2026-09-17T20:45:00Z"
+  },
+  {
+    "id": 76,
+    "sender": "Dương Quốc Bảo",
+    "room": "random",
+    "content": "Trưa nay ăn gì mọi người ơi? Cơm tấm hay bún chả?",
+    "category": "chat_lunch",
+    "created_at": "2026-09-17T21:40:00Z",
+    "updated_at": "2026-09-17T21:40:00Z"
+  },
+  {
+    "id": 77,
+    "sender": "Lê Hải Đăng",
+    "room": "random",
+    "content": "Cho em một suất bún chả chan nhiều giấm tỏi với nhé.",
+    "category": "chat_lunch",
+    "created_at": "2026-09-17T22:35:00Z",
+    "updated_at": "2026-09-17T22:35:00Z"
+  },
+  {
+    "id": 78,
+    "sender": "Phan Tuyết Mai",
+    "room": "random",
+    "content": "Trời mưa to quá, có ai đi ô tô qua ngã tư sở cho em đi nhờ với.",
+    "category": "chat_weather",
+    "created_at": "2026-09-17T22:30:00Z",
+    "updated_at": "2026-09-17T22:30:00Z"
+  },
+  {
+    "id": 79,
+    "sender": "Nguyễn Văn An",
+    "room": "random",
+    "content": "Thứ Sáu tuần này công ty tổ chức Happy Hour bia tươi và đồ nướng tại sân thượng.",
+    "category": "chat_happy_hour",
+    "created_at": "2026-09-17T23:25:00Z",
+    "updated_at": "2026-09-17T23:25:00Z"
+  },
+  {
+    "id": 80,
+    "sender": "Trần Thị Mai",
+    "room": "random",
+    "content": "Ai để quên chiếc chìa khóa xe Honda ở phòng họp số 2 thì qua nhận lại nhé.",
+    "category": "chat_lost_found",
+    "created_at": "2026-09-18T00:20:00Z",
+    "updated_at": "2026-09-18T00:20:00Z"
+  },
+  {
+    "id": 81,
+    "sender": "Lê Hoàng Nam",
+    "room": "random",
+    "content": "Trận bóng đá giao hữu giữa team Dev và team Product sẽ diễn ra lúc 18h tối mai.",
+    "category": "chat_football",
+    "created_at": "2026-09-18T01:15:00Z",
+    "updated_at": "2026-09-18T01:15:00Z"
+  },
+  {
+    "id": 82,
+    "sender": "Phạm Minh Đức",
+    "room": "random",
+    "content": "Chúc mừng sinh nhật chị Hà, chúc chị tuổi mới luôn vui vẻ và thành công rực rỡ!",
+    "category": "chat_birthday",
+    "created_at": "2026-09-18T02:10:00Z",
+    "updated_at": "2026-09-18T02:10:00Z"
+  },
+  {
+    "id": 83,
+    "sender": "Đặng Thu Thảo",
+    "room": "random",
+    "content": "Văn phòng mình ai có sạc điện thoại Type-C không cho em mượn 30 phút.",
+    "category": "chat_borrow",
+    "created_at": "2026-09-18T03:05:00Z",
+    "updated_at": "2026-09-18T03:05:00Z"
+  },
+  {
+    "id": 84,
+    "sender": "Bùi Quang Huy",
+    "room": "random",
+    "content": "Mọi người nhớ tắt hết đèn và màn hình máy tính trước khi ra về nhé.",
+    "category": "chat_office_rule",
+    "created_at": "2026-09-18T04:00:00Z",
+    "updated_at": "2026-09-18T04:00:00Z"
+  },
+  {
+    "id": 85,
+    "sender": "Vũ Thanh Tùng",
+    "room": "random",
+    "content": "Cảm ơn team đã hỗ trợ nhiệt tình để hoàn thành kịp tiến độ dự án quý này!",
+    "category": "chat_thanks",
+    "created_at": "2026-09-18T04:55:00Z",
+    "updated_at": "2026-09-18T04:55:00Z"
+  },
+  {
+    "id": 86,
+    "sender": "Ngô Bảo Châu",
+    "room": "general",
+    "content": "OK em nhé.",
+    "category": "short_message",
+    "created_at": "2026-09-18T04:50:00Z",
+    "updated_at": "2026-09-18T04:50:00Z"
+  },
+  {
+    "id": 87,
+    "sender": "Hoàng Kim Yến",
+    "room": "general",
+    "content": "Đã nhận thông tin.",
+    "category": "short_message",
+    "created_at": "2026-09-18T05:45:00Z",
+    "updated_at": "2026-09-18T05:45:00Z"
+  },
+  {
+    "id": 88,
+    "sender": "Dương Quốc Bảo",
+    "room": "general",
+    "content": "Tuyệt vời, chuẩn luôn!",
+    "category": "short_message",
+    "created_at": "2026-09-18T06:40:00Z",
+    "updated_at": "2026-09-18T06:40:00Z"
+  },
+  {
+    "id": 89,
+    "sender": "Lê Hải Đăng",
+    "room": "general",
+    "content": "Em đã xem và xác nhận.",
+    "category": "short_message",
+    "created_at": "2026-09-18T07:35:00Z",
+    "updated_at": "2026-09-18T07:35:00Z"
+  },
+  {
+    "id": 90,
+    "sender": "Phan Tuyết Mai",
+    "room": "general",
+    "content": "Cảm ơn anh nhiều ạ.",
+    "category": "short_message",
+    "created_at": "2026-09-18T08:30:00Z",
+    "updated_at": "2026-09-18T08:30:00Z"
+  },
+  {
+    "id": 91,
+    "sender": "Nguyễn Văn An",
+    "room": "engineering",
+    "content": "Đã fix bug xong.",
+    "category": "short_message",
+    "created_at": "2026-09-18T09:25:00Z",
+    "updated_at": "2026-09-18T09:25:00Z"
+  },
+  {
+    "id": 92,
+    "sender": "Trần Thị Mai",
+    "room": "engineering",
+    "content": "Đang review code nhé.",
+    "category": "short_message",
+    "created_at": "2026-09-18T10:20:00Z",
+    "updated_at": "2026-09-18T10:20:00Z"
+  },
+  {
+    "id": 93,
+    "sender": "Lê Hoàng Nam",
+    "room": "engineering",
+    "content": "Deploy thành công rồi.",
+    "category": "short_message",
+    "created_at": "2026-09-18T11:15:00Z",
+    "updated_at": "2026-09-18T11:15:00Z"
+  },
+  {
+    "id": 94,
+    "sender": "Phạm Minh Đức",
+    "room": "hr-admin",
+    "content": "Đã duyệt đơn nghỉ phép.",
+    "category": "short_message",
+    "created_at": "2026-09-18T12:10:00Z",
+    "updated_at": "2026-09-18T12:10:00Z"
+  },
+  {
+    "id": 95,
+    "sender": "Đặng Thu Thảo",
+    "room": "hr-admin",
+    "content": "Check mail giúp em nhé.",
+    "category": "short_message",
+    "created_at": "2026-09-18T12:05:00Z",
+    "updated_at": "2026-09-18T12:05:00Z"
+  },
+  {
+    "id": 96,
+    "sender": "Bùi Quang Huy",
+    "room": "general",
+    "content": "Chuyến du lịch hè năm nay của công ty sẽ đi Đà Nẵng và Hội An trong 4 ngày.",
+    "category": "trap_du_lich_true",
+    "created_at": "2026-09-18T13:00:00Z",
+    "updated_at": "2026-09-18T13:00:00Z"
+  },
+  {
+    "id": 97,
+    "sender": "Vũ Thanh Tùng",
+    "room": "general",
+    "content": "Quy chế chi tiêu nội bộ đang được phòng nhân sự sửa đổi cho phù hợp thực tế.",
+    "category": "trap_du_lich_false_chi_tieu",
+    "created_at": "2026-09-18T13:55:00Z",
+    "updated_at": "2026-09-18T13:55:00Z"
+  },
+  {
+    "id": 98,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "general",
+    "content": "Chương trình tham quan du lịch giúp gắn kết tinh thần đoàn kết của các thành viên.",
+    "category": "trap_du_lich_true",
+    "created_at": "2026-09-18T14:50:00Z",
+    "updated_at": "2026-09-18T14:50:00Z"
+  },
+  {
+    "id": 99,
+    "sender": "Ngô Bảo Châu",
+    "room": "general",
+    "content": "Lãnh đạo vừa ký phê duyệt ngân sách cho chuyến đi du lịch thường niên.",
+    "category": "trap_du_lich_true",
+    "created_at": "2026-09-18T15:45:00Z",
+    "updated_at": "2026-09-18T15:45:00Z"
+  },
+  {
+    "id": 100,
+    "sender": "Hoàng Kim Yến",
+    "room": "general",
+    "content": "Du khách nước ngoài rất thích trải nghiệm ẩm thực đường phố Hà Nội.",
+    "category": "trap_du_lich_false_du_khach",
+    "created_at": "2026-09-18T16:40:00Z",
+    "updated_at": "2026-09-18T16:40:00Z"
+  },
+  {
+    "id": 101,
+    "sender": "Dương Quốc Bảo",
+    "room": "general",
+    "content": "Kỳ thi tốt nghiệp trung học phổ thông năm nay diễn ra an toàn và nghiêm túc.",
+    "category": "trap_hoc_sinh_extra",
+    "created_at": "2026-09-18T17:35:00Z",
+    "updated_at": "2026-09-18T17:35:00Z"
+  },
+  {
+    "id": 102,
+    "sender": "Lê Hải Đăng",
+    "room": "general",
+    "content": "Học sinh tiểu học cần được rèn luyện thói quen tự giác đọc sách mỗi ngày.",
+    "category": "trap_hoc_sinh_extra",
+    "created_at": "2026-09-18T18:30:00Z",
+    "updated_at": "2026-09-18T18:30:00Z"
+  },
+  {
+    "id": 103,
+    "sender": "Phan Tuyết Mai",
+    "room": "engineering",
+    "content": "Các bạn sinh viên năm cuối có thể nộp CV ứng tuyển vị trí thực tập sinh Golang.",
+    "category": "trap_sinh_vien_extra",
+    "created_at": "2026-09-18T18:25:00Z",
+    "updated_at": "2026-09-18T18:25:00Z"
+  },
+  {
+    "id": 104,
+    "sender": "Nguyễn Văn An",
+    "room": "random",
+    "content": "Hôm nay trời mát mẻ rủ nhau làm ấm trà mạn đàm đạo nhân tình thế thái.",
+    "category": "trap_tra_extra",
+    "created_at": "2026-09-18T19:20:00Z",
+    "updated_at": "2026-09-18T19:20:00Z"
+  },
+  {
+    "id": 105,
+    "sender": "Trần Thị Mai",
+    "room": "general",
+    "content": "Quán trà sữa trân châu mới mở gần trường học giảm giá 50% trong tuần lễ khai trương.",
+    "category": "trap_tra_sua_extra",
+    "created_at": "2026-09-18T20:15:00Z",
+    "updated_at": "2026-09-18T20:15:00Z"
+  },
+  {
+    "id": 106,
+    "sender": "Lê Hoàng Nam",
+    "room": "general",
+    "content": "Chất lượng giáo dục tại các trường học công lập ngày càng được nâng cao.",
+    "category": "trap_truong_hoc_true",
+    "created_at": "2026-09-18T21:10:00Z",
+    "updated_at": "2026-09-18T21:10:00Z"
+  },
+  {
+    "id": 107,
+    "sender": "Phạm Minh Đức",
+    "room": "general",
+    "content": "Khuôn viên trường học có nhiều cây xanh bóng mát và sân bóng rổ hiện đại.",
+    "category": "trap_truong_hoc_true",
+    "created_at": "2026-09-18T22:05:00Z",
+    "updated_at": "2026-09-18T22:05:00Z"
+  },
+  {
+    "id": 108,
+    "sender": "Đặng Thu Thảo",
+    "room": "general",
+    "content": "Hôm nay em bận học thêm tiếng Anh nên xin phép vắng mặt ở buổi họp.",
+    "category": "trap_truong_hoc_false_hoc",
+    "created_at": "2026-09-18T23:00:00Z",
+    "updated_at": "2026-09-18T23:00:00Z"
+  },
+  {
+    "id": 109,
+    "sender": "Bùi Quang Huy",
+    "room": "general",
+    "content": "Công ty đang tìm kiếm văn phòng mới gần các tuyến đường huyết mạch của thủ đô.",
+    "category": "trap_van_phong",
+    "created_at": "2026-09-18T23:55:00Z",
+    "updated_at": "2026-09-18T23:55:00Z"
+  },
+  {
+    "id": 110,
+    "sender": "Vũ Thanh Tùng",
+    "room": "general",
+    "content": "Không gian văn phòng mở tạo cảm giác thoải mái và tăng cường giao tiếp giữa các nhóm.",
+    "category": "trap_van_phong",
+    "created_at": "2026-09-19T00:50:00Z",
+    "updated_at": "2026-09-19T00:50:00Z"
+  },
+  {
+    "id": 111,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "general",
+    "content": "Hà Nội là một trong những thành phố năng động và phát triển nhanh nhất khu vực.",
+    "category": "trap_thanh_pho_true",
+    "created_at": "2026-09-19T01:45:00Z",
+    "updated_at": "2026-09-19T01:45:00Z"
+  },
+  {
+    "id": 112,
+    "sender": "Ngô Bảo Châu",
+    "room": "general",
+    "content": "Dự án chuyển đổi số của chúng ta đã gặt hái được thành công vang dội.",
+    "category": "trap_thanh_pho_false_thanh_cong",
+    "created_at": "2026-09-19T01:40:00Z",
+    "updated_at": "2026-09-19T01:40:00Z"
+  },
+  {
+    "id": 113,
+    "sender": "Hoàng Kim Yến",
+    "room": "random",
+    "content": "Phố phường Hà Nội vào thu đẹp nao lòng với hương hoa sữa nồng nàn.",
+    "category": "trap_thanh_pho_false_pho_phuong",
+    "created_at": "2026-09-19T02:35:00Z",
+    "updated_at": "2026-09-19T02:35:00Z"
+  },
+  {
+    "id": 114,
+    "sender": "Dương Quốc Bảo",
+    "room": "general",
+    "content": "Chúc mừng các thành viên mới đã vượt qua kỳ thử việc xuất sắc.",
+    "category": "trap_thanh_pho_false_thanh_vien",
+    "created_at": "2026-09-19T03:30:00Z",
+    "updated_at": "2026-09-19T03:30:00Z"
+  },
+  {
+    "id": 115,
+    "sender": "Lê Hải Đăng",
+    "room": "random",
+    "content": "Hôm nay trời mưa to nên mình đi xe buýt chứ không đi xe máy như mọi hôm.",
+    "category": "trap_xe_may_true",
+    "created_at": "2026-09-19T04:25:00Z",
+    "updated_at": "2026-09-19T04:25:00Z"
+  },
+  {
+    "id": 116,
+    "sender": "Phan Tuyết Mai",
+    "room": "random",
+    "content": "Bãi gửi xe máy dưới hầm hôm nay chật kín chỗ rồi các bác nhé.",
+    "category": "trap_xe_may_true",
+    "created_at": "2026-09-19T05:20:00Z",
+    "updated_at": "2026-09-19T05:20:00Z"
+  },
+  {
+    "id": 117,
+    "sender": "Nguyễn Văn An",
+    "room": "random",
+    "content": "Chuyến bay từ Nội Bài vào Tân Sơn Nhất bị hoãn 2 tiếng do thời tiết xấu.",
+    "category": "trap_xe_may_false_may_bay",
+    "created_at": "2026-09-19T06:15:00Z",
+    "updated_at": "2026-09-19T06:15:00Z"
+  },
+  {
+    "id": 118,
+    "sender": "Trần Thị Mai",
+    "room": "random",
+    "content": "Nhà em mới sắm chiếc máy giặt lồng ngang thông minh giặt rất êm.",
+    "category": "trap_xe_may_false_may_giat",
+    "created_at": "2026-09-19T07:10:00Z",
+    "updated_at": "2026-09-19T07:10:00Z"
+  },
+  {
+    "id": 119,
+    "sender": "Lê Hoàng Nam",
+    "room": "engineering",
+    "content": "Anh Đức nhớ gửi bản báo cáo tiến độ tuần này cho khách hàng trước 17h.",
+    "category": "trap_bao_cao_true",
+    "created_at": "2026-09-19T08:05:00Z",
+    "updated_at": "2026-09-19T08:05:00Z"
+  },
+  {
+    "id": 120,
+    "sender": "Phạm Minh Đức",
+    "room": "engineering",
+    "content": "Số liệu trong báo cáo tài chính cần được đối soát lại với kế toán trưởng.",
+    "category": "trap_bao_cao_true",
+    "created_at": "2026-09-19T08:00:00Z",
+    "updated_at": "2026-09-19T08:00:00Z"
+  },
+  {
+    "id": 121,
+    "sender": "Đặng Thu Thảo",
+    "room": "general",
+    "content": "Chiến dịch quảng cáo trên mạng xã hội đã mang về hơn 1000 khách hàng tiềm năng.",
+    "category": "trap_bao_cao_false_quang_cao",
+    "created_at": "2026-09-19T08:55:00Z",
+    "updated_at": "2026-09-19T08:55:00Z"
+  },
+  {
+    "id": 122,
+    "sender": "Bùi Quang Huy",
+    "room": "announcements",
+    "content": "Phòng nhân sự vừa phát đi thông báo về lịch nghỉ lễ Quốc khánh sắp tới.",
+    "category": "trap_bao_cao_false_thong_bao",
+    "created_at": "2026-09-19T09:50:00Z",
+    "updated_at": "2026-09-19T09:50:00Z"
+  },
+  {
+    "id": 123,
+    "sender": "Vũ Thanh Tùng",
+    "room": "engineering",
+    "content": "Chúng ta sẽ tiến hành nâng cấp cụm máy chủ vào lúc nửa đêm thứ Bảy.",
+    "category": "trap_tien_hanh_true",
+    "created_at": "2026-09-19T10:45:00Z",
+    "updated_at": "2026-09-19T10:45:00Z"
+  },
+  {
+    "id": 124,
+    "sender": "Đỗ Mỹ Linh",
+    "room": "general",
+    "content": "Sinh viên y khoa bắt buộc phải trải qua 2 năm thực hành tại các bệnh viện lớn.",
+    "category": "trap_tien_hanh_false_thuc_hanh",
+    "created_at": "2026-09-19T11:40:00Z",
+    "updated_at": "2026-09-19T11:40:00Z"
+  },
+  {
+    "id": 125,
+    "sender": "Ngô Bảo Châu",
+    "room": "engineering",
+    "content": "Tuần này nhiều việc quá, ngày nào cũng phải họp hành triền miên mệt thật sự.",
+    "category": "trap_tien_hanh_false_hop_hanh",
+    "created_at": "2026-09-19T12:35:00Z",
+    "updated_at": "2026-09-19T12:35:00Z"
+  },
+  {
+    "id": 126,
+    "sender": "Hoàng Kim Yến",
+    "room": "engineering",
+    "content": "Dự án tìm kiếm tiếng Việt đang bước vào giai đoạn nạp dữ liệu và kiểm thử.",
+    "category": "trap_du_an_true",
+    "created_at": "2026-09-19T13:30:00Z",
+    "updated_at": "2026-09-19T13:30:00Z"
+  },
+  {
+    "id": 127,
+    "sender": "Dương Quốc Bảo",
+    "room": "engineering",
+    "content": "Tiến độ dự án đang bám sát kế hoạch đề ra nhờ sự nỗ lực của toàn đội.",
+    "category": "trap_du_an_true",
+    "created_at": "2026-09-19T14:25:00Z",
+    "updated_at": "2026-09-19T14:25:00Z"
+  },
+  {
+    "id": 128,
+    "sender": "Lê Hải Đăng",
+    "room": "general",
+    "content": "Hộp thư góp ý đã ghi nhận nhiều ý kiến phản ánh tích cực từ phía người dùng.",
+    "category": "trap_du_an_false_phan_anh",
+    "created_at": "2026-09-19T15:20:00Z",
+    "updated_at": "2026-09-19T15:20:00Z"
+  },
+  {
+    "id": 129,
+    "sender": "Phan Tuyết Mai",
+    "room": "general",
+    "content": "Cảm ơn mọi người đã cùng nhau giải quyết xong sự cố khó nhằn này!",
+    "category": "chat_cheer",
+    "created_at": "2026-09-19T15:15:00Z",
+    "updated_at": "2026-09-19T15:15:00Z"
+  },
+  {
+    "id": 130,
+    "sender": "Nguyễn Văn An",
+    "room": "engineering",
+    "content": "Bộ từ điển Cốc Cốc tokenizer nhận diện từ ghép tiếng Việt rất chuẩn xác.",
+    "category": "tech_summary",
+    "created_at": "2026-09-19T16:10:00Z",
+    "updated_at": "2026-09-19T16:10:00Z"
+  },
+  {
+    "id": 131,
+    "sender": "Trần Thị Mai",
+    "room": "general",
+    "content": "Chúc cả nhà một tuần làm việc mới tràn đầy năng lượng và hiệu quả! 🚀",
+    "category": "chat_greeting",
+    "created_at": "2026-09-19T17:05:00Z",
+    "updated_at": "2026-09-19T17:05:00Z"
+  }
+]

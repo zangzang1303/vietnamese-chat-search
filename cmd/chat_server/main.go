@@ -199,10 +199,48 @@ func main() {
 }
 
 func seedMessages(cm *chat.ChatManager) {
-	cm.PostMessage("Nguyễn Văn A", "Nhóm Dự Án", "Hôm nay nhóm mình tập trung bàn bạc kế hoạch dự án tuần tới nhé")
-	cm.PostMessage("Trần Thị B", "Nhóm Dự Án", "Em đang là sinh viên mới nhập học trường bách khoa, mong anh chị giúp đỡ")
-	cm.PostMessage("Lê Văn C", "Hội Cà Phê", "Cuối tuần rủ nhau đi uống cà phê nói chuyện phiếm đi mọi người")
-	cm.PostMessage("Phạm Tuấn D", "Hội Cà Phê", "Quán cà phê mới mở gần trường học có view rất đẹp")
-	cm.PostMessage("Hoàng Mai E", "Lớp Học", "Các em học sinh chuẩn bị bài cho tiết học sáng mai")
-	cm.PostMessage("Đỗ Hùng F", "Phòng Họp", "Phòng họp mới sắm bộ bàn ghế gỗ rất sang trọng")
+	candidates := []string{
+		"data/sample_messages.json",
+		"../../data/sample_messages.json",
+		"../data/sample_messages.json",
+	}
+
+	roomMap := map[string]string{
+		"general":       "Hội Cà Phê & Đời Sống",
+		"engineering":   "Team Dự Án Search Engine",
+		"random":        "Góc Tán Gẫu IT",
+		"announcements": "Kênh Thông Báo Toàn Công Ty",
+		"hr-admin":      "Hành Chính & Nhân Sự",
+	}
+
+	for _, path := range candidates {
+		data, err := os.ReadFile(path)
+		if err == nil {
+			var samples []struct {
+				Sender   string `json:"sender"`
+				Room     string `json:"room"`
+				Content  string `json:"content"`
+				Category string `json:"category"`
+			}
+			if err := json.Unmarshal(data, &samples); err == nil && len(samples) > 0 {
+				for _, s := range samples {
+					roomName := s.Room
+					if friendly, ok := roomMap[s.Room]; ok {
+						roomName = friendly
+					}
+					cm.PostMessage(s.Sender, roomName, s.Content)
+				}
+				fmt.Printf("✅ Đã nạp tự động %d tin nhắn mẫu thực tế từ %s vào Inverted Index!\n", len(samples), path)
+				return
+			}
+		}
+	}
+
+	// Fallback nếu không tìm thấy file json
+	cm.PostMessage("Nguyễn Văn An", "Team Dự Án Search Engine", "Hôm nay nhóm mình tập trung bàn bạc kế hoạch dự án tuần tới nhé")
+	cm.PostMessage("Trần Thị Mai", "Team Dự Án Search Engine", "Em đang là sinh viên mới nhập học trường bách khoa, mong anh chị giúp đỡ")
+	cm.PostMessage("Lê Văn C", "Hội Cà Phê & Đời Sống", "Cuối tuần rủ nhau đi uống cà phê nói chuyện phiếm đi mọi người")
+	cm.PostMessage("Phạm Tuấn D", "Hội Cà Phê & Đời Sống", "Quán cà phê mới mở gần trường học có view rất đẹp")
+	cm.PostMessage("Hoàng Mai E", "Hội Cà Phê & Đời Sống", "Các em học sinh chuẩn bị bài cho tiết học sáng mai")
+	cm.PostMessage("Đỗ Hùng F", "Hội Cà Phê & Đời Sống", "Phòng họp mới sắm bộ bàn ghế gỗ rất sang trọng")
 }
