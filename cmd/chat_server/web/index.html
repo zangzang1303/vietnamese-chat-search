@@ -3,30 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vietnamese Chat Search - Real-Time Indexing Engine</title>
+  <title>Messenger | Vietnamese Chat Search Engine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #0b0f17;
-      --bg-surface: #131b2a;
-      --bg-card: rgba(26, 36, 54, 0.7);
-      --bg-glass: rgba(19, 27, 42, 0.75);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-focus: #3b82f6;
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --accent-blue: #3b82f6;
-      --accent-cyan: #06b6d4;
-      --accent-green: #10b981;
-      --accent-amber: #f59e0b;
-      --accent-rose: #f43f5e;
-      --accent-purple: #8b5cf6;
-      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --bg-base: #18191a;
+      --bg-chat: #000000;
+      --bg-surface: #242526;
+      --bg-surface-hover: #3a3b3c;
+      --bg-active: #323436;
+      --border-color: #2f3031;
+      --text-primary: #e4e6eb;
+      --text-secondary: #b0b3b8;
+      --text-muted: #8a8d91;
+      --fb-blue: #0084ff;
+      --fb-blue-hover: #1877f2;
+      --fb-online: #31a24c;
+      --sent-bubble-gradient: linear-gradient(135deg, #0084ff 0%, #a033ff 100%);
+      --received-bubble: #303030;
+      --font-system: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.15);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,606 +32,1381 @@
     body {
       background-color: var(--bg-base);
       color: var(--text-primary);
-      font-family: var(--font-sans);
-      min-height: 100vh;
+      font-family: var(--font-system);
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      user-select: none;
     }
 
-    /* Top Navigation */
-    header {
-      background: var(--bg-glass);
-      backdrop-filter: blur(16px);
+    /* ==========================================================================
+       TOP NAVBAR (Facebook Style)
+       ========================================================================== */
+    .top-nav {
+      height: 56px;
+      background: var(--bg-surface);
       border-bottom: 1px solid var(--border-color);
-      padding: 16px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      padding: 0 16px;
+      z-index: 100;
+      flex-shrink: 0;
     }
 
-    .brand {
+    .nav-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      width: 340px;
     }
 
-    .brand-logo {
+    .fb-logo {
       width: 40px;
       height: 40px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-      border-radius: 12px;
+      background: linear-gradient(135deg, #0064e0, #0084ff);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
-      font-size: 20px;
-    }
-
-    .brand-title {
-      font-size: 18px;
+      color: #fff;
+      font-size: 26px;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(to right, #ffffff, #94a3b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
+      box-shadow: 0 2px 8px rgba(0, 132, 255, 0.4);
+      cursor: pointer;
     }
 
-    .brand-subtitle {
-      font-size: 12px;
-      color: var(--accent-cyan);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .stats-bar {
+    .nav-search-box {
+      background: var(--bg-surface-hover);
+      height: 40px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
-      gap: 20px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      padding: 8px 18px;
-      border-radius: 9999px;
-      font-size: 13px;
+      padding: 0 14px;
+      gap: 10px;
+      flex: 1;
     }
 
-    .stat-item {
+    .nav-search-box svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--text-muted);
+    }
+
+    .nav-search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: 14px;
+      width: 100%;
+    }
+    .nav-search-box input::placeholder { color: var(--text-muted); }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 6px;
+    }
+
+    .nav-tab {
+      width: 100px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .nav-tab:hover { background: rgba(255, 255, 255, 0.05); }
+
+    .nav-tab svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--text-secondary);
+    }
+
+    .nav-tab.active svg { fill: var(--fb-blue); }
+
+    .nav-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--fb-blue);
+      border-radius: 3px 3px 0 0;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 340px;
+      justify-content: flex-end;
+    }
+
+    .engine-status-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(49, 162, 76, 0.15);
+      border: 1px solid rgba(49, 162, 76, 0.3);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #31a24c;
+    }
+
+    .engine-dot {
+      width: 8px;
+      height: 8px;
+      background: #31a24c;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #31a24c;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-surface-hover);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: background 0.15s, transform 0.1s;
+      position: relative;
+    }
+    .icon-btn:hover { background: #4e4f50; transform: scale(1.04); }
+    .icon-btn:active { transform: scale(0.96); }
+
+    .icon-btn.active {
+      background: rgba(0, 132, 255, 0.2);
+      color: var(--fb-blue);
+    }
+
+    .user-avatar-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ==========================================================================
+       MAIN APP LAYOUT (3 COLUMNS)
+       ========================================================================== */
+    .main-app {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 56px);
+      overflow: hidden;
+    }
+
+    /* --------------------------------------------------------------------------
+       COLUMN 1: CONVERSATIONS LIST (Đoạn chat)
+       -------------------------------------------------------------------------- */
+    .sidebar-chats {
+      width: 360px;
+      background: var(--bg-base);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .chats-header {
+      padding: 16px 16px 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chats-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .chats-header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-chat-container {
+      padding: 0 16px 10px 16px;
+    }
+
+    .search-chat-input {
+      background: var(--bg-surface);
+      height: 38px;
+      border-radius: 19px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+    }
+    .search-chat-input input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: 14px;
+      width: 100%;
+    }
+    .search-chat-input input::placeholder { color: var(--text-muted); }
+
+    .chat-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 0 16px 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .chat-tab-pill {
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .chat-tab-pill:hover { background: var(--bg-surface-hover); color: var(--text-primary); }
+    .chat-tab-pill.active {
+      background: rgba(0, 132, 255, 0.15);
+      color: var(--fb-blue);
+    }
+
+    .conversations-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 8px;
+    }
+
+    .conversations-scroll::-webkit-scrollbar { width: 6px; }
+    .conversations-scroll::-webkit-scrollbar-thumb { background: #3a3b3c; border-radius: 3px; }
+
+    .conversation-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      gap: 12px;
+      transition: background 0.12s;
+      position: relative;
+    }
+    .conversation-item:hover { background: var(--bg-surface); }
+    .conversation-item.active { background: var(--bg-surface-hover); }
+
+    .conv-avatar-wrap {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+
+    .conv-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--bg-surface-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .online-indicator {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 14px;
+      height: 14px;
+      background: var(--fb-online);
+      border-radius: 50%;
+      border: 3px solid var(--bg-base);
+    }
+
+    .conv-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .conv-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .conv-last-msg {
+      font-size: 13px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .unread-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--fb-blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* --------------------------------------------------------------------------
+       COLUMN 2: CHAT FEED / STREAM (Khung Chat Trực Tiếp)
+       -------------------------------------------------------------------------- */
+    .chat-viewport {
+      flex: 1;
+      background: var(--bg-chat);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+    }
+
+    .chat-header {
+      height: 64px;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(24, 25, 26, 0.95);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .chat-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-header-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      position: relative;
+    }
+
+    .chat-header-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .chat-header-status {
+      font-size: 12px;
+      color: var(--text-secondary);
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .stat-label { color: var(--text-muted); }
-    .stat-val { font-family: var(--font-mono); font-weight: 700; color: var(--accent-cyan); }
 
-    /* Main Container Grid */
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-      padding: 24px 28px;
-      max-width: 1720px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* Common Card Styling */
-    .panel-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .panel-header {
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255, 255, 255, 0.015);
-    }
-
-    .panel-title {
-      font-size: 16px;
-      font-weight: 700;
+    .chat-header-actions {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    /* Left Column: Chat Feed */
-    .room-tabs {
+    .chat-messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-messages-container::-webkit-scrollbar { width: 6px; }
+    .chat-messages-container::-webkit-scrollbar-thumb { background: #3a3b3c; border-radius: 3px; }
+
+    .date-divider {
+      align-self: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      margin: 12px 0 6px 0;
+    }
+
+    .message-row {
       display: flex;
       gap: 8px;
-      padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.2);
-      border-bottom: 1px solid var(--border-color);
-      overflow-x: auto;
+      max-width: 75%;
+      position: relative;
+      animation: fadeInMsg 0.15s ease-out;
     }
 
-    .tab-btn {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
+    @keyframes fadeInMsg {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .tab-btn:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-primary);
+    .message-row.incoming {
+      align-self: flex-start;
     }
 
-    .tab-btn.active {
-      background: var(--accent-blue);
-      border-color: var(--accent-blue);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
+    .message-row.outgoing {
+      align-self: flex-end;
+      flex-direction: row-reverse;
     }
 
-    .chat-messages {
-      flex: 1;
-      padding: 24px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-height: calc(100vh - 350px);
-    }
-
-    .msg-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 16px 18px;
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .msg-item:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      background: rgba(59, 130, 246, 0.04);
-      transform: translateY(-2px);
-    }
-
-    .msg-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .msg-sender-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .avatar-circle {
+    .msg-sender-avatar {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      align-self: flex-end;
+      flex-shrink: 0;
+    }
+
+    .msg-bubble-content-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .msg-sender-name {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: 12px;
+      margin-bottom: 2px;
+    }
+    .message-row.outgoing .msg-sender-name { display: none; }
+
+    .msg-bubble {
+      padding: 10px 15px;
+      border-radius: 18px;
+      font-size: 14.5px;
+      line-height: 1.45;
+      word-break: break-word;
+      position: relative;
+    }
+
+    .message-row.incoming .msg-bubble {
+      background: var(--received-bubble);
+      color: var(--text-primary);
+      border-bottom-left-radius: 4px;
+    }
+
+    .message-row.outgoing .msg-bubble {
+      background: var(--sent-bubble-gradient);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-row.highlighted .msg-bubble {
+      outline: 2px solid #0084ff;
+      box-shadow: 0 0 16px rgba(0, 132, 255, 0.6);
+      animation: pulseHighlight 2s ease-in-out;
+    }
+
+    @keyframes pulseHighlight {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .msg-hover-actions {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 3px 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      z-index: 5;
+    }
+
+    .message-row.incoming .msg-hover-actions { right: -105px; }
+    .message-row.outgoing .msg-hover-actions { left: -105px; }
+
+    .message-row:hover .msg-hover-actions { display: flex; }
+
+    .msg-action-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      padding: 4px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 13px;
-      font-weight: 700;
-      color: #fff;
+      transition: background 0.12s, color 0.12s;
     }
+    .msg-action-btn:hover { background: var(--bg-surface-hover); color: var(--text-primary); }
+    .msg-action-btn.delete:hover { color: #f43f5e; }
 
-    .msg-sender {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .msg-room-badge {
+    .msg-timestamp {
       font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.06);
       color: var(--text-muted);
-      font-weight: 600;
+      margin-top: 3px;
+      padding: 0 4px;
     }
+    .message-row.outgoing .msg-timestamp { text-align: right; }
 
-    .msg-time {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-    }
-
-    .msg-content {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #e2e8f0;
-      word-break: break-word;
-    }
-
-    .msg-actions {
+    /* Footer / Input Bar */
+    .chat-footer {
+      padding: 12px 16px;
+      background: var(--bg-base);
+      border-top: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       gap: 10px;
-      justify-content: flex-end;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
     }
 
-    .btn-action {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-flex;
+    .footer-actions-left {
+      display: flex;
       align-items: center;
-      gap: 5px;
-      font-weight: 600;
-      transition: all 0.15s;
+      gap: 6px;
     }
 
-    .btn-action:hover {
-      background: rgba(255, 255, 255, 0.1);
+    .sender-picker {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       color: var(--text-primary);
+      padding: 8px 12px;
+      border-radius: 18px;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
     }
 
-    .btn-action.edit-btn:hover { border-color: var(--accent-blue); color: #60a5fa; }
-    .btn-action.del-btn:hover { border-color: var(--accent-rose); color: #f87171; }
-    .btn-action.inspect-btn:hover { border-color: var(--accent-cyan); color: #38bdf8; }
+    .chat-input-pill {
+      flex: 1;
+      background: var(--bg-surface-hover);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      padding: 4px 14px;
+      gap: 8px;
+    }
 
-    /* Message Input Form */
-    .chat-input-area {
-      padding: 18px 24px;
-      border-top: 1px solid var(--border-color);
-      background: rgba(0, 0, 0, 0.25);
+    .chat-input-pill input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: 15px;
+      padding: 8px 0;
+    }
+    .chat-input-pill input::placeholder { color: var(--text-muted); }
+
+    .send-msg-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--fb-blue);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      transition: transform 0.1s, background 0.15s;
+    }
+    .send-msg-btn:hover { background: var(--fb-blue-hover); transform: scale(1.06); }
+    .send-msg-btn:active { transform: scale(0.94); }
+
+    /* --------------------------------------------------------------------------
+       COLUMN 3: SIDEBAR DETAILS & IN-CHAT SEARCH
+       -------------------------------------------------------------------------- */
+    .sidebar-details {
+      width: 360px;
+      background: var(--bg-base);
+      border-left: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      flex-shrink: 0;
+      overflow-y: auto;
     }
 
-    .input-meta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .sidebar-details::-webkit-scrollbar { width: 6px; }
+    .sidebar-details::-webkit-scrollbar-thumb { background: #3a3b3c; border-radius: 3px; }
 
-    .form-control {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      color: var(--text-primary);
-      padding: 10px 14px;
-      font-size: 14px;
-      font-family: var(--font-sans);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-control:focus {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-    }
-
-    .input-submit-row {
+    .details-top-card {
       display: flex;
-      gap: 12px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-blue), #2563eb);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 22px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-      white-space: nowrap;
+      padding: 24px 16px 16px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #60a5fa, var(--accent-blue));
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
-      transform: translateY(-1px);
-    }
-
-    /* Right Column: Search & Index Inspector */
-    .search-input-box {
+    .details-avatar-large {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-bottom: 12px;
       position: relative;
-      margin: 18px 24px 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .search-input-box input {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--accent-blue);
-      border-radius: 12px;
-      color: #fff;
-      padding: 14px 44px 14px 16px;
-      font-size: 15px;
-      outline: none;
-      box-shadow: var(--shadow-glow);
+    .details-avatar-large .online-indicator {
+      width: 16px;
+      height: 16px;
+      bottom: 4px;
+      right: 4px;
     }
 
-    .search-input-box .search-icon {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--accent-cyan);
+    .details-group-name {
       font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .details-status-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .details-quick-actions {
+      display: flex;
+      gap: 24px;
+    }
+
+    .quick-action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .quick-action-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-surface-hover);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      font-size: 16px;
+      transition: background 0.15s;
+    }
+    .quick-action-item:hover .quick-action-btn { background: #4e4f50; }
+    .quick-action-item.active .quick-action-btn { background: var(--fb-blue); color: #fff; }
+
+    .quick-action-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* IN-CHAT SEARCH SECTION (CORE SEARCH ENGINE INTEGRATION) */
+    .search-panel-section {
+      background: var(--bg-surface);
+      margin: 12px 12px;
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0, 132, 255, 0.2);
+    }
+
+    .search-panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--fb-blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .search-query-box {
+      background: var(--bg-surface-hover);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      gap: 8px;
+      margin-bottom: 8px;
+      border: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .search-query-box:focus-within { border-color: var(--fb-blue); }
+
+    .search-query-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: 13.5px;
+      width: 100%;
+    }
+
+    .search-scope-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .scope-btn {
+      flex: 1;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      text-align: center;
+    }
+    .scope-btn.active {
+      background: rgba(0, 132, 255, 0.2);
+      color: var(--fb-blue);
     }
 
     .search-results-list {
-      flex: 1;
-      padding: 0 24px 24px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-height: calc(100vh - 350px);
-    }
-
-    .search-result-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      transition: all 0.2s;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
+    .search-results-list::-webkit-scrollbar { width: 4px; }
+    .search-results-list::-webkit-scrollbar-thumb { background: #4e4f50; border-radius: 2px; }
+
+    .search-result-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
     .search-result-card:hover {
-      border-color: var(--accent-green);
-      background: rgba(16, 185, 129, 0.04);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(0, 132, 255, 0.4);
     }
 
-    .result-score-badge {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 2px 10px;
-      border-radius: 9999px;
-      font-family: var(--font-mono);
+    .res-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .res-sender {
       font-size: 12px;
       font-weight: 700;
+      color: var(--text-primary);
     }
 
-    .highlight-word {
-      background: rgba(245, 158, 11, 0.25);
-      color: #fbbf24;
-      padding: 0 3px;
+    .res-score-badge {
+      background: rgba(0, 132, 255, 0.15);
+      color: var(--fb-blue);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .res-content {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .res-content mark {
+      background: rgba(0, 132, 255, 0.3);
+      color: #ffffff;
+      padding: 1px 3px;
       border-radius: 3px;
-      font-weight: 700;
+      font-weight: 600;
     }
 
-    /* Modal Styling */
+    .res-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .res-tokens-badge {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      max-width: 170px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Accordion Sections */
+    .details-accordion {
+      padding: 0 12px 16px 12px;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .accordion-header {
+      padding: 14px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .accordion-header:hover { color: #fff; }
+
+    .accordion-body {
+      padding: 0 8px 14px 8px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .accordion-item.open .accordion-body { display: flex; }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+    }
+    .stat-val { font-family: var(--font-mono); color: var(--text-primary); font-weight: 600; }
+
+    /* ==========================================================================
+       MODALS (Edit Message & Index Inspector)
+       ========================================================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 100;
+      z-index: 1000;
       padding: 20px;
     }
-
     .modal-overlay.active { display: flex; }
 
     .modal-box {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
+      border-radius: 14px;
       width: 100%;
-      max-width: 580px;
+      max-width: 540px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-      animation: modalFadeIn 0.25s ease-out;
+      animation: modalPop 0.15s ease-out;
     }
 
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .modal-header {
-      padding: 18px 24px;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 20px;
+      padding: 4px;
     }
 
     .modal-body {
-      padding: 24px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .modal-textarea {
+      width: 100%;
+      height: 100px;
+      background: var(--bg-surface-hover);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--text-primary);
+      font-family: var(--font-system);
+      font-size: 14px;
+      outline: none;
+      resize: vertical;
+    }
+    .modal-textarea:focus { border-color: var(--fb-blue); }
+
+    .reindex-notice {
+      background: rgba(0, 132, 255, 0.1);
+      border: 1px solid rgba(0, 132, 255, 0.25);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #60a5fa;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .modal-footer {
-      padding: 16px 24px;
+      padding: 14px 20px;
       border-top: 1px solid var(--border-color);
       display: flex;
       justify-content: flex-end;
-      gap: 12px;
-      background: rgba(0, 0, 0, 0.15);
+      gap: 10px;
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      border-radius: 10px;
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 8px 16px;
+      background: var(--bg-surface-hover);
+      border: none;
+      border-radius: 6px;
+      color: var(--text-primary);
       font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
     }
+    .btn-secondary:hover { background: #4e4f50; }
 
-    .posting-badge {
-      display: inline-flex;
+    .btn-primary {
+      padding: 8px 18px;
+      background: var(--fb-blue);
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
+    }
+    .btn-primary:hover { background: var(--fb-blue-hover); }
+
+    /* Inspector tokens table */
+    .tokens-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .token-chip {
+      background: rgba(0, 132, 255, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(0, 132, 255, 0.3);
       padding: 4px 10px;
-      border-radius: 8px;
-      font-family: var(--font-mono);
+      border-radius: 12px;
       font-size: 12px;
-      margin: 3px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .posting-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+    .posting-table th {
+      text-align: left;
+      padding: 6px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .posting-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      color: var(--text-primary);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <header>
-    <div class="brand">
-      <div class="brand-logo">⚡</div>
-      <div>
-        <div class="brand-title">Vietnamese Chat Search Engine</div>
-        <div class="brand-subtitle">Real-Time Inverted Index & Okapi BM25 Ranking</div>
+  <!-- ========================================================================
+       TOP NAVBAR
+       ======================================================================== -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="fb-logo">f</div>
+      <div class="nav-search-box">
+        <svg viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+        <input type="text" id="globalSearchInput" placeholder="Tìm kiếm trên Facebook Messenger..." />
       </div>
     </div>
-    <div class="stats-bar" id="statsBar">
-      <div class="stat-item">
-        <span class="stat-label">Tổng tin nhắn:</span>
-        <span class="stat-val" id="statMsgCount">0</span>
+
+    <div class="nav-center">
+      <div class="nav-tab active" title="Đoạn chat (Messenger)">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.15V22l3.435-1.884c.88.243 1.815.374 2.83.374 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.066 12.438l-2.583-2.756-5.044 2.756 5.548-5.892 2.65 2.756 4.978-2.756-5.549 5.892z"/></svg>
       </div>
-      <div class="stat-item">
-        <span class="stat-label">Từ vựng (Terms):</span>
-        <span class="stat-val" id="statTermCount">0</span>
+      <div class="nav-tab" title="Bảng tin">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       </div>
-      <div class="stat-item">
-        <span class="stat-label">Tổng tokens:</span>
-        <span class="stat-val" id="statTokenCount">0</span>
+      <div class="nav-tab" title="Video">
+        <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
       </div>
-      <div class="stat-item">
-        <span class="stat-label">Độ dài tb (avgdl):</span>
-        <span class="stat-val" id="statAvgDl">0.00</span>
+      <div class="nav-tab" title="Nhóm">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       </div>
+    </div>
+
+    <div class="nav-right">
+      <div class="engine-status-badge">
+        <div class="engine-dot"></div>
+        <span id="engineStatusText">Cốc Cốc & BM25 Active</span>
+      </div>
+      <button class="icon-btn" title="Menu ứng dụng">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+      </button>
+      <button class="icon-btn active" title="Messenger">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.15V22l3.435-1.884c.88.243 1.815.374 2.83.374 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.066 12.438l-2.583-2.756-5.044 2.756 5.548-5.892 2.65 2.756 4.978-2.756-5.549 5.892z"/></svg>
+      </button>
+      <button class="icon-btn" title="Thông báo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+      </button>
+      <div class="user-avatar-btn" title="Tài khoản cá nhân">Tôi</div>
     </div>
   </header>
 
-  <!-- Main Grid -->
-  <main>
-    <!-- LEFT PANEL: Chat Messages Feed -->
-    <div class="panel-card">
-      <div class="panel-header">
-        <div class="panel-title">
-          <span>💬</span> Luồng Tin Nhắn Thời Gian Thực (Live Messages)
-        </div>
-        <button class="btn-action" onclick="refreshMessages()" title="Làm mới">🔄 Tải lại</button>
-      </div>
+  <!-- ========================================================================
+       MAIN 3-COLUMN APP
+       ======================================================================== -->
+  <main class="main-app">
 
-      <!-- Room Filter Tabs -->
-      <div class="room-tabs" id="roomTabs">
-        <button class="tab-btn active" onclick="switchRoom('')">Tất cả nhóm</button>
-      </div>
-
-      <!-- Messages Stream -->
-      <div class="chat-messages" id="messagesFeed">
-        <div style="text-align: center; color: var(--text-muted); padding: 40px;">Đang tải tin nhắn...</div>
-      </div>
-
-      <!-- New Message Input Box -->
-      <form class="chat-input-area" onsubmit="handleSendMessage(event)">
-        <div class="input-meta-row">
-          <input type="text" id="inputSender" class="form-control" placeholder="Tên người gửi (VD: Minh Tuấn)" value="Minh Tuấn" required />
-          <input type="text" id="inputRoom" class="form-control" placeholder="Phòng chat (VD: Nhóm Dự Án)" value="Nhóm Dự Án" required />
-        </div>
-        <div class="input-submit-row">
-          <input type="text" id="inputContent" class="form-control" placeholder="Nhập tin nhắn tiếng Việt (VD: Em là học sinh lớp 12)..." required />
-          <button type="submit" class="btn-primary">
-            <span>Gửi & Index</span> 🚀
-          </button>
-        </div>
-      </form>
-    </div>
-
-    <!-- RIGHT PANEL: Real-time Search & Index Inspector -->
-    <div class="panel-card">
-      <div class="panel-header">
-        <div class="panel-title">
-          <span>🔍</span> Tìm Kiếm Tức Thì (Instant BM25 Search)
-        </div>
-        <span style="font-size: 12px; color: var(--text-muted);">Tự động Re-index khi sửa tin</span>
-      </div>
-
-      <!-- Search Input -->
-      <div class="search-input-box">
-        <input type="text" id="searchInput" placeholder="Gõ từ khóa thử nghiệm: 'học sinh', 'cà phê', 'sinh viên'..." oninput="handleSearch()" autocomplete="off" />
-        <span class="search-icon">🔎</span>
-      </div>
-
-      <!-- Search Results -->
-      <div class="search-results-list" id="searchResults">
-        <div style="text-align: center; color: var(--text-muted); padding: 50px 20px;">
-          <div style="font-size: 32px; margin-bottom: 10px;">🎯</div>
-          <div>Hãy gõ từ khóa vào ô trên để kiểm tra kết quả tìm kiếm và điểm số BM25 theo thời gian thực!</div>
+    <!-- ----------------------------------------------------------------------
+         COLUMN 1: CONVERSATIONS LIST
+         ---------------------------------------------------------------------- -->
+    <aside class="sidebar-chats">
+      <div class="chats-header">
+        <h1 class="chats-title">Đoạn chat</h1>
+        <div class="chats-header-actions">
+          <button class="icon-btn" title="Tùy chọn đoạn chat">•••</button>
+          <button class="icon-btn" title="Soạn tin nhắn mới">✎</button>
         </div>
       </div>
-    </div>
+
+      <div class="search-chat-container">
+        <div class="search-chat-input">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="#8a8d91"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+          <input type="text" id="filterRoomInput" placeholder="Tìm kiếm trên Messenger..." />
+        </div>
+      </div>
+
+      <div class="chat-tabs">
+        <button class="chat-tab-pill active" onclick="filterTab('all', this)">Tất cả</button>
+        <button class="chat-tab-pill" onclick="filterTab('unread', this)">Chưa đọc</button>
+        <button class="chat-tab-pill" onclick="filterTab('group', this)">Nhóm</button>
+        <button class="chat-tab-pill" onclick="filterTab('community', this)">Cộng đồng</button>
+      </div>
+
+      <div class="conversations-scroll" id="conversationsList">
+        <!-- Generated dynamically by JS -->
+      </div>
+    </aside>
+
+    <!-- ----------------------------------------------------------------------
+         COLUMN 2: CHAT VIEWPORT / MESSAGES FEED
+         ---------------------------------------------------------------------- -->
+    <section class="chat-viewport">
+      <header class="chat-header">
+        <div class="chat-header-left">
+          <div class="chat-header-avatar" id="currentRoomAvatar">☕</div>
+          <div>
+            <div class="chat-header-title" id="currentRoomTitle">Hội Cà Phê & Đời Sống</div>
+            <div class="chat-header-status">
+              <span style="display:inline-block; width:8px; height:8px; background:var(--fb-online); border-radius:50%;"></span>
+              <span id="currentRoomCount">Đang hoạt động • 131 tin nhắn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-header-actions">
+          <button class="icon-btn" title="Bắt đầu gọi thoại">📞</button>
+          <button class="icon-btn" title="Bắt đầu gọi video">📹</button>
+          <button class="icon-btn active" id="toggleDetailsBtn" title="Thông tin về đoạn chat">ℹ️</button>
+        </div>
+      </header>
+
+      <div class="chat-messages-container" id="chatFeed">
+        <!-- Messages rendered dynamically -->
+      </div>
+
+      <footer class="chat-footer">
+        <div class="footer-actions-left">
+          <button class="icon-btn" title="Mở hành động khác">➕</button>
+          <button class="icon-btn" title="Đính kèm ảnh">🖼️</button>
+          <button class="icon-btn" title="Chọn nhãn dán">🏷️</button>
+          <button class="icon-btn" title="Chọn file GIF">GIF</button>
+          <select class="sender-picker" id="senderSelect" title="Người gửi tin">
+            <option value="Tôi">Tôi (Bạn)</option>
+            <option value="Nguyễn Văn An">Nguyễn Văn An</option>
+            <option value="Trần Thị Mai">Trần Thị Mai</option>
+            <option value="Lê Hoàng Nam">Lê Hoàng Nam</option>
+            <option value="Đỗ Mỹ Linh">Đỗ Mỹ Linh</option>
+            <option value="Phạm Minh Đức">Phạm Minh Đức</option>
+          </select>
+        </div>
+
+        <div class="chat-input-pill">
+          <input type="text" id="messageInput" placeholder="Nhập tin nhắn tiếng Việt... (Aa)" autocomplete="off" />
+        </div>
+
+        <button class="send-msg-btn" id="sendBtn" title="Gửi tin nhắn">➤</button>
+      </footer>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         COLUMN 3: SIDEBAR DETAILS & IN-CHAT SEARCH
+         ---------------------------------------------------------------------- -->
+    <aside class="sidebar-details" id="sidebarDetails">
+      <div class="details-top-card">
+        <div class="details-avatar-large" id="detailsAvatar">
+          ☕
+          <div class="online-indicator"></div>
+        </div>
+        <div class="details-group-name" id="detailsGroupName">Hội Cà Phê & Đời Sống</div>
+        <div class="details-status-text">Đang hoạt động</div>
+
+        <div class="details-quick-actions">
+          <div class="quick-action-item">
+            <button class="quick-action-btn">🔔</button>
+            <span class="quick-action-label">Tắt thông báo</span>
+          </div>
+          <div class="quick-action-item active" onclick="focusSearchPanel()">
+            <button class="quick-action-btn">🔍</button>
+            <span class="quick-action-label">Tìm kiếm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IN-CHAT BM25 SEARCH ENGINE INTEGRATION -->
+      <div class="search-panel-section" id="searchPanelSection">
+        <div class="search-panel-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Tìm kiếm trong đoạn chat (BM25)
+        </div>
+
+        <div class="search-query-box">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#8a8d91"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+          <input type="text" id="inChatSearchInput" placeholder="Ví dụ: cà phê, học sinh, trà sữa..." />
+        </div>
+
+        <div class="search-scope-toggle">
+          <button class="scope-btn active" id="scopeRoomBtn" onclick="setSearchScope('room')">Trong nhóm này</button>
+          <button class="scope-btn" id="scopeAllBtn" onclick="setSearchScope('all')">Toàn bộ 131 tin</button>
+        </div>
+
+        <div class="search-results-list" id="searchResultsContainer">
+          <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
+            Gõ từ khóa tiếng Việt để tìm kiếm tin nhắn với xếp hạng Okapi BM25 & Cốc Cốc Tokenizer.
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCORDIONS (MESSENGER ACCORDIONS) -->
+      <div class="details-accordion">
+        <div class="accordion-item open">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Thông tin về đoạn chat</span>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="accordion-body">
+            <div class="stat-row">
+              <span>Tổng số tin nhắn:</span>
+              <span class="stat-val" id="statTotalMessages">--</span>
+            </div>
+            <div class="stat-row">
+              <span>Số từ vựng (Terms):</span>
+              <span class="stat-val" id="statTotalTerms">--</span>
+            </div>
+            <div class="stat-row">
+              <span>Độ dài TB (avgdl):</span>
+              <span class="stat-val" id="statAvgdl">--</span>
+            </div>
+            <div class="stat-row">
+              <span>Thuật toán chấm điểm:</span>
+              <span class="stat-val" style="color: #60a5fa;">Okapi BM25</span>
+            </div>
+            <div class="stat-row">
+              <span>Bộ tách từ ngữ nghĩa:</span>
+              <span class="stat-val" style="color: #34d399;">Cốc Cốc Tokenizer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Tùy chỉnh đoạn chat</span>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="accordion-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Đổi chủ đề màu sắc:</span>
+              <div style="display:flex; gap:6px;">
+                <div style="width:18px; height:18px; border-radius:50%; background:#0084ff; cursor:pointer;" onclick="changeTheme('blue')"></div>
+                <div style="width:18px; height:18px; border-radius:50%; background:#a033ff; cursor:pointer;" onclick="changeTheme('purple')"></div>
+                <div style="width:18px; height:18px; border-radius:50%; background:#10b981; cursor:pointer;" onclick="changeTheme('green')"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Thành viên trong đoạn chat</span>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="accordion-body" id="groupMembersList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </aside>
+
   </main>
 
-  <!-- Edit Message Modal -->
-  <div class="modal-overlay" id="editModal">
+  <!-- ========================================================================
+       MODAL: SỬA TIN NHẮN (EDIT MESSAGE & RE-INDEX)
+       ======================================================================== -->
+  <div class="modal-overlay" id="editModalOverlay">
     <div class="modal-box">
       <div class="modal-header">
-        <div style="font-weight: 700; font-size: 16px;">✏️ Sửa Tin Nhắn & Tự Động Re-index</div>
-        <button class="btn-action" onclick="closeEditModal()">✕</button>
+        <div class="modal-title">✏️ Chỉnh sửa tin nhắn & Tự động Re-index</div>
+        <button class="modal-close-btn" onclick="closeEditModal()">✕</button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="editMsgId" />
-        <div>
-          <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 6px;">Nội dung tin nhắn mới:</label>
-          <textarea id="editMsgContent" class="form-control" rows="4" style="width: 100%; resize: vertical;" required></textarea>
-        </div>
-        <div style="font-size: 13px; color: var(--accent-amber); background: rgba(245, 158, 11, 0.1); padding: 10px; border-radius: 8px;">
-          💡 <strong>Cơ chế ngầm:</strong> Khi bấm lưu, hệ thống sẽ gọi <code>idx.UpdateDocument()</code> để xóa sạch Postings cũ và nạp Postings mới vào Inverted Index!
+        <textarea class="modal-textarea" id="editMessageTextarea"></textarea>
+        <div class="reindex-notice">
+          ⚡ <strong>Cơ chế Atomic Upsert:</strong> Hệ thống sẽ tự động gỡ bỏ toàn bộ Posting cũ của tin nhắn này và nạp chuỗi Token mới vào Inverted Index ngay lập tức.
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn-secondary" onclick="closeEditModal()">Hủy bỏ</button>
+        <button class="btn-secondary" onclick="closeEditModal()">Hủy</button>
         <button class="btn-primary" onclick="submitEditMessage()">Lưu & Re-index ngay</button>
       </div>
     </div>
   </div>
 
-  <!-- Inspect Index Modal -->
-  <div class="modal-overlay" id="inspectModal">
-    <div class="modal-box" style="max-width: 680px;">
+  <!-- ========================================================================
+       MODAL: SOI INDEX (INDEX INSPECTOR MODAL)
+       ======================================================================== -->
+  <div class="modal-overlay" id="inspectModalOverlay">
+    <div class="modal-box" style="max-width: 640px;">
       <div class="modal-header">
-        <div style="font-weight: 700; font-size: 16px;">🔬 Soi Chi Tiết Chỉ Mục (Index Inspector)</div>
-        <button class="btn-action" onclick="closeInspectModal()">✕</button>
+        <div class="modal-title">🔬 Soi Chỉ Mục Inverted Index Trong RAM</div>
+        <button class="modal-close-btn" onclick="closeInspectModal()">✕</button>
       </div>
-      <div class="modal-body" id="inspectModalBody">
-        Đang tải thông tin...
+      <div class="modal-body">
+        <div style="font-size: 13px; color: var(--text-secondary);" id="inspectMsgMeta">
+          Tin nhắn: <strong id="inspectMsgContent" style="color:var(--text-primary)"></strong>
+        </div>
+
+        <div>
+          <div style="font-size: 12px; font-weight:700; color:var(--text-muted); margin-bottom:6px; text-transform:uppercase;">Chuỗi Tokens (Cốc Cốc Tokenizer):</div>
+          <div class="tokens-chip-list" id="inspectTokensChips"></div>
+        </div>
+
+        <div>
+          <div style="font-size: 12px; font-weight:700; color:var(--text-muted); margin-bottom:6px; text-transform:uppercase;">Danh sách Postings lưu trong RAM:</div>
+          <table class="posting-table">
+            <thead>
+              <tr>
+                <th>Term (Từ vựng)</th>
+                <th>Tần suất (TF)</th>
+                <th>Vị trí (Positions)</th>
+              </tr>
+            </thead>
+            <tbody id="inspectPostingsBody"></tbody>
+          </table>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn-primary" onclick="closeInspectModal()">Đóng</button>
@@ -641,327 +1414,522 @@
     </div>
   </div>
 
+  <!-- ========================================================================
+       JAVASCRIPT LOGIC
+       ======================================================================== -->
   <script>
-    let currentRoom = '';
-    let currentSearchQuery = '';
+    // State
+    let allMessages = [];
+    let currentRoom = "Hội Cà Phê & Đời Sống";
+    let searchScope = "room"; // "room" or "all"
+    let editingMessageId = null;
 
-    // Khởi tạo
-    window.addEventListener('DOMContentLoaded', () => {
+    // Room metadata (Professional & Realistic Demo Groups - No personal names)
+    const roomConfigs = {
+      "Hội Cà Phê & Đời Sống": {
+        icon: "☕",
+        subtitle: "Tán gẫu, cà phê, ẩm thực & sinh hoạt văn phòng",
+        members: ["Nguyễn Văn An", "Trần Thị Mai", "Lê Văn C", "Phạm Tuấn D", "Hoàng Mai E", "Tôi"]
+      },
+      "Team Dự Án Search Engine": {
+        icon: "🚀",
+        subtitle: "Trao đổi kỹ thuật, Golang, CGO, Cốc Cốc & Elasticsearch",
+        members: ["Nguyễn Văn An", "Bùi Quang Huy", "Đặng Thu Thảo", "Vũ Thanh Tùng", "Đỗ Mỹ Linh", "Tôi"]
+      },
+      "Góc Tán Gẫu IT": {
+        icon: "💬",
+        subtitle: "Hỏi đáp đời sống, thể thao bóng đá & trà đá vỉa hè",
+        members: ["Lê Hoàng Nam", "Phạm Minh Đức", "Dương Quốc Bảo", "Hoàng Kim Yến", "Tôi"]
+      },
+      "Kênh Thông Báo Toàn Công Ty": {
+        icon: "📢",
+        subtitle: "Lịch nghỉ lễ, chính sách khen thưởng & văn bản chính thức",
+        members: ["Ban Giám Đốc", "Phòng Nhân Sự", "Admin Hậu Cần", "Toàn Thể Nhân Viên"]
+      },
+      "Hành Chính & Nhân Sự": {
+        icon: "📋",
+        subtitle: "Bảo hiểm xã hội, phê duyệt đơn nghỉ phép & tiếp nhận nhân sự",
+        members: ["Đỗ Mỹ Linh", "Phạm Minh Đức", "Trần Thị Mai", "Tôi"]
+      }
+    };
+
+    // DOM Elements
+    const conversationsList = document.getElementById("conversationsList");
+    const chatFeed = document.getElementById("chatFeed");
+    const currentRoomTitle = document.getElementById("currentRoomTitle");
+    const currentRoomAvatar = document.getElementById("currentRoomAvatar");
+    const currentRoomCount = document.getElementById("currentRoomCount");
+    const detailsGroupName = document.getElementById("detailsGroupName");
+    const detailsAvatar = document.getElementById("detailsAvatar");
+    const messageInput = document.getElementById("messageInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const senderSelect = document.getElementById("senderSelect");
+    const inChatSearchInput = document.getElementById("inChatSearchInput");
+    const searchResultsContainer = document.getElementById("searchResultsContainer");
+    const filterRoomInput = document.getElementById("filterRoomInput");
+    const sidebarDetails = document.getElementById("sidebarDetails");
+    const toggleDetailsBtn = document.getElementById("toggleDetailsBtn");
+
+    // Init
+    window.addEventListener("DOMContentLoaded", () => {
       loadStats();
       loadMessages();
+
+      // Send on click or Enter
+      sendBtn.addEventListener("click", sendMessage);
+      messageInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+
+      // Realtime in-chat search
+      inChatSearchInput.addEventListener("input", debounce(performSearch, 150));
+
+      // Filter rooms in sidebar
+      filterRoomInput.addEventListener("input", renderConversations);
+
+      // Toggle right sidebar
+      toggleDetailsBtn.addEventListener("click", () => {
+        if (sidebarDetails.style.display === "none") {
+          sidebarDetails.style.display = "flex";
+          toggleDetailsBtn.classList.add("active");
+        } else {
+          sidebarDetails.style.display = "none";
+          toggleDetailsBtn.classList.remove("active");
+        }
+      });
     });
 
+    // 1. Fetch Stats
     async function loadStats() {
       try {
-        const res = await fetch('/api/stats');
+        const res = await fetch("/api/stats");
         const stats = await res.json();
-        document.getElementById('statMsgCount').textContent = stats.total_messages;
-        document.getElementById('statTermCount').textContent = stats.total_terms;
-        document.getElementById('statTokenCount').textContent = stats.total_tokens;
-        document.getElementById('statAvgDl').textContent = stats.avg_doc_length.toFixed(2);
-
-        // Render room tabs
-        renderRoomTabs(stats.active_rooms || []);
+        document.getElementById("statTotalMessages").textContent = stats.total_messages;
+        document.getElementById("statTotalTerms").textContent = stats.total_terms;
+        document.getElementById("statAvgdl").textContent = stats.avg_doc_length.toFixed(2);
       } catch (err) {
-        console.error('Lỗi nạp stats:', err);
+        console.error("Lỗi nạp stats:", err);
       }
     }
 
-    function renderRoomTabs(rooms) {
-      const container = document.getElementById('roomTabs');
-      let html = `<button class="tab-btn ${currentRoom === '' ? 'active' : ''}" onclick="switchRoom('')">Tất cả nhóm</button>`;
-      rooms.forEach(r => {
-        html += `<button class="tab-btn ${currentRoom === r ? 'active' : ''}" onclick="switchRoom('${r}')">${escapeHtml(r)}</button>`;
-      });
-      container.innerHTML = html;
-    }
-
-    function switchRoom(room) {
-      currentRoom = room;
-      loadMessages();
-      if (currentSearchQuery) {
-        handleSearch();
-      }
-    }
-
+    // 2. Fetch Messages
     async function loadMessages() {
-      const feed = document.getElementById('messagesFeed');
       try {
-        const url = currentRoom ? `/api/messages?room=${encodeURIComponent(currentRoom)}` : '/api/messages';
-        const res = await fetch(url);
-        const messages = await res.json();
+        const res = await fetch("/api/messages");
+        allMessages = await res.json();
+        renderConversations();
+        renderChatFeed();
+        loadStats();
+      } catch (err) {
+        console.error("Lỗi nạp tin nhắn:", err);
+      }
+    }
 
-        if (!messages || messages.length === 0) {
-          feed.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 50px;">Chưa có tin nhắn nào. Hãy gửi tin nhắn đầu tiên ở phía dưới!</div>`;
+    // 3. Render Conversations Sidebar
+    function renderConversations() {
+      const filterText = filterRoomInput.value.trim().toLowerCase();
+      conversationsList.innerHTML = "";
+
+      // Group messages by room
+      const rooms = Object.keys(roomConfigs);
+
+      rooms.forEach((roomName) => {
+        if (filterText && !roomName.toLowerCase().includes(filterText)) {
           return;
         }
 
-        feed.innerHTML = messages.map(m => `
-          <div class="msg-item" id="msg-card-${m.id}">
-            <div class="msg-header">
-              <div class="msg-sender-box">
-                <div class="avatar-circle">${escapeHtml(m.sender.charAt(0).toUpperCase())}</div>
-                <div>
-                  <div class="msg-sender">${escapeHtml(m.sender)}</div>
-                  <div class="msg-room-badge">${escapeHtml(m.room)}</div>
-                </div>
-              </div>
-              <div class="msg-time">#ID: ${m.id} | ${formatTime(m.created_at)}</div>
-            </div>
-            <div class="msg-content" id="msg-text-${m.id}">${escapeHtml(m.content)}</div>
-            <div class="msg-actions">
-              <button class="btn-action inspect-btn" onclick="openInspectModal(${m.id})">🔬 Soi Index</button>
-              <button class="btn-action edit-btn" onclick="openEditModal(${m.id}, '${escapeQuote(m.content)}')">✏️ Sửa tin</button>
-              <button class="btn-action del-btn" onclick="handleDeleteMessage(${m.id})">🗑️ Xóa</button>
+        const roomMsgs = allMessages.filter((m) => m.room === roomName);
+        const lastMsg = roomMsgs.length > 0 ? roomMsgs[roomMsgs.length - 1] : null;
+        const config = roomConfigs[roomName] || { icon: "💬" };
+
+        const item = document.createElement("div");
+        item.className = `conversation-item ${roomName === currentRoom ? "active" : ""}`;
+        item.onclick = () => selectRoom(roomName);
+
+        const lastContent = lastMsg ? `${lastMsg.sender}: ${lastMsg.content}` : "Chưa có tin nhắn";
+
+        item.innerHTML = `
+          <div class="conv-avatar-wrap">
+            <div class="conv-avatar">${config.icon}</div>
+            <div class="online-indicator"></div>
+          </div>
+          <div class="conv-info">
+            <div class="conv-name">${escapeHtml(roomName)}</div>
+            <div class="conv-last-msg">
+              <span>${escapeHtml(lastContent)}</span>
             </div>
           </div>
-        `).join('');
+          ${roomMsgs.length > 0 ? `<div class="unread-dot"></div>` : ""}
+        `;
+        conversationsList.appendChild(item);
+      });
+    }
 
-        // Auto scroll xuống cuối
-        feed.scrollTop = feed.scrollHeight;
-      } catch (err) {
-        console.error('Lỗi tải tin nhắn:', err);
+    // 4. Select Room
+    function selectRoom(roomName) {
+      currentRoom = roomName;
+      const config = roomConfigs[roomName] || { icon: "💬", subtitle: "" };
+
+      currentRoomTitle.textContent = roomName;
+      currentRoomAvatar.textContent = config.icon;
+      detailsGroupName.textContent = roomName;
+      detailsAvatar.firstChild.textContent = config.icon;
+
+      renderConversations();
+      renderChatFeed();
+      renderMembersList(config.members || []);
+
+      if (inChatSearchInput.value.trim()) {
+        performSearch();
       }
     }
 
-    function refreshMessages() {
-      loadStats();
-      loadMessages();
-      if (currentSearchQuery) {
-        handleSearch();
+    // 5. Render Chat Feed
+    function renderChatFeed() {
+      chatFeed.innerHTML = "";
+      const roomMsgs = allMessages.filter((m) => m.room === currentRoom);
+
+      currentRoomCount.textContent = `Đang hoạt động • ${roomMsgs.length} tin nhắn`;
+
+      if (roomMsgs.length === 0) {
+        chatFeed.innerHTML = `
+          <div style="text-align: center; color: var(--text-muted); margin-top: 60px; font-size: 14px;">
+            Chưa có tin nhắn nào trong nhóm này.<br>Hãy là người đầu tiên gửi tin nhắn!
+          </div>
+        `;
+        return;
       }
+
+      // Add a date badge
+      const divider = document.createElement("div");
+      divider.className = "date-divider";
+      divider.textContent = "Hôm nay";
+      chatFeed.appendChild(divider);
+
+      roomMsgs.forEach((msg) => {
+        const isMe = msg.sender === "Tôi" || msg.sender === "Bạn";
+        const row = document.createElement("div");
+        row.className = `message-row ${isMe ? "outgoing" : "incoming"}`;
+        row.id = `msg-${msg.id}`;
+
+        const initial = msg.sender.charAt(0).toUpperCase();
+
+        row.innerHTML = `
+          ${!isMe ? `<div class="msg-sender-avatar" title="${escapeHtml(msg.sender)}">${initial}</div>` : ""}
+          <div class="msg-bubble-content-wrap">
+            <div class="msg-sender-name">${escapeHtml(msg.sender)}</div>
+            <div class="msg-bubble">
+              ${escapeHtml(msg.content)}
+              <div class="msg-hover-actions">
+                <button class="msg-action-btn" title="Chỉnh sửa (Re-index)" onclick="openEditModal(${msg.id})">✏️</button>
+                <button class="msg-action-btn" title="Soi Index RAM" onclick="openInspectModal(${msg.id})">🔍</button>
+                <button class="msg-action-btn delete" title="Xóa tin nhắn" onclick="deleteMessage(${msg.id})">🗑️</button>
+              </div>
+            </div>
+            <div class="msg-timestamp">${formatTime(msg.created_at)}</div>
+          </div>
+        `;
+        chatFeed.appendChild(row);
+      });
+
+      // Scroll to bottom
+      chatFeed.scrollTop = chatFeed.scrollHeight;
     }
 
-    async function handleSendMessage(e) {
-      e.preventDefault();
-      const sender = document.getElementById('inputSender').value.trim();
-      const room = document.getElementById('inputRoom').value.trim();
-      const content = document.getElementById('inputContent').value.trim();
-
+    // 6. Send Message
+    async function sendMessage() {
+      const content = messageInput.value.trim();
       if (!content) return;
 
+      const sender = senderSelect.value;
+      const room = currentRoom;
+
       try {
-        const res = await fetch('/api/messages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const res = await fetch("/api/messages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ sender, room, content })
         });
 
         if (res.ok) {
-          document.getElementById('inputContent').value = '';
-          await loadStats();
+          messageInput.value = "";
           await loadMessages();
-          if (currentSearchQuery) {
-            handleSearch();
-          }
         }
       } catch (err) {
-        alert('Lỗi khi gửi tin nhắn: ' + err);
+        alert("Lỗi khi gửi tin nhắn: " + err.message);
       }
     }
 
-    function openEditModal(id, currentContent) {
-      document.getElementById('editMsgId').value = id;
-      document.getElementById('editMsgContent').value = currentContent;
-      document.getElementById('editModal').classList.add('active');
+    // 7. Edit Message (Re-indexing)
+    function openEditModal(id) {
+      const msg = allMessages.find((m) => m.id === id);
+      if (!msg) return;
+
+      editingMessageId = id;
+      document.getElementById("editMessageTextarea").value = msg.content;
+      document.getElementById("editModalOverlay").classList.add("active");
     }
 
     function closeEditModal() {
-      document.getElementById('editModal').classList.remove('active');
+      editingMessageId = null;
+      document.getElementById("editModalOverlay").classList.remove("active");
     }
 
     async function submitEditMessage() {
-      const id = document.getElementById('editMsgId').value;
-      const newContent = document.getElementById('editMsgContent').value.trim();
+      if (!editingMessageId) return;
 
-      if (!newContent) return;
+      const newContent = document.getElementById("editMessageTextarea").value.trim();
+      if (!newContent) {
+        alert("Nội dung không được để trống");
+        return;
+      }
 
       try {
-        const res = await fetch(`/api/messages/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+        const res = await fetch(`/api/messages/${editingMessageId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content: newContent })
         });
 
         if (res.ok) {
           closeEditModal();
-          await loadStats();
           await loadMessages();
-          if (currentSearchQuery) {
-            handleSearch();
+          if (inChatSearchInput.value.trim()) {
+            performSearch();
           }
-        } else {
-          const err = await res.json();
-          alert('Lỗi sửa tin nhắn: ' + (err.error || 'Thất bại'));
         }
       } catch (err) {
-        alert('Lỗi cập nhật: ' + err);
+        alert("Lỗi khi cập nhật tin nhắn: " + err.message);
       }
     }
 
-    async function handleDeleteMessage(id) {
-      if (!confirm(`Bạn có chắc chắn muốn xóa tin nhắn #ID ${id} khỏi cơ sở dữ liệu và chỉ mục?`)) return;
+    // 8. Delete Message
+    async function deleteMessage(id) {
+      if (!confirm("Bạn có chắc chắn muốn xóa tin nhắn này khỏi cơ sở dữ liệu và chỉ mục?")) {
+        return;
+      }
 
       try {
-        const res = await fetch(`/api/messages/${id}`, { method: 'DELETE' });
+        const res = await fetch(`/api/messages/${id}`, { method: "DELETE" });
         if (res.ok) {
-          await loadStats();
           await loadMessages();
-          if (currentSearchQuery) {
-            handleSearch();
+          if (inChatSearchInput.value.trim()) {
+            performSearch();
           }
         }
       } catch (err) {
-        alert('Lỗi khi xóa: ' + err);
+        alert("Lỗi khi xóa tin nhắn: " + err.message);
       }
     }
 
-    // Real-Time Search Handler
-    let searchDebounce = null;
-    function handleSearch() {
-      clearTimeout(searchDebounce);
-      searchDebounce = setTimeout(async () => {
-        const query = document.getElementById('searchInput').value.trim();
-        currentSearchQuery = query;
-        const resultsContainer = document.getElementById('searchResults');
-
-        if (!query) {
-          resultsContainer.innerHTML = `
-            <div style="text-align: center; color: var(--text-muted); padding: 50px 20px;">
-              <div style="font-size: 32px; margin-bottom: 10px;">🎯</div>
-              <div>Hãy gõ từ khóa vào ô trên để kiểm tra kết quả tìm kiếm và điểm số BM25 theo thời gian thực!</div>
-            </div>`;
-          return;
-        }
-
-        try {
-          const url = currentRoom ? `/api/search?q=${encodeURIComponent(query)}&room=${encodeURIComponent(currentRoom)}` : `/api/search?q=${encodeURIComponent(query)}`;
-          const res = await fetch(url);
-          const results = await res.json();
-
-          if (!results || results.length === 0) {
-            resultsContainer.innerHTML = `
-              <div style="text-align: center; color: var(--accent-rose); padding: 40px 20px; background: rgba(244, 63, 94, 0.05); border: 1px dashed rgba(244, 63, 94, 0.3); border-radius: 12px;">
-                <div style="font-size: 24px; margin-bottom: 8px;">❌</div>
-                <div style="font-weight: 700;">Không tìm thấy kết quả nào khớp với "${escapeHtml(query)}"!</div>
-                <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Chỉ mục đã cập nhật tức thì (tin nhắn chứa từ này đã bị xóa hoặc sửa).</div>
-              </div>`;
-            return;
-          }
-
-          resultsContainer.innerHTML = `
-            <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px;">
-              Tìm thấy <strong style="color: var(--accent-cyan);">${results.length}</strong> tin nhắn phù hợp:
-            </div>
-            ` + results.map((r, idx) => `
-              <div class="search-result-card">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 12px; font-weight: 800; color: ${idx === 0 ? 'var(--accent-amber)' : 'var(--text-muted)'};">
-                      ${idx === 0 ? '🥇 TOP 1' : idx === 1 ? '🥈 TOP 2' : `#${idx + 1}`}
-                    </span>
-                    <strong style="font-size: 14px;">${escapeHtml(r.message.sender)}</strong>
-                    <span class="msg-room-badge">${escapeHtml(r.message.room)}</span>
-                  </div>
-                  <span class="result-score-badge">BM25: ${r.score.toFixed(4)}</span>
-                </div>
-                <div style="font-size: 14px; color: #e2e8f0; line-height: 1.5;">
-                  ${highlightText(r.message.content, r.tokens || [query])}
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); margin-top: 4px;">
-                  <span>Tin nhắn ID: #${r.message.id}</span>
-                  <button class="btn-action" style="padding: 2px 8px; font-size: 11px;" onclick="openInspectModal(${r.message.id})">Soi chi tiết</button>
-                </div>
-              </div>
-            `).join('');
-        } catch (err) {
-          console.error('Lỗi tìm kiếm:', err);
-        }
-      }, 150);
-    }
-
+    // 9. Inspect Index Modal
     async function openInspectModal(id) {
-      const modal = document.getElementById('inspectModal');
-      const body = document.getElementById('inspectModalBody');
-      modal.classList.add('active');
-      body.innerHTML = 'Đang tải dữ liệu chỉ mục...';
+      const msg = allMessages.find((m) => m.id === id);
+      if (!msg) return;
+
+      document.getElementById("inspectMsgContent").textContent = `"${msg.content}"`;
+      document.getElementById("inspectTokensChips").innerHTML = "Đang nạp...";
+      document.getElementById("inspectPostingsBody").innerHTML = "";
+      document.getElementById("inspectModalOverlay").classList.add("active");
 
       try {
         const res = await fetch(`/api/inspect/${id}`);
-        if (!res.ok) {
-          body.innerHTML = '<div style="color: var(--accent-rose);">Không tìm thấy thông tin tin nhắn trong chỉ mục!</div>';
-          return;
-        }
         const data = await res.json();
-        body.innerHTML = `
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div>
-              <div style="font-size: 12px; color: var(--text-muted);">Tin nhắn gốc (#ID ${data.doc_id}):</div>
-              <div style="font-size: 15px; font-weight: 600; color: #fff; margin-top: 4px;">${escapeHtml(data.content)}</div>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: rgba(255, 255, 255, 0.02); padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);">
-              <div>Độ dài tài liệu (|D|): <strong style="color: var(--accent-cyan);">${data.length} tokens</strong></div>
-              <div>Tổng số term riêng biệt: <strong style="color: var(--accent-green);">${data.posting_list.length} terms</strong></div>
-            </div>
-            <div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Tokens bóc tách qua Analyzer:</div>
-              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                ${data.tokens.map(t => `<span class="posting-badge" style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.3); color: #93c5fd;">${escapeHtml(t)}</span>`).join('')}
-              </div>
-            </div>
-            <div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Các Postings ghi nhận trong Inverted Index:</div>
-              <div style="max-height: 200px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 10px; padding: 10px;">
-                ${data.posting_list.map(p => `
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-size: 13px;">
-                    <span style="font-family: var(--font-mono); color: #38bdf8;">"${escapeHtml(p.term)}"</span>
-                    <span>Tần suất TF: <strong>${p.term_frequency}</strong> | Vị trí: [${p.positions.join(', ')}]</span>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          </div>
-        `;
+
+        // Render Tokens
+        const chipsContainer = document.getElementById("inspectTokensChips");
+        chipsContainer.innerHTML = "";
+        data.tokens.forEach((tok) => {
+          const chip = document.createElement("span");
+          chip.className = "token-chip";
+          chip.textContent = tok;
+          chipsContainer.appendChild(chip);
+        });
+
+        // Render Postings
+        const tbody = document.getElementById("inspectPostingsBody");
+        tbody.innerHTML = "";
+        data.postings.forEach((p) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="font-weight:600; color:#60a5fa;">${escapeHtml(p.term)}</td>
+            <td style="color:#34d399;">${p.term_frequency}</td>
+            <td>[${p.positions.join(", ")}]</td>
+          `;
+          tbody.appendChild(tr);
+        });
       } catch (err) {
-        body.innerHTML = `<div style="color: var(--accent-rose);">Lỗi tải chi tiết: ${err}</div>`;
+        document.getElementById("inspectTokensChips").textContent = "Không thể lấy thông tin chỉ mục.";
       }
     }
 
     function closeInspectModal() {
-      document.getElementById('inspectModal').classList.remove('active');
+      document.getElementById("inspectModalOverlay").classList.remove("active");
     }
 
-    function formatTime(isoString) {
-      if (!isoString) return '';
-      const d = new Date(isoString);
-      return d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    // 10. Perform In-Chat Search (BM25 + Tokenizer)
+    async function performSearch() {
+      const query = inChatSearchInput.value.trim();
+      if (!query) {
+        searchResultsContainer.innerHTML = `
+          <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
+            Gõ từ khóa tiếng Việt để tìm kiếm tin nhắn với xếp hạng Okapi BM25 & Cốc Cốc Tokenizer.
+          </div>
+        `;
+        return;
+      }
+
+      let url = `/api/search?q=${encodeURIComponent(query)}`;
+      if (searchScope === "room") {
+        url += `&room=${encodeURIComponent(currentRoom)}`;
+      }
+
+      try {
+        const res = await fetch(url);
+        const results = await res.json();
+
+        if (results.length === 0) {
+          searchResultsContainer.innerHTML = `
+            <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
+              Không tìm thấy tin nhắn nào khớp với từ khóa "<strong>${escapeHtml(query)}</strong>".
+            </div>
+          `;
+          return;
+        }
+
+        searchResultsContainer.innerHTML = "";
+        results.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "search-result-card";
+          card.onclick = () => scrollToMessage(item.message.id, item.message.room);
+
+          const highlightedContent = highlightQuery(item.message.content, query);
+          const tokensPreview = item.tokens.slice(0, 4).join(", ");
+
+          card.innerHTML = `
+            <div class="res-card-top">
+              <span class="res-sender">${escapeHtml(item.message.sender)} <span style="font-weight:400; color:var(--text-muted);">• ${escapeHtml(item.message.room)}</span></span>
+              <span class="res-score-badge">BM25: ${item.score.toFixed(3)}</span>
+            </div>
+            <div class="res-content">${highlightedContent}</div>
+            <div class="res-footer">
+              <span class="res-tokens-badge" title="${item.tokens.join(', ')}">Tokens: ${escapeHtml(tokensPreview)}</span>
+              <span style="color:var(--fb-blue); font-weight:600;">Xem trong chat →</span>
+            </div>
+          `;
+          searchResultsContainer.appendChild(card);
+        });
+      } catch (err) {
+        searchResultsContainer.innerHTML = `<div style="color:#f43f5e; font-size:12px; padding:10px;">Lỗi tìm kiếm: ${err.message}</div>`;
+      }
     }
 
-    function escapeHtml(str) {
-      if (!str) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+    function scrollToMessage(msgId, roomName) {
+      if (roomName !== currentRoom) {
+        selectRoom(roomName);
+      }
+
+      setTimeout(() => {
+        const elem = document.getElementById(`msg-${msgId}`);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth", block: "center" });
+          elem.classList.add("highlighted");
+          setTimeout(() => elem.classList.remove("highlighted"), 2500);
+        }
+      }, 80);
     }
 
-    function escapeQuote(str) {
-      if (!str) return '';
-      return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    function setSearchScope(scope) {
+      searchScope = scope;
+      document.getElementById("scopeRoomBtn").classList.toggle("active", scope === "room");
+      document.getElementById("scopeAllBtn").classList.toggle("active", scope === "all");
+      performSearch();
     }
 
-    function highlightText(text, tokens) {
-      let escaped = escapeHtml(text);
-      if (!tokens || tokens.length === 0) return escaped;
+    function focusSearchPanel() {
+      inChatSearchInput.focus();
+    }
 
-      tokens.forEach(tok => {
-        // Thay thế cả từ đơn và từ ghép nối _
-        const cleanTok = tok.replace(/_/g, ' ');
-        const regex = new RegExp(`(${cleanTok.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
-        escaped = escaped.replace(regex, '<span class="highlight-word">$1</span>');
+    function renderMembersList(members) {
+      const container = document.getElementById("groupMembersList");
+      container.innerHTML = "";
+      members.forEach((name) => {
+        const row = document.createElement("div");
+        row.style.cssText = "display:flex; align-items:center; gap:8px; padding:3px 0;";
+        row.innerHTML = `
+          <div style="width:24px; height:24px; border-radius:50%; background:var(--bg-surface-hover); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">
+            ${name.charAt(0)}
+          </div>
+          <span>${escapeHtml(name)}</span>
+        `;
+        container.appendChild(row);
       });
-      return escaped;
+    }
+
+    function filterTab(type, btn) {
+      document.querySelectorAll(".chat-tab-pill").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    }
+
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      item.classList.toggle("open");
+    }
+
+    function changeTheme(color) {
+      if (color === "purple") {
+        document.documentElement.style.setProperty("--sent-bubble-gradient", "linear-gradient(135deg, #a033ff 0%, #ec4899 100%)");
+      } else if (color === "green") {
+        document.documentElement.style.setProperty("--sent-bubble-gradient", "linear-gradient(135deg, #10b981 0%, #06b6d4 100%)");
+      } else {
+        document.documentElement.style.setProperty("--sent-bubble-gradient", "linear-gradient(135deg, #0084ff 0%, #a033ff 100%)");
+      }
+    }
+
+    // Helpers
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function highlightQuery(content, query) {
+      if (!query) return escapeHtml(content);
+      const escaped = escapeHtml(content);
+      const words = query.trim().split(/\s+/).filter(Boolean);
+      let regexStr = words.map((w) => escapeRegex(w)).join("|");
+      if (!regexStr) return escaped;
+      const re = new RegExp(`(${regexStr})`, "gi");
+      return escaped.replace(re, "<mark>$1</mark>");
+    }
+
+    function escapeRegex(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function formatTime(isoStr) {
+      if (!isoStr) return "";
+      try {
+        const d = new Date(isoStr);
+        return d.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" });
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function debounce(fn, delay) {
+      let timer = null;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, args), delay);
+      };
     }
   </script>
 </body>
