@@ -825,6 +825,110 @@
       color: var(--fb-blue);
     }
 
+    /* A/B COMPARISON & SEARCH MODES */
+    .search-mode-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 3px;
+      margin-bottom: 10px;
+      gap: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    .search-mode-tab {
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .search-mode-tab.active {
+      background: var(--fb-blue);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 132, 255, 0.4);
+    }
+
+    .ab-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ab-column {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .ab-column.coccoc-col {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.03);
+    }
+
+    .ab-column.baseline-col {
+      border-color: rgba(244, 63, 94, 0.35);
+      background: rgba(244, 63, 94, 0.03);
+    }
+
+    .ab-col-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ab-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .ab-column.coccoc-col .ab-col-title { color: #34d399; }
+    .ab-column.baseline-col .ab-col-title { color: #fb7185; }
+
+    .ab-col-meta {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .ab-verdict-banner {
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 6px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .ab-verdict-banner.coccoc {
+      background: rgba(16, 185, 129, 0.15);
+      color: #a7f3d0;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .ab-verdict-banner.baseline {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fecdd3;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
     .search-results-list {
       display: flex;
       flex-direction: column;
@@ -1279,14 +1383,47 @@
           <input type="text" id="inChatSearchInput" placeholder="Ví dụ: cà phê, học sinh, trà sữa..." />
         </div>
 
+        <div class="search-mode-tabs">
+          <button class="search-mode-tab active" id="modeStandardBtn" onclick="setSearchMode('single')">🚀 Cốc Cốc + Boost</button>
+          <button class="search-mode-tab" id="modeCompareBtn" onclick="setSearchMode('compare')">⚖️ Đối Soát A/B</button>
+        </div>
+
         <div class="search-scope-toggle">
           <button class="scope-btn active" id="scopeRoomBtn" onclick="setSearchScope('room')">Trong nhóm này</button>
           <button class="scope-btn" id="scopeAllBtn" onclick="setSearchScope('all')">Toàn bộ 131 tin</button>
         </div>
 
+        <!-- Single Mode Results -->
         <div class="search-results-list" id="searchResultsContainer">
           <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
             Gõ từ khóa tiếng Việt để tìm kiếm tin nhắn với xếp hạng Okapi BM25 & Cốc Cốc Tokenizer.
+          </div>
+        </div>
+
+        <!-- A/B Comparison Container (Hidden by default) -->
+        <div class="ab-container" id="abResultsContainer" style="display: none;">
+          <!-- Cốc Cốc Column -->
+          <div class="ab-column coccoc-col">
+            <div class="ab-col-header">
+              <div class="ab-col-title">✨ Cốc Cốc (Đề xuất)</div>
+              <div class="ab-col-meta" id="coccocMeta">0 hits • 0ms</div>
+            </div>
+            <div class="ab-verdict-banner coccoc">
+              ✅ Tách từ ghép chính xác, Boosting 5x/3x/1x loại bỏ bẫy ghép sai.
+            </div>
+            <div class="search-results-list" id="coccocResultsList" style="max-height: 250px;"></div>
+          </div>
+
+          <!-- Baseline Column -->
+          <div class="ab-column baseline-col">
+            <div class="ab-col-header">
+              <div class="ab-col-title">⚠️ Standard (Baseline)</div>
+              <div class="ab-col-meta" id="baselineMeta">0 hits • 0ms</div>
+            </div>
+            <div class="ab-verdict-banner baseline">
+              ❌ Bị bẻ vụn từ đơn (Unigram). Dễ dính tin nhắn chứa từ đơn lẻ lạc đề.
+            </div>
+            <div class="search-results-list" id="baselineResultsList" style="max-height: 250px;"></div>
           </div>
         </div>
       </div>
@@ -1422,7 +1559,29 @@
     let allMessages = [];
     let currentRoom = "Hội Cà Phê & Đời Sống";
     let searchScope = "room"; // "room" or "all"
+    let searchMode = "single"; // "single" or "compare"
     let editingMessageId = null;
+
+    function setSearchMode(mode) {
+      searchMode = mode;
+      document.getElementById("modeStandardBtn").classList.toggle("active", mode === "single");
+      document.getElementById("modeCompareBtn").classList.toggle("active", mode === "compare");
+
+      const singleContainer = document.getElementById("searchResultsContainer");
+      const abContainer = document.getElementById("abResultsContainer");
+
+      if (mode === "compare") {
+        singleContainer.style.display = "none";
+        abContainer.style.display = "flex";
+      } else {
+        singleContainer.style.display = "flex";
+        abContainer.style.display = "none";
+      }
+
+      if (inChatSearchInput.value.trim()) {
+        performSearch();
+      }
+    }
 
     // Room metadata (Professional & Realistic Demo Groups - No personal names)
     const roomConfigs = {
@@ -1770,7 +1929,7 @@
       document.getElementById("inspectModalOverlay").classList.remove("active");
     }
 
-    // 10. Perform In-Chat Search (BM25 + Tokenizer)
+    // 10. Perform In-Chat Search (BM25 + Tokenizer or A/B Compare)
     async function performSearch() {
       const query = inChatSearchInput.value.trim();
       if (!query) {
@@ -1779,9 +1938,21 @@
             Gõ từ khóa tiếng Việt để tìm kiếm tin nhắn với xếp hạng Okapi BM25 & Cốc Cốc Tokenizer.
           </div>
         `;
+        document.getElementById("coccocResultsList").innerHTML = "";
+        document.getElementById("baselineResultsList").innerHTML = "";
+        document.getElementById("coccocMeta").textContent = "0 hits • 0ms";
+        document.getElementById("baselineMeta").textContent = "0 hits • 0ms";
         return;
       }
 
+      if (searchMode === "compare") {
+        await performCompareSearch(query);
+      } else {
+        await performSingleSearch(query);
+      }
+    }
+
+    async function performSingleSearch(query) {
       let url = `/api/search?q=${encodeURIComponent(query)}`;
       if (searchScope === "room") {
         url += `&room=${encodeURIComponent(currentRoom)}`;
@@ -1807,7 +1978,7 @@
           card.onclick = () => scrollToMessage(item.message.id, item.message.room);
 
           const highlightedContent = highlightQuery(item.message.content, query);
-          const tokensPreview = item.tokens.slice(0, 4).join(", ");
+          const tokensPreview = item.tokens ? item.tokens.slice(0, 4).join(", ") : "";
 
           card.innerHTML = `
             <div class="res-card-top">
@@ -1816,7 +1987,7 @@
             </div>
             <div class="res-content">${highlightedContent}</div>
             <div class="res-footer">
-              <span class="res-tokens-badge" title="${item.tokens.join(', ')}">Tokens: ${escapeHtml(tokensPreview)}</span>
+              <span class="res-tokens-badge" title="${item.tokens ? item.tokens.join(', ') : ''}">Tokens: ${escapeHtml(tokensPreview)}</span>
               <span style="color:var(--fb-blue); font-weight:600;">Xem trong chat →</span>
             </div>
           `;
@@ -1824,6 +1995,89 @@
         });
       } catch (err) {
         searchResultsContainer.innerHTML = `<div style="color:#f43f5e; font-size:12px; padding:10px;">Lỗi tìm kiếm: ${err.message}</div>`;
+      }
+    }
+
+    async function performCompareSearch(query) {
+      let url = `/api/search/compare?q=${encodeURIComponent(query)}`;
+      if (searchScope === "room") {
+        url += `&room=${encodeURIComponent(currentRoom)}`;
+      }
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const vResults = data.vietnamese_results || [];
+        const bResults = data.baseline_results || [];
+        const tokensList = data.tokens || [];
+
+        // Cốc Cốc Column
+        const coccocList = document.getElementById("coccocResultsList");
+        const coccocMeta = document.getElementById("coccocMeta");
+        coccocMeta.textContent = `${vResults.length} kết quả • ${data.latency_vietnamese_ms || 0}ms`;
+        coccocList.innerHTML = "";
+
+        if (vResults.length === 0) {
+          coccocList.innerHTML = `<div style="font-size:11.5px; color:var(--text-muted); text-align:center; padding:12px 0;">Không có kết quả.</div>`;
+        } else {
+          vResults.forEach((item) => {
+            const card = document.createElement("div");
+            card.className = "search-result-card";
+            card.onclick = () => scrollToMessage(item.message.id, item.message.room);
+
+            const highlighted = highlightQuery(item.message.content, query);
+            const tokensPreview = tokensList.slice(0, 3).join(", ");
+
+            card.innerHTML = `
+              <div class="res-card-top">
+                <span class="res-sender">${escapeHtml(item.message.sender)} <span style="font-weight:400; color:var(--text-muted); font-size:11px;">(${escapeHtml(item.message.room)})</span></span>
+                <span class="res-score-badge" style="background:rgba(16,185,129,0.15); color:#34d399;">Score: ${item.score.toFixed(2)}</span>
+              </div>
+              <div class="res-content" style="font-size:12px;">${highlighted}</div>
+              <div class="res-footer" style="font-size:10.5px;">
+                <span class="res-tokens-badge" title="${tokensList.join(', ')}">${escapeHtml(tokensPreview)}</span>
+                <span style="color:#34d399; font-weight:600;">Xem trong chat →</span>
+              </div>
+            `;
+            coccocList.appendChild(card);
+          });
+        }
+
+        // Baseline Column
+        const baselineList = document.getElementById("baselineResultsList");
+        const baselineMeta = document.getElementById("baselineMeta");
+        baselineMeta.textContent = `${bResults.length} kết quả • ${data.latency_baseline_ms || 0}ms`;
+        baselineList.innerHTML = "";
+
+        if (bResults.length === 0) {
+          baselineList.innerHTML = `<div style="font-size:11.5px; color:var(--text-muted); text-align:center; padding:12px 0;">Không có kết quả.</div>`;
+        } else {
+          bResults.forEach((item) => {
+            const card = document.createElement("div");
+            card.className = "search-result-card";
+            card.onclick = () => scrollToMessage(item.message.id, item.message.room);
+
+            const highlighted = highlightQuery(item.message.content, query);
+
+            card.innerHTML = `
+              <div class="res-card-top">
+                <span class="res-sender">${escapeHtml(item.message.sender)} <span style="font-weight:400; color:var(--text-muted); font-size:11px;">(${escapeHtml(item.message.room)})</span></span>
+                <span class="res-score-badge" style="background:rgba(244,63,94,0.15); color:#fb7185;">Score: ${item.score.toFixed(2)}</span>
+              </div>
+              <div class="res-content" style="font-size:12px;">${highlighted}</div>
+              <div class="res-footer" style="font-size:10.5px;">
+                <span style="color:var(--text-muted); font-style:italic;">Standard analyzer</span>
+                <span style="color:#fb7185; font-weight:600;">Xem trong chat →</span>
+              </div>
+            `;
+            baselineList.appendChild(card);
+          });
+        }
+
+      } catch (err) {
+        document.getElementById("coccocResultsList").innerHTML = `<div style="color:#f43f5e; font-size:11px;">Lỗi: ${err.message}</div>`;
+        document.getElementById("baselineResultsList").innerHTML = `<div style="color:#f43f5e; font-size:11px;">Lỗi: ${err.message}</div>`;
       }
     }
 

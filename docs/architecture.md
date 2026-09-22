@@ -31,6 +31,14 @@ Tìm: "học sinh"                  Tìm: "ca phe"                     Tìm: "c�
 
 Hệ thống được thiết kế theo mô hình phân tầng hướng dịch vụ, trong đó **Go Service** đóng vai trò là "Bộ não điều phối" (Brain/Orchestrator) kết hợp sức mạnh phân tích ngôn ngữ tự nhiên C++ và năng lực chỉ mục phân tán của Elasticsearch.
 
+![Kiến Trúc Tổng Thể Toàn Diện Hệ Thống (v2.0 Full-Stack)](../image/C%E1%BB%91c%20C%E1%BB%91c%20Search%20Engine-2026-09-22-065029.png)
+
+*Hình 2.1: Sơ đồ kiến trúc tổng thể toàn diện 3 tầng của hệ thống (Giao diện Messenger Dark Mode 3 cột, Máy chủ điều phối Golang Realtime Server và Cụm lưu trữ phân tán Elasticsearch 8.11 Docker).*
+
+![Sơ Đồ Phân Tầng Xử Lý Go Brain Layer & Storage Engine](../image/Untitled%20diagram-2026-09-18-071140.png)
+
+*Hình 2.2: Sơ đồ kiến trúc phân tầng kết nối giữa Client Layer, Go Brain Layer (CGO Bridge & Normalizer) và Elasticsearch Multi-field Storage Layer.*
+
 ```mermaid
 graph TB
     subgraph ClientLayer["1. CLIENT / USER LAYER"]
@@ -145,6 +153,10 @@ Dùng cho môi trường Production, lưu trữ hàng triệu tin nhắn:
 
 Luồng diễn ra mỗi khi có tin nhắn mới gửi vào group chat:
 
+![Sơ Đồ Tuần Tự Luồng 1: Indexing Pipeline](../image/C%E1%BB%91c%20C%E1%BB%91c%20Search%20Engine-2026-09-18-072911.png)
+
+*Hình 4.1: Sơ đồ tương tác tuần tự (Sequence Diagram) luồng nạp và đánh chỉ mục tin nhắn chat qua CGO Bridge và Normalizer.*
+
 ```mermaid
 sequenceDiagram
     autonumber
@@ -175,6 +187,10 @@ sequenceDiagram
 ### 4.2. Luồng 2: Search & Ranking Pipeline (Truy Vấn & Xếp Hạng Kết Quả)
 
 Luồng diễn ra khi người dùng gõ từ khóa vào ô tìm kiếm:
+
+![Sơ Đồ Tuần Tự Luồng 2: Search & Ranking Pipeline](../image/C%E1%BB%91c%20C%E1%BB%91c%20Search%20Engine-2026-09-18-073414.png)
+
+*Hình 4.2: Sơ đồ tương tác tuần tự (Sequence Diagram) luồng truy vấn và xếp hạng đa tầng (Relevance Scoring & Boosting).*
 
 ```mermaid
 sequenceDiagram
