@@ -2,9 +2,10 @@
 
 Dự án nghiên cứu và phát triển giải pháp **tối ưu hóa tìm kiếm tin nhắn tiếng Việt** cho hệ thống chat nhóm (Group Chat). Giải pháp kết hợp bộ tách từ vựng tiếng Việt **[Cốc Cốc Tokenizer](https://github.com/coccoc/coccoc-tokenizer)** được nhúng vào ứng dụng **Go** thông qua **CGO**, lưu trữ và đánh chỉ mục trên **Elasticsearch 8.x**.
 
-> 📌 **Tài liệu nghiên cứu chuyên sâu**:
-> - [docs/search_architecture.md](docs/search_architecture.md): **[MỚI]** Báo cáo kiến trúc hệ thống & lý thuyết toán học toàn diện (Viterbi, DAT, BM25, Lucene Segment).
-> - [docs/benchmark_report.md](docs/benchmark_report.md): **[MỚI]** Báo cáo đo đạc chỉ số IR kinh điển (MRR, NDCG@10, P@1, P@5, Latency).
+> 📌 **Tài liệu nghiên cứu & kỹ thuật chuyên sâu**:
+> - [docs/technical_implementation_guide.md](docs/technical_implementation_guide.md): **[MỚI]** Đặc tả kỹ thuật chi tiết toàn diện & giải thích mã nguồn từng module (CGO, BM25, ES Multi-field, Real-time Chat, IR Metrics).
+> - [docs/search_architecture.md](docs/search_architecture.md): Báo cáo kiến trúc hệ thống & lý thuyết toán học toàn diện (Viterbi, DAT, BM25, Lucene Segment).
+> - [docs/benchmark_report.md](docs/benchmark_report.md): Báo cáo đo đạc chỉ số IR kinh điển (MRR, NDCG@10, P@1, P@5, Latency).
 > - [docs/elasticsearch_definitive_guide_notes.md](docs/elasticsearch_definitive_guide_notes.md): Đúc kết chuyên sâu từ sách *Elasticsearch: The Definitive Guide*.
 > - [REQUIREMENTS.md](REQUIREMENTS.md): Đề bài và yêu cầu gốc của bài toán.
 > - [TASKS.md](TASKS.md): Danh sách toàn bộ nhiệm vụ triển khai (Checklist hoàn thành ~95%).
