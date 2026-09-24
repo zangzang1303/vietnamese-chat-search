@@ -81,7 +81,8 @@ const VietnameseMappingDefinition = `{
       },
       "content_partial": {
         "type": "text",
-        "analyzer": "partial_ngram_analyzer"
+        "analyzer": "partial_ngram_analyzer",
+        "search_analyzer": "coccoc_whitespace_analyzer"
       },
       "category": { "type": "keyword" },
       "created_at": { "type": "date" },

@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"vietnamese-chat-search/pkg/chat"
+	"vietnamese-chat-search/pkg/customengine"
 	"vietnamese-chat-search/pkg/es"
 	"vietnamese-chat-search/pkg/invertedindex"
 )
@@ -73,8 +74,59 @@ func main() {
 		fmt.Println("ℹ️ Elasticsearch đang offline -> Chạy chế độ In-Memory Engine (Go thuần).")
 	}
 
-	// 3. Nạp sẵn các tin nhắn mẫu thực tế
-	seedMessages(chatManager)
+	// 2c. Khởi tạo Custom Search & Binary Disk Storage Engine (Động cơ lưu trữ đĩa riêng tự xây dựng)
+	customStorageDir := "data/custom_storage"
+	customEngine, err := customengine.Open(customStorageDir, analyzer)
+	if err != nil {
+		log.Printf("⚠️ Lỗi khởi tạo Custom Engine: %v", err)
+	} else {
+		fmt.Printf("✅ Đã kích hoạt: Custom Engine (Binary Disk Storage tại '%s')!\n", customStorageDir)
+	}
+
+	// 3. Khôi phục toàn bộ tin nhắn từ Custom Engine đĩa (nếu đã có dữ liệu), hoặc nạp mẫu nếu chưa có
+	if customEngine != nil && customEngine.Stats().TotalDocs > 0 {
+		savedMsgs := customEngine.GetAllMessages()
+		if len(savedMsgs) > 0 {
+			var msgs []chat.Message
+			for _, sm := range savedMsgs {
+				msgs = append(msgs, *sm)
+			}
+			chatManager.LoadMessages(msgs)
+			fmt.Printf("💾 Đã khôi phục thành công %d tin nhắn bền vững từ Custom Storage Engine trên đĩa vào ChatManager!\n", len(msgs))
+
+			// Tái sinh Edge N-grams toàn diện cho Custom Engine từ DocStore
+			if err := customEngine.RebuildIndexFromDocStore(); err == nil {
+				_ = customEngine.Flush()
+				fmt.Printf("⚡ [Custom Engine] Đã sinh đầy đủ Edge N-grams & Space forms cho %d tin nhắn trên đĩa!\n", len(msgs))
+			}
+
+			// Tự động đồng bộ toàn bộ tin nhắn vào Elasticsearch
+			if esClient != nil {
+				go func(all []chat.Message) {
+					ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+					defer cancel()
+					if err := esClient.BulkIndexMessages(ctx, all, analyzer); err != nil {
+						log.Printf("⚠️ Lỗi đồng bộ Elasticsearch lúc khởi động: %v", err)
+					} else {
+						fmt.Printf("🐘 Đã tự động đồng bộ %d tin nhắn vào Elasticsearch (Baseline & Vietnamese)!\n", len(all))
+					}
+				}(msgs)
+			}
+		} else {
+			seedMessages(chatManager)
+		}
+	} else {
+		seedMessages(chatManager)
+		// Nạp dữ liệu vào Custom Engine nếu đĩa còn trống
+		if customEngine != nil && customEngine.Stats().TotalDocs == 0 {
+			allMsgs := chatManager.ListMessages("")
+			for _, m := range allMsgs {
+				_ = customEngine.IndexMessage(m)
+			}
+			_ = customEngine.Flush()
+			fmt.Printf("💾 Đã Flush %d tin nhắn mẫu vào Custom Storage Engine trên đĩa!\n", len(allMsgs))
+		}
+	}
 
 	// 4. Đăng ký các HTTP Handlers
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -134,12 +186,21 @@ func main() {
 			msg := chatManager.PostMessage(req.Sender, req.Room, req.Content)
 			log.Printf("📩 [Tin mới] #ID %d từ '%s' trong '%s': %s", msg.ID, msg.Sender, msg.Room, msg.Content)
 
-			// Lưu trữ bền vững vào Elasticsearch nếu online
-			if esClient != nil && esClient.IsAvailable() {
+			// Lưu trữ tức thì vào Custom Storage Engine trên đĩa
+			if customEngine != nil {
+				_ = customEngine.IndexMessage(msg)
+			}
+
+			// Lưu trữ tự động vào Elasticsearch nếu esClient đã được khởi tạo
+			if esClient != nil {
 				go func(m chat.Message) {
 					ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 					defer cancel()
-					esClient.IndexSingleMessage(ctx, m, analyzer)
+					if err := esClient.IndexSingleMessage(ctx, m, analyzer); err != nil {
+						log.Printf("⚠️ [Elasticsearch] Lỗi lưu tự động tin nhắn #ID %d: %v", m.ID, err)
+					} else {
+						log.Printf("🐘 [Elasticsearch] Đã lưu tự động tin nhắn #ID %d vào 2 index (Baseline & Vietnamese)", m.ID)
+					}
 				}(msg)
 			}
 
@@ -188,11 +249,21 @@ func main() {
 			}
 			log.Printf("✏️ [Re-index] Đã sửa tin nhắn #ID %d: %s", id, updatedMsg.Content)
 
-			if esClient != nil && esClient.IsAvailable() {
+			// Cập nhật Custom Engine trên đĩa
+			if customEngine != nil {
+				_ = customEngine.DeleteMessage(id)
+				_ = customEngine.IndexMessage(updatedMsg)
+			}
+
+			if esClient != nil {
 				go func(m chat.Message) {
 					ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 					defer cancel()
-					esClient.IndexSingleMessage(ctx, m, analyzer)
+					if err := esClient.IndexSingleMessage(ctx, m, analyzer); err != nil {
+						log.Printf("⚠️ [Elasticsearch] Lỗi cập nhật tin nhắn #ID %d: %v", m.ID, err)
+					} else {
+						log.Printf("🐘 [Elasticsearch] Đã cập nhật tin nhắn #ID %d vào Elasticsearch", m.ID)
+					}
 				}(updatedMsg)
 			}
 
@@ -206,11 +277,20 @@ func main() {
 			}
 			log.Printf("🗑️ [Xóa & Evict] Đã gỡ tin nhắn #ID %d khỏi cơ sở dữ liệu và chỉ mục", id)
 
-			if esClient != nil && esClient.IsAvailable() {
+			// Đánh dấu xóa trên Custom Engine đĩa (Tombstone)
+			if customEngine != nil {
+				_ = customEngine.DeleteMessage(id)
+			}
+
+			if esClient != nil {
 				go func(msgId int) {
 					ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 					defer cancel()
-					esClient.DeleteSingleMessage(ctx, msgId)
+					if err := esClient.DeleteSingleMessage(ctx, msgId); err != nil {
+						log.Printf("⚠️ [Elasticsearch] Lỗi xóa tin nhắn #ID %d: %v", msgId, err)
+					} else {
+						log.Printf("🐘 [Elasticsearch] Đã xóa tin nhắn #ID %d khỏi Elasticsearch", msgId)
+					}
 				}(id)
 			}
 
@@ -221,21 +301,199 @@ func main() {
 		}
 	})
 
+	// /api/search : Endpoint tìm kiếm động hỗ trợ tùy chọn Tokenizer (Cốc Cốc vs Standard) và Động cơ (Elasticsearch vs Custom Engine)
+	type FlowSearchResultItem struct {
+		Message   chat.Message `json:"message"`
+		Score     float64      `json:"score"`
+		Highlight string       `json:"highlight,omitempty"`
+		Tokens    []string     `json:"tokens,omitempty"`
+	}
+
+	type FlowSearchResponse struct {
+		Query           string                 `json:"query"`
+		Tokenizer       string                 `json:"tokenizer"`       // "coccoc" | "standard"
+		TokenizerName   string                 `json:"tokenizer_name"`  // "Cốc Cốc Tokenizer (Từ ghép)" | "Standard Tokenizer (Khoảng trắng)"
+		Engine          string                 `json:"engine"`          // "es" | "custom"
+		EngineName      string                 `json:"engine_name"`     // "Elasticsearch 8.x" | "Custom Engine (Go Binary Disk)"
+		Tokens          []string               `json:"tokens"`
+		UnaccentedQuery string                 `json:"unaccented_query"`
+		EdgeNgrams      []string               `json:"edge_ngrams,omitempty"`
+		StorageDetails  string                 `json:"storage_details"`
+		ScoringFormula  string                 `json:"scoring_formula"`
+		LatencyMs       int64                  `json:"latency_ms"`
+		TotalHits       int                    `json:"total_hits"`
+		Results         []FlowSearchResultItem `json:"results"`
+	}
+
 	http.HandleFunc("/api/search", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		query := r.URL.Query().Get("q")
 		room := r.URL.Query().Get("room")
+		engineParam := strings.ToLower(strings.TrimSpace(r.URL.Query().Get("engine")))
+		if engineParam == "" {
+			engineParam = "es"
+		}
+		tokenizerParam := strings.ToLower(strings.TrimSpace(r.URL.Query().Get("tokenizer")))
+		if tokenizerParam == "" {
+			tokenizerParam = "coccoc"
+		}
 
 		if strings.TrimSpace(query) == "" {
-			json.NewEncoder(w).Encode([]chat.ChatSearchResult{})
+			json.NewEncoder(w).Encode(FlowSearchResponse{
+				Query:   "",
+				Results: []FlowSearchResultItem{},
+			})
 			return
 		}
 
-		results := chatManager.Search(query, room)
-		json.NewEncoder(w).Encode(results)
+		// Chuẩn bị analyzer phù hợp
+		stdAnalyzer := &invertedindex.StandardAnalyzer{}
+		var activeAnalyzer invertedindex.Analyzer = analyzer
+		tokenizerName := "Cốc Cốc Tokenizer (Double-Array Trie)"
+		if tokenizerParam == "standard" {
+			activeAnalyzer = stdAnalyzer
+			tokenizerName = "Standard Tokenizer (Whitespace / Unigram)"
+		}
+
+		tokens := activeAnalyzer.Analyze(query)
+		unaccentedQuery := invertedindex.RemoveDiacritics(strings.Join(tokens, " "))
+
+		var (
+			results        []FlowSearchResultItem
+			latencyMs      int64
+			engineName     string
+			storageDetails string
+			scoringFormula string
+		)
+
+		if engineParam == "es" {
+			engineName = "Elasticsearch 8.x"
+			if esClient != nil && esClient.IsAvailable() {
+				if tokenizerParam == "standard" {
+					// Tìm trên index baseline của Elasticsearch
+					storageDetails = "Lucene Inverted Index (Index: chat_messages_baseline)"
+					scoringFormula = "Okapi BM25 Standard (Single-field content, k1=1.2, b=0.75)"
+					esRes, lat, err := esClient.SearchBaseline(r.Context(), query, room)
+					latencyMs = lat
+					if err == nil {
+						for _, er := range esRes {
+							results = append(results, FlowSearchResultItem{
+								Message:   er.Message,
+								Score:     er.Score,
+								Highlight: er.Highlight,
+								Tokens:    tokens,
+							})
+						}
+					}
+				} else {
+					// Tìm trên index vietnamese của Elasticsearch (Cốc Cốc + Multi-field Boosting)
+					storageDetails = "Lucene Inverted Index (Index: chat_messages_vietnamese)"
+					scoringFormula = "Okapi BM25 + Boosting (content_tokenized^5.0, unaccented^3.0, phrase^4.0)"
+					esRes, lat, _, err := esClient.SearchVietnamese(r.Context(), query, room, activeAnalyzer)
+					latencyMs = lat
+					if err == nil {
+						for _, er := range esRes {
+							results = append(results, FlowSearchResultItem{
+								Message:   er.Message,
+								Score:     er.Score,
+								Highlight: er.Highlight,
+								Tokens:    tokens,
+							})
+						}
+					}
+				}
+			} else {
+				// Elasticsearch offline -> fallback thông báo rõ
+				storageDetails = "Elasticsearch 8.x đang Offline -> Fallback In-Memory Engine"
+				scoringFormula = "Okapi BM25 In-Memory"
+				start := time.Now()
+				ramRes := chatManager.Search(query, room)
+				latencyMs = time.Since(start).Milliseconds()
+				for _, rr := range ramRes {
+					results = append(results, FlowSearchResultItem{
+						Message:   rr.Message,
+						Score:     rr.Score,
+						Tokens:    rr.Tokens,
+						Highlight: rr.Message.Content,
+					})
+				}
+			}
+		} else {
+			// engineParam == "custom"
+			engineName = "Custom Storage Engine (Go Disk Segments)"
+			storageDetails = "Binary Disk Storage (data/custom_storage: terms.dict, postings.bin, docstore.data)"
+			if tokenizerParam == "standard" {
+				scoringFormula = "Okapi BM25 Unigram (k1=1.2, b=0.75, standard terms)"
+			} else {
+				scoringFormula = "Okapi BM25 + Compound Boosting (5.0x Tokenized, 4.0x Phrase, 3.0x Unaccented)"
+			}
+
+			if customEngine != nil {
+				cRes, lat, _, err := customEngine.SearchWithAnalyzer(query, room, activeAnalyzer)
+				latencyMs = lat
+				if err == nil {
+					for _, cr := range cRes {
+						results = append(results, FlowSearchResultItem{
+							Message:   cr.Message,
+							Score:     cr.Score,
+							Highlight: cr.Highlight,
+							Tokens:    tokens,
+						})
+					}
+				}
+			} else {
+				start := time.Now()
+				ramRes := chatManager.Search(query, room)
+				latencyMs = time.Since(start).Milliseconds()
+				for _, rr := range ramRes {
+					results = append(results, FlowSearchResultItem{
+						Message:   rr.Message,
+						Score:     rr.Score,
+						Tokens:    rr.Tokens,
+						Highlight: rr.Message.Content,
+					})
+				}
+			}
+		}
+
+		// Bổ sung danh sách Edge N-grams sinh ra từ tokens
+		var allEdgeNgrams []string
+		seenNg := make(map[string]bool)
+		for _, t := range tokens {
+			for _, ng := range invertedindex.GenerateEdgeNgrams(t, 2, 15) {
+				if !seenNg[ng] {
+					seenNg[ng] = true
+					allEdgeNgrams = append(allEdgeNgrams, ng)
+				}
+				if strings.Contains(ng, "_") {
+					spaceNg := strings.ReplaceAll(ng, "_", " ")
+					if !seenNg[spaceNg] {
+						seenNg[spaceNg] = true
+						allEdgeNgrams = append(allEdgeNgrams, spaceNg)
+					}
+				}
+			}
+		}
+
+		resp := FlowSearchResponse{
+			Query:           query,
+			Tokenizer:       tokenizerParam,
+			TokenizerName:   tokenizerName,
+			Engine:          engineParam,
+			EngineName:      engineName,
+			Tokens:          tokens,
+			UnaccentedQuery: unaccentedQuery,
+			EdgeNgrams:      allEdgeNgrams,
+			StorageDetails:  storageDetails,
+			ScoringFormula:  scoringFormula,
+			LatencyMs:       latencyMs,
+			TotalHits:       len(results),
+			Results:         results,
+		}
+		json.NewEncoder(w).Encode(resp)
 	})
 
-	// /api/search/compare : Endpoint đối soát A/B song song
+	// /api/search/compare : Endpoint đối soát song song cả 3 động cơ (Custom vs ES Vietnamese vs ES Baseline)
 	http.HandleFunc("/api/search/compare", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		query := r.URL.Query().Get("q")
@@ -246,16 +504,36 @@ func main() {
 			return
 		}
 
+		// 1. Thực thi tìm kiếm trên Custom Engine (Go Binary Disk Storage)
+		startCustom := time.Now()
+		var customResults []es.SearchResult
+		if customEngine != nil {
+			cRes, _, err := customEngine.Search(query, room)
+			if err == nil {
+				for _, cr := range cRes {
+					customResults = append(customResults, es.SearchResult{
+						Message:   cr.Message,
+						Score:     cr.Score,
+						Highlight: cr.Highlight,
+					})
+				}
+			}
+		}
+		customLat := time.Since(startCustom).Milliseconds()
+
+		// 2. Thực thi tìm kiếm trên Elasticsearch 8.x nếu có
 		if esClient != nil && esClient.IsAvailable() {
 			comp, err := esClient.CompareSearch(r.Context(), query, room, analyzer)
 			if err == nil {
+				comp.CustomResults = customResults
+				comp.LatencyCustomMs = customLat
 				json.NewEncoder(w).Encode(comp)
 				return
 			}
 			log.Printf("⚠️ Lỗi CompareSearch trên ES: %v", err)
 		}
 
-		// Fallback In-memory comparison
+		// 3. Fallback In-memory comparison nếu ES offline
 		startVN := time.Now()
 		tokens := analyzer.Analyze(query)
 		vnResults := chatManager.Search(query, room)
@@ -299,8 +577,10 @@ func main() {
 			Tokens:              tokens,
 			BaselineResults:     baseResults,
 			VietnameseResults:   convertedVN,
+			CustomResults:       customResults,
 			LatencyBaselineMs:   baseLat,
 			LatencyVietnameseMs: vnLat,
+			LatencyCustomMs:     customLat,
 		})
 	})
 

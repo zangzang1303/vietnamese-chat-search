@@ -69,6 +69,28 @@ func (cm *ChatManager) PostMessage(sender, room, content string) Message {
 	return msg
 }
 
+// LoadMessages nạp danh sách tin nhắn vào bộ nhớ (khôi phục từ persistent engine)
+func (cm *ChatManager) LoadMessages(msgs []Message) {
+	cm.mu.Lock()
+	defer cm.mu.Unlock()
+
+	maxID := 0
+	for _, msg := range msgs {
+		cm.messages[msg.ID] = msg
+		doc := invertedindex.Document{
+			ID:      msg.ID,
+			Content: msg.Content,
+		}
+		cm.index.AddDocument(doc, cm.analyzer)
+		if msg.ID > maxID {
+			maxID = msg.ID
+		}
+	}
+	if maxID >= cm.nextID {
+		cm.nextID = maxID + 1
+	}
+}
+
 // UpdateMessage cập nhật nội dung tin nhắn và tự động re-index (Dọn posting cũ, nạp posting mới)
 func (cm *ChatManager) UpdateMessage(id int, newContent string) (Message, error) {
 	cm.mu.Lock()

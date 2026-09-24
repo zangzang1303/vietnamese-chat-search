@@ -1,6 +1,9 @@
 package invertedindex
 
-import "sort"
+import (
+	"sort"
+	"strings"
+)
 
 // ============================================================================
 // KIẾN THỨC GO CƠ BẢN:
@@ -20,54 +23,84 @@ type SearchResult struct {
 	Score    float64  // Điểm liên quan tính bằng BM25 (càng cao càng khớp)
 }
 
-// Search thực hiện luồng tìm kiếm và xếp hạng tài liệu
+// Search thực hiện luồng tìm kiếm và xếp hạng tài liệu hỗ trợ từ ghép, gõ dở (Edge N-grams) và không dấu
 // Tham số:
-// - queryText: Câu người dùng nhập vào ô tìm kiếm (ví dụ: "học sinh")
+// - queryText: Câu người dùng nhập vào ô tìm kiếm (ví dụ: "học sinh", "cà p", "ca phe")
 // - analyzer: Bộ phân tích dùng để bóc tách câu query (phải tương thích với dữ liệu lúc index)
 func (idx *InvertedIndex) Search(queryText string, analyzer Analyzer) []SearchResult {
 	idx.mu.RLock()
 	defer idx.mu.RUnlock()
 
-	// BƯỚC 1: Phân tích câu query thành danh sách các token
-	// Ví dụ: query "học sinh" qua VietnameseAnalyzer -> ["học_sinh"]
-	tokens := analyzer.Analyze(queryText)
-
-	// Nếu câu query rỗng hoặc toàn ký tự đặc biệt bị cắt hết -> trả về nil (rỗng)
-	if len(tokens) == 0 {
+	rawLower := strings.ToLower(strings.TrimSpace(queryText))
+	if rawLower == "" {
 		return nil
 	}
 
-	// BƯỚC 2: Thu thập các tài liệu ứng viên (Candidate Retrieval)
-	// Dùng kỹ thuật Boolean OR: tài liệu nào chứa ÍT NHẤT MỘT từ trong câu query đều được đưa vào danh sách ứng viên.
-	// Sử dụng map[int]bool như một Set để loại bỏ các DocID bị trùng lặp.
-	candidateDocs := make(map[int]bool)
+	// BƯỚC 1: Phân tích câu query thành danh sách các token
+	tokens := analyzer.Analyze(rawLower)
+
+	// Xây dựng tập tra cứu và trọng số đa tầng (Boosting)
+	// Exact Token (5.0) > Phrase Space (4.5) > Edge N-gram (3.5) > Unaccented (3.0) > Sub-token (1.5)
+	weightedTerms := make(map[string]float64)
+
+	// 1. Tokenized match
 	for _, t := range tokens {
-		// Tra từ điển lấy Posting List của từ t
-		postings := idx.Dictionary[t]
-		for _, posting := range postings {
-			candidateDocs[posting.DocID] = true // Đánh dấu tài liệu này là ứng viên
+		weightedTerms[t] = 5.0
+		ut := RemoveDiacritics(t)
+		if ut != t {
+			if _, exists := weightedTerms[ut]; !exists {
+				weightedTerms[ut] = 3.0
+			}
 		}
 	}
 
-	// BƯỚC 3: Chấm điểm BM25 cho từng tài liệu ứng viên
+	// 2. Chuỗi query thô (hỗ trợ trường hợp người dùng gõ cụm từ có dấu cách hoặc gõ dở "cà p", "cà phe")
+	if _, exists := weightedTerms[rawLower]; !exists {
+		weightedTerms[rawLower] = 4.5
+	}
+	underscoreRaw := strings.ReplaceAll(rawLower, " ", "_")
+	if _, exists := weightedTerms[underscoreRaw]; !exists {
+		weightedTerms[underscoreRaw] = 4.5
+	}
+
+	// 3. Biến thể không dấu của câu query thô ("ca p", "ca phe")
+	unaccentedRaw := RemoveDiacritics(rawLower)
+	if _, exists := weightedTerms[unaccentedRaw]; !exists {
+		weightedTerms[unaccentedRaw] = 3.5
+	}
+	unaccentedUnderscore := strings.ReplaceAll(unaccentedRaw, " ", "_")
+	if _, exists := weightedTerms[unaccentedUnderscore]; !exists {
+		weightedTerms[unaccentedUnderscore] = 3.5
+	}
+
+	// BƯỚC 2: Thu thập các tài liệu ứng viên (Candidate Retrieval)
+	candidateDocs := make(map[int]bool)
+	for term := range weightedTerms {
+		postings := idx.Dictionary[term]
+		for _, posting := range postings {
+			candidateDocs[posting.DocID] = true
+		}
+	}
+
+	// BƯỚC 3: Chấm điểm BM25 đa tầng cho từng tài liệu ứng viên
 	var results []SearchResult
 	for docID := range candidateDocs {
-		score := idx.CalculateBM25Score(docID, tokens)
+		score := idx.CalculateBM25WeightedScore(docID, weightedTerms)
 
 		// Chỉ giữ lại những tài liệu có điểm số > 0
 		if score > 0 {
 			results = append(results, SearchResult{
-				Document: idx.Documents[docID], // Lấy nội dung gốc từ map Documents
+				Document: idx.Documents[docID],
 				Score:    score,
 			})
 		}
 	}
 
 	// BƯỚC 4: Xếp hạng kết quả (Ranking)
-	// Sắp xếp danh sách kết quả giảm dần theo điểm BM25 (tin nhắn phù hợp nhất lên đầu)
 	sort.Slice(results, func(i, j int) bool {
 		return results[i].Score > results[j].Score
 	})
 
 	return results
 }
+

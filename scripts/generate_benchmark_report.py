@@ -11,7 +11,7 @@ from benchmark_ir_metrics import TEST_SUITE, MSG_CATEGORIES, get_relevance_label
 def run_and_generate_report():
     print("🚀 Đang tiến hành chạy Benchmark đo đạc chỉ số IR (MRR, NDCG@10, P@1, P@5)...")
     
-    records = []Chuẩn hóa báo cáo Benchmark (Phase 6): Bổ sung bảng đo đạc chỉ số IR kinh điển: MRR (Mean Reciprocal Rank) và NDCG@10.
+    records = []
     
     for tc in TEST_SUITE:
         q = tc["query"]
