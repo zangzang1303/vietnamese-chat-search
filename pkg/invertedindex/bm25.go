@@ -107,3 +107,43 @@ func (idx *InvertedIndex) CalculateBM25Score(docID int, queryTokens []string) fl
 
 	return score
 }
+
+// CalculateBM25WeightedScore tính điểm BM25 với trọng số đa tầng cho từng nhóm Term (Exact, Phrase, Unaccented, Edge N-gram)
+func (idx *InvertedIndex) CalculateBM25WeightedScore(docID int, weightedTerms map[string]float64) float64 {
+	docLen := float64(idx.DocLengths[docID])
+	avgdl := idx.AvgDocLength()
+	if avgdl == 0 {
+		avgdl = 10.0
+	}
+
+	score := 0.0
+
+	for term, weight := range weightedTerms {
+		postings, exists := idx.Dictionary[term]
+		if !exists {
+			continue
+		}
+
+		tf := 0
+		for _, p := range postings {
+			if p.DocID == docID {
+				tf = p.TermFrequency
+				break
+			}
+		}
+
+		if tf == 0 {
+			continue
+		}
+
+		idf := idx.CalculateIDF(term)
+		numerator := float64(tf) * (K1 + 1.0)
+		denominator := float64(tf) + K1*(1.0-B+B*(docLen/avgdl))
+		tfScore := numerator / denominator
+
+		score += idf * tfScore * weight
+	}
+
+	return score
+}
+

@@ -12,7 +12,9 @@
 int coccoc_init(const char* dict_path, int load_nontone) {
     if (!dict_path) return -1;
     bool nontone = (load_nontone != 0);
-    return Tokenizer::instance().initialize(std::string(dict_path), nontone);
+    int res = Tokenizer::instance().initialize(std::string(dict_path), nontone);
+    std::cerr << "[DEBUG C++] coccoc_init dict_path: " << dict_path << " -> res: " << res << std::endl;
+    return res;
 }
 
 char* coccoc_tokenize_original(const char* text) {
@@ -24,6 +26,10 @@ char* coccoc_tokenize_original(const char* text) {
 
     std::string input(text);
     std::vector<FullToken> res = Tokenizer::instance().segment_original(input, Tokenizer::TOKENIZE_NORMAL);
+    std::cerr << "[DEBUG C++] input: '" << input << "' -> res.size(): " << res.size() << std::endl;
+    for (size_t i = 0; i < res.size(); ++i) {
+        std::cerr << "   token[" << i << "]: '" << res[i].text << "' (type: " << res[i].type << ")" << std::endl;
+    }
 
     if (res.empty()) {
         char* result = (char*)malloc(input.size() + 1);

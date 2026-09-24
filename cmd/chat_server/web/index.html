@@ -860,6 +860,279 @@
       box-shadow: 0 2px 6px rgba(0, 132, 255, 0.4);
     }
 
+    /* ==========================================================================
+       LAB ENGINE & TOKENIZER SELECTORS
+       ========================================================================== */
+    .lab-controls-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeInMsg 0.2s ease-out;
+    }
+
+    .lab-group-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+
+    .lab-button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .lab-btn {
+      padding: 7px 8px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--bg-surface-hover);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .lab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    /* Tokenizer Active States */
+    .lab-btn.tokenizer-coccoc.active {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+      color: #34d399;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+    }
+
+    .lab-btn.tokenizer-standard.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: #f59e0b;
+      color: #fbbf24;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+    }
+
+    /* Engine Active States */
+    .lab-btn.engine-es.active {
+      background: rgba(0, 132, 255, 0.15);
+      border-color: var(--fb-blue);
+      color: #60a5fa;
+      box-shadow: 0 0 10px rgba(0, 132, 255, 0.25);
+    }
+
+    .lab-btn.engine-custom.active {
+      background: rgba(6, 182, 212, 0.15);
+      border-color: #06b6d4;
+      color: #22d3ee;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.25);
+    }
+
+    /* ==========================================================================
+       FLOW ANALYSIS / PIPELINE INSPECTOR CARD
+       ========================================================================== */
+    .flow-inspector-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.25) 100%);
+      border: 1px solid rgba(0, 132, 255, 0.3);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      animation: fadeInMsg 0.2s ease-out;
+    }
+
+    .flow-inspector-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .flow-inspector-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flow-step-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 11px;
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 6px;
+      padding: 6px 8px;
+      border-left: 3px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .flow-step-row.step-tokenizer {
+      border-left-color: #10b981;
+    }
+
+    .flow-step-row.step-engine {
+      border-left-color: #0084ff;
+    }
+
+    .flow-step-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .flow-step-body {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .flow-badge {
+      padding: 2px 7px;
+      border-radius: 12px;
+      font-size: 10.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .flow-badge.badge-coccoc {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+    }
+
+    .flow-badge.badge-standard {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+    }
+
+    .flow-badge.badge-es {
+      background: rgba(0, 132, 255, 0.15);
+      border: 1px solid rgba(0, 132, 255, 0.4);
+      color: #60a5fa;
+    }
+
+    .flow-badge.badge-custom {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #22d3ee;
+    }
+
+    .tokens-flow-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 3px;
+    }
+
+    .flow-chip {
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+    }
+
+    .flow-chip.token-compound {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .flow-chip.token-unigram {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .flow-chip.token-ngram {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.4);
+    }
+
+    .flow-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .flow-details-text {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    .flow-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.4fr;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .flow-metric-box {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      padding: 5px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .flow-metric-val {
+      font-size: 13px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+    }
+
+    .flow-metric-val.latency { color: #34d399; }
+    .flow-metric-val.hits { color: #60a5fa; }
+    .flow-metric-val.scoring { color: #c084fc; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+
+    .flow-metric-lbl {
+      font-size: 9px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
     .ab-container {
       display: flex;
       flex-direction: column;
@@ -871,6 +1144,11 @@
       border-radius: 8px;
       padding: 10px;
       border: 1px solid var(--border-color);
+    }
+
+    .ab-column.custom-col {
+      border-color: rgba(6, 182, 212, 0.45);
+      background: rgba(6, 182, 212, 0.03);
     }
 
     .ab-column.coccoc-col {
@@ -900,6 +1178,7 @@
       gap: 5px;
     }
 
+    .ab-column.custom-col .ab-col-title { color: #22d3ee; }
     .ab-column.coccoc-col .ab-col-title { color: #34d399; }
     .ab-column.baseline-col .ab-col-title { color: #fb7185; }
 
@@ -915,6 +1194,12 @@
       padding: 6px 8px;
       border-radius: 6px;
       margin-bottom: 8px;
+    }
+
+    .ab-verdict-banner.custom {
+      background: rgba(6, 182, 212, 0.15);
+      color: #a5f3fc;
+      border: 1px solid rgba(6, 182, 212, 0.3);
     }
 
     .ab-verdict-banner.coccoc {
@@ -1371,32 +1656,125 @@
         </div>
       </div>
 
-      <!-- IN-CHAT BM25 SEARCH ENGINE INTEGRATION -->
+      <!-- IN-CHAT BM25 SEARCH ENGINE & FLOW INSPECTOR LAB -->
       <div class="search-panel-section" id="searchPanelSection">
         <div class="search-panel-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          Tìm kiếm trong đoạn chat (BM25)
+          Tìm kiếm & Phân tích luồng (Flow Lab)
         </div>
 
         <div class="search-query-box">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="#8a8d91"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
-          <input type="text" id="inChatSearchInput" placeholder="Ví dụ: cà phê, học sinh, trà sữa..." />
+          <input type="text" id="inChatSearchInput" placeholder="Ví dụ: học sinh, cà phê, sinh viên..." />
         </div>
 
+        <!-- Mode Tabs: Single Lab vs 3-Way Compare -->
         <div class="search-mode-tabs">
-          <button class="search-mode-tab active" id="modeStandardBtn" onclick="setSearchMode('single')">🚀 Cốc Cốc + Boost</button>
-          <button class="search-mode-tab" id="modeCompareBtn" onclick="setSearchMode('compare')">⚖️ Đối Soát A/B</button>
+          <button class="search-mode-tab active" id="modeStandardBtn" onclick="setSearchMode('single')">🎯 Tự Chọn Cấu Hình</button>
+          <button class="search-mode-tab" id="modeCompareBtn" onclick="setSearchMode('compare')">⚖️ Đối Soát Song Song</button>
+        </div>
+
+        <!-- LAB CONTROLS: Tokenizer & Engine Selectors (Active in Single Mode) -->
+        <div class="lab-controls-card" id="labControlsCard">
+          <div>
+            <div class="lab-group-title">
+              <span>🧩 Tầng Tách Từ (Tokenizer)</span>
+            </div>
+            <div class="lab-button-group">
+              <button class="lab-btn tokenizer-coccoc active" id="btnTokenizerCoccoc" onclick="setTokenizer('coccoc')" title="Nhận diện từ ghép tiếng Việt bằng từ điển + Double-Array Trie">
+                ✨ Cốc Cốc Trie
+              </button>
+              <button class="lab-btn tokenizer-standard" id="btnTokenizerStandard" onclick="setTokenizer('standard')" title="Cắt khoảng trắng đơn thuần không ghép từ">
+                ⚠️ Standard (Khoảng trắng)
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="lab-group-title">
+              <span>🗄️ Tầng Index & Lưu Trữ (Engine)</span>
+            </div>
+            <div class="lab-button-group">
+              <button class="lab-btn engine-es active" id="btnEngineES" onclick="setEngine('es')" title="Động cơ tìm kiếm phân tán Elasticsearch 8.x">
+                🐘 Elasticsearch 8.x
+              </button>
+              <button class="lab-btn engine-custom" id="btnEngineCustom" onclick="setEngine('custom')" title="Động cơ nhị phân Go Disk: terms.dict, postings.bin, docstore.data">
+                💾 Custom Engine (Go Disk)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FLOW ANALYSIS / PIPELINE BREAKDOWN CARD -->
+        <div class="flow-inspector-card" id="flowInspectorBox" style="display: none;">
+          <div class="flow-inspector-header">
+            <div class="flow-inspector-title">
+              <span>⚡ Phân Tích Luồng Xử Lý (Flow Inspector)</span>
+            </div>
+          </div>
+
+          <div class="flow-step-row">
+            <div class="flow-step-label">🔍 1. Truy vấn gốc (Raw Query):</div>
+            <div class="flow-step-body">
+              <span id="flowQueryVal" class="flow-code">--</span>
+            </div>
+          </div>
+
+          <div class="flow-step-row step-tokenizer">
+            <div class="flow-step-label">
+              <span>🧩 2. Bóc tách từ vựng:</span>
+              <span id="flowTokenizerBadge" class="flow-badge badge-coccoc">Cốc Cốc Trie</span>
+            </div>
+            <div class="tokens-flow-list" id="flowTokensChips"></div>
+          </div>
+
+          <div class="flow-step-row">
+            <div class="flow-step-label">🔤 3. Chuẩn hóa & Bỏ dấu (Unaccented):</div>
+            <div class="flow-step-body">
+              <span id="flowUnaccentedVal" class="flow-code">--</span>
+            </div>
+          </div>
+
+          <div class="flow-step-row step-ngram">
+            <div class="flow-step-label">
+              <span>🔠 4. Tiền tố Edge N-grams (Partial Matching):</span>
+            </div>
+            <div class="tokens-flow-list" id="flowNgramsChips"></div>
+          </div>
+
+          <div class="flow-step-row step-engine">
+            <div class="flow-step-label">
+              <span>🗄️ 5. Động cơ & Tầng lưu trữ:</span>
+              <span id="flowEngineBadge" class="flow-badge badge-es">Elasticsearch 8.x</span>
+            </div>
+            <div id="flowStorageDetails" class="flow-details-text">--</div>
+          </div>
+
+          <div class="flow-metrics-grid">
+            <div class="flow-metric-box">
+              <span class="flow-metric-val latency" id="flowMetricLatency">0 ms</span>
+              <span class="flow-metric-lbl">Độ trễ</span>
+            </div>
+            <div class="flow-metric-box">
+              <span class="flow-metric-val hits" id="flowMetricHits">0</span>
+              <span class="flow-metric-lbl">Kết quả</span>
+            </div>
+            <div class="flow-metric-box">
+              <span class="flow-metric-val scoring" id="flowMetricScoring">Okapi BM25</span>
+              <span class="flow-metric-lbl">Chấm điểm</span>
+            </div>
+          </div>
         </div>
 
         <div class="search-scope-toggle">
           <button class="scope-btn active" id="scopeRoomBtn" onclick="setSearchScope('room')">Trong nhóm này</button>
-          <button class="scope-btn" id="scopeAllBtn" onclick="setSearchScope('all')">Toàn bộ 131 tin</button>
+          <button class="scope-btn" id="scopeAllBtn" onclick="setSearchScope('all')">Toàn bộ 133 tin</button>
         </div>
 
         <!-- Single Mode Results -->
         <div class="search-results-list" id="searchResultsContainer">
           <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
-            Gõ từ khóa tiếng Việt để tìm kiếm tin nhắn với xếp hạng Okapi BM25 & Cốc Cốc Tokenizer.
+            Gõ từ khóa tiếng Việt để bắt đầu phân tích luồng tìm kiếm và xem kết quả xếp hạng.
           </div>
         </div>
 
@@ -1424,6 +1802,18 @@
               ❌ Bị bẻ vụn từ đơn (Unigram). Dễ dính tin nhắn chứa từ đơn lẻ lạc đề.
             </div>
             <div class="search-results-list" id="baselineResultsList" style="max-height: 250px;"></div>
+          </div>
+
+          <!-- Custom Storage Engine Column -->
+          <div class="ab-column custom-col">
+            <div class="ab-col-header">
+              <div class="ab-col-title">🚀 Custom Engine (Go Disk)</div>
+              <div class="ab-col-meta" id="customMeta">0 hits • 0ms</div>
+            </div>
+            <div class="ab-verdict-banner custom">
+              ⚡ Động cơ nhị phân tự xây (terms.dict, postings.bin, docstore O(1)), 0% Docker.
+            </div>
+            <div class="search-results-list" id="customResultsList" style="max-height: 250px;"></div>
           </div>
         </div>
       </div>
@@ -1560,7 +1950,33 @@
     let currentRoom = "Hội Cà Phê & Đời Sống";
     let searchScope = "room"; // "room" or "all"
     let searchMode = "single"; // "single" or "compare"
+    let selectedTokenizer = "coccoc"; // "coccoc" or "standard"
+    let selectedEngine = "es";        // "es" or "custom"
     let editingMessageId = null;
+
+    function setTokenizer(tok) {
+      selectedTokenizer = tok;
+      const btnCoccoc = document.getElementById("btnTokenizerCoccoc");
+      const btnStd = document.getElementById("btnTokenizerStandard");
+      if (btnCoccoc) btnCoccoc.classList.toggle("active", tok === "coccoc");
+      if (btnStd) btnStd.classList.toggle("active", tok === "standard");
+
+      if (inChatSearchInput && inChatSearchInput.value.trim()) {
+        performSearch();
+      }
+    }
+
+    function setEngine(eng) {
+      selectedEngine = eng;
+      const btnES = document.getElementById("btnEngineES");
+      const btnCustom = document.getElementById("btnEngineCustom");
+      if (btnES) btnES.classList.toggle("active", eng === "es");
+      if (btnCustom) btnCustom.classList.toggle("active", eng === "custom");
+
+      if (inChatSearchInput && inChatSearchInput.value.trim()) {
+        performSearch();
+      }
+    }
 
     function setSearchMode(mode) {
       searchMode = mode;
@@ -1569,16 +1985,24 @@
 
       const singleContainer = document.getElementById("searchResultsContainer");
       const abContainer = document.getElementById("abResultsContainer");
+      const labCard = document.getElementById("labControlsCard");
+      const flowBox = document.getElementById("flowInspectorBox");
 
       if (mode === "compare") {
-        singleContainer.style.display = "none";
-        abContainer.style.display = "flex";
+        if (singleContainer) singleContainer.style.display = "none";
+        if (abContainer) abContainer.style.display = "flex";
+        if (labCard) labCard.style.display = "none";
+        if (flowBox) flowBox.style.display = "none";
       } else {
-        singleContainer.style.display = "flex";
-        abContainer.style.display = "none";
+        if (singleContainer) singleContainer.style.display = "flex";
+        if (abContainer) abContainer.style.display = "none";
+        if (labCard) labCard.style.display = "flex";
+        if (flowBox && inChatSearchInput && inChatSearchInput.value.trim()) {
+          flowBox.style.display = "flex";
+        }
       }
 
-      if (inChatSearchInput.value.trim()) {
+      if (inChatSearchInput && inChatSearchInput.value.trim()) {
         performSearch();
       }
     }
@@ -1932,40 +2356,144 @@
     // 10. Perform In-Chat Search (BM25 + Tokenizer or A/B Compare)
     async function performSearch() {
       const query = inChatSearchInput.value.trim();
+      const flowBox = document.getElementById("flowInspectorBox");
+
       if (!query) {
+        if (flowBox) flowBox.style.display = "none";
         searchResultsContainer.innerHTML = `
           <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
-            Gõ từ khóa tiếng Việt để tìm kiếm tin nhắn với xếp hạng Okapi BM25 & Cốc Cốc Tokenizer.
+            Gõ từ khóa tiếng Việt để bắt đầu phân tích luồng tìm kiếm và xem kết quả xếp hạng.
           </div>
         `;
         document.getElementById("coccocResultsList").innerHTML = "";
         document.getElementById("baselineResultsList").innerHTML = "";
+        const cList = document.getElementById("customResultsList");
+        if (cList) cList.innerHTML = "";
         document.getElementById("coccocMeta").textContent = "0 hits • 0ms";
         document.getElementById("baselineMeta").textContent = "0 hits • 0ms";
+        const cMeta = document.getElementById("customMeta");
+        if (cMeta) cMeta.textContent = "0 hits • 0ms";
         return;
       }
 
       if (searchMode === "compare") {
+        if (flowBox) flowBox.style.display = "none";
         await performCompareSearch(query);
       } else {
         await performSingleSearch(query);
       }
     }
 
+    // Helper: Render Phân Tích Luồng Xử Lý (Flow Inspector)
+    function renderFlowInspector(data) {
+      const inspector = document.getElementById("flowInspectorBox");
+      if (!inspector) return;
+
+      if (!data || !data.query) {
+        inspector.style.display = "none";
+        return;
+      }
+
+      inspector.style.display = "flex";
+
+      // 1. Raw Query
+      const qVal = document.getElementById("flowQueryVal");
+      if (qVal) qVal.textContent = `"${data.query}"`;
+
+      // 2. Tokenizer Badge & Chips
+      const isCoccoc = data.tokenizer === "coccoc";
+      const tokBadge = document.getElementById("flowTokenizerBadge");
+      if (tokBadge) {
+        tokBadge.textContent = isCoccoc ? "✨ Cốc Cốc Trie" : "⚠️ Standard Whitespace";
+        tokBadge.className = `flow-badge ${isCoccoc ? "badge-coccoc" : "badge-standard"}`;
+      }
+
+      const chipsContainer = document.getElementById("flowTokensChips");
+      if (chipsContainer) {
+        chipsContainer.innerHTML = "";
+        (data.tokens || []).forEach((tok) => {
+          const chip = document.createElement("span");
+          chip.className = `flow-chip ${tok.includes('_') ? 'token-compound' : 'token-unigram'}`;
+          chip.textContent = tok;
+          chipsContainer.appendChild(chip);
+        });
+      }
+
+      // 3. Unaccented
+      const unaccentedElem = document.getElementById("flowUnaccentedVal");
+      if (unaccentedElem) {
+        unaccentedElem.textContent = data.unaccented_query ? `"${data.unaccented_query}"` : "--";
+      }
+
+      // 4. Edge N-grams
+      const ngramsContainer = document.getElementById("flowNgramsChips");
+      if (ngramsContainer) {
+        ngramsContainer.innerHTML = "";
+        const ngrams = data.edge_ngrams || [];
+        if (ngrams.length === 0) {
+          ngramsContainer.innerHTML = '<span style="font-size:10px; color:var(--text-muted); font-style:italic;">--</span>';
+        } else {
+          ngrams.slice(0, 10).forEach((ng) => {
+            const chip = document.createElement("span");
+            chip.className = "flow-chip token-ngram";
+            chip.textContent = ng;
+            ngramsContainer.appendChild(chip);
+          });
+          if (ngrams.length > 10) {
+            const more = document.createElement("span");
+            more.style.cssText = "font-size:10px; color:var(--text-muted); align-self:center;";
+            more.textContent = `+${ngrams.length - 10} khác`;
+            ngramsContainer.appendChild(more);
+          }
+        }
+      }
+
+      // 4. Engine & Storage Details
+      const isES = data.engine === "es";
+      const engineBadge = document.getElementById("flowEngineBadge");
+      if (engineBadge) {
+        engineBadge.textContent = isES ? "🐘 Elasticsearch 8.x" : "💾 Custom Engine (Go Disk)";
+        engineBadge.className = `flow-badge ${isES ? "badge-es" : "badge-custom"}`;
+      }
+
+      const storageDetailsElem = document.getElementById("flowStorageDetails");
+      if (storageDetailsElem) {
+        storageDetailsElem.textContent = data.storage_details || "--";
+      }
+
+      // 5. Performance Metrics
+      const latElem = document.getElementById("flowMetricLatency");
+      if (latElem) latElem.textContent = `${data.latency_ms || 0} ms`;
+
+      const hitsElem = document.getElementById("flowMetricHits");
+      if (hitsElem) hitsElem.textContent = `${data.total_hits || 0}`;
+
+      const scoringElem = document.getElementById("flowMetricScoring");
+      if (scoringElem) {
+        scoringElem.textContent = data.scoring_formula || "BM25";
+        scoringElem.title = data.scoring_formula || "";
+      }
+    }
+
     async function performSingleSearch(query) {
-      let url = `/api/search?q=${encodeURIComponent(query)}`;
+      let url = `/api/search?q=${encodeURIComponent(query)}&engine=${selectedEngine}&tokenizer=${selectedTokenizer}`;
       if (searchScope === "room") {
         url += `&room=${encodeURIComponent(currentRoom)}`;
       }
 
       try {
         const res = await fetch(url);
-        const results = await res.json();
+        const data = await res.json();
+
+        // Render Flow Inspector Breakdown
+        renderFlowInspector(data);
+
+        const results = data.results || (Array.isArray(data) ? data : []);
 
         if (results.length === 0) {
           searchResultsContainer.innerHTML = `
             <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px 0;">
-              Không tìm thấy tin nhắn nào khớp với từ khóa "<strong>${escapeHtml(query)}</strong>".
+              Không tìm thấy tin nhắn nào khớp với từ khóa "<strong>${escapeHtml(query)}</strong>" trên cấu hình đã chọn.
             </div>
           `;
           return;
@@ -1978,17 +2506,23 @@
           card.onclick = () => scrollToMessage(item.message.id, item.message.room);
 
           const highlightedContent = highlightQuery(item.message.content, query);
-          const tokensPreview = item.tokens ? item.tokens.slice(0, 4).join(", ") : "";
+          const tokensList = item.tokens || data.tokens || [];
+          const tokensPreview = tokensList.slice(0, 4).join(", ");
+
+          const isCustom = selectedEngine === "custom";
+          const scoreBadgeStyle = isCustom
+            ? "background:rgba(6,182,212,0.15); color:#22d3ee;"
+            : "background:rgba(0,132,255,0.15); color:#60a5fa;";
 
           card.innerHTML = `
             <div class="res-card-top">
               <span class="res-sender">${escapeHtml(item.message.sender)} <span style="font-weight:400; color:var(--text-muted);">• ${escapeHtml(item.message.room)}</span></span>
-              <span class="res-score-badge">BM25: ${item.score.toFixed(3)}</span>
+              <span class="res-score-badge" style="${scoreBadgeStyle}">Score: ${item.score.toFixed(3)}</span>
             </div>
             <div class="res-content">${highlightedContent}</div>
             <div class="res-footer">
-              <span class="res-tokens-badge" title="${item.tokens ? item.tokens.join(', ') : ''}">Tokens: ${escapeHtml(tokensPreview)}</span>
-              <span style="color:var(--fb-blue); font-weight:600;">Xem trong chat →</span>
+              <span class="res-tokens-badge" title="${tokensList.join(', ')}">Tokens: ${escapeHtml(tokensPreview)}</span>
+              <span style="color:${isCustom ? '#22d3ee' : 'var(--fb-blue)'}; font-weight:600;">Xem trong chat →</span>
             </div>
           `;
           searchResultsContainer.appendChild(card);
@@ -2075,9 +2609,45 @@
           });
         }
 
+        // Custom Engine Column
+        const cResults = data.custom_results || [];
+        const customList = document.getElementById("customResultsList");
+        const customMeta = document.getElementById("customMeta");
+        if (customList && customMeta) {
+          customMeta.textContent = `${cResults.length} kết quả • ${data.latency_custom_ms || 0}ms`;
+          customList.innerHTML = "";
+
+          if (cResults.length === 0) {
+            customList.innerHTML = `<div style="font-size:11.5px; color:var(--text-muted); text-align:center; padding:12px 0;">Không có kết quả.</div>`;
+          } else {
+            cResults.forEach((item) => {
+              const card = document.createElement("div");
+              card.className = "search-result-card";
+              card.onclick = () => scrollToMessage(item.message.id, item.message.room);
+
+              const highlighted = highlightQuery(item.message.content, query);
+
+              card.innerHTML = `
+                <div class="res-card-top">
+                  <span class="res-sender">${escapeHtml(item.message.sender)} <span style="font-weight:400; color:var(--text-muted); font-size:11px;">(${escapeHtml(item.message.room)})</span></span>
+                  <span class="res-score-badge" style="background:rgba(6,182,212,0.15); color:#22d3ee;">Score: ${item.score.toFixed(2)}</span>
+                </div>
+                <div class="res-content" style="font-size:12px;">${highlighted}</div>
+                <div class="res-footer" style="font-size:10.5px;">
+                  <span style="color:#22d3ee; font-weight:500;">Disk Segments + BM25</span>
+                  <span style="color:#22d3ee; font-weight:600;">Xem trong chat →</span>
+                </div>
+              `;
+              customList.appendChild(card);
+            });
+          }
+        }
+
       } catch (err) {
         document.getElementById("coccocResultsList").innerHTML = `<div style="color:#f43f5e; font-size:11px;">Lỗi: ${err.message}</div>`;
         document.getElementById("baselineResultsList").innerHTML = `<div style="color:#f43f5e; font-size:11px;">Lỗi: ${err.message}</div>`;
+        const cList = document.getElementById("customResultsList");
+        if (cList) cList.innerHTML = `<div style="color:#f43f5e; font-size:11px;">Lỗi: ${err.message}</div>`;
       }
     }
 

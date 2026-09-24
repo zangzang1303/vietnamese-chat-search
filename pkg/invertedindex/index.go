@@ -2,6 +2,7 @@ package invertedindex
 
 import (
 	"sort"
+	"strings"
 )
 
 // ============================================================================
@@ -68,7 +69,21 @@ func (idx *InvertedIndex) DeleteDocument(docID int) bool {
 	return idx.deleteDocumentInternal(docID)
 }
 
-// AddDocument thực hiện đánh chỉ mục một tài liệu vào Inverted Index (Hỗ trợ Upsert an toàn)
+// addTermPos helper thêm vị trí cho một Term, tránh trùng lặp vị trí
+func addTermPos(termPositions map[string][]int, term string, pos int) {
+	term = strings.TrimSpace(strings.ToLower(term))
+	if len([]rune(term)) == 0 {
+		return
+	}
+	for _, p := range termPositions[term] {
+		if p == pos {
+			return
+		}
+	}
+	termPositions[term] = append(termPositions[term], pos)
+}
+
+// AddDocument thực hiện đánh chỉ mục một tài liệu vào Inverted Index (Hỗ trợ Upsert an toàn & Sinh Edge N-grams)
 func (idx *InvertedIndex) AddDocument(doc Document, analyzer Analyzer) {
 	idx.mu.Lock()
 	defer idx.mu.Unlock()
@@ -86,10 +101,54 @@ func (idx *InvertedIndex) AddDocument(doc Document, analyzer Analyzer) {
 	idx.DocLengths[doc.ID] = len(tokens)
 	idx.TotalTokens += len(tokens)
 
-	// BƯỚC 3: Thu thập các vị trí (Positions) của từng token trong câu này
+	// BƯỚC 3: Thu thập các vị trí (Positions) và sinh Edge N-grams, biến thể không dấu
 	termPositions := make(map[string][]int)
 	for pos, token := range tokens {
-		termPositions[token] = append(termPositions[token], pos)
+		token = strings.ToLower(token)
+		// 1. Token gốc
+		addTermPos(termPositions, token, pos)
+
+		// 2. Nếu là từ ghép (chứa "_"):
+		if strings.Contains(token, "_") {
+			spaceForm := strings.ReplaceAll(token, "_", " ")
+			addTermPos(termPositions, spaceForm, pos)
+
+			for _, sub := range strings.Split(token, "_") {
+				addTermPos(termPositions, sub, pos)
+			}
+		}
+
+		// 3. Sinh Edge N-grams cho token gốc (2 đến 15 ký tự)
+		ngrams := GenerateEdgeNgrams(token, 2, 15)
+		for _, ng := range ngrams {
+			addTermPos(termPositions, ng, pos)
+			if strings.Contains(ng, "_") {
+				addTermPos(termPositions, strings.ReplaceAll(ng, "_", " "), pos)
+			}
+		}
+
+		// 4. Tầng không dấu
+		unaccented := RemoveDiacritics(token)
+		if unaccented != token {
+			addTermPos(termPositions, unaccented, pos)
+			if strings.Contains(unaccented, "_") {
+				spaceUnaccented := strings.ReplaceAll(unaccented, "_", " ")
+				addTermPos(termPositions, spaceUnaccented, pos)
+
+				for _, sub := range strings.Split(unaccented, "_") {
+					addTermPos(termPositions, sub, pos)
+				}
+			}
+
+			// Sinh Edge N-grams cho từ không dấu
+			ngramsUnacc := GenerateEdgeNgrams(unaccented, 2, 15)
+			for _, ng := range ngramsUnacc {
+				addTermPos(termPositions, ng, pos)
+				if strings.Contains(ng, "_") {
+					addTermPos(termPositions, strings.ReplaceAll(ng, "_", " "), pos)
+				}
+			}
+		}
 	}
 
 	// BƯỚC 4: Tạo Posting và chèn vào Posting List của từng Term
@@ -102,6 +161,7 @@ func (idx *InvertedIndex) AddDocument(doc Document, analyzer Analyzer) {
 		idx.Dictionary[token] = append(idx.Dictionary[token], posting)
 	}
 }
+
 
 // UpdateDocument cập nhật nội dung tin nhắn và tự động re-index lại
 func (idx *InvertedIndex) UpdateDocument(doc Document, analyzer Analyzer) {

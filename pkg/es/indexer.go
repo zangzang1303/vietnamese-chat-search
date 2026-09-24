@@ -50,6 +50,10 @@ func PrepareDocs(msg chat.Message, analyzer invertedindex.Analyzer) (MessageDoc,
 		unaccentedStr = invertedindex.RemoveDiacritics(msg.Content)
 	}
 
+	spaceStr := strings.ReplaceAll(tokenizedStr, "_", " ")
+	spaceUnaccentedStr := strings.ReplaceAll(unaccentedStr, "_", " ")
+	partialStr := strings.Join([]string{tokenizedStr, spaceStr, unaccentedStr, spaceUnaccentedStr}, " ")
+
 	vnDoc := MessageDoc{
 		ID:                msg.ID,
 		Sender:            msg.Sender,
@@ -57,7 +61,7 @@ func PrepareDocs(msg chat.Message, analyzer invertedindex.Analyzer) (MessageDoc,
 		Content:           msg.Content,
 		ContentTokenized:  tokenizedStr,
 		ContentUnaccented: unaccentedStr,
-		ContentPartial:    tokenizedStr, // Trường partial sẽ tự động qua Edge N-gram Analyzer của ES
+		ContentPartial:    partialStr, // Chứa cả dạng gạch dưới, khoảng trắng và không dấu để Edge N-gram sinh đầy đủ
 		CreatedAt:         msg.CreatedAt,
 		UpdatedAt:         msg.UpdatedAt,
 	}

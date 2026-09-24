@@ -115,3 +115,28 @@ Tham chiếu đề bài gốc: [`REQUIREMENTS.md`](REQUIREMENTS.md)
 - [x] **TASK-7.1: Viết tài liệu báo cáo lý thuyết hệ thống tìm kiếm** (`docs/search_architecture.md`).
 - [x] **TASK-7.2: Viết báo cáo so sánh kết quả chi tiết kèm dẫn chứng** (`docs/benchmark_report.md`).
 - [x] **TASK-7.3: Hoàn thiện `README.md` với hướng dẫn cài đặt, cấu hình và chạy mẫu**.
+
+---
+
+### 🔹 Phase 8: Tự Xây Dựng Động Cơ Lưu Trữ & Tìm Kiếm Nhị Phân Độc Lập (Custom Engine thuần Go)
+- [x] **TASK-8.1: Thiết kế cấu trúc nhị phân & Tài liệu lý thuyết đặc tả**
+  - [x] Viết tài liệu đặc tả kiến trúc: [`docs/custom_storage_engine_spec.md`](docs/custom_storage_engine_spec.md).
+  - [x] Viết tài liệu luồng ghi tin nhắn & cấu trúc lưu trữ đĩa: [`docs/write_flow_and_storage_internals.md`](docs/write_flow_and_storage_internals.md).
+- [x] **TASK-8.2: Xây dựng Hạ tầng Lưu trữ Nhị phân (`pkg/storage/`)**
+  - [x] Bộ I/O nhị phân LittleEndian tối ưu (`pkg/storage/binary_io.go`).
+  - [x] Forward Index tra cứu $O(1)$ tin nhắn gốc: `docstore.dat` & `docstore.idx` (12 bytes/doc cố định) (`pkg/storage/docstore.go`).
+  - [x] Write-Ahead Log chống sập nguồn với kiểm tra toàn vẹn CRC32 & Replay Crash Recovery (`pkg/storage/wal.go`).
+  - [x] Disk Segments bất biến: `terms.dict` (sắp xếp Alphabet A-Z), `postings.bin` (con trỏ vị trí & TF), `segments.meta` (`pkg/storage/segment.go`).
+  - [x] Cơ chế xóa mềm Tombstone: `tombstone.del`.
+  - [x] Viết Unit Test và chạy kiểm thử thành công 100% (`pkg/storage/storage_test.go`).
+- [x] **TASK-8.3: Xây dựng Động cơ Tìm kiếm & Chỉ mục MemTable (`pkg/customengine/`)**
+  - [x] Điều phối MemTable trong RAM, bóc tách tiếng Việt Cốc Cốc đa tầng (chuẩn, không dấu, edge n-gram) (`pkg/customengine/engine.go`).
+  - [x] Thuật toán chấm điểm Okapi BM25 đa tầng (Boost 5x tokenized, 4x phrase, 3x unaccented, 1x ngram) (`pkg/customengine/search.go`).
+  - [x] Viết Unit Test vòng đời End-to-End pass 100% (`pkg/customengine/engine_test.go`).
+- [x] **TASK-8.4: Tích hợp Bộ điều phối kép Dual-Engine vào Backend & Web UI Messenger**
+  - [x] Cập nhật `cmd/chat_server/main.go` để ghi đồng thời vào Custom Engine và Elasticsearch khi POST/PUT/DELETE.
+  - [x] Cập nhật `/api/search/compare` thực thi song song và đo độ trễ cả 3 động cơ.
+  - [x] Nâng cấp giao diện Web Messenger sang chế độ đối soát 3 chiều:
+    - Cột 1: Cốc Cốc Tokenizer (Elasticsearch 8.x)
+    - Cột 2: Standard Baseline (Elasticsearch 8.x)
+    - Cột 3: Custom Engine (Go Binary Disk Persistence, 0% Docker, ~3ms Latency).

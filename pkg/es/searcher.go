@@ -20,14 +20,16 @@ type SearchResult struct {
 	Highlight     string       `json:"highlight,omitempty"`
 }
 
-// ComparisonResult chứa kết quả đối soát song song giữa Baseline (Standard) và Vietnamese (Cốc Cốc)
+// ComparisonResult chứa kết quả đối soát song song giữa Baseline (Standard), Vietnamese (Cốc Cốc ES) và Custom Engine
 type ComparisonResult struct {
 	Query               string         `json:"query"`
 	Tokens              []string       `json:"tokens"`
 	BaselineResults     []SearchResult `json:"baseline_results"`
 	VietnameseResults   []SearchResult `json:"vietnamese_results"`
+	CustomResults       []SearchResult `json:"custom_results,omitempty"`
 	LatencyBaselineMs   int64          `json:"latency_baseline_ms"`
 	LatencyVietnameseMs int64          `json:"latency_vietnamese_ms"`
+	LatencyCustomMs     int64          `json:"latency_custom_ms,omitempty"`
 }
 
 // RawSearchResponse cấu trúc response nội bộ trả về từ Elasticsearch
@@ -144,6 +146,8 @@ func (c *Client) SearchVietnamese(ctx context.Context, query string, room string
 
 	tokenizedQuery := strings.Join(tokens, " ")
 	unaccentedQuery := invertedindex.RemoveDiacritics(tokenizedQuery)
+	underscoreQuery := strings.ReplaceAll(strings.TrimSpace(query), " ", "_")
+	unaccentedUnderscoreQuery := strings.ReplaceAll(invertedindex.RemoveDiacritics(strings.TrimSpace(query)), " ", "_")
 
 	// 2. Xây dựng truy vấn bool query đa tầng với Boosting
 	queryMap := map[string]interface{}{
@@ -152,12 +156,13 @@ func (c *Client) SearchVietnamese(ctx context.Context, query string, room string
 				"must": []interface{}{
 					map[string]interface{}{
 						"multi_match": map[string]interface{}{
-							"query": tokenizedQuery,
-							"type":  "most_fields",
+							"query":    tokenizedQuery,
+							"type":     "most_fields",
+							"operator": "and",
 							"fields": []string{
 								"content_tokenized^5.0",
 								"content_unaccented^3.0",
-								"content_partial^1.0",
+								"content_partial^2.0",
 							},
 						},
 					},
@@ -178,6 +183,26 @@ func (c *Client) SearchVietnamese(ctx context.Context, query string, room string
 							"content_unaccented": map[string]interface{}{
 								"query": unaccentedQuery,
 								"boost": 2.0,
+							},
+						},
+					},
+					// Match trường partial Edge N-gram cho từ gõ dở có gạch dưới ("học_sin", "cà_p")
+					map[string]interface{}{
+						"match": map[string]interface{}{
+							"content_partial": map[string]interface{}{
+								"query":    underscoreQuery,
+								"analyzer": "coccoc_whitespace_analyzer",
+								"boost":    10.0,
+							},
+						},
+					},
+					// Match trường partial Edge N-gram cho từ gõ dở không dấu ("hoc_sin", "ca_p")
+					map[string]interface{}{
+						"match": map[string]interface{}{
+							"content_partial": map[string]interface{}{
+								"query":    unaccentedUnderscoreQuery,
+								"analyzer": "coccoc_whitespace_analyzer",
+								"boost":    8.0,
 							},
 						},
 					},

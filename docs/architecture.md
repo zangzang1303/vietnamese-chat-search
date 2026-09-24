@@ -39,59 +39,6 @@ Hệ thống được thiết kế theo mô hình phân tầng hướng dịch v
 
 *Hình 2.2: Sơ đồ kiến trúc phân tầng kết nối giữa Client Layer, Go Brain Layer (CGO Bridge & Normalizer) và Elasticsearch Multi-field Storage Layer.*
 
-```mermaid
-graph TB
-    subgraph ClientLayer["1. CLIENT / USER LAYER"]
-        CLI["CLI / Web App / Mobile Chat Client"]
-    end
-
-    subgraph GoService["2. GO SEARCH SERVICE (Brain Layer)"]
-        API["Search & Ingestion Controller"]
-        
-        subgraph CGOLayer["CGO Bridge Subsystem"]
-            CGO_Go["coccoc.Tokenizer (tokenizer.go)"]
-            C_Bridge["C Bridge (coccoc_bridge.cpp / .h)"]
-            CPP_Engine["libcoccoc_tokenizer (C++11 Engine)"]
-            Dict[("Cốc Cốc sys.dic\nDouble-Array Trie")]
-            
-            CGO_Go <-->|CGO Call| C_Bridge
-            C_Bridge <-->|Native C++ Call| CPP_Engine
-            CPP_Engine -.->|Load into RAM ~45MB| Dict
-        end
-
-        subgraph NormalizerLayer["Text Normalizer Pipeline"]
-            Norm["Text Normalizer"]
-            Unaccent["RemoveDiacritics (Rune Mapping)"]
-            Ngram["Edge N-gram Generator"]
-            Norm --> Unaccent
-            Norm --> Ngram
-        end
-
-        subgraph QueryBuilderLayer["Query Engine"]
-            QB["ES Query Builder\n(Multi-Match & Bool Boosting)"]
-            LocalEngine["Embedded Inverted Index Engine\n(pkg/invertedindex - Prototype)"]
-        end
-
-        API --> CGOLayer
-        CGOLayer --> NormalizerLayer
-        NormalizerLayer --> QueryBuilderLayer
-    end
-
-    subgraph StorageLayer["3. STORAGE & INDEXING LAYER (Elasticsearch 8.x)"]
-        subgraph ESIndex["Index: chat_messages_vietnamese"]
-            F_Raw["content\n(Văn bản gốc hiển thị)"]
-            F_Tok["content_tokenized\n(Từ ghép có dấu: 'học_sinh')"]
-            F_Unacc["content_unaccented\n(Từ ghép không dấu: 'hoc_sinh')"]
-            F_Part["content_partial\n(Edge N-grams: 'học', 'học_', 'học_s')"]
-        end
-        Lucene[("Lucene Core: Inverted Index & BM25 Ranking")]
-        ESIndex --- Lucene
-    end
-
-    CLI <==>|REST / JSON| API
-    QB <==>|HTTP Bulk / Search DSL| StorageLayer
-```
-
 ---
 
 ## 3. Bản Chất Các Tầng Thành Phần (Component Deep-Dive)
@@ -157,31 +104,6 @@ Luồng diễn ra mỗi khi có tin nhắn mới gửi vào group chat:
 
 *Hình 4.1: Sơ đồ tương tác tuần tự (Sequence Diagram) luồng nạp và đánh chỉ mục tin nhắn chat qua CGO Bridge và Normalizer.*
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Sender as Người gửi tin nhắn
-    participant Svc as Go Ingestion Service
-    participant Tok as Cốc Cốc CGO Bridge
-    participant Norm as Normalizer Pipeline
-    participant ES as Elasticsearch 8.x
-
-    Sender->>Svc: Gửi tin nhắn: "Học sinh uống cà phê"
-    Svc->>Tok: Phân đoạn từ ghép (C++ Engine)
-    Tok-->>Svc: Trả về chuỗi tokenized: "Học_sinh uống cà_phê"
-    
-    Svc->>Norm: Chuyển chữ thường & Loại bỏ dấu
-    Norm-->>Svc: unaccented: "hoc_sinh uong ca_phe"
-    
-    Svc->>Norm: Sinh Edge N-grams cho các token
-    Norm-->>Svc: partial: ["học", "học_s", "cà", "cà_p", ...]
-    
-    Svc->>ES: Index Document (JSON chứa 4 trường dữ liệu)
-    Note over ES: Lucene ghi nhận vào Inverted Index & Postings
-    ES-->>Svc: 201 Created
-    Svc-->>Sender: Tin nhắn đã sẵn sàng để tìm kiếm
-```
-
 ---
 
 ### 4.2. Luồng 2: Search & Ranking Pipeline (Truy Vấn & Xếp Hạng Kết Quả)
@@ -191,28 +113,6 @@ Luồng diễn ra khi người dùng gõ từ khóa vào ô tìm kiếm:
 ![Sơ Đồ Tuần Tự Luồng 2: Search & Ranking Pipeline](../image/C%E1%BB%91c%20C%E1%BB%91c%20Search%20Engine-2026-09-18-073414.png)
 
 *Hình 4.2: Sơ đồ tương tác tuần tự (Sequence Diagram) luồng truy vấn và xếp hạng đa tầng (Relevance Scoring & Boosting).*
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as Người tìm kiếm
-    participant Svc as Go Search Service
-    participant Tok as Cốc Cốc CGO Bridge
-    participant QB as ES Query Builder
-    participant ES as Elasticsearch (Lucene BM25)
-
-    User->>Svc: Gõ từ khóa: "hoc sinh" (hoặc "học sinh")
-    Svc->>Tok: Tách từ ghép câu query
-    Tok-->>Svc: Query tokens: ["hoc_sinh"]
-    
-    Svc->>QB: Xây dựng Multi-Layer Bool Query (Trọng số Boosting)
-    Note over QB: Layer 1: Có dấu (Boost 5.0)<br/>Layer 2: Không dấu (Boost 3.0)<br/>Layer 3: Partial N-gram (Boost 1.0)
-    
-    QB->>ES: Thực thi Search Request (Bool Query)
-    Note over ES: 1. Tra cứu Inverted Index O(1)<br/>2. Lấy danh sách ứng viên (Candidate Retrieval)<br/>3. Chấm điểm Okapi BM25 kết hợp Boosting<br/>4. Sắp xếp kết quả giảm dần theo Score
-    ES-->>Svc: Trả về Top K kết quả + Highlights
-    Svc-->>User: Hiển thị danh sách tin nhắn phù hợp nhất lên đầu
-```
 
 ---
 
