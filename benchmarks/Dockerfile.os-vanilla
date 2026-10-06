@@ -1,0 +1,5 @@
+FROM opensearchproject/opensearch:2.19.0
+USER root
+COPY benchmarks/analysis-icu-2.19.0.zip /tmp/analysis-icu.zip
+RUN opensearch-plugin install --batch file:///tmp/analysis-icu.zip && rm /tmp/analysis-icu.zip
+USER opensearch

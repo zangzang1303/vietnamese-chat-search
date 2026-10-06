@@ -8,6 +8,9 @@
 *.dump
 demo.exe
 demo
+bench_runner
+benchmarks/bench_runner
+benchmarks/bench_runner.exe
 
 # Temporary / Third-party clones
 temp_coccoc/
@@ -29,3 +32,9 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Large Benchmark Datasets
+*.jsonl
+benchmarks/*.jsonl
+benchmarks/tmp_res_*.json
+
