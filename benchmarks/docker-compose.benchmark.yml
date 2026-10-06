@@ -1,0 +1,34 @@
+services:
+  opensearch-vanilla:
+    build:
+      context: ..
+      dockerfile: benchmarks/Dockerfile.os-vanilla
+    image: os-vanilla:2.19.0
+    container_name: os_vanilla_bench
+    environment:
+      - cluster.name=bench-vanilla-cluster
+      - node.name=node-vanilla
+      - discovery.type=single-node
+      - "OPENSEARCH_JAVA_OPTS=-Xms1536m -Xmx1536m"
+      - DISABLE_SECURITY_PLUGIN=true
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+    restart: unless-stopped
+    ports:
+      - "9201:9200"
+
+  opensearch-plugin:
+    build:
+      context: ..
+      dockerfile: benchmarks/Dockerfile.os-plugin
+    image: os-plugin:2.19.0
+    container_name: os_plugin_bench
+    restart: unless-stopped
+    environment:
+      - cluster.name=bench-plugin-cluster
+      - node.name=node-plugin
+      - discovery.type=single-node
+      - "OPENSEARCH_JAVA_OPTS=-Xms1536m -Xmx1536m"
+      - DISABLE_SECURITY_PLUGIN=true
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+    ports:
+      - "9202:9200"

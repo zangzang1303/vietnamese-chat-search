@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kịch Bản Thuyết Trình | Vietnamese Chat Search</title>
+  <style>
+    :root {
+      --bg-dark: #000000;
+      --card-bg: #12151e;
+      --card-border: #1e293b;
+      --accent-cyan: #00e5ff;
+      --accent-blue: #38bdf8;
+      --accent-green: #34d399;
+      --accent-gold: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --speech-bg: #0b192c;
+      --speech-border: #2563eb;
+      --cue-bg: #854d0e;
+      --cue-text: #fef08a;
+      --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-base);
+      line-height: 1.65;
+      font-size: 16px;
+      padding-bottom: 90px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* STICKY TOP NAV */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(18, 21, 30, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ctrl {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: var(--text-main);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .btn-ctrl:active {
+      background: #334155;
+    }
+
+    .tab-pills {
+      display: flex;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #090c14;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tab-pills::-webkit-scrollbar { display: none; }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      background: #1e293b;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .pill.active {
+      background: var(--accent-cyan);
+      color: #000;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    /* CARD STYLING */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-badge {
+      background: #0284c7;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-badge.demo {
+      background: #10b981;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    /* META INFO BOX */
+    .meta-box {
+      background: #090d16;
+      border: 1px solid #1e2638;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 13.5px;
+    }
+
+    .meta-row {
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-weight: 700;
+      color: var(--accent-blue);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .bullets-content {
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
+    /* SPEECH PROMPTER BOX */
+    .speech-box {
+      background: var(--speech-bg);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 12px 12px 0;
+      padding: 16px;
+      margin-top: 10px;
+    }
+
+    .speech-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-cyan);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .speech-text {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #ffffff;
+      font-weight: 450;
+    }
+
+    .speech-text p {
+      margin-bottom: 12px;
+    }
+    .speech-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* STAGE CUE PILL */
+    .stage-cue {
+      display: inline-block;
+      background: var(--cue-bg);
+      color: var(--cue-text);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin: 2px 4px;
+      border: 1px solid #ca8a04;
+      line-height: 1.3;
+    }
+
+    code {
+      background: #1e293b;
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    .math {
+      color: #f472b6;
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    /* BOTTOM FLOATING CONTROLS */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(18, 21, 30, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--card-border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 99;
+    }
+
+    .nav-btn {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      flex: 1;
+      margin: 0 6px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .nav-btn:active { background: #0284c7; }
+
+    /* FONT SIZE TOGGLE */
+    .size-lg .speech-text { font-size: 20px; line-height: 1.85; }
+    .size-xl .speech-text { font-size: 23px; line-height: 1.95; }
+  </style>
+</head>
+<body id="body">
+
+  <div class="top-bar">
+    <div class="top-title" id="page-indicator">Kịch Bản Thuyết Trình</div>
+    <div class="controls">
+      <button class="btn-ctrl" onclick="changeFontSize(-1)">A-</button>
+      <button class="btn-ctrl" onclick="changeFontSize(1)">A+</button>
+      <button class="btn-ctrl" onclick="toggleMode()">💡 Đọc</button>
+    </div>
+  </div>
+
+  <div class="tab-pills">
+    <a href="#slide-1" class="pill active">Slide 1-5</a>
+    <a href="#slide-6" class="pill">Slide 6-10</a>
+    <a href="#slide-11" class="pill">Slide 11-13</a>
+    <a href="#demo-section" class="pill">Live Demo</a>
+  </div>
+
+  <div class="container">
+
+    <div class="card" id="slide-1">
+      <div class="card-header">
+        <span class="card-badge">Slide 1</span>
+        <div class="card-title">SLIDE 1: NGHỊCH LÝ TÌM KIẾM TIẾNG VIỆT TRONG ỨNG DỤNG CHAT</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content"><code>image/compound_word_trap_demo.jpg</code> (So sánh giao diện chat: Khung đỏ dính tin rác vs Khung xanh chuẩn xác).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content"><em> <strong>Nỗi đau thực tế:</strong> Tìm <code>"học sinh"</code>, kết quả trả về toàn tin lạc đề: </em>"sinh nhật"<em>, </em>"sinh viên"<em>, </em>"hy sinh"*.<br>  <em> <strong>Bản chất ngôn ngữ học:</strong> Tiếng Việt là ngôn ngữ đơn lập. Dấu cách chỉ phân tách <strong>âm tiết</strong> (syllable); đơn vị mang nghĩa cốt lõi là <strong>từ ghép</strong> (</em>học sinh, cà phê*).<br>  * <strong>Sự thất bại của máy chuẩn:</strong> Bộ tách từ phương Tây bẻ đôi từ ghép theo dấu cách <span class="math">\rightarrow</span> Gây ra <strong>"Bẫy từ ghép"</strong> (Compound Word Trap).<br>  * <strong>Mục tiêu dự án:</strong> Khóa chặt ngữ nghĩa từ ghép bằng Cốc Cốc NLP, thiết kế chiến lược tìm kiếm đa tầng và phát triển động cơ nhị phân siêu tốc thuần Go.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Em chào anh! Hôm nay em xin phép được báo cáo chi tiết với anh về dự án Cải thiện hệ thống tìm kiếm tin nhắn tiếng Việt mà em đã hoàn thiện.
+<code><span class="stage-cue">🎬 Chỉ tay sang hình ảnh viền đỏ bên trái</span></code>  
+Đầu tiên, em mời anh nhìn vào một tình huống cực kỳ quen thuộc trên màn hình: Khi anh gõ từ khóa <strong>'học sinh'</strong> vào ô tìm kiếm của các ứng dụng chat phổ biến hiện nay, kết quả trả về thường bị lẫn lộn những tin nhắn hoàn toàn lạc đề như: 'chúc mừng <strong>sinh</strong> nhật', 'đón tân <strong>sinh</strong> viên', hay 'sự hy <strong>sinh</strong>'.
+<code><span class="stage-cue">🎬 Dừng 1 giây - Nhấn giọng</span></code>  
+Tại sao lại có sự phi lý này hả anh? Về mặt ngôn ngữ học, tiếng Việt mình là <strong>ngôn ngữ đơn lập</strong>. Dấu cách trong tiếng Việt chỉ dùng để ngắt <strong>âm tiết</strong>, chứ bản thân một âm tiết đơn lẻ nhiều khi không mang đủ nghĩa. Nghĩa trọn vẹn ở đây phải là <strong>từ ghép</strong> — ví dụ như 'học sinh' hay 'cà phê'.
+Các công cụ tìm kiếm chuẩn phương Tây cứ thấy dấu cách là bẻ đôi từ vựng, vô tình đẩy hệ thống vào <strong>'Cái bẫy từ ghép' (Compound Word Trap)</strong> làm loãng kết quả. Đề tài của em sinh ra để giải quyết dứt điểm vấn đề này: Dạy cho cỗ máy hiểu đúng từ ghép tiếng Việt, để anh gõ có dấu, không dấu hay gõ dở thì hệ thống vẫn tìm trúng đích trong tích tắc!"* <code><span class="stage-cue">🎬 Chuyển Slide 2</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-2">
+      <div class="card-header">
+        <span class="card-badge">Slide 2</span>
+        <div class="card-title">SLIDE 2: BẢN ĐỒ KIẾN TRÚC TOÀN HỆ THỐNG (SYSTEM ARCHITECTURE)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content"><code>image/Cốc Cốc Search Engine-2026-09-22-065029.png</code> (Sơ đồ 3 Tầng: Client - Go Brain - Dual Storage).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Tầng 1 - Client Web Messenger:</strong> Giao diện Dark Mode, tab Đối soát 3 Động cơ song song và thanh Flow Inspector soi token thời gian thực.<br>  * <strong>Tầng 2 - Bộ não Golang Server (:8080):</strong> Cầu nối CGO C++ Tokenizer, chuẩn hóa Unicode và phân phối dữ liệu Dual Dispatcher.<br>  * <strong>Tầng 3 - Cụm Lưu trữ Kép (Dual Storage):</strong><br>    * 🐘 <strong>Elasticsearch 8.11:</strong> Schema đa trường tối ưu BM25 chuẩn doanh nghiệp.<br>    * ⚡ <strong>Custom Go Engine:</strong> Động cơ nhị phân độc lập lưu trữ trực tiếp trên đĩa, siêu nhẹ <strong>15MB RAM</strong>, độ trễ kỷ lục <strong>~3ms</strong>.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Để giải bài toán đó một cách bài bản, em đã thiết kế toàn bộ hệ thống theo kiến trúc 3 tầng phân lớp rõ ràng như trên sơ đồ:
+<code><span class="stage-cue">🎬 Chỉ tay từ trên xuống dưới theo sơ đồ</span></code>  
+* <strong>Tầng trên cùng là Client Web:</strong> Em xây dựng giao diện Dark Mode lấy cảm hứng từ Facebook Messenger, có sẵn tab Đối soát 3 Động cơ song song và thanh <strong>Flow Inspector</strong> để anh có thể soi trực tiếp từng bước bóc tách dữ liệu ngay lúc gõ phím.
+* <strong>Tầng giữa là Golang Server:</strong> Đây là 'bộ não' điều phối, tích hợp bộ tách từ của Cốc Cốc qua cầu nối <strong>CGO Bridge</strong>, phụ trách chuẩn hóa dữ liệu và điều phối luồng ghi kép.
+<em> <strong>Tầng dưới cùng là Cụm lưu trữ kép:</strong> Một bên là <strong>Elasticsearch 8.11</strong> đóng vai trò giải pháp doanh nghiệp quy mô lớn; và một bên là <strong>Custom Go Engine</strong> — động cơ nhị phân do chính tay em tự viết bằng Go thuần, lưu thẳng xuống đĩa cứng với mức tiêu thụ RAM siêu nhẹ chỉ <strong>15MB</strong>.</em>
+<em>Nhờ mô hình này, hệ thống vừa có thể đối soát thực nghiệm khách quan, vừa làm chủ hoàn toàn công nghệ lưu trữ cấp thấp anh ạ."</em> <code><span class="stage-cue">🎬 Chuyển Slide 3</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-3">
+      <div class="card-header">
+        <span class="card-badge">Slide 3</span>
+        <div class="card-title">SLIDE 3: TẦNG BÓC TÁCH NGÔN NGỮ TỰ NHIÊN (NLP PREPROCESSING VIA CGO)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ CGO Bridge, Double-Array Trie và Thuật toán Viterbi HMM.</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Double-Array Trie (DAT):</strong> Nén toàn bộ từ điển tiếng Việt vào 2 mảng số nguyên tuyến tính <span class="math">\rightarrow</span> Tra cứu tức thời <span class="math">O(L)</span>, dung lượng RAM siêu nhẹ chỉ <strong>45 MB</strong>.<br>  * <strong>Giải thuật Viterbi HMM:</strong> Giải quyết triệt để hiện tượng nhập nhằng ngữ nghĩa, tìm phương án ngắt từ tối ưu theo thời gian tuyến tính <span class="math">O(N)</span>.<br>  * <strong>CGO Bridge An Toàn Tuyệt Đối:</strong><br>    * Đồng bộ đa luồng bằng Mutex, phục vụ hàng ngàn truy vấn song song.<br>    * Thu hồi bộ nhớ C chủ động (<code>C.free</code>), ngăn chặn 100% rò rỉ RAM (Memory Leak).</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Trọng tâm xử lý ngôn ngữ của dự án nằm ở tầng bóc tách từ vựng. Thay vì dùng các thư viện Go thuần có từ điển nghèo nàn, em đã đưa bộ não <strong>Cốc Cốc Tokenizer</strong> viết bằng C++ vào Golang thông qua <strong>CGO</strong>. Ở tầng này có 2 điểm nhấn kỹ thuật quan trọng:
+<code><span class="stage-cue">🎬 Nhấn mạnh vào 2 luận điểm</span></code>  
+* <strong>Thứ nhất là cấu trúc Double-Array Trie (DAT):</strong> Toàn bộ từ điển từ ghép đồ sộ của Cốc Cốc được nén gọn vào đúng 2 mảng số nguyên tuyến tính. Dung lượng RAM chỉ tốn <strong>45MB</strong>, giúp CPU tra từ vựng tức thì ở độ phức tạp <span class="math">O(L)</span> ngay trên L1/L2 cache.
+<em> <strong>Thứ hai là Thuật toán Viterbi HMM:</strong> Thuật toán quy hoạch động này giúp cỗ máy giải quyết các câu nhập nhằng và tìm ra cách ngắt từ chuẩn xác nhất trong thời gian tuyến tính <span class="math">O(N)</span>.</em>
+<em>Về mặt kỹ thuật hệ thống, em đã bọc toàn bộ lời gọi CGO bằng <code>Mutex</code> và cơ chế giải phóng vùng nhớ C chủ động ngay sau khi xử lý. Do đó, hệ thống chạy đa luồng cực kỳ ổn định, không bao giờ xảy ra lỗi rò rỉ bộ nhớ anh nhé."</em> <code><span class="stage-cue">🎬 Chuyển Slide 4</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-4">
+      <div class="card-header">
+        <span class="card-badge">Slide 4</span>
+        <div class="card-title">SLIDE 4: THIẾT KẾ DỮ LIỆU ĐA TRƯỜNG ("CHIẾC TỦ 3 NGĂN")</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ phân nhánh phễu: 1 tin nhắn chạy vào 3 trường dữ liệu độc lập.</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Ngăn 1 - <code>content_tokenized</code>:</strong> Lưu từ ghép chuẩn nối gạch dưới (<code>học_sinh</code>, <code>cà_phê</code>) <span class="math">\rightarrow</span> Khóa chặt ngữ nghĩa, ưu tiên số 1 cho người gõ đúng.<br>  * <strong>Ngăn 2 - <code>content_unaccented</code>:</strong> Lưu chuỗi không dấu (<code>hoc_sinh</code>, <code>ca_phe</code>) <span class="math">\rightarrow</span> Đón đầu người dùng chat nhanh trên điện thoại không gõ dấu.<br>  * <strong>Ngăn 3 - <code>content_partial</code>:</strong> Băm từ ghép thành các lát cắt tiền tố <strong>Edge N-gram</strong> 2-15 ký tự (<code>học</code>, <code>học_s</code>, <code>học_si</code>) <span class="math">\rightarrow</span> Phục vụ tìm kiếm tức thì khi đang gõ dở (Autocomplete).</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Khi chat, mỗi người lại có một thói quen gõ phím khác nhau: có anh gõ chuẩn có dấu, có anh gõ nhanh không dấu, lại có lúc đang gõ dở một nửa từ thì đã muốn thấy kết quả rồi. Để chiều lòng mọi thói quen này, em đã thiết kế cấu trúc dữ liệu như một <strong>'Chiếc tủ 3 ngăn'</strong> cho mỗi tin nhắn:
+<em> </em> <strong>Ngăn 1 - <code>content_tokenized</code>:</strong> Lưu trữ từ ghép chuẩn mực được nối gạch dưới, ví dụ <code>học_sinh</code>, <code>cà_phê</code>. Đây là chốt chặn quan trọng nhất để khóa chặt ngữ nghĩa.
+<em> </em> <strong>Ngăn 2 - <code>content_unaccented</code>:</strong> Lưu chuỗi đã gọt sạch dấu tiếng Việt, ví dụ <code>hoc_sinh</code>, <code>ca_phe</code>, để người dùng gõ không dấu vẫn tìm thấy ngay.
+<em> </em> <strong>Ngăn 3 - <code>content_partial</code>:</strong> Băm từ ghép thành các lát cắt tiền tố <strong>Edge N-gram</strong> từ 2 đến 15 ký tự, ví dụ <code>học</code>, <code>học_s</code>, <code>học_si</code>. Đây chính là vũ khí giúp gợi ý tin nhắn ngay khi người dùng vừa đặt tay gõ vài ký tự đầu tiên.*
+<em>Tách thành 3 ngăn độc lập như thế này chính là chìa khóa mở đường cho luồng tìm kiếm thông minh phía sau anh ạ."</em> <code><span class="stage-cue">🎬 Chuyển Slide 5</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-5">
+      <div class="card-header">
+        <span class="card-badge">Slide 5</span>
+        <div class="card-title">SLIDE 5: TỔNG QUAN LUỒNG ĐÁNH CHỈ MỤC (INDEXING PIPELINE OVERVIEW)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ dây chuyền 5 trạm xử lý liên hoàn của Luồng Đánh chỉ mục.</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Dây chuyền 5 trạm xử lý liên hoàn:</strong><br>    * <strong>Trạm 1:</strong> Tiếp nhận tin nhắn thô qua REST API: <code>{"content": "Học sinh uống cà phê"}</code>.<br>    * <strong>Trạm 2:</strong> Bóc tách ngôn ngữ CGO: dán nhãn từ ghép <code>học_sinh</code> và <code>cà_phê</code>.<br>    * <strong>Trạm 3:</strong> Bộ nhân bản tạo chuỗi không dấu <code>hoc_sinh</code> và mạng lưới tiền tố N-gram.<br>    * <strong>Trạm 4:</strong> Bộ điều phối Dual-Write Dispatcher chia dữ liệu thành 2 ngả đường.<br>    * <strong>Trạm 5:</strong> Nhập kho song song vào Elasticsearch 8.11 và Động cơ nhị phân Custom Go.<br>  * <strong>Hiệu năng:</strong> Toàn bộ chu trình hoàn tất chỉ trong <strong>1.78 mili-giây/tin nhắn</strong>.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Bây giờ, em xin trình bày về chiều nạp dữ liệu: Một tin nhắn từ lúc người dùng bấm nút Gửi sẽ đi qua những đâu để được 'nhập kho' tìm kiếm?
+<code><span class="stage-cue">🎬 Chỉ tay lần lượt theo 5 trạm trên màn hình</span></code>  
+Dữ liệu sẽ đi qua một dây chuyền 5 trạm khép kín:
+* Đầu tiên, Cổng API tiếp nhận gói tin thô.
+* Trạm thứ 2 đưa tin nhắn qua CGO để Cốc Cốc dán nhãn từ ghép thành <code>học_sinh</code> và <code>cà_phê</code>.
+* Trạm thứ 3 nhân bản biến thể thành chuỗi không dấu và các lát cắt tiền tố N-gram.
+* Trạm thứ 4 là bộ chia luồng Dual Dispatcher.
+<em> Và Trạm thứ 5 sẽ ghi đồng thời vào cả Elasticsearch lẫn Động cơ nhị phân Custom Go.</em>
+<em>Toàn bộ quy trình nạp này chỉ tốn <strong>1.78 mili-giây</strong> cho mỗi tin nhắn. Và để anh thấy rõ từng micro-giây tương tác giữa các tiến trình kỹ thuật bên dưới, em mời anh cùng nhìn sâu vào Sơ đồ Tuần tự của luồng ghi này ở slide tiếp theo!"</em> <code><span class="stage-cue">🎬 Chuyển Slide 6</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-6">
+      <div class="card-header">
+        <span class="card-badge">Slide 6</span>
+        <div class="card-title">SLIDE 6: DIỄN GIẢI CHI TIẾT SƠ ĐỒ TUẦN TỰ LUỒNG ĐÁNH CHỈ MỤC (THE LIFE OF A WRITE)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ tuần tự chi tiết Luồng Ghi (Sequence Diagram - Dual Storage Ingestion).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Bước 1-4 (NLP Preprocessing):</strong> Client gửi tin <span class="math">\rightarrow</span> CGO chạy Viterbi HMM <span class="math">\rightarrow</span> Normalizer gọt dấu và sinh Edge N-grams <span class="math">\rightarrow</span> Đóng gói Struct đa trường.<br>  * <strong>Bước 5 (Khối PAR song song - Dual Storage):</strong><br>    * 🐘 <strong>Elasticsearch 8.11:</strong> Bắn gói NDJSON qua cổng 9200. Lucene ghi vào <strong>Translog</strong> chống mất điện và lưu vào RAM Buffer tạo Segment.<br>    * ⚡ <strong>Custom Go Engine:</strong> Ghi tuần tự vào nhật ký <code>wal.log</code> kèm mã băm <strong>CRC32 IEEE</strong>, cập nhật mục lục con trỏ <code>docstore.idx</code> cố định <strong>12 bytes (<span class="math">O(1)</span>)</strong>, và đưa ngay vào <code>MemTable</code> trên RAM.<br>  * <strong>Bước 6:</strong> Phản hồi 201 Created cho Client, tin nhắn sẵn sàng tìm kiếm tức thì trên cả 2 động cơ.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Đây là <strong>Sơ đồ tuần tự 'Vòng đời của một thao tác Ghi'</strong>, mô tả chi tiết từng hàm và tiến trình chạy ngầm:
+<code>[Chỉ vào các bước 1 -> 4]</code>  
+* Khi người dùng gửi tin nhắn, Go Ingestion Service nhận diện và chuyển vùng nhớ sang C++ Cốc Cốc qua CGO để chạy thuật toán Viterbi. Sau đó, Normalizer gọt sạch dấu và băm các lát cắt Edge N-gram, đóng gói thành Document đa trường hoàn chỉnh.
+* <code>[Chỉ vào khối PAR song song]</code> <strong>Điểm đắt giá nhất ở đây là cơ chế ghi song song 2 nhánh:</strong>
+* Nhánh Elasticsearch: Server bắn gói JSON sang cổng 9200. Lucene ghi ngay vào tệp nhật ký <strong>Translog</strong> để chống mất điện, rồi lưu vào RAM Buffer để định kỳ kết xuất thành Inverted Index.
+<em> Nhánh Custom Go Engine: Server ghi tuần tự vào tệp <code>wal.log</code> kèm mã kiểm tra toàn vẹn <strong>CRC32 IEEE 4 bytes</strong>, cập nhật bảng mục lục con trỏ <code>docstore.idx</code> với kích thước cố định <strong>đúng 12 bytes (<span class="math">O(1)</span>)</strong>, và đưa thẳng lên <code>MemTable</code> trên RAM.</em>
+<em>Nhờ cách thiết kế bất đồng bộ này, tin nhắn vừa gửi xong là đã chốt an toàn xuống đĩa cứng và sẵn sàng tìm thấy ngay lập tức trên cả 2 động cơ mà không hề có độ trễ anh ạ!"</em> <code><span class="stage-cue">🎬 Chuyển Slide 7</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-7">
+      <div class="card-header">
+        <span class="card-badge">Slide 7</span>
+        <div class="card-title">SLIDE 7: TỔNG QUAN LUỒNG TRUY VẤN & XẾP HẠNG (SEARCH PIPELINE OVERVIEW)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ kiến trúc 3 Động cơ tìm kiếm chạy song song (Parallel Dispatcher).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Parallel Search Dispatcher:</strong> Tiếp nhận query <span class="math">\rightarrow</span> Phóng 3 Goroutines tìm kiếm đồng thời:<br>    * 🟢 <strong>Cột 1 - Cốc Cốc ES 8.11:</strong> Bóc tách từ ghép C++ & Kích hoạt cơ chế Boosting 4 tầng điểm số.<br>    * 🔴 <strong>Cột 2 - Baseline ES 8.11:</strong> Dùng bộ phân tách mặc định theo khoảng trắng làm đối chứng.<br>    * 🟣 <strong>Cột 3 - Custom Go Engine:</strong> Tìm kiếm nhị phân trên RAM và Segments nhị phân.<br>  * <strong>Result Aggregator:</strong> Thu thập kết quả 3 bên, bấm giờ chính xác từng mili-giây và hiển thị đối chiếu trực tiếp.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Ngược lại với luồng ghi, luồng tìm kiếm là nơi thể hiện rõ nhất sự thông minh của thuật toán và tốc độ xử lý của hệ thống.
+<code>[Chỉ vào khối Dispatcher ở giữa]</code>  
+Khi người dùng nhập từ khóa tìm kiếm (ví dụ 'hoc sinh'), hệ thống không tra cứu tuần tự từng cái một mà khởi tạo <strong>Parallel Search Dispatcher</strong> để phóng ra 3 nhánh tìm kiếm song song cùng lúc:
+* Nhánh thứ nhất là <strong>Cốc Cốc ES 8.11</strong>: Phân tích từ ghép và kích hoạt bộ chấm điểm Boosting 4 tầng.
+* Nhánh thứ hai là <strong>Baseline ES 8.11</strong>: Chạy cơ chế tách từ mặc định theo dấu cách để làm mẫu đối chứng.
+<em> Nhánh thứ ba là <strong>Custom Go Engine</strong>: Chạy hoàn toàn bằng code Go thuần trực tiếp trên bộ nhớ.</em>
+<em>Tất cả kết quả được gom về bộ tổng hợp, bấm giờ chính xác từng mili-giây để người dùng thấy rõ sự khác biệt giữa 3 cỗ máy. Em mời anh xem tiếp sơ đồ tuần tự chi tiết của luồng này ở slide sau!"</em> <code><span class="stage-cue">🎬 Chuyển Slide 8</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-8">
+      <div class="card-header">
+        <span class="card-badge">Slide 8</span>
+        <div class="card-title">SLIDE 8: DIỄN GIẢI CHI TIẾT SƠ ĐỒ TUẦN TỰ LUỒNG TRUY VẤN (THE LIFE OF A SEARCH)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ tuần tự chi tiết Luồng Tìm kiếm 3 Động cơ song song (Parallel Search Sequence).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Bước 1-2:</strong> Nhận query <code>hoc sinh</code> <span class="math">\rightarrow</span> CGO nhận diện từ ghép <code>hoc_sinh</code> và chuẩn bị các biến thể.<br>  * <strong>Bước 3 (3 Goroutines song song):</strong><br>    * 🟢 <strong>Cốc Cốc ES:</strong> Bool Query 4 tầng (Boost 5.0x có dấu, 4.0x cụm từ, 3.0x không dấu, 1.0x-10.0x n-gram). Lucene chấm điểm BM25 + Highlights (MRR 0.77).<br>    * 🔴 <strong>Baseline ES:</strong> Standard Match Query (bẻ theo dấu cách, BM25 không boost, dính bẫy từ ghép).<br>    * 🟣 <strong>Custom Go Engine:</strong> Binary Search <span class="math">O(\log M)</span> trên <code>terms.dict</code>, quét <code>postings.bin</code> và chấm điểm bằng Pure Go BM25 Ranker trong <strong>2.8ms</strong>.<br>  * <strong>Bước 4-5:</strong> <code>sync.WaitGroup</code> thu thập kết quả, đo độ trễ chi tiết và render bảng đối soát 3 cột lên UI.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Đây là <strong>Sơ đồ tuần tự 'Vòng đời của một truy vấn Tìm kiếm'</strong>:
+<code><span class="stage-cue">🎬 Chỉ tay theo các bước tương tác</span></code>  
+* Khi người dùng gõ từ khóa <code>hoc sinh</code>, Go Search Service gọi CGO để Cốc Cốc nhận diện ngay đây là từ ghép <code>học_sinh</code> (hoặc <code>hoc_sinh</code>).
+* <code>[Chỉ vào 3 nhánh song song]</code> Sau đó, server dùng cơ chế đa luồng <strong>Goroutines</strong> để phóng 3 yêu cầu song song:
+* Nhánh Cốc Cốc ES: Gửi câu truy vấn Bool Query đa tầng sang Elasticsearch. Tại đây, cỗ máy áp dụng <strong>4 tầng trọng số Boosting</strong>: Khớp cụm từ nhận Boost 4.0x; Khớp từ ghép có dấu nhận Boost 5.0x; Khớp không dấu nhận Boost 3.0x; và Khớp tiền tố gõ dở nhận Boost từ 1.0x đến 10.0x. Lucene tính điểm BM25 và trả về danh sách ứng viên chuẩn xác kèm vùng bôi sáng từ khóa.
+* Nhánh Baseline ES: Chạy truy vấn Standard Match thông thường, trả về kết quả đối chứng bị dính đầy tin nhắn rác.
+<em> Nhánh Custom Go Engine: Tìm kiếm nhị phân <span class="math">O(\log M)</span> trên tệp từ điển <code>terms.dict</code>, đọc danh sách Postings từ <code>postings.bin</code> và chấm điểm bằng bộ xếp hạng <strong>Pure Go BM25 Ranker</strong>.</em>
+<em> Bộ tổng hợp dùng <code>sync.WaitGroup</code> gom đủ 3 kết quả, đo đạc độ trễ và trả về giao diện bảng 3 cột cho người dùng.</em>
+<em>Toàn bộ cuộc đua này diễn ra chỉ trong vài phần nghìn giây thôi anh ạ!"</em> <code><span class="stage-cue">🎬 Chuyển Slide 9</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-9">
+      <div class="card-header">
+        <span class="card-badge">Slide 9</span>
+        <div class="card-title">SLIDE 9: CƠ CHẾ CHẤM ĐIỂM OKAPI BM25 – "BAN GIÁM KHẢO CÔNG TÂM"</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ công thức BM25 đơn giản hóa & Cơ chế Boosting 4 tầng.</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Khung công thức trung tâm:</strong> <span class="math">\text{Final Score} = \text{BM25}(\text{Query}, \text{Message}) \times \text{Boost Weight}</span><br>  * <strong>3 Trụ cột chấm điểm BM25:</strong><br>    <em> <strong>1. Độ quý hiếm (IDF):</strong> Từ xuất hiện khắp nơi (</em>"và, thì, là"<em>) bị triệt tiêu điểm về <span class="math">0</span>. Từ đặc trưng (</em>"học_sinh, cà_phê"*) được thưởng điểm rất cao.<br>    * <strong>2. Hạn mức bão hòa tần suất (TF):</strong> Tham số <span class="math">k_1 = 1.2</span> tạo trần bão hòa <span class="math">\rightarrow</span> Lặp lại 20 lần từ khóa cũng không được cộng thêm điểm <span class="math">\rightarrow</span> <strong>Chống 100% spam từ khóa!</strong><br>    * <strong>3. Phạt độ dài tài liệu:</strong> Tham số <span class="math">b = 0.75</span> ưu tiên tin nhắn ngắn gọn, trúng trọng tâm hơn đoạn văn dài lan man.<br>  * <strong>Hệ số nhân Boosting:</strong> Từ ghép có dấu <span class="math">\times 5.0</span>, Cụm từ <span class="math">\times 4.0</span>, Không dấu <span class="math">\times 3.0</span>, Gõ dở <span class="math">\times 1.0 \to \times 10.0</span>.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Nhiều người thắc mắc: <strong>Tại sao thuật toán Okapi BM25 lại được coi là tiêu chuẩn vàng của ngành tìm kiếm thông tin hiện đại?</strong>
+<code>[Chỉ vào 3 khối trụ cột trên sơ đồ]</code>  
+Em hình dung BM25 như một vị <strong>Ban giám khảo chấm thi chí công vô tư</strong> với 3 nguyên tắc khoa học anh ạ:
+* <strong>Nguyên tắc 1 - Độ quý hiếm từ vựng (IDF):</strong> Những từ phổ thông xuất hiện ở mọi nơi như chữ 'và', 'thì', 'là' sẽ bị phạt điểm về 0. Nhưng từ đặc trưng mang ngữ nghĩa cao như 'cà phê', 'học sinh' sẽ được thưởng điểm rất lớn.
+* <strong>Nguyên tắc 2 - Hạn mức bão hòa tần suất (TF):</strong> Nếu có ai cố tình gõ lặp lại 20 lần chữ 'cà phê cà phê...' trong tin nhắn để 'hack' vị trí đầu bảng thì sẽ bị BM25 chặn đứng hoàn toàn. Với tham số bão hòa <span class="math">k_1 = 1.2</span>, lặp lại nhiều lần cũng không được cộng thêm điểm <span class="math">\rightarrow</span> Vô hiệu hóa 100% hành vi spam từ khóa!
+<em> <strong>Nguyên tắc 3 - Phạt công bằng theo độ dài:</strong> Một tin nhắn ngắn 10 từ nói trúng trọng tâm sẽ được ưu tiên điểm cao hơn một đoạn văn dài 500 từ chỉ vô tình nhắc qua từ đó 1 lần.</em>
+<em>Kết hợp điểm số BM25 khoa học này với hệ số nhân Boosting 4 tầng, tin nhắn đúng ý người dùng nhất luôn luôn được đưa lên vị trí số 1 tuyệt đối."</em> <code><span class="stage-cue">🎬 Chuyển Slide 10</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-10">
+      <div class="card-header">
+        <span class="card-badge">Slide 10</span>
+        <div class="card-title">SLIDE 10: XỬ LÝ TRƯỜNG HỢP BIÊN: SỬA LỖI ĐẢO NGƯỢC ĐIỂM KHI GÕ DỞ</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content"><code>image/score_comparison_chart.jpg</code> (Biểu đồ cột: 33.36đ vọt lên 93.91đ).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Hiện tượng lỗi điểm số ngược (Inverse Scoring Anomaly):</strong> Khi gõ dở <code>"học sin"</code>, máy tính cũ dùng toán tử <code>OR</code> mặc định <span class="math">\rightarrow</span> Tin nhắn chỉ chứa từ đơn <code>"học"</code> lặp lại nhiều lần được 37đ, đứng trên tin nhắn chứa đúng từ ghép <code>"học sinh"</code> (chỉ được 33.36đ)!<br>  * <strong>Giải pháp kỹ thuật của em:</strong><br>    1. Cấu hình <code>search_analyzer</code> độc lập: Ngăn Lucene băm nhỏ query của người dùng.<br>    2. Ép buộc toán tử <code>AND</code>: Bắt buộc tài liệu phải chứa đủ các âm tiết cấu thành.<br>    3. Nâng hệ số Boosting tiền tố lên <strong>10.0x</strong>.<br>  * <strong>Kết quả thực nghiệm:</strong> Điểm tin nhắn chứa <code>"học sinh"</code> tăng vọt từ <strong>33.36đ lên 93.91đ</strong>, chiếm trọn <strong>Top 1</strong> tuyệt đối!</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Trong quá trình thực nghiệm chuyên sâu, em đã phát hiện và xử lý thành công một ca lỗi rất hóc búa: <strong>Hiện tượng Đảo Ngược Điểm Số khi người dùng gõ dở từ</strong>.
+<code>[Chỉ vào cột 33.36 điểm]</code>  
+Khi người dùng mới gõ đến chữ <strong>'học sin'</strong>, máy tính mặc định dùng toán tử <code>OR</code> để tìm chữ 'học'. Hậu quả trớ trêu là: Những tin nhắn chỉ chứa từ đơn 'học' lặp đi lặp lại nhiều lần lại đạt <strong>37 điểm</strong> và leo lên đầu; trong khi tin nhắn chứa đúng từ ghép 'học sinh' chỉ được <strong>33.36 điểm</strong> và bị tụt lại phía sau!
+<code>[Chỉ vào cột 93.91 điểm - Nhấn giọng]</code>  
+Em đã giải quyết dứt điểm nghịch lý này bằng 3 giải pháp: Thiết lập bộ Search Analyzer độc lập để ngăn Lucene băm nhỏ query, ép buộc toán tử <code>AND</code> trên các âm tiết cấu thành, và áp dụng siêu trọng số <strong>Boost 10.0x</strong> cho tiền tố từ ghép. Nhờ đó, điểm số của tin nhắn chứa 'học sinh' đã <strong>tăng vọt từ 33.36 lên 93.91 điểm</strong>, vươn lên chiếm trọn vị trí Top 1 ngay trước mắt người dùng anh ạ!"* <code><span class="stage-cue">🎬 Chuyển Slide 11</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-11">
+      <div class="card-header">
+        <span class="card-badge">Slide 11</span>
+        <div class="card-title">SLIDE 11: ĐỘT PHÁ: ĐỘNG CƠ LƯU TRỮ NHỊ PHÂN THUẦN GO (CUSTOM ENGINE)</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content"><code>image/The Life of a Write Sequence Diagram.png</code> (Cấu trúc đĩa nhị phân WAL + DocStore + Segments).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Mục tiêu:</strong> Thoát ly phụ thuộc Docker/Java, giảm RAM từ 1.200MB xuống <strong>15MB</strong>, độ trễ kỷ lục <strong>~3ms</strong>.<br>  * <strong>Cấu trúc 4 tệp nhị phân trực tiếp trên ổ đĩa:</strong><br>    * <strong><code>docstore.idx</code> & <code>.dat</code> (Forward Index):</strong> Bảng mục lục con trỏ cố định <strong>12 bytes/doc</strong> <span class="math">\rightarrow</span> Tra cứu tin nhắn gốc tức thời theo mốc byte <span class="math">\text{Offset} = \text{DocID} \times 12</span> (<span class="math">O(1)</span> tuyệt đối).<br>    * <strong><code>wal.log</code> (Write-Ahead Log):</strong> Ghi tuần tự kèm mã kiểm tra toàn vẹn <strong>CRC32 IEEE</strong>, tự động Replay khôi phục 100% dữ liệu khi mất điện.<br>    * <strong><code>terms.dict</code> & <code>postings.bin</code> (Inverted Index Bất Biến):</strong> Từ điển sắp xếp Alphabet A-Z tra cứu nhị phân <span class="math">O(\log M)</span>.<br>    * <strong><code>tombstone.del</code> (Xóa mềm):</strong> Cơ chế Soft Delete đảm bảo các luồng đọc song song an toàn không cần Lock (Lock-free).</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Không dừng lại ở việc dùng các thư viện có sẵn, em đặt ra một mục tiêu tham vọng hơn: <strong>Tự tay xây dựng một Động cơ Lưu trữ và Tìm kiếm Nhị phân độc lập thuần Go</strong>, thoát ly hoàn toàn khỏi sự phụ thuộc vào Java và Docker:
+<code>[Chỉ vào 4 khối file trên sơ đồ]</code>  
+* <strong><code>docstore.idx</code> & <code>.dat</code>:</strong> Em thiết kế bảng mục lục con trỏ cố định <strong>đúng 12 bytes cho mỗi tin nhắn</strong>. Việc tra cứu tin nhắn gốc đạt độ phức tạp <strong><span class="math">O(1)</span> tuyệt đối</strong>, chỉ cần một phép nhân <span class="math">\text{Offset} = \text{DocID} \times 12</span> là con trỏ hệ điều hành nhảy thẳng tới mốc byte chứa dữ liệu.
+* <strong><code>wal.log</code>:</strong> Mọi thao tác ghi đều tuần tự ghi nhật ký kèm mã niêm phong <strong>CRC32 IEEE</strong>, đảm bảo an toàn dữ liệu 100%, sẵn sàng khôi phục ngay nếu máy chủ bị sập nguồn đột ngột.
+* <strong><code>terms.dict</code> & <code>postings.bin</code>:</strong> Từ điển được sắp xếp theo thứ tự bảng chữ cái để tra cứu nhị phân siêu tốc.
+<em> <strong><code>tombstone.del</code>:</strong> Cơ chế xóa mềm bằng Bitmap giúp các luồng đọc song song không bao giờ bị nghẽn khóa.</em>
+<em>Cỗ máy nhị phân này chỉ tiêu tốn <strong>15MB RAM</strong>, mang lại tốc độ phản hồi kỷ lục chỉ <strong>~3 mili-giây</strong> thôi anh ạ!"</em> <code><span class="stage-cue">🎬 Chuyển Slide 12</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-12">
+      <div class="card-header">
+        <span class="card-badge">Slide 12</span>
+        <div class="card-title">SLIDE 12: ĐỐI CHIẾU KIẾN TRÚC LƯU TRỮ: ELASTICSEARCH 8.11 VS CUSTOM PURE-GO ENGINE</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content">Sơ đồ đối chiếu cơ chế lưu trữ nội tại (Storage Internals Diagram - Khối to, chữ lớn).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>🐘 NỬA TRÁI: 5 THÀNH PHẦN NỘI TẠI CỦA ELASTICSEARCH 8.11 (LUCENE INTERNALS):</strong><br>    1. <strong>RAM Indexing Buffer:</strong> Vùng đệm gom tài liệu mới trên bộ nhớ JVM heap trước khi tạo Segment.<br>    2. <strong>Translog (Write-Ahead Log):</strong> Tệp nhật ký ghi tuần tự xuống đĩa ngay khi nhận tin, bảo vệ toàn vẹn dữ liệu chống mất điện trước khi có commit point.<br>    3. <strong>Lucene Segments Bất Biến (Immutable Segments):</strong><br>       * <code>.tim</code> & <code>.tip</code> (Terms Dict & FST Index): Từ điển các token tra cứu siêu tốc.<br>       * <code>.doc</code> & <code>.pos</code> (Postings List & TF): Danh sách DocID và tần suất từ để tính BM25.<br>       * <code>.fdt</code> & <code>.fdx</code> (Stored Fields): Dữ liệu gốc của tin nhắn được nén bằng thuật toán LZ4.<br>    4. <strong>Merge Policy (Chạy ngầm):</strong> Tiến trình TieredMergePolicy tự động gộp các Segment nhỏ thành Segment lớn, dọn dẹp các bản ghi đã xóa mềm (Purge tombstones).<br>    5. <strong>Docker Storage Volume (ext4 / XFS):</strong> Điểm chốt Flush & Fsync dữ liệu bền vững xuống ổ cứng vật lý.<br>  * <strong>⚡ NỬA PHẢI: 5 THÀNH PHẦN NỘI TẠI CỦA CUSTOM GO ENGINE (PURE GO BINARY DISK):</strong><br>    1. <strong><code>MemTable</code> trên RAM:</strong> Vùng In-Memory Inverted Index giúp tìm thấy tin nhắn tức thì (0s latency) mà không cần đợi refresh.<br>    2. <strong><code>wal.log</code> (Write-Ahead Log):</strong> Tệp ghi tuần tự nhị phân có Magic Header <code>WAL1</code> và mã băm <strong>CRC32 IEEE</strong> kiểm tra lỗi chống sập nguồn.<br>    3. <strong><code>docstore.idx</code> & <code>.dat</code> (Forward Index <span class="math">O(1)</span>):</strong><br>       * <code>docstore.idx</code>: Bảng con trỏ cố định <strong>12 bytes/doc</strong> (<code>DocID 4B + Offset 8B</code>), nhảy trực tiếp bằng phép tính <span class="math">\text{Offset} = \text{DocID} \times 12</span>.<br>       * <code>docstore.dat</code>: Lưu payload nội dung tin nhắn gốc.<br>    4. <strong><code>terms.dict</code> & <code>postings.bin</code> (Disk Segments Bất Biến):</strong><br>       * <code>terms.dict</code>: Từ điển các term sắp xếp A-Z để tra cứu nhị phân <span class="math">O(\log M)</span>.<br>       * <code>postings.bin</code>: Danh sách DocID & TF để Pure Go BM25 Ranker tính điểm.<br>    5. <strong><code>tombstone.del</code> (Bitmap Soft Delete):</strong> Xóa mềm bằng mảng bit, các luồng đọc song song không bị lock (Lock-free).<br>  * <strong>Bảng so sánh tài nguyên:</strong> Cần Java JVM, ngốn <strong>~1.200MB RAM</strong>, chạy Docker (ES) vs <strong>Zero-Dependency, 15MB RAM</strong>, 1 file thực thi duy nhất (Go Engine).</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Có thể anh sẽ tự hỏi: <strong>Tại sao đã có Elasticsearch rất mạnh rồi mà em vẫn dày công tự làm Động cơ nhị phân thuần Go?</strong>
+<code><span class="stage-cue">🎬 Chỉ tay vào sơ đồ đối chiếu 2 nửa màn hình</span></code>  
+Bức tranh so sánh trên màn hình sẽ trả lời câu hỏi đó qua việc đối chiếu trực diện từng thành phần nội tại của 2 thế giới lưu trữ:
+* <strong>Ở nửa bên trái - Elasticsearch 8.11:</strong>
+Đây là cỗ máy tìm kiếm phân tán tiêu chuẩn công nghiệp với 5 khối chức năng phối hợp rất chặt chẽ:
+* <code>[Chỉ vào RAM Buffer & Translog]</code> Đầu tiên, tin nhắn mới gửi vào được gom trong <strong>RAM Indexing Buffer</strong> trên bộ nhớ JVM, đồng thời ghi ngay vào tệp nhật ký <strong>Translog</strong> để chống mất điện.
+* <code>[Chỉ vào Lucene Segments]</code> Cứ mỗi 1 giây (chu kỳ refresh), dữ liệu từ RAM được kết xuất thành các khối <strong>Lucene Segments bất biến</strong> trên đĩa. Trong đó, tệp <code>.tim</code> lưu từ điển từ khóa dạng cây FST; tệp <code>.doc</code> lưu danh sách Posting để tính điểm BM25; và tệp <code>.fdt</code> nén dữ liệu gốc bằng thuật toán LZ4.
+* <code>[Chỉ vào Merge Policy & Docker Volume]</code> Các Segment nhỏ sẽ được tiến trình <strong>Merge Policy</strong> chạy ngầm liên tục gộp lại thành Segment lớn và lưu bền vững xuống <strong>Docker Storage Volume</strong>. Cỗ máy này cực kỳ mạnh mẽ cho hệ thống lớn, nhưng nhược điểm cố hữu là chạy trên nền Java JVM cồng kềnh, ngốn tới hơn <strong>1.2 GB RAM</strong> và phụ thuộc vào Docker.
+* <code><span class="stage-cue">🎬 Chỉ tay sang nửa bên phải - Nhấn giọng tự hào</span></code>  
+* <strong>Ở nửa bên phải - Custom Go Storage Engine do em tự viết:</strong>
+Em đã tái tạo lại toàn bộ tinh hoa kiến trúc đó nhưng dưới dạng mã Go thuần siêu nhẹ và tối ưu riêng cho ứng dụng chat:
+* Thay vì phải đợi chu kỳ refresh 1 giây, em dùng <strong><code>MemTable</code></strong> trên RAM để tin nhắn vừa gửi xong là tìm thấy ngay tức thì 0 giây.
+* Thay vì Translog Java cồng kềnh, em dùng tệp <strong><code>wal.log</code></strong> tuần tự kèm mã băm <strong>CRC32 IEEE</strong>, đảm bảo an toàn dữ liệu 100% khi sập nguồn.
+* Thay vì Stored Fields LZ4 nén phức tạp, em tự thiết kế <strong><code>docstore.idx</code></strong> với bản ghi con trỏ cố định <strong>đúng 12 bytes</strong>. Muốn đọc tin nào, con trỏ hệ điều hành chỉ việc nhảy thẳng tới mốc byte bằng một phép nhân duy nhất <span class="math">\text{Offset} = \text{DocID} \times 12</span> đạt tốc độ <strong><span class="math">O(1)</span> tuyệt đối</strong>.
+<em> Và thay vì Lucene Segments nặng nề, em dùng cặp tệp nhị phân <strong><code>terms.dict</code></strong> sắp xếp A-Z để tra cứu nhị phân <span class="math">O(\log M)</span> và <strong><code>postings.bin</code></strong> để chấm điểm Pure Go BM25!</em>
+<em>Toàn bộ động cơ Go này chỉ gói gọn trong một file thực thi duy nhất, <strong>không phụ thuộc bất kỳ thư viện bên ngoài nào</strong>, chỉ tốn <strong>15MB RAM</strong> và cho tốc độ tìm kiếm kỷ lục chỉ <strong>3 mili-giây</strong>!"</em> <code><span class="stage-cue">🎬 Chuyển Slide 13</span></code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="slide-13">
+      <div class="card-header">
+        <span class="card-badge">Slide 13</span>
+        <div class="card-title">SLIDE 13: TỔNG KẾT: NHỮNG CON SỐ BIẾT NÓI & LỜI KẾT</div>
+      </div>
+      <div class="card-body">
+        <div class="meta-box">
+          <div class="meta-row">
+            <span class="meta-label">🖼️ Hình ảnh hiển thị:</span>
+            <span class="bullets-content"><code>image/benchmark_ir_comparison.jpg</code> (Biểu đồ 4 chỉ số vàng: MRR, NDCG@10, P@1, Latency).</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">📝 Điểm chính trên slide:</span>
+            <div class="bullets-content">* <strong>Thực nghiệm đo đạc khoa học trên 131 tin nhắn chat thực tế:</strong><br>    * 🎯 <strong>Precision@1 (Độ chuẩn xác Top 1):</strong> Đạt <strong>75.0%</strong> (🚀 Tăng vọt <strong>+28.6%</strong> so với Baseline 58.3%).<br>    * 📈 <strong>MRR (Mean Reciprocal Rank):</strong> Đạt <strong>0.7708</strong> (🚀 Tăng <strong>+23.3%</strong>).<br>    * 🥇 <strong>NDCG@10 (Chất lượng xếp hạng):</strong> Chạm mức tối ưu <strong>0.9472</strong> (🚀 Tăng <strong>+15.3%</strong>).<br>    * ⚡ <strong>Độ trễ tìm kiếm:</strong> Custom Engine Go đạt kỷ lục <strong>3.0 mili-giây</strong> (nhanh gấp gần 5 lần Elasticsearch 14.2ms).<br>  * <strong>Lời kết:</strong> Dự án đã giải quyết trọn vẹn từ gốc rễ ngôn ngữ học tiếng Việt đến việc tự làm chủ công nghệ lưu trữ cấp thấp siêu tốc.</div>
+          </div>
+        </div>
+
+        <div class="speech-box">
+          <div class="speech-header">🎙️ Lời thoại của em (Nói với anh):</div>
+          <div class="speech-text">
+            <p>*"Kính thưa anh, tính khoa học và hiệu quả của đề tài được khẳng định qua bộ chỉ số chuẩn ngành Thu nhận Thông tin (IR) trên 131 tin nhắn chat thực tế:
+<code>[Chỉ vào từng cột chỉ số trên biểu đồ]</code>  
+* <strong>Độ chuẩn xác Top 1 (Precision@1):</strong> Đạt <strong>75.0%</strong> — tăng vọt <strong>28.6%</strong> so với hệ thống Baseline cũ.
+* <strong>Thứ hạng kết quả đúng (MRR):</strong> Đạt <strong>0.7708</strong> — tăng <strong>23.3%</strong>.
+* <strong>Chất lượng xếp hạng tổng thể (NDCG@10):</strong> Đạt mức gần như lý tưởng <strong>0.9472</strong> — tăng <strong>15.3%</strong>.
+<em> <strong>Đặc biệt về độ trễ:</strong> Động cơ Custom Go đạt mức không tưởng: chỉ <strong>3.0 mili-giây</strong>, nhanh hơn gần 5 lần so với Elasticsearch!</em>
+<em>Dự án của em đã giải quyết trọn vẹn bài toán từ gốc rễ ngôn ngữ học tiếng Việt, tối ưu hóa hai luồng dữ liệu, và chứng minh khả năng tự làm chủ công nghệ lưu trữ cấp thấp. Sau đây, em xin phép được mở màn hình Live Demo trực tiếp hệ thống cho anh xem nhé!"</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="demo-section" style="border-color: #10b981;">
+      <div class="card-header" style="background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);">
+        <span class="card-badge demo">LIVE DEMO</span>
+        <div class="card-title">KỊCH BẢN THỰC CHIẾN 5 PHÚT</div>
+      </div>
+      <div class="card-body">
+        <p style="color:#94a3b8; font-size:13.5px; margin-bottom:14px;">
+          Chuẩn bị trước: Chạy sẵn <code>chat_server.exe</code> và mở trình duyệt tại <code>http://localhost:8080</code>.
+        </p>
+
+        <div style="background:#090d16; border:1px solid #1e293b; border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="color:#34d399; font-weight:700; font-size:15px; margin-bottom:8px;">🎬 MÀN 1: TỔNG QUAN GIAO DIỆN & TÍNH NĂNG CHAT REALTIME (0:00 - 0:45)</div>
+          <div style="font-size:13.5px; color:#cbd5e1; margin-bottom:10px;">
+            <strong style="color:#38bdf8;">👉 Thao tác:</strong> Di chuột quanh màn hình giới thiệu cấu trúc 3 cột của giao diện Messenger Dark Mode.
+          </div>
+          <div class="speech-box" style="margin-top:8px; border-left-color:#34d399;">
+            <div class="speech-header" style="color:#34d399;">🎙️ Em nói:</div>
+            <div class="speech-text"><p>*"Em mời anh xem giao diện thực tế của ứng dụng Web Messenger mà em đã xây dựng. Màn hình được thiết kế theo phong cách Dark Mode hiện đại của Facebook Messenger, chia làm 3 khu vực:
+* Bên trái là danh sách các hội thoại chat nhóm.
+* Ở giữa là khung chat thời gian thực với các bong bóng tin nhắn gradient.
+<em> Và bên phải là bảng điều khiển kỹ thuật với 2 chế độ: <strong>Flow Inspector</strong> để soi luồng bóc tách dữ liệu, và tab <strong>Compare 3 Engines</strong> để so sánh trực diện 3 động cơ tìm kiếm anh nhé."</em></p></div>
+          </div>
+        </div>
+
+        <div style="background:#090d16; border:1px solid #1e293b; border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="color:#34d399; font-weight:700; font-size:15px; margin-bottom:8px;">🎬 MÀN 2: DEMO LUỒNG GHI & FLOW INSPECTOR SOI TOKEN (0:45 - 1:45)</div>
+          <div style="font-size:13.5px; color:#cbd5e1; margin-bottom:10px;">
+            <strong style="color:#38bdf8;">👉 Thao tác:</strong> 1. Chọn tab <strong>Flow Inspector</strong> ở cột bên phải.<br>  2. Tại khung chat giữa, gõ tin nhắn: <code>Học sinh lớp 12 thích uống cà phê sữa đá</code><br>  3. Bấm <strong>Enter</strong> để gửi.<br>  4. Chỉ chuột sang cột Flow Inspector xem kết quả bóc tách vừa cập nhật tức thì.
+          </div>
+          <div class="speech-box" style="margin-top:8px; border-left-color:#34d399;">
+            <div class="speech-header" style="color:#34d399;">🎙️ Em nói:</div>
+            <div class="speech-text"><p>*"Bây giờ, em xin phép gửi một tin nhắn mới: 'Học sinh lớp 12 thích uống cà phê sữa đá'.  
+<code><span class="stage-cue">🎬 Bấm Enter</span></code>  
+> Anh quan sát thanh Flow Inspector bên phải vừa cập nhật tức thì này:
+* <strong>Mục 1 (Tokenized):</strong> Cốc Cốc Tokenizer đã dán chặt các từ ghép lại thành <code>học_sinh</code>, <code>cà_phê</code>, <code>sữa_đá</code>.
+* <strong>Mục 2 (Unaccented):</strong> Hệ thống tự động sinh chuỗi không dấu <code>hoc_sinh</code>, <code>ca_phe</code>, <code>sua_da</code>.
+<em> <strong>Mục 3 (Edge N-gram):</strong> Hàng loạt lát cắt tiền tố như <code>học</code>, <code>học_s</code>, <code>cà</code>, <code>cà_p</code> đã được sinh ra và ghi đồng thời vào cả Elasticsearch lẫn Custom Go Engine. Toàn bộ quá trình nạp dữ liệu hoàn tất trong <strong>chưa đầy 2 mili-giây</strong> anh ạ!"</em></p></div>
+          </div>
+        </div>
+
+        <div style="background:#090d16; border:1px solid #1e293b; border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="color:#34d399; font-weight:700; font-size:15px; margin-bottom:8px;">🎬 MÀN 3: DEMO "BẪY TỪ GHÉP" VÀ ĐỐI SOÁT 3 CHIỀU (1:45 - 3:00) — ⭐ *CAO TRÀO*</div>
+          <div style="font-size:13.5px; color:#cbd5e1; margin-bottom:10px;">
+            <strong style="color:#38bdf8;">👉 Thao tác:</strong> 1. Chuyển cột bên phải sang tab <strong>Compare (Bảng Đối Soát 3 Động Cơ)</strong>.<br>  2. Bấm vào thanh tìm kiếm ở góc trên, gõ: <code>học sinh</code><br>  3. Nhấn Tìm kiếm để 3 cột màu Đỏ - Xanh - Tím xuất hiện.
+          </div>
+          <div class="speech-box" style="margin-top:8px; border-left-color:#34d399;">
+            <div class="speech-header" style="color:#34d399;">🎙️ Em nói:</div>
+            <div class="speech-text"><p>*"Bây giờ là phần kiểm chứng quan trọng nhất: Chúng ta sẽ đi tìm từ khóa <strong>'học sinh'</strong>.  
+<code>[Chỉ con trỏ vào Cột 1 màu Đỏ - Baseline]</code>  
+Anh nhìn vào Cột màu đỏ của hệ thống Baseline dùng bộ tách từ chuẩn phương Tây: Kết quả bị dính đầy các tin nhắn rác như: 'chúc mừng <strong>sinh</strong> nhật', 'đón tân <strong>sinh</strong> viên'... Đây chính là 'Cái bẫy từ ghép' làm loãng hoàn toàn thông tin người dùng cần tìm!
+> <code>[Chỉ con trỏ sang Cột 2 màu Xanh lá - Cốc Cốc ES]</code>  
+Nhưng nhìn sang Cột màu xanh của Cốc Cốc Elasticsearch: 100% tin nhắn rác đã bị lọc sạch! Hệ thống chỉ giữ lại đúng những tin nhắn nói về 'học sinh', với điểm số BM25 được nhân hệ số Boosting <span class="math">\times 5.0</span>, xếp trang trọng ở Top 1.
+> <code>[Chỉ con trỏ sang Cột 3 màu Tím - Custom Go Engine]</code>  
+Và đặc biệt, anh nhìn sang Cột màu tím của Động cơ nhị phân Custom Go do em tự viết: Kết quả trả về chuẩn xác tương đương, nhưng độ trễ tìm kiếm chỉ là <strong>2.8 mili-giây</strong> — nhanh hơn gần 5 lần so với Elasticsearch chạy trên Docker anh nhé!"*</p></div>
+          </div>
+        </div>
+
+        <div style="background:#090d16; border:1px solid #1e293b; border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="color:#34d399; font-weight:700; font-size:15px; margin-bottom:8px;">🎬 MÀN 4: DEMO TÌM KHÔNG DẤU & SỬA LỖI ĐẢO NGƯỢC ĐIỂM KHI GÕ DỞ (3:00 - 4:15)</div>
+          <div style="font-size:13.5px; color:#cbd5e1; margin-bottom:10px;">
+            <strong style="color:#38bdf8;">👉 Thao tác:</strong> 1. Gõ từ khóa không dấu: <code>uong ca phe</code> <span class="math">\rightarrow</span> Chỉ vào kết quả chuẩn xác.<br>  2. Xóa và gõ dở từng chữ từ từ: <code>h</code> <span class="math">\rightarrow</span> <code>học</code> <span class="math">\rightarrow</span> <code>học s</code> <span class="math">\rightarrow</span> <code>học sin</code><br>  3. Dừng ở chữ <code>học sin</code>, chỉ vào điểm số Top 1 đạt <code>93.91</code>.
+          </div>
+          <div class="speech-box" style="margin-top:8px; border-left-color:#34d399;">
+            <div class="speech-header" style="color:#34d399;">🎙️ Em nói:</div>
+            <div class="speech-text"><p>*"Tiếp theo, em gõ thử một từ khóa hoàn toàn không có dấu: <code>uong ca phe</code>.  
+Như anh thấy, nhờ trường <code>content_unaccented</code> với hệ số Boost 3.0x, hệ thống vẫn bắt trúng đích tin nhắn có dấu ban đầu.
+> Bây giờ, em biểu diễn bài toán gõ dở từng ký tự: <code>h</code>... <code>học</code>... <code>học s</code>... <code>học sin</code>.  
+<code>[Chỉ vào điểm số 93.91]</code>  
+Ở các hệ thống thông thường, khi mới gõ đến 'học sin', tin nhắn chỉ chứa từ 'học' sẽ leo lên đầu do dính toán tử OR. Nhưng tại đây, nhờ giải pháp ép toán tử AND và nâng hệ số Boost 10.0x cho tiền tố từ ghép, tin nhắn chứa 'học sinh' vẫn giữ vững vị trí Top 1 với điểm số áp đảo <strong>93.91 điểm</strong>!"*</p></div>
+          </div>
+        </div>
+
+        <div style="background:#090d16; border:1px solid #1e293b; border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="color:#34d399; font-weight:700; font-size:15px; margin-bottom:8px;">🎬 MÀN 5: DEMO TRẢI NGHIỆM ĐIỀU HƯỚNG TƯƠNG TÁC (4:15 - 5:00)</div>
+          <div style="font-size:13.5px; color:#cbd5e1; margin-bottom:10px;">
+            <strong style="color:#38bdf8;">👉 Thao tác:</strong> Nhấp chuột vào một tin nhắn trong bảng kết quả <span class="math">\rightarrow</span> Quan sát khung chat cuộn mượt (Smooth Scroll) và bong bóng chat chớp sáng (Pulse Highlight).
+          </div>
+          <div class="speech-box" style="margin-top:8px; border-left-color:#34d399;">
+            <div class="speech-header" style="color:#34d399;">🎙️ Em nói:</div>
+            <div class="speech-text"><p>*"Cuối cùng là trải nghiệm liền mạch dành cho người dùng: Khi em bấm vào bất kỳ kết quả nào trong bảng đối soát...  
+<code><span class="stage-cue">🎬 Bấm chuột vào 1 kết quả</span></code>  
+Khung chat trung tâm sẽ tự động cuộn mượt mà đến đúng vị trí tin nhắn đó trong quá khứ, đồng thời bong bóng chat sẽ nhấp nháy phát sáng để người dùng nắm bắt ngay ngữ cảnh của cuộc trò chuyện mà không mất công tìm kiếm bằng mắt.
+> Toàn bộ hệ thống — từ thuật toán ngôn ngữ học, kiến trúc lưu trữ nhị phân, đến trải nghiệm người dùng cuối — đã phối hợp nhịp nhàng và chứng minh tính ứng dụng thực tiễn vượt trội.
+> Em xin kết thúc phần trình bày và demo tại đây. Em rất mong nhận được những câu hỏi và đóng góp quý báu từ anh ạ!"*</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-btn" onclick="prevSlide()">◀ Slide Trước</button>
+    <button class="nav-btn" onclick="nextSlide()" style="background:#0284c7;">Slide Tiếp ▶</button>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 13;
+    let fontSizes = ['', 'size-lg', 'size-xl'];
+    let fontIndex = 0;
+
+    function changeFontSize(delta) {
+      fontIndex = Math.max(0, Math.min(2, fontIndex + delta));
+      const body = document.getElementById('body');
+      body.classList.remove('size-lg', 'size-xl');
+      if (fontSizes[fontIndex]) {
+        body.classList.add(fontSizes[fontIndex]);
+      }
+    }
+
+    function toggleMode() {
+      // Toggle simplified prompter view
+      const metas = document.querySelectorAll('.meta-box');
+      metas.forEach(m => {
+        m.style.display = m.style.display === 'none' ? 'block' : 'none';
+      });
+    }
+
+    function scrollToSlide(num) {
+      currentSlide = Math.max(1, Math.min(totalSlides, num));
+      const el = document.getElementById('slide-' + currentSlide);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('page-indicator').innerText = 'Slide ' + currentSlide + ' / ' + totalSlides;
+      }
+    }
+
+    function nextSlide() {
+      scrollToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      scrollToSlide(currentSlide - 1);
+    }
+  </script>
+</body>
+</html>

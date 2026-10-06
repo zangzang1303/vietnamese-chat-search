@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bộ Sưu Tập Sơ Đồ Chuẩn Học Thuật - Báo Cáo Thực Tập Tìm Kiếm Tin Nhắn Tiếng Việt</title>
+  <!-- Mermaid.js -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      themeVariables: {
+        fontFamily: 'Segoe UI, -apple-system, sans-serif',
+        fontSize: '14px',
+        primaryColor: '#e0e7ff',
+        primaryBorderColor: '#4338ca',
+        primaryTextColor: '#1e1b4b',
+        lineColor: '#4338ca',
+        secondaryColor: '#f8fafc',
+        tertiaryColor: '#ffffff'
+      }
+    });
+  </script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      margin: 0;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #1e3a8a;
+      border-bottom: 3px solid #3b82f6;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+    }
+    .intro {
+      background-color: #dbeafe;
+      border-left: 5px solid #2563eb;
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+      margin-bottom: 40px;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #1e293b;
+      font-size: 1.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+    .caption {
+      font-weight: bold;
+      color: #1e293b;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .diagram-wrapper {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: auto;
+    }
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      height: 380px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Bộ Sưu Tập Sơ Đồ Chuẩn Học Thuật - Báo Cáo Thực Tập</h1>
+  <div class="intro">
+    <strong>Hướng dẫn:</strong> 
+    Các sơ đồ dưới đây được thiết kế theo đúng chuẩn mô hình hóa khoa học (Software Architecture & Computational Linguistics). Bạn có thể mở trang này trên trình duyệt (Chrome, Edge) để chụp ảnh sắc nét, hoặc sao chép mã nguồn Mermaid từ tệp <code>docs/huong_dan_ve_so_do.md</code> dán trực tiếp vào draw.io.
+  </div>
+
+  <!-- Hình 2.1 -->
+  <div class="card">
+    <h2>Hình 2.1: Sơ đồ vị trí của Phân hệ Thu hồi Tin nhắn trong kiến trúc Nền tảng Nhắn tin</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart TD
+    subgraph Clients["Tầng Ứng Dụng Khách (Client Layer)"]
+        Web["Web Messenger Client (Browser)"]
+        Mobile["Mobile App Client (iOS / Android)"]
+    end
+
+    subgraph Gateway["Tầng Cổng Kết Nối (Gateway Broker)"]
+        ConnGW["Connection Gateway<br>(WebSocket / gRPC Handler)"]
+    end
+
+    subgraph Core["Tầng Nghiệp Vụ Cốt Lõi (Core Messaging Service)"]
+        CoreSvc["Message Core Service"]
+        MainDB[("Primary Database<br>(PostgreSQL / Cassandra)")]
+    end
+
+    subgraph EventBus["Tầng Truyền Dẫn Sự Kiện (Message Broker)"]
+        KafkaQueue{{"Apache Kafka Event Stream"}}
+    end
+
+    subgraph SearchEngine["Phân Hệ Thu Hồi Tin Nhắn Tiếng Việt (Search Subsystem)"]
+        NLP["Tầng Tiền Xử Lý NLP<br>(CGO Cốc Cốc Tokenizer)"]
+        Dispatcher["Bộ Điều Phối Kép<br>(Dual Dispatcher)"]
+        ES["Cụm Elasticsearch 8.11<br>(Multi-field Schema)"]
+        GoStorage["Custom Go Storage Engine<br>(WAL, DocStore O(1), BM25)"]
+    end
+
+    Web <--> ConnGW
+    Mobile <--> ConnGW
+    ConnGW <--> CoreSvc
+    CoreSvc --> MainDB
+    CoreSvc -- "1. Publish Event" --> KafkaQueue
+    KafkaQueue -- "2. Consume Event" --> NLP
+    NLP --> Dispatcher
+    Dispatcher --> ES
+    Dispatcher --> GoStorage
+    ConnGW -. "3. Search Query API" .-> Dispatcher
+      </pre>
+    </div>
+    <div class="caption">Hình 2.1: Sơ đồ vị trí của Phân hệ Thu hồi Tin nhắn trong kiến trúc Nền tảng Nhắn tin quy mô lớn</div>
+  </div>
+
+  <!-- Hình 3.1 -->
+  <div class="card">
+    <h2>Hình 3.1: Minh họa cấu trúc Chỉ mục đảo (Inverted Index) và Danh sách Postings</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart TD
+    subgraph Row1["Thuật ngữ: học_sinh (DF = 2)"]
+        direction LR
+        T1["Từ điển:<br><b>học_sinh</b><br>(DF = 2)"] --> P1_1["DocID: 1<br>TF: 1 | Pos: 0"] --> P1_2["DocID: 5<br>TF: 1 | Pos: 0"]
+    end
+
+    subgraph Row2["Thuật ngữ: cà_phê (DF = 2)"]
+        direction LR
+        T2["Từ điển:<br><b>cà_phê</b><br>(DF = 2)"] --> P2_1["DocID: 2<br>TF: 1 | Pos: 1"] --> P2_2["DocID: 5<br>TF: 1 | Pos: 4"]
+    end
+
+    subgraph Row3["Thuật ngữ: uống (DF = 2)"]
+        direction LR
+        T3["Từ điển:<br><b>uống</b><br>(DF = 2)"] --> P3_1["DocID: 2<br>TF: 1 | Pos: 0"] --> P3_2["DocID: 5<br>TF: 1 | Pos: 3"]
+    end
+
+    Row1 ~~~ Row2 ~~~ Row3
+
+    classDef term fill:#e0e7ff,stroke:#4338ca,stroke-width:1.5px,color:#1e1b4b;
+    classDef post fill:#f0fdf4,stroke:#16a34a,stroke-width:1.5px,color:#14532d;
+    class T1,T2,T3 term;
+    class P1_1,P1_2,P2_1,P2_2,P3_1,P3_2 post;
+      </pre>
+    </div>
+    <div class="caption">Hình 3.1: Minh họa cấu trúc Chỉ mục đảo (Inverted Index) và Danh sách Postings</div>
+  </div>
+
+  <!-- Hình 3.2 -->
+  <div class="card">
+    <h2>Hình 3.2: Đồ thị trạng thái và Ma trận chuyển tiếp trong cấu trúc Double-Array Trie (DAT)</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart LR
+    Root(("Root<br>s=1")):::nodeState
+    H(("s=2<br>'h'")):::nodeState
+    O(("s=3<br>'o'")):::nodeState
+    C(("s=4<br>'c'")):::nodeState
+    Under(("s=5<br>'_'")):::nodeState
+    S(("s=6<br>'s'")):::nodeState
+    I(("s=7<br>'i'")):::nodeState
+    N(("s=8<br>'n'")):::nodeState
+    H2((("s=9<br>'h'<br>Valid Word"))):::nodeValid
+
+    Root -- "BASE[1] + 'h'" --> H
+    H -- "BASE[2] + 'o'" --> O
+    O -- "BASE[3] + 'c'" --> C
+    C -- "BASE[4] + '_'" --> Under
+    Under -- "BASE[5] + 's'" --> S
+    S -- "BASE[6] + 'i'" --> I
+    I -- "BASE[7] + 'n'" --> N
+    N -- "BASE[8] + 'h'" --> H2
+
+    classDef nodeState font-size:36px,font-weight:bold,fill:#eef2ff,stroke:#4338ca,stroke-width:3px;
+    classDef nodeValid font-size:26px,font-weight:bold,fill:#dcfce7,stroke:#15803d,stroke-width:4px;
+      </pre>
+    </div>
+    <div class="caption">Hình 3.2: Đồ thị trạng thái và Ma trận chuyển tiếp trong cấu trúc Double-Array Trie (DAT)</div>
+  </div>
+
+  <!-- Hình 3.3 (CHUẨN LATTICE HỌC THUẬT) -->
+  <div class="card">
+    <h2>Hình 3.3: Đồ thị mạng lưới từ vựng (Word Lattice) và Đường giải mã tối ưu Viterbi HMM</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart LR
+    N0((Node 0<br>Bắt đầu))
+    N1((Node 1<br>sau học))
+    N2((Node 2<br>sau sinh))
+    N3((Node 3<br>sau học))
+    N4((Node 4<br>sau sinh))
+    N5((Node 5<br>sau học))
+
+    %% Các cạnh từ đơn
+    N0 -->|Từ đơn: học<br>Cost = 4.2| N1
+    N1 -->|Từ đơn: sinh<br>Cost = 5.8| N2
+    N2 -->|Từ đơn: học<br>Cost = 2.1| N3
+    N3 -->|Từ đơn: sinh<br>Cost = 5.8| N4
+    N4 -->|Từ đơn: học<br>Cost = 4.2| N5
+
+    %% Các cạnh từ ghép cạnh tranh
+    N1 -->|Từ ghép: sinh_học<br>Cost = 6.4 - Sai| N3
+    N2 -->|Từ ghép: học_sinh<br>Cost = 7.1 - Sai| N4
+
+    %% Đường giải mã Viterbi tối ưu (đậm nét xanh lá)
+    N0 ==>|Từ ghép: học_sinh<br>Cost = 1.5 - Tối ưu| N2
+    N2 ==>|Từ đơn: học<br>Cost = 2.1 - Tối ưu| N3
+    N3 ==>|Từ ghép: sinh_học<br>Cost = 1.6 - Tối ưu| N5
+
+    linkStyle 7 stroke:#16a34a,stroke-width:4px;
+    linkStyle 8 stroke:#16a34a,stroke-width:4px;
+    linkStyle 9 stroke:#16a34a,stroke-width:4px;
+      </pre>
+    </div>
+    <div class="caption">Hình 3.3: Đồ thị mạng lưới từ vựng (Word Lattice) và Đường giải mã tối ưu Viterbi HMM cho câu "học sinh học sinh học"</div>
+  </div>
+
+  <!-- Hình 3.4 -->
+  <div class="card">
+    <h2>Hình 3.4: Kiến trúc lưu trữ Log-Structured Merge-Tree (LSM-Tree) và chu trình chuyển tiếp</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart TD
+    subgraph WritePath["Luồng Ghi Dữ Liệu Tuần Tự (Write Path)"]
+        Msg["Bản ghi tin nhắn mới"]
+        WAL[("Write-Ahead Log (wal.log)<br>Ghi tuần tự + CRC32 IEEE")]
+        MemTable["Bộ nhớ đệm RAM (MemTable Inverted Index)<br>Tra cứu tức thời trong bộ nhớ"]
+    end
+
+    subgraph DiskSegments["Tầng Lưu Trữ Bất Biến Trên Đĩa (Immutable Segments)"]
+        Seg1["Segment 1 (Read-Only)<br>terms.dict + postings.bin"]
+        Seg2["Segment 2 (Read-Only)<br>terms.dict + postings.bin"]
+        Tombstone[("Tệp Tombstone (tombstone.del)<br>Đánh dấu xóa mềm DocID")]
+    end
+
+    subgraph Background["Tiến Trình Chạy Ngầm (Compaction)"]
+        Merge["Compaction Worker<br>Hợp nhất đa Segment và dọn Tombstone"]
+    end
+
+    Msg --> WAL
+    Msg --> MemTable
+    MemTable -- "Flush khi đầy RAM" --> Seg1
+    MemTable -- "Flush định kỳ" --> Seg2
+    DiskSegments --> Merge
+    Tombstone -.-> Merge
+      </pre>
+    </div>
+    <div class="caption">Hình 3.4: Kiến trúc lưu trữ Log-Structured Merge-Tree (LSM-Tree) và chu trình chuyển tiếp dữ liệu</div>
+  </div>
+
+  <!-- Hình 4.1 -->
+  <div class="card">
+    <h2>Hình 4.1: Bản đồ kiến trúc hệ thống tổng thể 3 tầng</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart TD
+    subgraph Layer1["TẦNG 1: CLIENT WEB MESSENGER UI"]
+        UI_Chat["Khung Chat Thời Gian Thực (Messenger Dark Mode)"]
+        UI_Inspect["Thanh Flow Inspector (Soi Token CGO)"]
+        UI_Compare["Bảng Đối Soát 3 Động Cơ Song Song"]
+    end
+
+    subgraph Layer2["TẦNG 2: GOLANG REALTIME SERVER CORE (:8080)"]
+        API["REST API Router / Gateway"]
+        CGO["CGO Wrapper (coccoc_bridge.cpp)"]
+        Norm["Normalizer (Asciifolding & Edge N-gram)"]
+        Dispatcher["Dual Storage Write & Search Dispatcher"]
+    end
+
+    subgraph Layer3A["TẦNG 3A: ELASTICSEARCH 8.11"]
+        ES_Mapping["Multi-field Mapping (tokenized, unaccented, partial)"]
+        ES_Engine["Lucene Inverted Index & Okapi BM25 4-Tier Boosting"]
+    end
+
+    subgraph Layer3B["TẦNG 3B: CUSTOM GO STORAGE ENGINE"]
+        Go_WAL[("wal.log (Append-only CRC32)")]
+        Go_DocStore[("docstore.idx (12B) & docstore.dat O(1)")]
+        Go_Index[("terms.dict & postings.bin Segments")]
+        Go_Ranker["Pure Go BM25 Ranker (~3ms)"]
+    end
+
+    Layer1 <--> API
+    API --> CGO
+    CGO --> Norm
+    Norm --> Dispatcher
+    Dispatcher --> Layer3A
+    Dispatcher --> Layer3B
+      </pre>
+    </div>
+    <div class="caption">Hình 4.1: Bản đồ kiến trúc hệ thống tổng thể 3 tầng</div>
+  </div>
+
+  <!-- Hình 4.2 -->
+  <div class="card">
+    <h2>Hình 4.2: Sơ đồ tuần tự Luồng Đánh chỉ mục (Indexing Pipeline) và cơ chế Dual-Write Dispatcher</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor User as Người dùng gửi tin
+    participant API as Go Ingestion Server
+    participant CGO as CGO C++ Tokenizer
+    participant Norm as Normalizer Pipeline
+    participant ES as Elasticsearch 8.11
+    participant GoStore as Custom Go Storage
+
+    User->>API: POST /api/messages {"content": "Học sinh uống cà phê"}
+    activate API
+    API->>CGO: Tokenize(text) qua C++ Viterbi HMM
+    activate CGO
+    CGO-->>API: ["học_sinh", "uống", "cà_phê"]
+    deactivate CGO
+
+    API->>Norm: Gọt dấu asciifolding & sinh Edge N-grams
+    activate Norm
+    Norm-->>API: Document 3 trường đa tầng hoàn chỉnh
+    deactivate Norm
+
+    par Ghi đồng thời sang Elasticsearch
+        API->>ES: Gửi Bulk NDJSON Index Request
+        activate ES
+        ES->>ES: Ghi Translog & nạp Memory Buffer
+        ES-->>API: 201 Created
+        deactivate ES
+    and Ghi đồng thời sang Custom Go Engine
+        API->>GoStore: AppendWrite(doc)
+        activate GoStore
+        GoStore->>GoStore: Ghi wal.log (CRC32) + cập nhật docstore.idx (12B)
+        GoStore->>GoStore: Đưa vào MemTable RAM
+        GoStore-->>API: Ghi đĩa thành công
+        deactivate GoStore
+    end
+
+    API-->>User: 201 Created (Thời gian xử lý: 1.78ms)
+    deactivate API
+      </pre>
+    </div>
+    <div class="caption">Hình 4.2: Sơ đồ tuần tự Luồng Đánh chỉ mục (Indexing Pipeline) và cơ chế Dual-Write Dispatcher</div>
+  </div>
+
+  <!-- Hình 4.3 -->
+  <div class="card">
+    <h2>Hình 4.3: Sơ đồ tuần tự Luồng Truy vấn và cơ chế Boosting 4 tầng điểm số</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor User as Người dùng tìm kiếm
+    participant API as Go Search Service
+    participant CGO as CGO Query Analyzer
+    participant ES as Cụm Elasticsearch 8.11
+    participant GoEng as Custom Go Engine
+
+    User->>API: GET /api/search?q=hoc sinh
+    activate API
+    API->>CGO: Chuẩn hóa & bóc tách từ ghép truy vấn
+    CGO-->>API: Term: "học_sinh", Unaccented: "hoc_sinh"
+
+    par Tìm kiếm song song trên Elasticsearch
+        API->>ES: Bool Query Boosting 4 Tầng
+        activate ES
+        Note over ES: Boost 5.0x: content_tokenized<br>Boost 4.0x: match_phrase<br>Boost 3.0x: content_unaccented<br>Boost 10.0x: content_partial AND
+        ES->>ES: Lucene BM25 Ranking + Highlight
+        ES-->>API: Top 10 kết quả chuẩn (~14.2ms)
+        deactivate ES
+    and Tìm kiếm song song trên Custom Go Engine
+        API->>GoEng: Pure Go Search (hoc sinh)
+        activate GoEng
+        GoEng->>GoEng: Binary Search terms.dict O(log V)
+        GoEng->>GoEng: Đọc postings.bin + Chấm điểm BM25
+        GoEng->>GoEng: Truy xuất DocStore O(1) qua con trỏ 12B
+        GoEng-->>API: Top 10 kết quả chuẩn (~3.0ms)
+        deactivate GoEng
+    end
+
+    API->>API: sync.WaitGroup tổng hợp kết quả 3 bên
+    API-->>User: Bảng đối soát 3 cột song song
+    deactivate API
+      </pre>
+    </div>
+    <div class="caption">Hình 4.3: Sơ đồ tuần tự Luồng Truy vấn và cơ chế Boosting 4 tầng điểm số</div>
+  </div>
+
+  <!-- Hình 4.4 -->
+  <div class="card">
+    <h2>Hình 4.4: Sơ đồ cấu trúc nhị phân và quan hệ con trỏ giữa docstore.idx và docstore.dat</h2>
+    <div class="diagram-wrapper">
+      <pre class="mermaid">
+flowchart LR
+    subgraph DocStoreIdx["Tệp docstore.idx (Mỗi bản ghi cố định đúng 12 bytes)"]
+        I0["DocID 0: [Offset: 0B, Len: 120B]"]
+        I1["DocID 1: [Offset: 120B, Len: 185B]"]
+        IK["DocID k: [Offset: 48,210B, Len: 140B]"]
+    end
+
+    subgraph DocStoreDat["Tệp docstore.dat (Kho dữ liệu toàn văn)"]
+        D0["Vị trí byte 0: [ID=0, Sender, Content]"]
+        D1["Vị trí byte 120: [ID=1, Sender, Content]"]
+        DK["Vị trí byte 48,210: [ID=k, Sender, Content]"]
+    end
+
+    I0 -- "ByteOffset = 0" --> D0
+    I1 -- "ByteOffset = 120" --> D1
+    IK -- "ByteOffset = 48,210 (Nhảy Seek O(1))" --> DK
+      </pre>
+    </div>
+    <div class="caption">Hình 4.4: Sơ đồ cấu trúc nhị phân và quan hệ con trỏ giữa docstore.idx và docstore.dat</div>
+  </div>
+
+  <!-- Hình 5.1: Biểu đồ Benchmark IR -->
+  <div class="card">
+    <h2>Hình 5.1: Biểu đồ cột so sánh các chỉ số chất lượng tìm kiếm (Benchmark IR)</h2>
+    <div class="chart-container">
+      <canvas id="chartBenchmark"></canvas>
+    </div>
+    <div class="caption">Hình 5.1: Biểu đồ cột so sánh các chỉ số chất lượng tìm kiếm MRR, NDCG@10, P@1, P@5</div>
+  </div>
+
+  <!-- Hình 5.2: Biểu đồ Tài nguyên & Độ trễ -->
+  <div class="card">
+    <h2>Hình 5.2: Biểu đồ so sánh mức tiêu thụ bộ nhớ RAM và độ trễ truy vấn</h2>
+    <div class="chart-container">
+      <canvas id="chartResource"></canvas>
+    </div>
+    <div class="caption">Hình 5.2: Biểu đồ so sánh mức tiêu thụ bộ nhớ RAM và độ trễ truy vấn giữa các động cơ</div>
+  </div>
+
+</div>
+
+<script>
+  // Chart 5.1: Benchmark IR Comparison
+  const ctxBench = document.getElementById('chartBenchmark').getContext('2d');
+  new Chart(ctxBench, {
+    type: 'bar',
+    data: {
+      labels: ['MRR (Độ chính xác Top 1)', 'NDCG@10 (Chất lượng xếp hạng)', 'Precision@1 (%)', 'Precision@5 (%)'],
+      datasets: [
+        {
+          label: 'Baseline (Standard Analyzer)',
+          data: [0.625, 0.970, 58.3, 43.3],
+          backgroundColor: 'rgba(239, 68, 68, 0.85)',
+          borderColor: 'rgb(220, 38, 38)',
+          borderWidth: 1
+        },
+        {
+          label: 'Cốc Cốc Tokenizer + Multi-field Boosting',
+          data: [0.771, 0.947, 75.0, 56.7],
+          backgroundColor: 'rgba(34, 197, 94, 0.85)',
+          borderColor: 'rgb(22, 163, 74)',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Giá trị chỉ số đo đạc' }
+        }
+      },
+      plugins: {
+        legend: { position: 'top' },
+        title: {
+          display: true,
+          text: 'So sánh hiệu năng giữa hệ thống Baseline và Giải pháp đề xuất'
+        }
+      }
+    }
+  });
+
+  // Chart 5.2: Resources & Latency
+  const ctxRes = document.getElementById('chartResource').getContext('2d');
+  new Chart(ctxRes, {
+    type: 'bar',
+    data: {
+      labels: ['Bộ nhớ RAM tiêu thụ (MB)', 'Độ trễ trung bình Latency (ms)'],
+      datasets: [
+        {
+          label: 'Elasticsearch 8.11 (Doanh nghiệp)',
+          data: [1200, 14.2],
+          backgroundColor: 'rgba(59, 130, 246, 0.85)',
+          borderColor: 'rgb(37, 99, 235)',
+          borderWidth: 1
+        },
+        {
+          label: 'Custom Go Storage Engine (Tự phát triển)',
+          data: [15, 3.0],
+          backgroundColor: 'rgba(168, 85, 247, 0.85)',
+          borderColor: 'rgb(147, 51, 234)',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          type: 'logarithmic',
+          title: { display: true, text: 'Thang đo Logarit (MB hoặc ms)' }
+        }
+      },
+      plugins: {
+        legend: { position: 'top' },
+        title: {
+          display: true,
+          text: 'So sánh mức tiêu thụ tài nguyên phần cứng và độ trễ xử lý'
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+ARG OS_VERSION=2.19.0
+ARG VI_PLUGIN_REF=master
+
+# ── Stage 1: coccoc-tokenizer (native lib + dictionaries) ────────────
+FROM amazonlinux:2023 AS coccoc-builder
+RUN dnf install -y gcc gcc-c++ make cmake git java-11-amazon-corretto-devel pkgconf-pkg-config which \
+    && dnf clean all
+ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
+WORKDIR /tmp
+RUN git clone --depth 1 https://github.com/duydo/coccoc-tokenizer.git \
+    && mkdir coccoc-tokenizer/build
+WORKDIR /tmp/coccoc-tokenizer/build
+RUN cmake -DBUILD_JAVA=1 .. && make install
+
+# ── Stage 2: the opensearch-analysis-vietnamese plugin zip ───────────
+FROM maven:3.9-eclipse-temurin-11 AS plugin-builder
+ARG OS_VERSION
+ARG VI_PLUGIN_REF
+WORKDIR /build
+RUN git clone --depth 1 --branch "${VI_PLUGIN_REF}" \
+    https://github.com/duydo/opensearch-analysis-vietnamese.git .
+RUN mvn --batch-mode -e -Dmaven.test.skip -Dopensearch.version="${OS_VERSION}" package \
+    && cp target/releases/*.zip /vi-plugin.zip
+
+# ── Stage 3: runtime ─────────────────────────────────────────────────
+FROM opensearchproject/opensearch:${OS_VERSION}
+ARG COCCOC_DICT_PATH=/usr/local/share/tokenizer/dicts
+USER root
+COPY benchmarks/analysis-icu-2.19.0.zip /tmp/analysis-icu.zip
+RUN opensearch-plugin install --batch file:///tmp/analysis-icu.zip && rm /tmp/analysis-icu.zip
+COPY --from=coccoc-builder /usr/local/lib/libcoccoc_tokenizer_jni.so /usr/lib/
+COPY --from=coccoc-builder $COCCOC_DICT_PATH $COCCOC_DICT_PATH
+COPY --from=plugin-builder /vi-plugin.zip /tmp/vi-plugin.zip
+RUN opensearch-plugin install --batch file:///tmp/vi-plugin.zip
+USER opensearch

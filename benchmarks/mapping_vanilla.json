@@ -1,0 +1,107 @@
+{
+  "settings": {
+    "index": {
+      "refresh_interval": "-1",
+      "number_of_shards": "4",
+      "number_of_replicas": "0",
+      "sort": {
+        "field": "id",
+        "order": "desc"
+      },
+      "analysis": {
+        "filter": {
+          "custom_edge_ngram": {
+            "type": "edge_ngram",
+            "min_gram": "3",
+            "max_gram": "10"
+          }
+        },
+        "analyzer": {
+          "edge_analyzer": {
+            "filter": [
+              "lowercase",
+              "custom_edge_ngram",
+              "icu_folding"
+            ],
+            "char_filter": [
+              "html_strip"
+            ],
+            "type": "custom",
+            "tokenizer": "standard"
+          },
+          "default": {
+            "filter": [
+              "lowercase",
+              "icu_folding"
+            ],
+            "type": "custom",
+            "tokenizer": "standard"
+          },
+          "vn_analyzer": {
+            "filter": [
+              "lowercase"
+            ],
+            "char_filter": [
+              "html_strip"
+            ],
+            "type": "custom",
+            "tokenizer": "standard"
+          },
+          "icu_analyzer": {
+            "filter": [
+              "lowercase",
+              "icu_folding"
+            ],
+            "char_filter": [
+              "html_strip"
+            ],
+            "type": "custom",
+            "tokenizer": "standard"
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "app_id": {
+        "type": "keyword"
+      },
+      "create_at": {
+        "type": "long",
+        "index": false
+      },
+      "hide": {
+        "type": "keyword"
+      },
+      "id": {
+        "type": "long"
+      },
+      "tenant": {
+        "type": "keyword"
+      },
+      "text": {
+        "type": "text"
+      },
+      "text_edge": {
+        "type": "text",
+        "analyzer": "edge_analyzer",
+        "search_analyzer": "default"
+      },
+      "text_raw": {
+        "type": "text",
+        "analyzer": "icu_analyzer"
+      },
+      "text_vi": {
+        "type": "text",
+        "analyzer": "vn_analyzer"
+      },
+      "thread_id": {
+        "type": "keyword"
+      },
+      "user_id": {
+        "type": "keyword"
+      }
+    }
+  }
+}
