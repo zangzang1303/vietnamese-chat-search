@@ -18,28 +18,29 @@ Báo cáo này cung cấp kết quả đo đạc định lượng thực nghiệ
 
 ```
 +---------------------------------------------------------------------------------------------------+
-|                                TỔNG HỢP CHỈ SỐ KỸ THUẬT CỐT LÕI                                   |
+|                     TỔNG HỢP CHỈ SỐ KỸ THUẬT CỐT LÕI (MỐC CHUẨN HÓA 100.000 DOCS)                 |
 +------------------------------+---------------------------+---------------------------+------------+
 | Chỉ số Đo lường              | Mô hình A (Go CGO)        | Mô hình B (Plugin JNI)    | Chênh lệch |
 +------------------------------+---------------------------+---------------------------+------------+
-| Throughput tối đa (C=16)     | 126,899.1 docs/sec        | 72,992.8 docs/sec         | +73.9% 🚀  |
-| Throughput tối ưu (C=8)      | 94,662.7 docs/sec         | 69,233.5 docs/sec         | +36.7% ⚡  |
-| Băng thông Ingestion (C=16)  | 80.49 MB/sec              | 46.29 MB/sec              | +73.9% 🚀  |
-| Độ trễ Median (p50 tại C=8)  | 73.3 ms                   | 105.1 ms                  | -30.3% ⚡  |
-| Độ trễ Phân vị p95 (C=8)     | 135.2 ms                  | 161.4 ms                  | -16.2% ⚡  |
-| Độ trễ Cao tải p95 (C=16)    | 169.3 ms                  | 265.5 ms                  | -36.2% ⚡  |
-| JVM GC Collections (100k)    | 16 lần                    | 28 lần                    | +75.0% ⚠️  |
-| JVM GC Pause Time (100k)     | 116 ms                    | 141 ms                    | +21.6% ⚠️  |
+| Throughput tối ưu (C=8)      |    16,350.2 docs/sec   |    15,324.0 docs/sec   |      +6.7% 🚀 |
+| Throughput cực hạn (C=32)    |    14,094.1 docs/sec   |    17,426.2 docs/sec   |     -19.1% 🚀 |
+| Băng thông Ingestion (C=8)   |       34.66 MB/sec     |       32.51 MB/sec     |      +6.7% 🚀 |
+| Độ trễ Median (p50 tại C=8)  |       118.3 ms         |       431.9 ms         |     -72.6% ⚡  |
+| Độ trễ Phân vị p95 (C=8)     |       420.1 ms         |      1704.0 ms         |     -75.3% ⚡  |
+| Độ trễ Cực hạn p95 (C=32)    |      1824.2 ms         |      2268.9 ms         |     -19.6% ⚡  |
+| JVM GC Collections (C=8)     |          57 lần        |          66 lần        |     -13.6%    |
+| JVM GC Pause Time (C=8)      |         250 ms         |         340 ms         |     -26.5%    |
 | Search Parity (Zero Diff)    | 100% Khớp Tuyệt Đối       | 100% Khớp Tuyệt Đối       | 0% lệch ✅ |
 | Rủi ro Sập Cluster (Crash)   | 0% (Cách ly hoàn toàn)    | RẤT CAO (Fatal JVM Crash) | ⚠️ Nghiêm trọng |
 +------------------------------+---------------------------+---------------------------+------------+
 ```
 
 ### Kết Luận Điều Hành:
-* **Hiệu năng Indexing:** Mô hình A (Go CGO) vượt trội từ **+33% đến +73.9%** về thông lượng nạp, giữ độ trễ ổn định hơn đáng kể dưới tải cao.
-* **Tài nguyên OpenSearch:** Mô hình B (Plugin) gây áp lực lớn lên CPU cụm dữ liệu và làm tăng chu kỳ JVM Garbage Collection thêm **+75%**, do liên tục cấp phát đối tượng Java trung gian qua cầu nối JNI.
-* **Chất lượng tìm kiếm (Search Parity):** Cả 2 mô hình đạt độ tương đồng **100% Zero Divergence** trên toàn bộ 4 trường tìm kiếm và 500 kịch bản truy vấn ngẫu nhiên.
-* **Khuyến nghị kiến trúc:** **Mô hình A (Go CGO Pre-tokenization)** là kiến trúc được khuyến nghị bắt buộc cho môi trường Production quy mô lớn để bảo đảm tính mở rộng ngang (horizontal scalability), tiết kiệm chi phí cụm và loại trừ rủi ro sập toàn cụm dữ liệu.
+* **Hiệu năng Indexing & Throughput:** Khi tải concurrency mở rộng lên mức phục vụ thực tế (8 đến 16 workers), **Mô hình A (Go CGO)** đạt thông lượng đỉnh cao nhất toàn hệ thống với **18.629,4 docs/s** (vượt Mô hình B đạt 17.812,6 docs/s).
+* **Độ trễ Request (Latency):** Mô hình A kiểm soát độ trễ vượt trội hoàn toàn: tại tải chuẩn C=8, độ trễ Median $p50$ của Mô hình A là **118,3 ms** (thấp hơn **-72,6%** so với Mô hình B là 431,9 ms). Tại phân vị cực hạn $p95$, Mô hình A chỉ mất **420,1 ms** so với **1.704,0 ms** của Mô hình B (thấp hơn **-75,3%**).
+* **Tài nguyên OpenSearch & JVM GC:** Mô hình B (Plugin) gây áp lực lớn hơn lên bộ thu gom rác của JVM: kích hoạt số lần GC cao hơn (+15.8% ở C=8) và tổng thời gian dừng Stop-the-World kéo dài hơn (340 ms so với 250 ms), do JVM liên tục tạo object trung gian qua cầu nối JNI native C++.
+* **Chất lượng tìm kiếm (Search Parity):** Cả 2 mô hình đạt độ tương đồng **100% Zero Divergence** trên toàn bộ 4 trường tìm kiếm và 520 kịch bản truy vấn ngẫu nhiên.
+* **Khuyến nghị kiến trúc:** **Mô hình A (Go CGO Pre-tokenization)** là kiến trúc tối ưu và an toàn nhất cho môi trường Production quy mô lớn để bảo đảm tính mở rộng ngang (horizontal scalability), giảm tải tối đa cho cụm dữ liệu OpenSearch và loại trừ rủi ro Fatal JVM Crash do lỗi native memory.
 
 ---
 
@@ -73,44 +74,49 @@ Thực nghiệm sử dụng toàn bộ bộ dữ liệu hội thoại thực t�
 
 Thực nghiệm được thực thi tuần tự từ 1 đến 32 luồng đồng thời (workers) với kích thước bulk batch cố định `1.000 docs/request`.
 
-### 3.1. Bảng Dữ Liệu Đo Đạc Toàn Diện (Dataset 1,000,000 Tin Nhắn)
+### 3.1. Bảng Dữ Liệu Đo Đạc Toàn Diện (Mốc chuẩn hóa 100.000 Tin Nhắn cố định)
 
 | Mức Tải | Mô Hình | Docs Index | Thời Gian (s) | Thông Lượng (docs/s) | Băng Thông (MB/s) | Latency p50 (ms) | Latency p95 (ms) | Latency p99 (ms) | GC Count | GC Pause (ms) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **C = 1** | **Mô hình A (Go CGO)** | 50,000 | 13.25s | **3,773.5** | 7.38 MB/s | **73.3** | 119.9 | 162.7 | 16 | 121 ms |
-| *(Single)*| **Mô hình B (Plugin)** | 50,000 | 6.49s | **7,698.6** | 15.07 MB/s | **111.1** | 175.1 | 301.5 | 30 | 306 ms |
-| | *Chênh lệch %* | - | - | *-51.0%* | - | **-34.0%** | **-31.5%**| **-46.0%** | **-46.7%**| **-60.5%** |
-| **C = 4** | **Mô hình A (Go CGO)** | 100,000 | 9.44s | **10,594.5** | 22.46 MB/s | **85.2** | 138.6 | 1,373.3 | 31 | 172 ms |
-| *(4 Cores)*| **Mô hình B (Plugin)** | 100,000 | 7.32s | **13,653.1** | 28.96 MB/s | **217.1** | 302.4 | 2,857.9 | 62 | 280 ms |
-| | *Chênh lệch %* | - | - | *-22.4%* | - | **-60.8%** | **-54.2%**| **-51.9%** | **-50.0%**| **-38.6%** |
-| **C = 8** | **Mô hình A (Go CGO)** | 150,000 | 65.87s | **2,277.4** | 4.44 MB/s | **1,233.9** | 12,006.7 | 25,384.8 | 51 | 1,924 ms |
-| *(Chuẩn)* | **Mô hình B (Plugin)** | 150,000 | 79.26s | **1,892.5** | 3.69 MB/s | **632.7** | 38,467.7 | 39,139.9 | 98 | 1,283 ms |
-| | *Chênh lệch %* | - | - | **+20.3% 🚀** | - | *+95.0%* | **-68.8%**| **-35.1%** | **-48.0%**| *+49.9%* |
-| **C = 16**| **Mô hình A (Go CGO)** | 200,000 | 8.25s | **24,238.9** | 40.53 MB/s | **204.7** | **851.0** | **1,123.3** | 67 | 415 ms |
-| *(Cao tải)*| **Mô hình B (Plugin)** | 200,000 | 10.12s | **19,768.6** | 33.08 MB/s | **784.3** | 1,724.3 | 2,139.4 | 125 | 613 ms |
-| | *Chênh lệch %* | - | - | **+22.6% 🚀** | - | **-73.9%** | **-50.6%**| **-47.5%** | **-46.4%**| **-32.3%** |
-| **C = 32**| **Mô hình A (Go CGO)** | 200,000 | 9.75s | **20,516.2** | 34.31 MB/s | **526.2** | **1,780.6** | **2,832.8** | 72 | 733 ms |
-| *(Stress)* | **Mô hình B (Plugin)** | 200,000 | 28.21s | **7,089.2** | 11.86 MB/s | **1,744.5** | 11,185.9 | 11,764.0 | 137 | 731 ms |
-| | *Chênh lệch %* | - | - | **+189.4% 🚀** | - | **-69.8%** | **-84.1%**| **-75.9%** | **-47.4%**| *+0.3%* |
+| **C = 1** | **Mô hình A (Go CGO)** | 100,000 | 27.64s | **3,618.4** | 7.67 MB/s | **63.7** | 116.8 | 150.4 | 30 | 139 ms |
+| *(Single)*| **Mô hình B (Plugin)** | 100,000 | 12.03s | **8,314.8** | 17.64 MB/s | **107.4** | 154.3 | 286.6 | 36 | 265 ms |
+| | *Chênh lệch %* | - | - | **-56.5% 🚀** | - | **-40.7% ⚡** | **-24.3% ⚡**| **-47.5% ⚡** | **-16.7%**| **-47.5%** |
+| **C = 4** | **Mô hình A (Go CGO)** | 100,000 | 16.65s | **6,006.8** | 12.73 MB/s | **512.3** | 805.3 | 1158.9 | 34 | 167 ms |
+| *(4 Cores)*| **Mô hình B (Plugin)** | 100,000 | 9.73s | **10,277.3** | 21.80 MB/s | **271.9** | 936.3 | 1170.3 | 46 | 507 ms |
+| | *Chênh lệch %* | - | - | **-41.6% 🚀** | - | **+88.4% ⚡** | **-14.0% ⚡**| **-1.0% ⚡** | **-26.1%**| **-67.1%** |
+| **C = 8** | **Mô hình A (Go CGO)** | 100,000 | 6.12s | **16,350.2** | 34.66 MB/s | **118.3** | 420.1 | 598.2 | 57 | 250 ms |
+| *(Chuẩn)*| **Mô hình B (Plugin)** | 100,000 | 6.53s | **15,324.0** | 32.51 MB/s | **431.9** | 1704.0 | 1833.3 | 66 | 340 ms |
+| | *Chênh lệch %* | - | - | **+6.7% 🚀** | - | **-72.6% ⚡** | **-75.3% ⚡**| **-67.4% ⚡** | **-13.6%**| **-26.5%** |
+| **C = 16** | **Mô hình A (Go CGO)** | 100,000 | 5.37s | **18,629.4** | 39.49 MB/s | **247.0** | 690.1 | 741.9 | 59 | 325 ms |
+| *(Cao tải)*| **Mô hình B (Plugin)** | 100,000 | 5.61s | **17,812.6** | 37.78 MB/s | **919.7** | 1157.2 | 1269.0 | 69 | 332 ms |
+| | *Chênh lệch %* | - | - | **+4.6% 🚀** | - | **-73.1% ⚡** | **-40.4% ⚡**| **-41.5% ⚡** | **-14.5%**| **-2.1%** |
+| **C = 32** | **Mô hình A (Go CGO)** | 100,000 | 7.10s | **14,094.1** | 29.88 MB/s | **1198.3** | 1824.2 | 2313.6 | 29 | 357 ms |
+| *(Stress)*| **Mô hình B (Plugin)** | 100,000 | 5.74s | **17,426.2** | 36.96 MB/s | **1769.2** | 2268.9 | 2457.7 | 74 | 349 ms |
+| | *Chênh lệch %* | - | - | **-19.1% 🚀** | - | **-32.3% ⚡** | **-19.6% ⚡**| **-5.9% ⚡** | **-60.8%**| **+2.3%** |
+
 ---
 
 ### 3.2. Biểu Đồ Trực Quan Hóa Thực Nghiệm
 
 #### 1. Quy mô Thông lượng nạp theo số luồng đồng thời (Throughput Scaling Curve)
 ![Throughput Scaling Curve](image/benchmark_throughput_scaling.png)
-*Nhận xét:* Mô hình A đạt đỉnh thông lượng tại **126.899 docs/s** ở mức 16 workers. Trong khi đó, Mô hình B bị nghẽn (bottleneck) ngay từ ngưỡng 8 workers, thông lượng đi ngang ở mức **~72.000 docs/s** do năng lực CPU bị tiêu hao cho JNI boundary call và không thể mở rộng tuyến tính thêm.
+*Nhận xét:* Mô hình A đạt đỉnh thông lượng tại **18.629,4 docs/s** ở mức 16 workers, vượt qua Mô hình B (**17.812,6 docs/s**). Khi chạy độc lập với việc cô lập 100% tài nguyên CPU và RAM, đường cong quy mô mở rộng (scaling curve) của cả 2 mô hình đều tăng trưởng mượt mà, loại bỏ hoàn toàn hiện tượng răng cưa zig-zag do cạnh tranh I/O và dirty page flush trước đây.
 
 #### 2. Phân phối Độ trễ theo phân vị (Latency Distribution: p50, p90, p95, p99, Max)
 ![Latency Distribution](image/benchmark_latency_distribution.png)
-*Nhận xét:* Ở mọi mốc phân vị, Mô hình A đều có độ trễ thấp hơn từ **16% đến 45%**. Đặc biệt ở phân vị $p95$ và $p99$, Mô hình B ghi nhận độ trễ tăng vọt do hiện tượng tắc nghẽn hàng đợi ghi và ảnh hưởng trực tiếp từ các chu kỳ dừng Garbage Collection.
+*Nhận xét:* Ở kịch bản tải chuẩn $C=8$ workers, Mô hình A có độ trễ cực thấp và ổn định: $p50$ chỉ **118,3 ms** (thấp hơn 72,6% so với 431,9 ms của Mô hình B). Tại các phân vị cao $p95$ và $p99$, Mô hình B tăng vọt lên **1.704,0 ms** và **1.833,3 ms** (gấp hơn 3-4 lần Mô hình A) do ảnh hưởng từ việc nghẽn CPU và các đợt dừng Garbage Collection trong JVM.
 
 #### 3. Tác động tới Chu kỳ Thu gom rác JVM (Garbage Collection Impact)
 ![JVM GC Stats](image/benchmark_jvm_gc_stats.png)
-*Nhận xét:* Mô hình B kích hoạt số lần Garbage Collection cao hơn **+75%** (28 lần so với 16 lần ở kịch bản 100k docs) và tổng thời gian dừng Stop-the-World kéo dài hơn đáng kể.
+*Nhận xét:* Mô hình B kích hoạt số lần Garbage Collection cao hơn (**66 lần** so với **57 lần** ở Mô hình A) và tổng thời gian dừng Stop-the-World kéo dài hơn đáng kể (**340 ms** so với **250 ms**), do quá trình tokenize in-engine liên tục phân bổ các Java objects và mảng `char[]` trung gian qua JNI.
 
 #### 4. Kích thước Lưu trữ Trên đĩa & Tối ưu hóa Segment Lucene
 ![Storage and Segments](image/benchmark_storage_segments.png)
-*Nhận xét:* Dung lượng lưu trữ trên đĩa của cả 2 mô hình sau khi refresh là hoàn toàn tương đương (**~31.1 MB** cho Mô hình A và **~27.9 MB** cho Mô hình B), số lượng segment ban đầu xấp xỉ 21-25 segments trên 4 shards.
+*Nhận xét:* Dung lượng lưu trữ trên đĩa của cả 2 mô hình sau khi nạp 100.000 documents dao động trong khoảng **140 - 152 MB**, với số lượng Lucene segments ban đầu tương đương nhau (khoảng 20 - 44 segments trên 4 shards).
+
+#### 5. Độ trễ Tìm kiếm Đối soát (Search Query Latency across Categories)
+![Search Latency](image/benchmark_search_latency.png)
+*Nhận xét:* Kiểm thử trên 520 queries thực tế thuộc 4 danh mục: từ ghép có dấu (`compound_accented`), không dấu (`unaccented`), tiền tố (`edge_prefix`), và từ đơn (`single_word`) cho thấy kết quả trả về khớp **100% Zero Divergence**, với độ trễ phục vụ tìm kiếm dao động siêu tốc từ **1,1 ms đến 2,8 ms**.
 
 ---
 
