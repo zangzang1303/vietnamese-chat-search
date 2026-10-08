@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Giao diện Web Messenger Dark Mode - Bảng đối soát 3 động cơ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #18191a;
+      --bg-surface: #242526;
+      --bg-surface-hover: #3a3b3c;
+      --border-color: #393a3b;
+      --text-primary: #e4e6eb;
+      --text-secondary: #b0b3b8;
+      --text-muted: #8a8d91;
+      --accent-blue: #0084ff;
+      --bubble-sent: #0084ff;
+      --bubble-received: #303030;
+      --badge-es: #10b981;
+      --badge-coccoc: #3b82f6;
+      --badge-custom: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', -apple-system, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    /* Navbar */
+    .header {
+      height: 54px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+    .logo-area { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.1rem; }
+    .logo-badge { background: #0084ff; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
+    .search-input-box {
+      background: var(--bg-surface-hover);
+      border-radius: 20px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      width: 480px;
+      gap: 10px;
+      border: 1px solid #4e4f50;
+    }
+    .search-input-box input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+    }
+    /* Main Layout */
+    .main-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    /* Col 1: Rooms */
+    .col-rooms {
+      width: 280px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+    }
+    .col-title { padding: 14px 16px; font-weight: 700; font-size: 0.95rem; border-bottom: 1px solid var(--border-color); }
+    .room-item {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      border-bottom: 1px solid #2d2e2f;
+    }
+    .room-item.active { background: var(--bg-surface-hover); }
+    .room-avatar {
+      width: 40px; height: 40px; border-radius: 50%; background: #3b82f6;
+      display: flex; align-items: center; justify-content: center; font-weight: bold;
+    }
+    .room-info { flex: 1; overflow: hidden; }
+    .room-name { font-weight: 600; font-size: 14px; }
+    .room-snippet { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Col 2: Chat timeline */
+    .col-chat {
+      flex: 1.1;
+      background: #111213;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-color);
+    }
+    .chat-header { padding: 12px 16px; background: var(--bg-surface); border-bottom: 1px solid var(--border-color); font-weight: 600; }
+    .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+    .bubble { max-width: 75%; padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; }
+    .bubble.recv { background: var(--bubble-received); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .bubble.sent { background: var(--bubble-sent); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; }
+    .bubble-author { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+    .highlight-match { background: #fbbf24; color: #000; padding: 1px 4px; border-radius: 3px; font-weight: bold; }
+
+    /* Col 3: Comparison inspector */
+    .col-inspector {
+      flex: 1.4;
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+    }
+    .inspector-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .flow-bar {
+      background: #1f2937;
+      margin: 12px 16px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .flow-tag { background: #3b82f6; color: white; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin-right: 6px; }
+    .engines-container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 0 16px 16px 16px;
+      overflow-y: auto;
+    }
+    .engine-col {
+      background: #18191a;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+    }
+    .engine-header {
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .engine-header.base { color: #f87171; border-top: 3px solid #ef4444; }
+    .engine-header.coccoc { color: #60a5fa; border-top: 3px solid #3b82f6; }
+    .engine-header.custom { color: #fbbf24; border-top: 3px solid #f59e0b; }
+    .engine-latency { font-size: 10px; font-family: monospace; color: var(--text-muted); }
+    .engine-results { padding: 8px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .result-card {
+      background: #242526;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 12px;
+    }
+    .result-card.trap { border-color: #ef4444; background: #2a1b1b; }
+    .result-card.perfect { border-color: #10b981; background: #142820; }
+    .result-score { font-size: 10px; color: var(--text-muted); margin-top: 4px; display: flex; justify-content: space-between; }
+    .badge-trap { color: #ef4444; font-weight: bold; font-size: 10px; }
+    .badge-ok { color: #10b981; font-weight: bold; font-size: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-badge">M</div>
+      <span>Vietnamese Chat Search Engine</span>
+    </div>
+    <div class="search-input-box">
+      <span>🔍</span>
+      <input type="text" value="hoc sinh" readonly>
+      <span style="font-size: 11px; background: #3b82f6; padding: 2px 6px; border-radius: 4px;">Top 10 BM25</span>
+    </div>
+    <div style="font-size: 13px; color: var(--text-secondary);">
+      Vin Smart Future - Khối Chat
+    </div>
+  </div>
+
+  <!-- 3-Column Messenger Layout -->
+  <div class="main-content">
+    
+    <!-- Column 1: Rooms -->
+    <div class="col-rooms">
+      <div class="col-title">Hộp Thư Nhóm (Rooms)</div>
+      <div class="room-item active">
+        <div class="room-avatar">K68</div>
+        <div class="room-info">
+          <div class="room-name">Lớp K68I-IT1 (UET)</div>
+          <div class="room-snippet">Tuấn Cảnh: Học sinh chăm ngoan...</div>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-avatar" style="background: #10b981;">VSF</div>
+        <div class="room-info">
+          <div class="room-name">Khối Chat - Core Backend</div>
+          <div class="room-snippet">Mentor: Đã review CGO Tokenizer...</div>
+        </div>
+      </div>
+      <div class="room-item">
+        <div class="room-avatar" style="background: #8b5cf6;">CF</div>
+        <div class="room-info">
+          <div class="room-name">Hội Uống Cà Phê</div>
+          <div class="room-snippet">Minh: Cuối tuần đi cà phê sáng...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 2: Timeline -->
+    <div class="col-chat">
+      <div class="chat-header">
+        Lớp K68I-IT1 (UET) • 131 Tin Nhắn Ngữ Liệu
+      </div>
+      <div class="chat-messages">
+        <div class="bubble recv">
+          <div class="bubble-author">Đăng Minh (08:30)</div>
+          Chào các bạn, hôm nay có ai học môn Tin học không?
+        </div>
+        <div class="bubble recv">
+          <div class="bubble-author">Thu Hà (08:32)</div>
+          Chúc mừng sinh nhật bạn Lan nhé! Tối nay sinh viên tụ tập.
+        </div>
+        <div class="bubble sent" style="border: 2px solid #0084ff; box-shadow: 0 0 10px rgba(0,132,255,0.4);">
+          <div class="bubble-author" style="color: #cbd5e1;">Lê Tuấn Cảnh (08:35) - [Khớp Mục Tiêu]</div>
+          Các bạn <span class="highlight-match">học sinh</span> lớp mình nhớ ôn tập kỹ môn Giải thuật và Hệ điều hành nhé!
+        </div>
+        <div class="bubble recv">
+          <div class="bubble-author">Hoàng Nam (08:40)</div>
+          Tân sinh viên khóa mới chuẩn bị tham gia tuần lễ định hướng.
+        </div>
+        <div class="bubble sent">
+          <div class="bubble-author" style="color: #cbd5e1;">Lê Tuấn Cảnh (08:45)</div>
+          Học sinh và sinh viên đều được giảm giá khi uống cà phê tại quán quen.
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3: Parallel Comparison Inspector -->
+    <div class="col-inspector">
+      <div class="inspector-header">
+        <span>Bảng Đối Soát 3 Động Cơ Song Song</span>
+        <span style="font-size: 11px; color: #10b981;">● Goroutines Active</span>
+      </div>
+
+      <!-- Flow Inspector -->
+      <div class="flow-bar">
+        <span class="flow-tag">CGO NLP</span>
+        Input: <code>"hoc sinh"</code> &rarr; Cốc Cốc Viterbi: <code>["học_sinh"]</code> &rarr; Unaccented: <code>"hoc_sinh"</code>
+      </div>
+
+      <!-- 3 Columns -->
+      <div class="engines-container">
+        
+        <!-- Engine 1: Baseline -->
+        <div class="engine-col">
+          <div class="engine-header base">
+            <span>1. Baseline ES</span>
+            <span class="engine-latency">19.0ms</span>
+          </div>
+          <div class="engine-results">
+            <div class="result-card trap">
+              <div>Chúc mừng <b>sinh</b> nhật bạn Lan nhé...</div>
+              <div class="result-score">
+                <span>BM25: 14.82</span>
+                <span class="badge-trap">BẪY TỪ RÁC</span>
+              </div>
+            </div>
+            <div class="result-card trap">
+              <div>Tân <b>sinh</b> viên khóa mới chuẩn bị...</div>
+              <div class="result-score">
+                <span>BM25: 14.12</span>
+                <span class="badge-trap">BẪY TỪ RÁC</span>
+              </div>
+            </div>
+            <div class="result-card">
+              <div>Các bạn <b>học sinh</b> lớp mình nhớ...</div>
+              <div class="result-score">
+                <span>BM25: 12.05</span>
+                <span>Rank 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Engine 2: Cốc Cốc ES -->
+        <div class="engine-col">
+          <div class="engine-header coccoc">
+            <span>2. Cốc Cốc ES 8.11</span>
+            <span class="engine-latency">14.2ms</span>
+          </div>
+          <div class="engine-results">
+            <div class="result-card perfect">
+              <div>Các bạn <b>học sinh</b> lớp mình nhớ ôn tập...</div>
+              <div class="result-score">
+                <span>BM25 Boost: 33.36</span>
+                <span class="badge-ok">TOP 1 CHUẨN</span>
+              </div>
+            </div>
+            <div class="result-card">
+              <div><b>Học sinh</b> và sinh viên đều được giảm...</div>
+              <div class="result-score">
+                <span>BM25 Boost: 28.50</span>
+                <span>Rank 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Engine 3: Custom Go -->
+        <div class="engine-col">
+          <div class="engine-header custom">
+            <span>3. Custom Go Engine</span>
+            <span class="engine-latency" style="color: #fbbf24; font-weight: bold;">3.0ms</span>
+          </div>
+          <div class="engine-results">
+            <div class="result-card perfect">
+              <div>Các bạn <b>học sinh</b> lớp mình nhớ ôn tập...</div>
+              <div class="result-score">
+                <span>PureGo BM25: 8.92</span>
+                <span class="badge-ok">TOP 1 CHUẨN</span>
+              </div>
+            </div>
+            <div class="result-card">
+              <div><b>Học sinh</b> và sinh viên đều được giảm...</div>
+              <div class="result-score">
+                <span>PureGo BM25: 7.41</span>
+                <span>Rank 2</span>
+              </div>
+            </div>
+            <div style="font-size: 11px; color: #10b981; padding: 6px; text-align: center; border: 1px dashed #059669; border-radius: 4px; margin-top: auto;">
+              RAM: 15MB (Giảm 91.5%)<br>DocStore Seek: O(1)
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

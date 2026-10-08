@@ -38,3 +38,6 @@ Thumbs.db
 benchmarks/*.jsonl
 benchmarks/tmp_res_*.json
 
+scratch/
+data/custom_storage/*.del
+bao_cao_thuc_tap_overleaf.zip

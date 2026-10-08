@@ -15,7 +15,8 @@ Tham chiếu đề bài gốc: [`REQUIREMENTS.md`](REQUIREMENTS.md)
 | **Phase 4** | Thiết kế Elasticsearch Index Mapping & Pipeline Indexing | ✅ Hoàn thành | 1-2 ngày |
 | **Phase 5** | Xây dựng Search Engine Service & Multi-match Query Builder | ✅ Hoàn thành | 1-2 ngày |
 | **Phase 6** | Kiểm thử so sánh chất lượng search & Benchmark hiệu năng (MRR, NDCG) | ✅ Hoàn thành | 1-2 ngày |
-| **Phase 7** | Hoàn thiện tài liệu báo cáo & tổng kết | 🔄 Đang hoàn thiện | 1 ngày |
+| **Phase 7** | Hoàn thiện tài liệu báo cáo & tổng kết | ✅ Hoàn thành | 1 ngày |
+| **Phase 8** | Tự xây dựng Động cơ Lưu trữ & Tìm kiếm Nhị phân độc lập (Custom Engine thuần Go) | ✅ Hoàn thành | 2-3 ngày |
 
 ---
 
