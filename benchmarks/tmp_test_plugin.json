@@ -1,0 +1,46 @@
+[
+  {
+    "mode": "plugin_raw",
+    "target_url": "http://localhost:9202",
+    "total_docs": 1000,
+    "total_batches": 1,
+    "total_bytes": 940334,
+    "duration": 215758727,
+    "docs_per_sec": 4634.806730204707,
+    "mb_per_sec": 4.156366683807671,
+    "latency_p50_ms": 207.91998,
+    "latency_p90_ms": 207.91998,
+    "latency_p95_ms": 207.91998,
+    "latency_p99_ms": 207.91998,
+    "latency_max_ms": 207.91998,
+    "preprocess_p50_ms": 4.930381000000001,
+    "preprocess_p95_ms": 4.930381000000001,
+    "preprocess_p99_ms": 4.930381000000001,
+    "end_to_end_p50_ms": 214.725605,
+    "end_to_end_p95_ms": 214.725605,
+    "end_to_end_p99_ms": 214.725605,
+    "errors": 0,
+    "http_error_batches": 0,
+    "bulk_item_errors": 0,
+    "tokenizer_errors": 0,
+    "concurrency": 4,
+    "batch_size": 1000,
+    "jvm_heap_used_mb": 0,
+    "jvm_gc_count": 0,
+    "jvm_gc_time_ms": 0,
+    "disk_store_mb": 0.7309236526489258,
+    "segments_count": 4,
+    "flush_time_ms": 0,
+    "merge_time_ms": 0,
+    "write_rejected": 0,
+    "request_latency_samples_ms": [
+      207.91998
+    ],
+    "preprocess_samples_ms": [
+      4.930381000000001
+    ],
+    "end_to_end_samples_ms": [
+      214.725605
+    ]
+  }
+]

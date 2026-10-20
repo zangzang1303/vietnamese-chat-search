@@ -1,0 +1,16 @@
+{
+  "documents": 50,
+  "fields": [
+    "text",
+    "text_vi",
+    "text_raw",
+    "text_edge"
+  ],
+  "comparisons_expected": 200,
+  "comparisons_matched": 50,
+  "parity_percent": 25.0,
+  "vanilla_request_errors": 0,
+  "plugin_request_errors": 1,
+  "mismatch_count": 150,
+  "passed": false
+}

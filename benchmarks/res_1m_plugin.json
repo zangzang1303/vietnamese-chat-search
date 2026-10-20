@@ -1,0 +1,27 @@
+[
+  {
+    "mode": "plugin_raw",
+    "target_url": "http://localhost:9202",
+    "total_docs": 1000000,
+    "total_batches": 1000,
+    "total_bytes": 993385549,
+    "duration": 89479483700,
+    "docs_per_sec": 11175.746200690248,
+    "mb_per_sec": 10.587525153214784,
+    "latency_p50_ms": 366.7819,
+    "latency_p90_ms": 3837.3994,
+    "latency_p95_ms": 8433.8714,
+    "latency_p99_ms": 16512.5415,
+    "latency_max_ms": 16538.3074,
+    "errors": 0,
+    "concurrency": 16,
+    "batch_size": 1000,
+    "jvm_heap_used_mb": 586.6767730712891,
+    "jvm_gc_count": 476,
+    "jvm_gc_time_ms": 5325,
+    "disk_store_mb": 620.5602226257324,
+    "segments_count": 78,
+    "flush_time_ms": 0,
+    "merge_time_ms": 26882
+  }
+]

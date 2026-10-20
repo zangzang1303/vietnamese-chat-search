@@ -1,0 +1,53 @@
+{
+  "plan_id": "supplement_benchmark_completion_20261020",
+  "created_at": "2026-10-20T07:15:00+00:00",
+  "workspace": "D:\\CODE\\VSF\\vietnamese-chat-search",
+  "objective": "Complete all empirical gaps for Task 1: Resource telemetry, batch sensitivity, 30-min soak test, engine-only isolation, tokenizer mutex profiling, and search latency.",
+  "resource_limits": {
+    "cpus": 4.0,
+    "memory_bytes": 3221225472,
+    "memory_human": "3 GiB",
+    "jvm_heap_min": "1536m",
+    "jvm_heap_max": "1536m"
+  },
+  "suites": {
+    "batch_sensitivity": {
+      "description": "Baseline (C=1, 100k docs, b=500/1000) and heavy stress (C=32, 1M docs, b=1000/2000), 3 reps each in AB/BA order.",
+      "matrix": [
+        {"concurrency": 1, "batch_size": 500, "docs": 100000, "repetitions": 3},
+        {"concurrency": 1, "batch_size": 1000, "docs": 100000, "repetitions": 3},
+        {"concurrency": 32, "batch_size": 1000, "docs": 1000000, "repetitions": 3},
+        {"concurrency": 32, "batch_size": 2000, "docs": 1000000, "repetitions": 3}
+      ],
+      "models": ["vanilla", "plugin"]
+    },
+    "engine_only": {
+      "description": "Engine ingestion cost isolation with RAM pre-tokenized corpus for Model A vs raw text for Model B.",
+      "matrix": [
+        {"concurrency": 8, "batch_size": 1000, "docs": 100000, "repetitions": 3},
+        {"concurrency": 16, "batch_size": 1000, "docs": 100000, "repetitions": 3}
+      ],
+      "models": ["vanilla_pretokenized", "plugin_raw"]
+    },
+    "search_latency": {
+      "description": "End-to-end query latency benchmark on pre-tokenized queries vs raw queries across concurrency levels.",
+      "queries_count": 1000,
+      "concurrency_levels": [1, 8, 32],
+      "models": ["vanilla", "plugin"]
+    },
+    "tokenizer_profile": {
+      "description": "Pure client-side CGO tokenizer scaling and lock contention profiling across concurrency levels.",
+      "concurrency_levels": [1, 4, 8, 16, 32],
+      "docs_per_rep": 100000,
+      "repetitions": 3,
+      "profiling": "Go mutex pprof via runtime/pprof"
+    },
+    "soak_test": {
+      "description": "30-minute sustained indexing at C=16, batch=1000, 1-second resource telemetry recording.",
+      "concurrency": 16,
+      "batch_size": 1000,
+      "duration_seconds": 1800,
+      "models": ["vanilla", "plugin"]
+    }
+  }
+}

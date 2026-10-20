@@ -1,0 +1,797 @@
+{
+  "docker_stats": [
+    {
+      "timestamp": 1792482540.412699,
+      "cpu_pct": 0.16,
+      "memory_rss_mib": 1980.416,
+      "mem_percent": 64.47,
+      "block_io": "172kB / 2.63MB",
+      "net_io": "5.67kB / 15.3kB",
+      "pids": 87
+    },
+    {
+      "timestamp": 1792482540.412699,
+      "cpu_pct": 0.16,
+      "memory_rss_mib": 1980.416,
+      "mem_percent": 64.47,
+      "block_io": "172kB / 2.63MB",
+      "net_io": "5.67kB / 15.3kB",
+      "pids": 87
+    },
+    {
+      "timestamp": 1792482540.911757,
+      "cpu_pct": 0.16,
+      "memory_rss_mib": 1980.416,
+      "mem_percent": 64.47,
+      "block_io": "172kB / 2.63MB",
+      "net_io": "5.67kB / 15.3kB",
+      "pids": 87
+    },
+    {
+      "timestamp": 1792482540.911757,
+      "cpu_pct": 0.16,
+      "memory_rss_mib": 1980.416,
+      "mem_percent": 64.47,
+      "block_io": "172kB / 2.63MB",
+      "net_io": "5.67kB / 15.3kB",
+      "pids": 87
+    },
+    {
+      "timestamp": 1792482541.412228,
+      "cpu_pct": 77.17,
+      "memory_rss_mib": 1990.656,
+      "mem_percent": 64.81,
+      "block_io": "172kB / 3.15MB",
+      "net_io": "950kB / 33.2kB",
+      "pids": 88
+    },
+    {
+      "timestamp": 1792482541.412228,
+      "cpu_pct": 77.17,
+      "memory_rss_mib": 1990.656,
+      "mem_percent": 64.81,
+      "block_io": "172kB / 3.15MB",
+      "net_io": "950kB / 33.2kB",
+      "pids": 88
+    },
+    {
+      "timestamp": 1792482541.9127178,
+      "cpu_pct": 77.17,
+      "memory_rss_mib": 1990.656,
+      "mem_percent": 64.81,
+      "block_io": "172kB / 3.15MB",
+      "net_io": "950kB / 33.2kB",
+      "pids": 88
+    },
+    {
+      "timestamp": 1792482541.9127178,
+      "cpu_pct": 77.17,
+      "memory_rss_mib": 1990.656,
+      "mem_percent": 64.81,
+      "block_io": "172kB / 3.15MB",
+      "net_io": "950kB / 33.2kB",
+      "pids": 88
+    },
+    {
+      "timestamp": 1792482542.4130049,
+      "cpu_pct": 397.68,
+      "memory_rss_mib": 2010.112,
+      "mem_percent": 65.44,
+      "block_io": "172kB / 17.8MB",
+      "net_io": "14.6MB / 118kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482542.4130049,
+      "cpu_pct": 397.68,
+      "memory_rss_mib": 2010.112,
+      "mem_percent": 65.44,
+      "block_io": "172kB / 17.8MB",
+      "net_io": "14.6MB / 118kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482542.9127107,
+      "cpu_pct": 397.68,
+      "memory_rss_mib": 2010.112,
+      "mem_percent": 65.44,
+      "block_io": "172kB / 17.8MB",
+      "net_io": "14.6MB / 118kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482542.9127107,
+      "cpu_pct": 397.68,
+      "memory_rss_mib": 2010.112,
+      "mem_percent": 65.44,
+      "block_io": "172kB / 17.8MB",
+      "net_io": "14.6MB / 118kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482543.4123423,
+      "cpu_pct": 394.78,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.78,
+      "block_io": "172kB / 38.2MB",
+      "net_io": "34.1MB / 210kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482543.4123423,
+      "cpu_pct": 394.78,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.78,
+      "block_io": "172kB / 38.2MB",
+      "net_io": "34.1MB / 210kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482543.9126067,
+      "cpu_pct": 394.78,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.78,
+      "block_io": "172kB / 38.2MB",
+      "net_io": "34.1MB / 210kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482543.9126067,
+      "cpu_pct": 394.78,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.78,
+      "block_io": "172kB / 38.2MB",
+      "net_io": "34.1MB / 210kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482544.4120347,
+      "cpu_pct": 328.85,
+      "memory_rss_mib": 2025.472,
+      "mem_percent": 65.94,
+      "block_io": "172kB / 62.9MB",
+      "net_io": "58.4MB / 297kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482544.4120347,
+      "cpu_pct": 328.85,
+      "memory_rss_mib": 2025.472,
+      "mem_percent": 65.94,
+      "block_io": "172kB / 62.9MB",
+      "net_io": "58.4MB / 297kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482544.913035,
+      "cpu_pct": 328.85,
+      "memory_rss_mib": 2025.472,
+      "mem_percent": 65.94,
+      "block_io": "172kB / 62.9MB",
+      "net_io": "58.4MB / 297kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482544.913035,
+      "cpu_pct": 328.85,
+      "memory_rss_mib": 2025.472,
+      "mem_percent": 65.94,
+      "block_io": "172kB / 62.9MB",
+      "net_io": "58.4MB / 297kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482545.412498,
+      "cpu_pct": 265.75,
+      "memory_rss_mib": 2028.544,
+      "mem_percent": 66.02,
+      "block_io": "172kB / 91.3MB",
+      "net_io": "84.5MB / 397kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482545.412498,
+      "cpu_pct": 265.75,
+      "memory_rss_mib": 2028.544,
+      "mem_percent": 66.02,
+      "block_io": "172kB / 91.3MB",
+      "net_io": "84.5MB / 397kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482545.911812,
+      "cpu_pct": 265.75,
+      "memory_rss_mib": 2028.544,
+      "mem_percent": 66.02,
+      "block_io": "172kB / 91.3MB",
+      "net_io": "84.5MB / 397kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482545.911812,
+      "cpu_pct": 265.75,
+      "memory_rss_mib": 2028.544,
+      "mem_percent": 66.02,
+      "block_io": "172kB / 91.3MB",
+      "net_io": "84.5MB / 397kB",
+      "pids": 92
+    },
+    {
+      "timestamp": 1792482546.4118536,
+      "cpu_pct": 250.62,
+      "memory_rss_mib": 2029.568,
+      "mem_percent": 66.07,
+      "block_io": "172kB / 119MB",
+      "net_io": "111MB / 492kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482546.4118536,
+      "cpu_pct": 250.62,
+      "memory_rss_mib": 2029.568,
+      "mem_percent": 66.07,
+      "block_io": "172kB / 119MB",
+      "net_io": "111MB / 492kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482546.9122121,
+      "cpu_pct": 250.62,
+      "memory_rss_mib": 2029.568,
+      "mem_percent": 66.07,
+      "block_io": "172kB / 119MB",
+      "net_io": "111MB / 492kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482546.9122121,
+      "cpu_pct": 250.62,
+      "memory_rss_mib": 2029.568,
+      "mem_percent": 66.07,
+      "block_io": "172kB / 119MB",
+      "net_io": "111MB / 492kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482547.4124355,
+      "cpu_pct": 223.23,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.77,
+      "block_io": "172kB / 147MB",
+      "net_io": "138MB / 587kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482547.4124355,
+      "cpu_pct": 223.23,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.77,
+      "block_io": "172kB / 147MB",
+      "net_io": "138MB / 587kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482547.9123325,
+      "cpu_pct": 223.23,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.77,
+      "block_io": "172kB / 147MB",
+      "net_io": "138MB / 587kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482547.9123325,
+      "cpu_pct": 223.23,
+      "memory_rss_mib": 2020.352,
+      "mem_percent": 65.77,
+      "block_io": "172kB / 147MB",
+      "net_io": "138MB / 587kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482548.4125247,
+      "cpu_pct": 244.28,
+      "memory_rss_mib": 2022.4,
+      "mem_percent": 65.84,
+      "block_io": "172kB / 174MB",
+      "net_io": "164MB / 682kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482548.4125247,
+      "cpu_pct": 244.28,
+      "memory_rss_mib": 2022.4,
+      "mem_percent": 65.84,
+      "block_io": "172kB / 174MB",
+      "net_io": "164MB / 682kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482548.912768,
+      "cpu_pct": 244.28,
+      "memory_rss_mib": 2022.4,
+      "mem_percent": 65.84,
+      "block_io": "172kB / 174MB",
+      "net_io": "164MB / 682kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482548.912768,
+      "cpu_pct": 244.28,
+      "memory_rss_mib": 2022.4,
+      "mem_percent": 65.84,
+      "block_io": "172kB / 174MB",
+      "net_io": "164MB / 682kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482549.4118638,
+      "cpu_pct": 234.27,
+      "memory_rss_mib": 2024.448,
+      "mem_percent": 65.9,
+      "block_io": "172kB / 269MB",
+      "net_io": "190MB / 774kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482549.4118638,
+      "cpu_pct": 234.27,
+      "memory_rss_mib": 2024.448,
+      "mem_percent": 65.9,
+      "block_io": "172kB / 269MB",
+      "net_io": "190MB / 774kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482549.9122522,
+      "cpu_pct": 234.27,
+      "memory_rss_mib": 2024.448,
+      "mem_percent": 65.9,
+      "block_io": "172kB / 269MB",
+      "net_io": "190MB / 774kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482549.9122522,
+      "cpu_pct": 234.27,
+      "memory_rss_mib": 2024.448,
+      "mem_percent": 65.9,
+      "block_io": "172kB / 269MB",
+      "net_io": "190MB / 774kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482550.4129677,
+      "cpu_pct": 250.27,
+      "memory_rss_mib": 2032.64,
+      "mem_percent": 66.18,
+      "block_io": "172kB / 297MB",
+      "net_io": "217MB / 871kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482550.4129677,
+      "cpu_pct": 250.27,
+      "memory_rss_mib": 2032.64,
+      "mem_percent": 66.18,
+      "block_io": "172kB / 297MB",
+      "net_io": "217MB / 871kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482550.9126492,
+      "cpu_pct": 250.27,
+      "memory_rss_mib": 2032.64,
+      "mem_percent": 66.18,
+      "block_io": "172kB / 297MB",
+      "net_io": "217MB / 871kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482550.9126492,
+      "cpu_pct": 250.27,
+      "memory_rss_mib": 2032.64,
+      "mem_percent": 66.18,
+      "block_io": "172kB / 297MB",
+      "net_io": "217MB / 871kB",
+      "pids": 91
+    },
+    {
+      "timestamp": 1792482551.4127007,
+      "cpu_pct": 360.51,
+      "memory_rss_mib": 2038.784,
+      "mem_percent": 66.38,
+      "block_io": "172kB / 455MB",
+      "net_io": "223MB / 906kB",
+      "pids": 93
+    },
+    {
+      "timestamp": 1792482551.4127007,
+      "cpu_pct": 360.51,
+      "memory_rss_mib": 2038.784,
+      "mem_percent": 66.38,
+      "block_io": "172kB / 455MB",
+      "net_io": "223MB / 906kB",
+      "pids": 93
+    },
+    {
+      "timestamp": 1792482551.9125974,
+      "cpu_pct": 360.51,
+      "memory_rss_mib": 2038.784,
+      "mem_percent": 66.38,
+      "block_io": "172kB / 455MB",
+      "net_io": "223MB / 906kB",
+      "pids": 93
+    },
+    {
+      "timestamp": 1792482551.9125974,
+      "cpu_pct": 360.51,
+      "memory_rss_mib": 2038.784,
+      "mem_percent": 66.38,
+      "block_io": "172kB / 455MB",
+      "net_io": "223MB / 906kB",
+      "pids": 93
+    },
+    {
+      "timestamp": 1792482552.4121773,
+      "cpu_pct": 363.01,
+      "memory_rss_mib": 2039.808,
+      "mem_percent": 66.42,
+      "block_io": "172kB / 455MB",
+      "net_io": "223MB / 918kB",
+      "pids": 93
+    },
+    {
+      "timestamp": 1792482552.4121773,
+      "cpu_pct": 363.01,
+      "memory_rss_mib": 2039.808,
+      "mem_percent": 66.42,
+      "block_io": "172kB / 455MB",
+      "net_io": "223MB / 918kB",
+      "pids": 93
+    }
+  ],
+  "opensearch_node": [
+    {
+      "timestamp": 1792482539.6633081,
+      "process_cpu_pct": 3,
+      "jvm_heap_used_mib": 486.5,
+      "young_gc_count": 13,
+      "young_gc_collection_time_ms": 69,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482540.6305916,
+      "process_cpu_pct": 3,
+      "jvm_heap_used_mib": 486.5,
+      "young_gc_count": 13,
+      "young_gc_collection_time_ms": 69,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482541.6515512,
+      "process_cpu_pct": 100,
+      "jvm_heap_used_mib": 487.5,
+      "young_gc_count": 13,
+      "young_gc_collection_time_ms": 69,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 4,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 991878,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482542.6740408,
+      "process_cpu_pct": 100,
+      "jvm_heap_used_mib": 463.59197998046875,
+      "young_gc_count": 16,
+      "young_gc_collection_time_ms": 120,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 1,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482543.685358,
+      "process_cpu_pct": 87,
+      "jvm_heap_used_mib": 214.2482452392578,
+      "young_gc_count": 18,
+      "young_gc_collection_time_ms": 149,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 4,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 1248891,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482544.699792,
+      "process_cpu_pct": 77,
+      "jvm_heap_used_mib": 384.0,
+      "young_gc_count": 20,
+      "young_gc_collection_time_ms": 160,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482545.680373,
+      "process_cpu_pct": 77,
+      "jvm_heap_used_mib": 384.0,
+      "young_gc_count": 20,
+      "young_gc_collection_time_ms": 160,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 4,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 1203657,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482546.6913218,
+      "process_cpu_pct": 63,
+      "jvm_heap_used_mib": 243.7007064819336,
+      "young_gc_count": 24,
+      "young_gc_collection_time_ms": 189,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482547.7218697,
+      "process_cpu_pct": 70,
+      "jvm_heap_used_mib": 1067.286376953125,
+      "young_gc_count": 25,
+      "young_gc_collection_time_ms": 196,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 4,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 1416762,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482548.708915,
+      "process_cpu_pct": 70,
+      "jvm_heap_used_mib": 1067.286376953125,
+      "young_gc_count": 25,
+      "young_gc_collection_time_ms": 196,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482549.7166657,
+      "process_cpu_pct": 72,
+      "jvm_heap_used_mib": 890.7498168945312,
+      "young_gc_count": 29,
+      "young_gc_collection_time_ms": 227,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 4,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 1328214,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482550.7262564,
+      "process_cpu_pct": 79,
+      "jvm_heap_used_mib": 932.5002212524414,
+      "young_gc_count": 30,
+      "young_gc_collection_time_ms": 235,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    },
+    {
+      "timestamp": 1792482551.7302809,
+      "process_cpu_pct": 88,
+      "jvm_heap_used_mib": 381.43785095214844,
+      "young_gc_count": 31,
+      "young_gc_collection_time_ms": 243,
+      "old_gc_count": 0,
+      "old_gc_collection_time_ms": 0,
+      "write_active": 0,
+      "write_queue": 0,
+      "write_rejected": 0,
+      "indexing_pressure_bytes": 0,
+      "indexing_pressure_rejections": 0
+    }
+  ],
+  "cgroup_samples": [
+    {
+      "timestamp": 1792482539.7768793,
+      "usage_usec": 25973213,
+      "user_usec": 23861863,
+      "system_usec": 2111350,
+      "nr_periods": 130,
+      "nr_throttled": 5,
+      "throttled_usec": 293139,
+      "memory_current_bytes": 2078539776,
+      "memory_rss_bytes": 2066223104,
+      "memory_file_bytes": 2146304
+    },
+    {
+      "timestamp": 1792482540.7367659,
+      "usage_usec": 25997457,
+      "user_usec": 23878730,
+      "system_usec": 2118726,
+      "nr_periods": 136,
+      "nr_throttled": 5,
+      "throttled_usec": 293139,
+      "memory_current_bytes": 2079330304,
+      "memory_rss_bytes": 2066292736,
+      "memory_file_bytes": 2146304
+    },
+    {
+      "timestamp": 1792482541.7736585,
+      "usage_usec": 29959038,
+      "user_usec": 27718700,
+      "system_usec": 2240338,
+      "nr_periods": 147,
+      "nr_throttled": 14,
+      "throttled_usec": 991065,
+      "memory_current_bytes": 2129199104,
+      "memory_rss_bytes": 2093207552,
+      "memory_file_bytes": 23642112
+    },
+    {
+      "timestamp": 1792482542.7874584,
+      "usage_usec": 34042102,
+      "user_usec": 31730231,
+      "system_usec": 2311871,
+      "nr_periods": 157,
+      "nr_throttled": 23,
+      "throttled_usec": 1376913,
+      "memory_current_bytes": 2179567616,
+      "memory_rss_bytes": 2105180160,
+      "memory_file_bytes": 61145088
+    },
+    {
+      "timestamp": 1792482543.7967856,
+      "usage_usec": 37512137,
+      "user_usec": 35062740,
+      "system_usec": 2449397,
+      "nr_periods": 167,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2234236928,
+      "memory_rss_bytes": 2108600320,
+      "memory_file_bytes": 110522368
+    },
+    {
+      "timestamp": 1792482544.8055773,
+      "usage_usec": 40201280,
+      "user_usec": 37655933,
+      "system_usec": 2545347,
+      "nr_periods": 177,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2287796224,
+      "memory_rss_bytes": 2109501440,
+      "memory_file_bytes": 160923648
+    },
+    {
+      "timestamp": 1792482545.7994826,
+      "usage_usec": 42782670,
+      "user_usec": 40148535,
+      "system_usec": 2634134,
+      "nr_periods": 187,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2340876288,
+      "memory_rss_bytes": 2109915136,
+      "memory_file_bytes": 213254144
+    },
+    {
+      "timestamp": 1792482546.8150475,
+      "usage_usec": 45133098,
+      "user_usec": 42443340,
+      "system_usec": 2689757,
+      "nr_periods": 197,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2386071552,
+      "memory_rss_bytes": 2099200000,
+      "memory_file_bytes": 267984896
+    },
+    {
+      "timestamp": 1792482547.838192,
+      "usage_usec": 47539686,
+      "user_usec": 44746529,
+      "system_usec": 2793156,
+      "nr_periods": 207,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2441097216,
+      "memory_rss_bytes": 2099646464,
+      "memory_file_bytes": 320507904
+    },
+    {
+      "timestamp": 1792482548.8255215,
+      "usage_usec": 49749477,
+      "user_usec": 46853856,
+      "system_usec": 2895620,
+      "nr_periods": 217,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2493227008,
+      "memory_rss_bytes": 2099740672,
+      "memory_file_bytes": 371339264
+    },
+    {
+      "timestamp": 1792482549.8295639,
+      "usage_usec": 52352795,
+      "user_usec": 49377886,
+      "system_usec": 2974908,
+      "nr_periods": 227,
+      "nr_throttled": 28,
+      "throttled_usec": 1524312,
+      "memory_current_bytes": 2556338176,
+      "memory_rss_bytes": 2106818560,
+      "memory_file_bytes": 424996864
+    },
+    {
+      "timestamp": 1792482550.8366446,
+      "usage_usec": 55807054,
+      "user_usec": 52652238,
+      "system_usec": 3154815,
+      "nr_periods": 237,
+      "nr_throttled": 31,
+      "throttled_usec": 1531258,
+      "memory_current_bytes": 2505904128,
+      "memory_rss_bytes": 2114883584,
+      "memory_file_bytes": 368836608
+    },
+    {
+      "timestamp": 1792482551.8318615,
+      "usage_usec": 59586200,
+      "user_usec": 56245665,
+      "system_usec": 3340535,
+      "nr_periods": 247,
+      "nr_throttled": 39,
+      "throttled_usec": 1701586,
+      "memory_current_bytes": 2566991872,
+      "memory_rss_bytes": 2110963712,
+      "memory_file_bytes": 431906816
+    }
+  ],
+  "collector_errors": []
+}

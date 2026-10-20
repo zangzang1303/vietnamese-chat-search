@@ -1,0 +1,30 @@
+[
+  {
+    "concurrency": 8,
+    "batch_size": 1000,
+    "docs": 100000,
+    "repetitions": 3,
+    "vanilla_pretokenized_throughput_median": 13565.59,
+    "plugin_raw_throughput_median": 4968.05,
+    "engine_throughput_ratio_vanilla_vs_plugin": 2.731,
+    "vanilla_container_cpu_median_pct": 279.96,
+    "plugin_container_cpu_median_pct": 230.02,
+    "vanilla_gc_time_ms_median": 220,
+    "plugin_gc_time_ms_median": 271,
+    "note": "Engine-only isolates engine indexing cost by pre-tokenizing Model A corpus in RAM outside timing loop. Shows pure OpenSearch ingestion rate."
+  },
+  {
+    "concurrency": 16,
+    "batch_size": 1000,
+    "docs": 100000,
+    "repetitions": 3,
+    "vanilla_pretokenized_throughput_median": 13909.12,
+    "plugin_raw_throughput_median": 3723.72,
+    "engine_throughput_ratio_vanilla_vs_plugin": 3.735,
+    "vanilla_container_cpu_median_pct": 289.62,
+    "plugin_container_cpu_median_pct": 170.32,
+    "vanilla_gc_time_ms_median": 170,
+    "plugin_gc_time_ms_median": 278,
+    "note": "Engine-only isolates engine indexing cost by pre-tokenizing Model A corpus in RAM outside timing loop. Shows pure OpenSearch ingestion rate."
+  }
+]

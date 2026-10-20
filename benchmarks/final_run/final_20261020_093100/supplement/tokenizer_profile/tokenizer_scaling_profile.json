@@ -1,0 +1,148 @@
+{
+  "dictionary_path": "data/dicts/coccoc_plugin_final",
+  "max_docs": 100000,
+  "repetitions_per_concurrency": 3,
+  "mutex_contention_note": "pkg/tokenizer/coccoc/tokenizer.go locks a global sync.Mutex on every SegmentOriginal() call. Parallel efficiency drops monotonically from 100% (C=1) to ~2-3% (C=32).",
+  "results": [
+    {
+      "concurrency": 1,
+      "operations": 100000,
+      "reps": [
+        {
+          "repetition": 1,
+          "duration_sec": 1.324281514,
+          "ops_per_sec": 75512.64511572727,
+          "errors": 0
+        },
+        {
+          "repetition": 2,
+          "duration_sec": 1.481892707,
+          "ops_per_sec": 67481.2687366846,
+          "errors": 0
+        },
+        {
+          "repetition": 3,
+          "duration_sec": 1.254423509,
+          "ops_per_sec": 79717.89374365113,
+          "errors": 0
+        }
+      ],
+      "ops_per_sec_median": 75512.64511572727,
+      "ops_per_sec_mean": 74237.26919868766,
+      "speedup_vs_c1": 1,
+      "parallel_efficiency_pct": 100
+    },
+    {
+      "concurrency": 4,
+      "operations": 100000,
+      "reps": [
+        {
+          "repetition": 1,
+          "duration_sec": 1.733773609,
+          "ops_per_sec": 57677.65726788151,
+          "errors": 0
+        },
+        {
+          "repetition": 2,
+          "duration_sec": 1.7641108330000002,
+          "ops_per_sec": 56685.78080774134,
+          "errors": 0
+        },
+        {
+          "repetition": 3,
+          "duration_sec": 1.8050731450000002,
+          "ops_per_sec": 55399.417069051786,
+          "errors": 0
+        }
+      ],
+      "ops_per_sec_median": 56685.78080774134,
+      "ops_per_sec_mean": 56587.61838155821,
+      "speedup_vs_c1": 0.7506793163034784,
+      "parallel_efficiency_pct": 18.76698290758696
+    },
+    {
+      "concurrency": 8,
+      "operations": 100000,
+      "reps": [
+        {
+          "repetition": 1,
+          "duration_sec": 1.701396951,
+          "ops_per_sec": 58775.23169488741,
+          "errors": 0
+        },
+        {
+          "repetition": 2,
+          "duration_sec": 1.7229266540000001,
+          "ops_per_sec": 58040.77600624315,
+          "errors": 0
+        },
+        {
+          "repetition": 3,
+          "duration_sec": 1.5892945520000001,
+          "ops_per_sec": 62920.998422953126,
+          "errors": 0
+        }
+      ],
+      "ops_per_sec_median": 58775.23169488741,
+      "ops_per_sec_mean": 59912.33537469456,
+      "speedup_vs_c1": 0.7783495281460627,
+      "parallel_efficiency_pct": 9.729369101825784
+    },
+    {
+      "concurrency": 16,
+      "operations": 100000,
+      "reps": [
+        {
+          "repetition": 1,
+          "duration_sec": 1.601045549,
+          "ops_per_sec": 62459.18491354552,
+          "errors": 0
+        },
+        {
+          "repetition": 2,
+          "duration_sec": 1.7073429199999999,
+          "ops_per_sec": 58570.54188036227,
+          "errors": 0
+        },
+        {
+          "repetition": 3,
+          "duration_sec": 1.578530027,
+          "ops_per_sec": 63350.07778727544,
+          "errors": 0
+        }
+      ],
+      "ops_per_sec_median": 62459.18491354552,
+      "ops_per_sec_mean": 61459.934860394416,
+      "speedup_vs_c1": 0.8271354396051601,
+      "parallel_efficiency_pct": 5.16959649753225
+    },
+    {
+      "concurrency": 32,
+      "operations": 100000,
+      "reps": [
+        {
+          "repetition": 1,
+          "duration_sec": 1.644617622,
+          "ops_per_sec": 60804.4074575774,
+          "errors": 0
+        },
+        {
+          "repetition": 2,
+          "duration_sec": 1.6189432030000002,
+          "ops_per_sec": 61768.68948502574,
+          "errors": 0
+        },
+        {
+          "repetition": 3,
+          "duration_sec": 1.676933393,
+          "ops_per_sec": 59632.66067539034,
+          "errors": 0
+        }
+      ],
+      "ops_per_sec_median": 60804.4074575774,
+      "ops_per_sec_mean": 60735.25253933116,
+      "speedup_vs_c1": 0.8052215276579348,
+      "parallel_efficiency_pct": 2.516317273931046
+    }
+  ]
+}

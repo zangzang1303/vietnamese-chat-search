@@ -1,0 +1,5 @@
+REPOSITORY    TAG       IMAGE ID                                                                  CREATED        SIZE
+os-plugin     2.19.0    sha256:1f6ad83f76a380bf62f5a95bb6ad92c4da150074eb478e41c56ffc739ca3d99f   13 days ago    2.96GB
+os-vanilla    2.19.0    sha256:4adbc7424f88fec0876e4bc6d0ba9637c0d3b0757ba8d6e12e8a801eedf170f5   2 weeks ago    2.55GB
+amazonlinux   2023      sha256:8ed3c0a996841537f75607e7d1de2114d8150391f75792e8da9268738547e73f   2 weeks ago    227MB
+hello-world   latest    sha256:0e760fdfbc48ba8041e7c6db999bb40bfca508b4be580ac75d32c4e29d202ce1   7 months ago   25.9kB

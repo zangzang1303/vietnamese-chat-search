@@ -1,0 +1,79 @@
+{
+  "total_mismatches": 358,
+  "comparisons_expected": 8000,
+  "parity_rate": 0.95525,
+  "by_field": {
+    "text_vi": 123,
+    "text_edge": 112,
+    "text_raw": 123
+  },
+  "by_cause": {
+    "apostrophe_split_difference": 27,
+    "compound_boundary_token_count_diff": 129,
+    "word_token_diff": 59,
+    "numeric_comma_dot_formatting": 56,
+    "percent_sign_dropped_by_standard_tokenizer": 76,
+    "punctuation_url_colon_hyphen": 11
+  },
+  "examples": {
+    "apostrophe_split_difference": {
+      "id": "5504",
+      "field": "text_vi",
+      "diff_vanilla": [
+        "biti's"
+      ],
+      "diff_plugin": [
+        "s",
+        "biti"
+      ]
+    },
+    "compound_boundary_token_count_diff": {
+      "id": "5504",
+      "field": "text_edge",
+      "diff_vanilla": [
+        "biti'",
+        "biti's"
+      ],
+      "diff_plugin": []
+    },
+    "word_token_diff": {
+      "id": "10006",
+      "field": "text_vi",
+      "diff_vanilla": [],
+      "diff_plugin": []
+    },
+    "numeric_comma_dot_formatting": {
+      "id": "30016",
+      "field": "text_vi",
+      "diff_vanilla": [
+        "2,7"
+      ],
+      "diff_plugin": [
+        "2.7"
+      ]
+    },
+    "percent_sign_dropped_by_standard_tokenizer": {
+      "id": "61031",
+      "field": "text_vi",
+      "diff_vanilla": [
+        "30",
+        "50"
+      ],
+      "diff_plugin": [
+        "50%",
+        "30%"
+      ]
+    },
+    "punctuation_url_colon_hyphen": {
+      "id": "223112",
+      "field": "text_vi",
+      "diff_vanilla": [
+        "simple:hypotonic"
+      ],
+      "diff_plugin": [
+        "hypotonic",
+        "simple"
+      ]
+    }
+  }
+}

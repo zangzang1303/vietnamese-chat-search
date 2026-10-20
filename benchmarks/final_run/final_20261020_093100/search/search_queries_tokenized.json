@@ -1,0 +1,6002 @@
+[
+  {
+    "id": 0,
+    "raw": "học sinh",
+    "cgo": "học_sinh",
+    "category": "compound_accented"
+  },
+  {
+    "id": 1,
+    "raw": "cà phê",
+    "cgo": "cà_phê",
+    "category": "compound_accented"
+  },
+  {
+    "id": 2,
+    "raw": "việt nam",
+    "cgo": "việt_nam",
+    "category": "compound_accented"
+  },
+  {
+    "id": 3,
+    "raw": "văn phòng",
+    "cgo": "văn_phòng",
+    "category": "compound_accented"
+  },
+  {
+    "id": 4,
+    "raw": "thời khóa biểu",
+    "cgo": "thời_khóa_biểu",
+    "category": "compound_accented"
+  },
+  {
+    "id": 5,
+    "raw": "sinh viên",
+    "cgo": "sinh_viên",
+    "category": "compound_accented"
+  },
+  {
+    "id": 6,
+    "raw": "máy lạnh",
+    "cgo": "máy_lạnh",
+    "category": "compound_accented"
+  },
+  {
+    "id": 7,
+    "raw": "công nghệ thông tin",
+    "cgo": "công_nghệ thông_tin",
+    "category": "compound_accented"
+  },
+  {
+    "id": 8,
+    "raw": "sản phẩm",
+    "cgo": "sản_phẩm",
+    "category": "compound_accented"
+  },
+  {
+    "id": 9,
+    "raw": "điện thoại",
+    "cgo": "điện_thoại",
+    "category": "compound_accented"
+  },
+  {
+    "id": 10,
+    "raw": "tản nhiệt",
+    "cgo": "tản nhiệt",
+    "category": "compound_accented"
+  },
+  {
+    "id": 11,
+    "raw": "bộ xử lý",
+    "cgo": "bộ xử_lý",
+    "category": "compound_accented"
+  },
+  {
+    "id": 12,
+    "raw": "thị trường",
+    "cgo": "thị_trường",
+    "category": "compound_accented"
+  },
+  {
+    "id": 13,
+    "raw": "chất kết dính",
+    "cgo": "chất kết_dính",
+    "category": "compound_accented"
+  },
+  {
+    "id": 14,
+    "raw": "vật liệu",
+    "cgo": "vật_liệu",
+    "category": "compound_accented"
+  },
+  {
+    "id": 15,
+    "raw": "chính sách",
+    "cgo": "chính_sách",
+    "category": "compound_accented"
+  },
+  {
+    "id": 16,
+    "raw": "phát triển",
+    "cgo": "phát_triển",
+    "category": "compound_accented"
+  },
+  {
+    "id": 17,
+    "raw": "quốc gia",
+    "cgo": "quốc_gia",
+    "category": "compound_accented"
+  },
+  {
+    "id": 18,
+    "raw": "kinh tế",
+    "cgo": "kinh_tế",
+    "category": "compound_accented"
+  },
+  {
+    "id": 19,
+    "raw": "thủ đô",
+    "cgo": "thủ_đô",
+    "category": "compound_accented"
+  },
+  {
+    "id": 20,
+    "raw": "hoc sinh",
+    "cgo": "hoc_sinh",
+    "category": "unaccented"
+  },
+  {
+    "id": 21,
+    "raw": "ca phe",
+    "cgo": "ca_phe",
+    "category": "unaccented"
+  },
+  {
+    "id": 22,
+    "raw": "viet nam",
+    "cgo": "viet_nam",
+    "category": "unaccented"
+  },
+  {
+    "id": 23,
+    "raw": "van phong",
+    "cgo": "van_phong",
+    "category": "unaccented"
+  },
+  {
+    "id": 24,
+    "raw": "thoi khoa bieu",
+    "cgo": "thoi_khoa_bieu",
+    "category": "unaccented"
+  },
+  {
+    "id": 25,
+    "raw": "sinh vien",
+    "cgo": "sinh_vien",
+    "category": "unaccented"
+  },
+  {
+    "id": 26,
+    "raw": "may lanh",
+    "cgo": "may_lanh",
+    "category": "unaccented"
+  },
+  {
+    "id": 27,
+    "raw": "cong nghe thong tin",
+    "cgo": "cong_nghe thong_tin",
+    "category": "unaccented"
+  },
+  {
+    "id": 28,
+    "raw": "san pham",
+    "cgo": "san_pham",
+    "category": "unaccented"
+  },
+  {
+    "id": 29,
+    "raw": "dien thoai",
+    "cgo": "dien_thoai",
+    "category": "unaccented"
+  },
+  {
+    "id": 30,
+    "raw": "tan nhiet",
+    "cgo": "tan nhiet",
+    "category": "unaccented"
+  },
+  {
+    "id": 31,
+    "raw": "bo xu ly",
+    "cgo": "bo xu_ly",
+    "category": "unaccented"
+  },
+  {
+    "id": 32,
+    "raw": "thi truong",
+    "cgo": "thi_truong",
+    "category": "unaccented"
+  },
+  {
+    "id": 33,
+    "raw": "vat lieu",
+    "cgo": "vat_lieu",
+    "category": "unaccented"
+  },
+  {
+    "id": 34,
+    "raw": "chinh sach",
+    "cgo": "chinh_sach",
+    "category": "unaccented"
+  },
+  {
+    "id": 35,
+    "raw": "phat trien",
+    "cgo": "phat_trien",
+    "category": "unaccented"
+  },
+  {
+    "id": 36,
+    "raw": "quoc gia",
+    "cgo": "quoc_gia",
+    "category": "unaccented"
+  },
+  {
+    "id": 37,
+    "raw": "kinh te",
+    "cgo": "kinh_te",
+    "category": "unaccented"
+  },
+  {
+    "id": 38,
+    "raw": "thu do",
+    "cgo": "thu_do",
+    "category": "unaccented"
+  },
+  {
+    "id": 39,
+    "raw": "vie",
+    "cgo": "vie",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 40,
+    "raw": "viet_n",
+    "cgo": "viet_n",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 41,
+    "raw": "hoc_s",
+    "cgo": "hoc_s",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 42,
+    "raw": "van_p",
+    "cgo": "van_p",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 43,
+    "raw": "ca_p",
+    "cgo": "ca_p",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 44,
+    "raw": "sin_v",
+    "cgo": "sin_v",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 45,
+    "raw": "may_l",
+    "cgo": "may_l",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 46,
+    "raw": "con_n",
+    "cgo": "con_n",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 47,
+    "raw": "san_p",
+    "cgo": "san_p",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 48,
+    "raw": "die_t",
+    "cgo": "die_t",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 49,
+    "raw": "tan_n",
+    "cgo": "tan_n",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 50,
+    "raw": "bo_x",
+    "cgo": "bo_x",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 51,
+    "raw": "thi_t",
+    "cgo": "thi_t",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 52,
+    "raw": "vat_l",
+    "cgo": "vat_l",
+    "category": "edge_prefix"
+  },
+  {
+    "id": 53,
+    "raw": "chào",
+    "cgo": "chào",
+    "category": "single_word"
+  },
+  {
+    "id": 54,
+    "raw": "người",
+    "cgo": "người",
+    "category": "single_word"
+  },
+  {
+    "id": 55,
+    "raw": "ngày",
+    "cgo": "ngày",
+    "category": "single_word"
+  },
+  {
+    "id": 56,
+    "raw": "năm",
+    "cgo": "năm",
+    "category": "single_word"
+  },
+  {
+    "id": 57,
+    "raw": "tháng",
+    "cgo": "tháng",
+    "category": "single_word"
+  },
+  {
+    "id": 58,
+    "raw": "làm",
+    "cgo": "làm",
+    "category": "single_word"
+  },
+  {
+    "id": 59,
+    "raw": "được",
+    "cgo": "được",
+    "category": "single_word"
+  },
+  {
+    "id": 60,
+    "raw": "nhiều",
+    "cgo": "nhiều",
+    "category": "single_word"
+  },
+  {
+    "id": 61,
+    "raw": "rất",
+    "cgo": "rất",
+    "category": "single_word"
+  },
+  {
+    "id": 62,
+    "raw": "khi",
+    "cgo": "khi",
+    "category": "single_word"
+  },
+  {
+    "id": 63,
+    "raw": "chao",
+    "cgo": "chao",
+    "category": "single_word"
+  },
+  {
+    "id": 64,
+    "raw": "nguoi",
+    "cgo": "nguoi",
+    "category": "single_word"
+  },
+  {
+    "id": 65,
+    "raw": "ngay",
+    "cgo": "ngay",
+    "category": "single_word"
+  },
+  {
+    "id": 66,
+    "raw": "nam",
+    "cgo": "nam",
+    "category": "single_word"
+  },
+  {
+    "id": 67,
+    "raw": "thang",
+    "cgo": "thang",
+    "category": "single_word"
+  },
+  {
+    "id": 68,
+    "raw": "lam",
+    "cgo": "lam",
+    "category": "single_word"
+  },
+  {
+    "id": 69,
+    "raw": "duoc",
+    "cgo": "duoc",
+    "category": "single_word"
+  },
+  {
+    "id": 70,
+    "raw": "nhieu",
+    "cgo": "nhieu",
+    "category": "single_word"
+  },
+  {
+    "id": 71,
+    "raw": "rat",
+    "cgo": "rat",
+    "category": "single_word"
+  },
+  {
+    "id": 72,
+    "raw": "keo pad",
+    "cgo": "keo pad",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 73,
+    "raw": "pad tản nhiệt",
+    "cgo": "pad tản nhiệt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 74,
+    "raw": "tản",
+    "cgo": "tản",
+    "category": "dataset_word"
+  },
+  {
+    "id": 75,
+    "raw": "thành phần",
+    "cgo": "thành_phần",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 76,
+    "raw": "phần của keo",
+    "cgo": "phần của keo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 77,
+    "raw": "của",
+    "cgo": "của",
+    "category": "dataset_word"
+  },
+  {
+    "id": 78,
+    "raw": "những loại",
+    "cgo": "những loại",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 79,
+    "raw": "loại keo pad",
+    "cgo": "loại keo pad",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 80,
+    "raw": "keo",
+    "cgo": "keo",
+    "category": "dataset_word"
+  },
+  {
+    "id": 81,
+    "raw": "có nhiều",
+    "cgo": "có nhiều",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 82,
+    "raw": "nhiều loại keo",
+    "cgo": "nhiều loại keo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 83,
+    "raw": "loại",
+    "cgo": "loại",
+    "category": "dataset_word"
+  },
+  {
+    "id": 84,
+    "raw": "loại keo",
+    "cgo": "loại keo",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 85,
+    "raw": "keo pad tản",
+    "cgo": "keo pad tản",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 86,
+    "raw": "pad",
+    "cgo": "pad",
+    "category": "dataset_word"
+  },
+  {
+    "id": 87,
+    "raw": "lựa chọn",
+    "cgo": "lựa_chọn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 88,
+    "raw": "chọn loại keo",
+    "cgo": "chọn loại keo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 89,
+    "raw": "tôi nên",
+    "cgo": "tôi nên",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 90,
+    "raw": "nên mua keo",
+    "cgo": "nên mua keo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 91,
+    "raw": "mua",
+    "cgo": "mua",
+    "category": "dataset_word"
+  },
+  {
+    "id": 92,
+    "raw": "bạn có",
+    "cgo": "bạn có",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 93,
+    "raw": "có thể mua",
+    "cgo": "có thể mua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 94,
+    "raw": "thể",
+    "cgo": "thể",
+    "category": "dataset_word"
+  },
+  {
+    "id": 95,
+    "raw": "quần jeans",
+    "cgo": "quần jeans",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 96,
+    "raw": "jeans nam có",
+    "cgo": "jeans nam có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 97,
+    "raw": "đặc điểm",
+    "cgo": "đặc_điểm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 98,
+    "raw": "điểm của từng",
+    "cgo": "điểm của từng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 99,
+    "raw": "vải denim",
+    "cgo": "vải denim",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 100,
+    "raw": "denim có độ",
+    "cgo": "denim có độ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 101,
+    "raw": "điểm chung của",
+    "cgo": "điểm chung của",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 102,
+    "raw": "chung",
+    "cgo": "chung",
+    "category": "dataset_word"
+  },
+  {
+    "id": 103,
+    "raw": "jeans nam thường",
+    "cgo": "jeans nam thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 104,
+    "raw": "cách chọn",
+    "cgo": "cách chọn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 105,
+    "raw": "chọn quần jeans",
+    "cgo": "chọn quần jeans",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 106,
+    "raw": "quần",
+    "cgo": "quần",
+    "category": "dataset_word"
+  },
+  {
+    "id": 107,
+    "raw": "để chọn",
+    "cgo": "để chọn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 108,
+    "raw": "những thương",
+    "cgo": "những thương",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 109,
+    "raw": "thương hiệu quần",
+    "cgo": "thương_hiệu quần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 110,
+    "raw": "hiệu",
+    "cgo": "hiệu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 111,
+    "raw": "một số",
+    "cgo": "một số",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 112,
+    "raw": "số thương hiệu",
+    "cgo": "số thương_hiệu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 113,
+    "raw": "thương",
+    "cgo": "thương",
+    "category": "dataset_word"
+  },
+  {
+    "id": 114,
+    "raw": "gợi một",
+    "cgo": "gợi một",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 115,
+    "raw": "một số mẫu",
+    "cgo": "một số mẫu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 116,
+    "raw": "những mẫu",
+    "cgo": "những mẫu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 117,
+    "raw": "mẫu quần jeans",
+    "cgo": "mẫu quần jeans",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 118,
+    "raw": "cách bảo",
+    "cgo": "cách bảo",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 119,
+    "raw": "bảo quản quần",
+    "cgo": "bảo_quản quần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 120,
+    "raw": "quản",
+    "cgo": "quản",
+    "category": "dataset_word"
+  },
+  {
+    "id": 121,
+    "raw": "để bảo",
+    "cgo": "để bảo",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 122,
+    "raw": "chân váy",
+    "cgo": "chân_váy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 123,
+    "raw": "váy dài thường",
+    "cgo": "váy dài thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 124,
+    "raw": "dài",
+    "cgo": "dài",
+    "category": "dataset_word"
+  },
+  {
+    "id": 125,
+    "raw": "váy dài có",
+    "cgo": "váy dài có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 126,
+    "raw": "váy dài phù",
+    "cgo": "váy dài phù",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 127,
+    "raw": "nhiều thương hiệu",
+    "cgo": "nhiều thương_hiệu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 128,
+    "raw": "giá thành",
+    "cgo": "giá_thành",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 129,
+    "raw": "thành của chân",
+    "cgo": "thành của chân",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 130,
+    "raw": "ưu điểm",
+    "cgo": "ưu_điểm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 131,
+    "raw": "điểm của chân",
+    "cgo": "điểm của chân",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 132,
+    "raw": "khi chọn",
+    "cgo": "khi chọn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 133,
+    "raw": "chọn mua chân",
+    "cgo": "chọn mua chân",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 134,
+    "raw": "nên giặt chân",
+    "cgo": "nên giặt chân",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 135,
+    "raw": "giặt",
+    "cgo": "giặt",
+    "category": "dataset_word"
+  },
+  {
+    "id": 136,
+    "raw": "bạn nên",
+    "cgo": "bạn nên",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 137,
+    "raw": "đầm công",
+    "cgo": "đầm công",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 138,
+    "raw": "công sở thường",
+    "cgo": "công_sở thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 139,
+    "raw": "chất liệu",
+    "cgo": "chất_liệu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 140,
+    "raw": "liệu phổ biến",
+    "cgo": "liệu phổ_biến",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 141,
+    "raw": "phổ",
+    "cgo": "phổ",
+    "category": "dataset_word"
+  },
+  {
+    "id": 142,
+    "raw": "có những",
+    "cgo": "có những",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 143,
+    "raw": "những loại đầm",
+    "cgo": "những loại đầm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 144,
+    "raw": "các loại",
+    "cgo": "các loại",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 145,
+    "raw": "loại đầm công",
+    "cgo": "loại đầm công",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 146,
+    "raw": "đầm",
+    "cgo": "đầm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 147,
+    "raw": "làm thế",
+    "cgo": "làm thế",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 148,
+    "raw": "thế nào để",
+    "cgo": "thế nào để",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 149,
+    "raw": "nào",
+    "cgo": "nào",
+    "category": "dataset_word"
+  },
+  {
+    "id": 150,
+    "raw": "chọn được chiếc",
+    "cgo": "chọn được chiếc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 151,
+    "raw": "tôi có",
+    "cgo": "tôi có",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 152,
+    "raw": "có thể tìm",
+    "cgo": "có thể tìm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 153,
+    "raw": "thương hiệu đầm",
+    "cgo": "thương_hiệu đầm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 154,
+    "raw": "mẫu đầm công",
+    "cgo": "mẫu đầm công",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 155,
+    "raw": "để phối",
+    "cgo": "để phối",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 156,
+    "raw": "phối đầm công",
+    "cgo": "phối đầm công",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 157,
+    "raw": "có thể mặc",
+    "cgo": "có thể mặc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 158,
+    "raw": "ngoài môi",
+    "cgo": "ngoài môi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 159,
+    "raw": "môi trường công",
+    "cgo": "môi_trường công",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 160,
+    "raw": "trường",
+    "cgo": "trường",
+    "category": "dataset_word"
+  },
+  {
+    "id": 161,
+    "raw": "bảo quản đầm",
+    "cgo": "bảo_quản đầm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 162,
+    "raw": "sữa rửa",
+    "cgo": "sữa rửa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 163,
+    "raw": "rửa mặt có",
+    "cgo": "rửa mặt có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 164,
+    "raw": "mặt",
+    "cgo": "mặt",
+    "category": "dataset_word"
+  },
+  {
+    "id": 165,
+    "raw": "rửa mặt thường",
+    "cgo": "rửa mặt thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 166,
+    "raw": "rửa mặt được",
+    "cgo": "rửa mặt được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 167,
+    "raw": "rửa mặt nào",
+    "cgo": "rửa mặt nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 168,
+    "raw": "rửa mặt dành",
+    "cgo": "rửa mặt dành",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 169,
+    "raw": "giá sữa",
+    "cgo": "giá sữa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 170,
+    "raw": "sữa rửa mặt",
+    "cgo": "sữa rửa mặt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 171,
+    "raw": "rửa",
+    "cgo": "rửa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 172,
+    "raw": "nên sử dụng",
+    "cgo": "nên sử_dụng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 173,
+    "raw": "để sử",
+    "cgo": "để sử",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 174,
+    "raw": "sử dụng sữa",
+    "cgo": "sử_dụng sữa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 175,
+    "raw": "dụng",
+    "cgo": "dụng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 176,
+    "raw": "đầm dáng",
+    "cgo": "đầm dáng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 177,
+    "raw": "dáng xòe thường",
+    "cgo": "dáng xòe thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 178,
+    "raw": "xòe",
+    "cgo": "xòe",
+    "category": "dataset_word"
+  },
+  {
+    "id": 179,
+    "raw": "dáng xòe có",
+    "cgo": "dáng xòe có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 180,
+    "raw": "dáng xòe phù",
+    "cgo": "dáng xòe phù",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 181,
+    "raw": "dáng xòe là",
+    "cgo": "dáng xòe là",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 182,
+    "raw": "thành của một",
+    "cgo": "thành của một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 183,
+    "raw": "tôi đang",
+    "cgo": "tôi đang",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 184,
+    "raw": "đang tìm một",
+    "cgo": "đang tìm một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 185,
+    "raw": "tìm",
+    "cgo": "tìm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 186,
+    "raw": "số mẫu đầm",
+    "cgo": "số mẫu đầm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 187,
+    "raw": "mẫu",
+    "cgo": "mẫu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 188,
+    "raw": "tôi muốn",
+    "cgo": "tôi muốn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 189,
+    "raw": "muốn mua một",
+    "cgo": "muốn mua một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 190,
+    "raw": "tôi là",
+    "cgo": "tôi là",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 191,
+    "raw": "là một cô",
+    "cgo": "là một cô",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 192,
+    "raw": "một",
+    "cgo": "một",
+    "category": "dataset_word"
+  },
+  {
+    "id": 193,
+    "raw": "xin tôi",
+    "cgo": "xin tôi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 194,
+    "raw": "tôi muốn mua",
+    "cgo": "tôi muốn mua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 195,
+    "raw": "muốn",
+    "cgo": "muốn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 196,
+    "raw": "chào giày",
+    "cgo": "chào giày",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 197,
+    "raw": "giày nam có",
+    "cgo": "giày nam có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 198,
+    "raw": "giày tây",
+    "cgo": "giày tây",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 199,
+    "raw": "tây có nhiều",
+    "cgo": "tây có nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 200,
+    "raw": "giày oxford",
+    "cgo": "giày oxford",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 201,
+    "raw": "oxford và giày",
+    "cgo": "oxford và giày",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 202,
+    "raw": "oxford có phần",
+    "cgo": "oxford có phần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 203,
+    "raw": "giày lười",
+    "cgo": "giày_lười",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 204,
+    "raw": "lười có nhiều",
+    "cgo": "lười có nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 205,
+    "raw": "giày thể",
+    "cgo": "giày thể",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 206,
+    "raw": "thể thao có",
+    "cgo": "thể_thao có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 207,
+    "raw": "thao",
+    "cgo": "thao",
+    "category": "dataset_word"
+  },
+  {
+    "id": 208,
+    "raw": "giày boot",
+    "cgo": "giày boot",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 209,
+    "raw": "boot có nhiều",
+    "cgo": "boot có nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 210,
+    "raw": "dép quai",
+    "cgo": "dép quai",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 211,
+    "raw": "quai ngang có",
+    "cgo": "quai ngang có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 212,
+    "raw": "ngang",
+    "cgo": "ngang",
+    "category": "dataset_word"
+  },
+  {
+    "id": 213,
+    "raw": "dép xỏ",
+    "cgo": "dép xỏ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 214,
+    "raw": "xỏ ngón có",
+    "cgo": "xỏ ngón có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 215,
+    "raw": "ngón",
+    "cgo": "ngón",
+    "category": "dataset_word"
+  },
+  {
+    "id": 216,
+    "raw": "dép lê",
+    "cgo": "dép_lê",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 217,
+    "raw": "lê có nhiều",
+    "cgo": "lê có nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 218,
+    "raw": "có rất",
+    "cgo": "có rất",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 219,
+    "raw": "rất nhiều mẫu",
+    "cgo": "rất nhiều mẫu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 220,
+    "raw": "đèn diệt",
+    "cgo": "đèn diệt",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 221,
+    "raw": "diệt côn trùng",
+    "cgo": "diệt côn_trùng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 222,
+    "raw": "côn",
+    "cgo": "côn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 223,
+    "raw": "những loại đèn",
+    "cgo": "những loại đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 224,
+    "raw": "có loại",
+    "cgo": "có loại",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 225,
+    "raw": "loại đèn diệt",
+    "cgo": "loại đèn diệt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 226,
+    "raw": "đèn",
+    "cgo": "đèn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 227,
+    "raw": "nên sử",
+    "cgo": "nên sử",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 228,
+    "raw": "sử dụng loại",
+    "cgo": "sử_dụng loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 229,
+    "raw": "tùy thuộc",
+    "cgo": "tùy thuộc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 230,
+    "raw": "thuộc vào nhu",
+    "cgo": "thuộc vào nhu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 231,
+    "raw": "vào",
+    "cgo": "vào",
+    "category": "dataset_word"
+  },
+  {
+    "id": 232,
+    "raw": "mức giá",
+    "cgo": "mức giá",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 233,
+    "raw": "giá của đèn",
+    "cgo": "giá của đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 234,
+    "raw": "thương hiệu đèn",
+    "cgo": "thương_hiệu đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 235,
+    "raw": "khi sử",
+    "cgo": "khi sử",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 236,
+    "raw": "sử dụng đèn",
+    "cgo": "sử_dụng đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 237,
+    "raw": "tuổi thọ",
+    "cgo": "tuổi_thọ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 238,
+    "raw": "thọ của đèn",
+    "cgo": "thọ của đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 239,
+    "raw": "có thể",
+    "cgo": "có thể",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 240,
+    "raw": "thể tự chế",
+    "cgo": "thể tự chế",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 241,
+    "raw": "có thể tự",
+    "cgo": "có thể tự",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 242,
+    "raw": "máy làm",
+    "cgo": "máy làm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 243,
+    "raw": "làm sữa chua",
+    "cgo": "làm sữa_chua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 244,
+    "raw": "sữa",
+    "cgo": "sữa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 245,
+    "raw": "hũ đựng",
+    "cgo": "hũ đựng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 246,
+    "raw": "đựng sữa chua",
+    "cgo": "đựng sữa_chua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 247,
+    "raw": "với gia",
+    "cgo": "với gia",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 248,
+    "raw": "gia đình bạn",
+    "cgo": "gia_đình bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 249,
+    "raw": "đình",
+    "cgo": "đình",
+    "category": "dataset_word"
+  },
+  {
+    "id": 250,
+    "raw": "giá máy",
+    "cgo": "giá máy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 251,
+    "raw": "máy làm sữa",
+    "cgo": "máy làm sữa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 252,
+    "raw": "số loại máy",
+    "cgo": "số loại máy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 253,
+    "raw": "loại sổ tay",
+    "cgo": "loại sổ_tay",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 254,
+    "raw": "ưu kích",
+    "cgo": "ưu kích",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 255,
+    "raw": "kích thước nhỏ",
+    "cgo": "kích_thước nhỏ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 256,
+    "raw": "thước",
+    "cgo": "thước",
+    "category": "dataset_word"
+  },
+  {
+    "id": 257,
+    "raw": "được theo",
+    "cgo": "được theo",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 258,
+    "raw": "theo bạn thì",
+    "cgo": "theo bạn thì",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 259,
+    "raw": "bạn",
+    "cgo": "bạn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 260,
+    "raw": "ngoài có",
+    "cgo": "ngoài có",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 261,
+    "raw": "có loại sổ",
+    "cgo": "có loại sổ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 262,
+    "raw": "có bạn",
+    "cgo": "có bạn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 263,
+    "raw": "bạn có thể",
+    "cgo": "bạn có thể",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 264,
+    "raw": "sổ tay",
+    "cgo": "sổ_tay",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 265,
+    "raw": "tay bìa cứng",
+    "cgo": "tay bìa cứng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 266,
+    "raw": "bìa",
+    "cgo": "bìa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 267,
+    "raw": "tùy vào",
+    "cgo": "tùy vào",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 268,
+    "raw": "vào nhu cầu",
+    "cgo": "vào nhu_cầu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 269,
+    "raw": "nhu",
+    "cgo": "nhu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 270,
+    "raw": "mình thấy",
+    "cgo": "mình thấy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 271,
+    "raw": "thấy có sổ",
+    "cgo": "thấy có sổ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 272,
+    "raw": "tay lò xo",
+    "cgo": "tay lò_xo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 273,
+    "raw": "giá cả",
+    "cgo": "giá_cả",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 274,
+    "raw": "cả của các",
+    "cgo": "cả của các",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 275,
+    "raw": "cả của sổ",
+    "cgo": "cả của sổ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 276,
+    "raw": "vậy làm",
+    "cgo": "vậy làm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 277,
+    "raw": "làm thế nào",
+    "cgo": "làm thế nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 278,
+    "raw": "thế",
+    "cgo": "thế",
+    "category": "dataset_word"
+  },
+  {
+    "id": 279,
+    "raw": "chọn được một",
+    "cgo": "chọn được một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 280,
+    "raw": "có thể gợi",
+    "cgo": "có thể gợi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 281,
+    "raw": "tất nhiên",
+    "cgo": "tất_nhiên",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 282,
+    "raw": "nhiên một số",
+    "cgo": "nhiên một số",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 283,
+    "raw": "ngoài những",
+    "cgo": "ngoài những",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 284,
+    "raw": "những thương hiệu",
+    "cgo": "những thương_hiệu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 285,
+    "raw": "ngoài các",
+    "cgo": "ngoài các",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 286,
+    "raw": "các thương hiệu",
+    "cgo": "các thương_hiệu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 287,
+    "raw": "cuối bạn",
+    "cgo": "cuối bạn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 288,
+    "raw": "nhiên dưới đây",
+    "cgo": "nhiên dưới đây",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 289,
+    "raw": "dưới",
+    "cgo": "dưới",
+    "category": "dataset_word"
+  },
+  {
+    "id": 290,
+    "raw": "túi tote",
+    "cgo": "túi tote",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 291,
+    "raw": "tote nữ thường",
+    "cgo": "tote nữ thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 292,
+    "raw": "tote nữ có",
+    "cgo": "tote nữ có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 293,
+    "raw": "tote nữ giá",
+    "cgo": "tote nữ giá",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 294,
+    "raw": "nên chọn túi",
+    "cgo": "nên chọn túi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 295,
+    "raw": "chọn",
+    "cgo": "chọn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 296,
+    "raw": "chọn túi tote",
+    "cgo": "chọn túi tote",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 297,
+    "raw": "túi",
+    "cgo": "túi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 298,
+    "raw": "thưa chuyên",
+    "cgo": "thưa chuyên",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 299,
+    "raw": "chuyên vì sao",
+    "cgo": "chuyên vì_sao",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 300,
+    "raw": "bàn chải",
+    "cgo": "bàn_chải",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 301,
+    "raw": "chải đánh răng",
+    "cgo": "chải đánh răng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 302,
+    "raw": "đánh",
+    "cgo": "đánh",
+    "category": "dataset_word"
+  },
+  {
+    "id": 303,
+    "raw": "tôi bị",
+    "cgo": "tôi bị",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 304,
+    "raw": "bị hôi nên",
+    "cgo": "bị hôi nên",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 305,
+    "raw": "hôi",
+    "cgo": "hôi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 306,
+    "raw": "để khắc",
+    "cgo": "để khắc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 307,
+    "raw": "khắc phục tình",
+    "cgo": "khắc_phục tình",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 308,
+    "raw": "phục",
+    "cgo": "phục",
+    "category": "dataset_word"
+  },
+  {
+    "id": 309,
+    "raw": "hiện có",
+    "cgo": "hiện có",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 310,
+    "raw": "có rất nhiều",
+    "cgo": "có rất nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 311,
+    "raw": "thể sử dụng",
+    "cgo": "thể sử_dụng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 312,
+    "raw": "chỉ nha",
+    "cgo": "chỉ nha",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 313,
+    "raw": "nha khoa và",
+    "cgo": "nha_khoa và",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 314,
+    "raw": "khoa",
+    "cgo": "khoa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 315,
+    "raw": "muốn mua nước",
+    "cgo": "muốn mua nước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 316,
+    "raw": "nhiều loại nước",
+    "cgo": "nhiều loại nước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 317,
+    "raw": "để lựa",
+    "cgo": "để lựa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 318,
+    "raw": "lựa chọn kem",
+    "cgo": "lựa_chọn kem",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 319,
+    "raw": "có nên",
+    "cgo": "có nên",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 320,
+    "raw": "nên dùng tăm",
+    "cgo": "nên dùng tăm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 321,
+    "raw": "dùng",
+    "cgo": "dùng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 322,
+    "raw": "không nên",
+    "cgo": "không nên",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 323,
+    "raw": "khi nào",
+    "cgo": "khi nào",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 324,
+    "raw": "nào nên thay",
+    "cgo": "nào nên thay",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 325,
+    "raw": "nên",
+    "cgo": "nên",
+    "category": "dataset_word"
+  },
+  {
+    "id": 326,
+    "raw": "nên thay bàn",
+    "cgo": "nên thay bàn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 327,
+    "raw": "thay",
+    "cgo": "thay",
+    "category": "dataset_word"
+  },
+  {
+    "id": 328,
+    "raw": "bị chảy máu",
+    "cgo": "bị chảy máu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 329,
+    "raw": "chảy",
+    "cgo": "chảy",
+    "category": "dataset_word"
+  },
+  {
+    "id": 330,
+    "raw": "nếu bạn",
+    "cgo": "nếu bạn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 331,
+    "raw": "bạn bị chảy",
+    "cgo": "bạn bị chảy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 332,
+    "raw": "để ngăn",
+    "cgo": "để ngăn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 333,
+    "raw": "ngăn ngừa sâu",
+    "cgo": "ngăn_ngừa sâu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 334,
+    "raw": "ngừa",
+    "cgo": "ngừa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 335,
+    "raw": "ngũ cốc",
+    "cgo": "ngũ_cốc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 336,
+    "raw": "cốc và bột",
+    "cgo": "cốc và bột",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 337,
+    "raw": "loại ngũ cốc",
+    "cgo": "loại ngũ_cốc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 338,
+    "raw": "ngũ",
+    "cgo": "ngũ",
+    "category": "dataset_word"
+  },
+  {
+    "id": 339,
+    "raw": "đặc tính",
+    "cgo": "đặc_tính",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 340,
+    "raw": "tính của bột",
+    "cgo": "tính của bột",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 341,
+    "raw": "bột mì",
+    "cgo": "bột mì",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 342,
+    "raw": "mì có chứa",
+    "cgo": "mì có chứa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 343,
+    "raw": "bột yến",
+    "cgo": "bột yến",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 344,
+    "raw": "yến mạch có",
+    "cgo": "yến_mạch có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 345,
+    "raw": "mạch",
+    "cgo": "mạch",
+    "category": "dataset_word"
+  },
+  {
+    "id": 346,
+    "raw": "yến mạch chứa",
+    "cgo": "yến_mạch chứa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 347,
+    "raw": "bột lúa",
+    "cgo": "bột lúa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 348,
+    "raw": "lúa mạch có",
+    "cgo": "lúa mạch có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 349,
+    "raw": "lúa mạch chứa",
+    "cgo": "lúa mạch chứa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 350,
+    "raw": "bột sắn",
+    "cgo": "bột sắn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 351,
+    "raw": "sắn dây có",
+    "cgo": "sắn_dây có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 352,
+    "raw": "dây",
+    "cgo": "dây",
+    "category": "dataset_word"
+  },
+  {
+    "id": 353,
+    "raw": "loại ngũ",
+    "cgo": "loại ngũ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 354,
+    "raw": "ngũ cốc nào",
+    "cgo": "ngũ_cốc nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 355,
+    "raw": "cốc",
+    "cgo": "cốc",
+    "category": "dataset_word"
+  },
+  {
+    "id": 356,
+    "raw": "bột nào",
+    "cgo": "bột nào",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 357,
+    "raw": "nào phù hợp",
+    "cgo": "nào phù_hợp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 358,
+    "raw": "phù",
+    "cgo": "phù",
+    "category": "dataset_word"
+  },
+  {
+    "id": 359,
+    "raw": "yến bột lúa",
+    "cgo": "yến bột lúa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 360,
+    "raw": "bột",
+    "cgo": "bột",
+    "category": "dataset_word"
+  },
+  {
+    "id": 361,
+    "raw": "nào tốt cho",
+    "cgo": "nào tốt cho",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 362,
+    "raw": "tốt",
+    "cgo": "tốt",
+    "category": "dataset_word"
+  },
+  {
+    "id": 363,
+    "raw": "bột đậu",
+    "cgo": "bột đậu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 364,
+    "raw": "đậu bột hạt",
+    "cgo": "đậu bột hạt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 365,
+    "raw": "yến bột bột",
+    "cgo": "yến bột bột",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 366,
+    "raw": "sách học",
+    "cgo": "sách học",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 367,
+    "raw": "học tiếng hoa",
+    "cgo": "học tiếng_hoa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 368,
+    "raw": "tiếng",
+    "cgo": "tiếng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 369,
+    "raw": "sách giáo",
+    "cgo": "sách giáo",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 370,
+    "raw": "giáo trình học",
+    "cgo": "giáo_trình học",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 371,
+    "raw": "trình",
+    "cgo": "trình",
+    "category": "dataset_word"
+  },
+  {
+    "id": 372,
+    "raw": "các cuốn",
+    "cgo": "các cuốn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 373,
+    "raw": "cuốn sách ngữ",
+    "cgo": "cuốn sách ngữ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 374,
+    "raw": "sách",
+    "cgo": "sách",
+    "category": "dataset_word"
+  },
+  {
+    "id": 375,
+    "raw": "sách ngữ",
+    "cgo": "sách ngữ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 376,
+    "raw": "ngữ pháp tiếng",
+    "cgo": "ngữ_pháp tiếng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 377,
+    "raw": "pháp",
+    "cgo": "pháp",
+    "category": "dataset_word"
+  },
+  {
+    "id": 378,
+    "raw": "cuốn sách từ",
+    "cgo": "cuốn sách từ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 379,
+    "raw": "sách từ",
+    "cgo": "sách từ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 380,
+    "raw": "từ điển tiếng",
+    "cgo": "từ_điển tiếng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 381,
+    "raw": "điển",
+    "cgo": "điển",
+    "category": "dataset_word"
+  },
+  {
+    "id": 382,
+    "raw": "cuốn sách luyện",
+    "cgo": "cuốn sách luyện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 383,
+    "raw": "sách luyện",
+    "cgo": "sách luyện",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 384,
+    "raw": "luyện nghe tiếng",
+    "cgo": "luyện nghe tiếng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 385,
+    "raw": "nghe",
+    "cgo": "nghe",
+    "category": "dataset_word"
+  },
+  {
+    "id": 386,
+    "raw": "luyện nói tiếng",
+    "cgo": "luyện nói tiếng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 387,
+    "raw": "nói",
+    "cgo": "nói",
+    "category": "dataset_word"
+  },
+  {
+    "id": 388,
+    "raw": "luyện viết tiếng",
+    "cgo": "luyện viết tiếng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 389,
+    "raw": "viết",
+    "cgo": "viết",
+    "category": "dataset_word"
+  },
+  {
+    "id": 390,
+    "raw": "cuốn sách văn",
+    "cgo": "cuốn sách văn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 391,
+    "raw": "sách văn",
+    "cgo": "sách văn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 392,
+    "raw": "văn hóa trung",
+    "cgo": "văn_hóa trung",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 393,
+    "raw": "hóa",
+    "cgo": "hóa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 394,
+    "raw": "cuốn sách du",
+    "cgo": "cuốn sách du",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 395,
+    "raw": "sách du",
+    "cgo": "sách du",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 396,
+    "raw": "du lịch trung",
+    "cgo": "du_lịch trung",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 397,
+    "raw": "lịch",
+    "cgo": "lịch",
+    "category": "dataset_word"
+  },
+  {
+    "id": 398,
+    "raw": "nên chọn những",
+    "cgo": "nên chọn những",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 399,
+    "raw": "để học",
+    "cgo": "để học",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 400,
+    "raw": "những loại dây",
+    "cgo": "những loại dây",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 401,
+    "raw": "dây chuyền",
+    "cgo": "dây_chuyền",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 402,
+    "raw": "chuyền có nhiều",
+    "cgo": "chuyền có nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 403,
+    "raw": "thể giúp tôi",
+    "cgo": "thể giúp tôi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 404,
+    "raw": "giúp",
+    "cgo": "giúp",
+    "category": "dataset_word"
+  },
+  {
+    "id": 405,
+    "raw": "chuyền vàng thường",
+    "cgo": "chuyền vàng thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 406,
+    "raw": "vàng",
+    "cgo": "vàng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 407,
+    "raw": "chuyền vàng có",
+    "cgo": "chuyền vàng có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 408,
+    "raw": "tuổi vàng",
+    "cgo": "tuổi vàng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 409,
+    "raw": "vàng của dây",
+    "cgo": "vàng của dây",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 410,
+    "raw": "chuyền nên mua",
+    "cgo": "chuyền nên mua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 411,
+    "raw": "bạn muốn mua",
+    "cgo": "bạn muốn mua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 412,
+    "raw": "thể mua dây",
+    "cgo": "thể mua dây",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 413,
+    "raw": "khi mua",
+    "cgo": "khi mua",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 414,
+    "raw": "mua dây chuyền",
+    "cgo": "mua dây_chuyền",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 415,
+    "raw": "mua dây bạn",
+    "cgo": "mua dây bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 416,
+    "raw": "thể tự thiết",
+    "cgo": "thể tự thiết",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 417,
+    "raw": "thể tự làm",
+    "cgo": "thể tự làm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 418,
+    "raw": "chuyền nên được",
+    "cgo": "chuyền nên được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 419,
+    "raw": "thể đeo dây",
+    "cgo": "thể đeo dây",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 420,
+    "raw": "đeo",
+    "cgo": "đeo",
+    "category": "dataset_word"
+  },
+  {
+    "id": 421,
+    "raw": "có thể đeo",
+    "cgo": "có thể đeo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 422,
+    "raw": "rất nhiều loại",
+    "cgo": "rất nhiều loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 423,
+    "raw": "có khuôn mặt",
+    "cgo": "có khuôn_mặt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 424,
+    "raw": "khuôn",
+    "cgo": "khuôn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 425,
+    "raw": "những đôi",
+    "cgo": "những đôi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 426,
+    "raw": "đôi bông tai",
+    "cgo": "đôi bông_tai",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 427,
+    "raw": "bông",
+    "cgo": "bông",
+    "category": "dataset_word"
+  },
+  {
+    "id": 428,
+    "raw": "nhiều đôi bông",
+    "cgo": "nhiều đôi bông",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 429,
+    "raw": "đôi",
+    "cgo": "đôi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 430,
+    "raw": "bị dị ứng",
+    "cgo": "bị dị_ứng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 431,
+    "raw": "có thể chọn",
+    "cgo": "có thể chọn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 432,
+    "raw": "bông tai",
+    "cgo": "bông_tai",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 433,
+    "raw": "tai làm bằng",
+    "cgo": "tai làm bằng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 434,
+    "raw": "giá của",
+    "cgo": "giá của",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 435,
+    "raw": "của bông tai",
+    "cgo": "của bông_tai",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 436,
+    "raw": "tai bằng vàng",
+    "cgo": "tai bằng vàng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 437,
+    "raw": "bằng",
+    "cgo": "bằng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 438,
+    "raw": "vàng 18k",
+    "cgo": "vàng 18 k",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 439,
+    "raw": "18k và vàng",
+    "cgo": "18 k và vàng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 440,
+    "raw": "tai nghe",
+    "cgo": "tai_nghe",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 441,
+    "raw": "nghe chơi game",
+    "cgo": "nghe chơi game",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 442,
+    "raw": "chơi",
+    "cgo": "chơi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 443,
+    "raw": "lựa chọn tai",
+    "cgo": "lựa_chọn tai",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 444,
+    "raw": "số mẫu tai",
+    "cgo": "số mẫu tai",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 445,
+    "raw": "sự khác",
+    "cgo": "sự khác",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 446,
+    "raw": "khác nhau giữa",
+    "cgo": "khác nhau giữa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 447,
+    "raw": "nhau",
+    "cgo": "nhau",
+    "category": "dataset_word"
+  },
+  {
+    "id": 448,
+    "raw": "đang tìm kiếm",
+    "cgo": "đang tìm_kiếm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 449,
+    "raw": "thắt lưng",
+    "cgo": "thắt_lưng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 450,
+    "raw": "lưng nữ bản",
+    "cgo": "lưng nữ bản",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 451,
+    "raw": "của thắt lưng",
+    "cgo": "của thắt_lưng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 452,
+    "raw": "thắt",
+    "cgo": "thắt",
+    "category": "dataset_word"
+  },
+  {
+    "id": 453,
+    "raw": "nên chọn thắt",
+    "cgo": "nên chọn thắt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 454,
+    "raw": "chọn thắt lưng",
+    "cgo": "chọn thắt_lưng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 455,
+    "raw": "có thể dùng",
+    "cgo": "có thể dùng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 456,
+    "raw": "nồi cơm",
+    "cgo": "nồi_cơm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 457,
+    "raw": "cơm điện tử",
+    "cgo": "cơm điện_tử",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 458,
+    "raw": "điện",
+    "cgo": "điện",
+    "category": "dataset_word"
+  },
+  {
+    "id": 459,
+    "raw": "lòng nồi",
+    "cgo": "lòng nồi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 460,
+    "raw": "nồi cơm điện",
+    "cgo": "nồi_cơm điện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 461,
+    "raw": "cơm",
+    "cgo": "cơm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 462,
+    "raw": "dung tích",
+    "cgo": "dung_tích",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 463,
+    "raw": "tích nồi cơm",
+    "cgo": "tích nồi_cơm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 464,
+    "raw": "nồi",
+    "cgo": "nồi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 465,
+    "raw": "loại chất tẩy",
+    "cgo": "loại chất tẩy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 466,
+    "raw": "chất",
+    "cgo": "chất",
+    "category": "dataset_word"
+  },
+  {
+    "id": 467,
+    "raw": "nhiều loại chất",
+    "cgo": "nhiều loại chất",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 468,
+    "raw": "nước rửa",
+    "cgo": "nước rửa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 469,
+    "raw": "rửa chén loại",
+    "cgo": "rửa chén loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 470,
+    "raw": "chén",
+    "cgo": "chén",
+    "category": "dataset_word"
+  },
+  {
+    "id": 471,
+    "raw": "rửa chén sunlight",
+    "cgo": "rửa chén sunlight",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 472,
+    "raw": "chất tẩy",
+    "cgo": "chất tẩy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 473,
+    "raw": "tẩy rửa đa",
+    "cgo": "tẩy_rửa đa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 474,
+    "raw": "tẩy dầu mỡ",
+    "cgo": "tẩy dầu_mỡ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 475,
+    "raw": "dầu",
+    "cgo": "dầu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 476,
+    "raw": "nước lau",
+    "cgo": "nước lau",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 477,
+    "raw": "lau bếp nào",
+    "cgo": "lau bếp nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 478,
+    "raw": "bếp",
+    "cgo": "bếp",
+    "category": "dataset_word"
+  },
+  {
+    "id": 479,
+    "raw": "lau bếp gift",
+    "cgo": "lau bếp gift",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 480,
+    "raw": "lau kính nào",
+    "cgo": "lau kính nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 481,
+    "raw": "kính",
+    "cgo": "kính",
+    "category": "dataset_word"
+  },
+  {
+    "id": 482,
+    "raw": "lau kính windex",
+    "cgo": "lau kính windex",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 483,
+    "raw": "nước tẩy",
+    "cgo": "nước tẩy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 484,
+    "raw": "tẩy rửa lò",
+    "cgo": "tẩy_rửa lò",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 485,
+    "raw": "tẩy rửa tủ",
+    "cgo": "tẩy_rửa tủ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 486,
+    "raw": "tẩy rửa bồn",
+    "cgo": "tẩy_rửa bồn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 487,
+    "raw": "tẩy rửa máy",
+    "cgo": "tẩy_rửa máy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 488,
+    "raw": "bàn ghế",
+    "cgo": "bàn ghế",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 489,
+    "raw": "ghế các loại",
+    "cgo": "ghế các loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 490,
+    "raw": "các",
+    "cgo": "các",
+    "category": "dataset_word"
+  },
+  {
+    "id": 491,
+    "raw": "ghế có thể",
+    "cgo": "ghế có thể",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 492,
+    "raw": "ghế có những",
+    "cgo": "ghế có những",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 493,
+    "raw": "ghế có nhiều",
+    "cgo": "ghế có nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 494,
+    "raw": "ghế được phân",
+    "cgo": "ghế được phân",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 495,
+    "raw": "ghế nào phù",
+    "cgo": "ghế nào phù",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 496,
+    "raw": "ghế phù hợp",
+    "cgo": "ghế phù_hợp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 497,
+    "raw": "vớ ngắn",
+    "cgo": "vớ ngắn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 498,
+    "raw": "ngắn nữ có",
+    "cgo": "ngắn nữ có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 499,
+    "raw": "ngắn nữ thường",
+    "cgo": "ngắn nữ thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 500,
+    "raw": "ngắn nữ được",
+    "cgo": "ngắn nữ được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 501,
+    "raw": "loại vớ ngắn",
+    "cgo": "loại vớ ngắn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 502,
+    "raw": "hiện các",
+    "cgo": "hiện các",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 503,
+    "raw": "các loại vớ",
+    "cgo": "các loại vớ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 504,
+    "raw": "ngắn nữ loại",
+    "cgo": "ngắn nữ loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 505,
+    "raw": "lựa chọn loại",
+    "cgo": "lựa_chọn loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 506,
+    "raw": "ngắn nữ của",
+    "cgo": "ngắn nữ của",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 507,
+    "raw": "có nhiều thương",
+    "cgo": "có nhiều thương",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 508,
+    "raw": "giá vớ",
+    "cgo": "giá vớ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 509,
+    "raw": "vớ ngắn nữ",
+    "cgo": "vớ ngắn nữ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 510,
+    "raw": "ngắn",
+    "cgo": "ngắn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 511,
+    "raw": "hầu hết",
+    "cgo": "hầu hết",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 512,
+    "raw": "hết các loại",
+    "cgo": "hết các loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 513,
+    "raw": "độ bền",
+    "cgo": "độ_bền",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 514,
+    "raw": "bền của vớ",
+    "cgo": "bền của vớ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 515,
+    "raw": "miếng lót",
+    "cgo": "miếng lót",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 516,
+    "raw": "lót giày nam",
+    "cgo": "lót giày nam",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 517,
+    "raw": "giày",
+    "cgo": "giày",
+    "category": "dataset_word"
+  },
+  {
+    "id": 518,
+    "raw": "việc lựa",
+    "cgo": "việc lựa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 519,
+    "raw": "lựa chọn miếng",
+    "cgo": "lựa_chọn miếng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 520,
+    "raw": "giá miếng",
+    "cgo": "giá miếng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 521,
+    "raw": "miếng lót giày",
+    "cgo": "miếng lót giày",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 522,
+    "raw": "lót",
+    "cgo": "lót",
+    "category": "dataset_word"
+  },
+  {
+    "id": 523,
+    "raw": "số miếng lót",
+    "cgo": "số miếng lót",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 524,
+    "raw": "miếng",
+    "cgo": "miếng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 525,
+    "raw": "có nên sử",
+    "cgo": "có nên sử",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 526,
+    "raw": "bạn đi giày",
+    "cgo": "bạn đi giày",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 527,
+    "raw": "đang muốn tìm",
+    "cgo": "đang muốn tìm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 528,
+    "raw": "nhiên là một",
+    "cgo": "nhiên là một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 529,
+    "raw": "giữa samsung",
+    "cgo": "giữa samsung",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 530,
+    "raw": "samsung lg sony",
+    "cgo": "samsung lg sony",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 531,
+    "raw": "mỗi mẫu",
+    "cgo": "mỗi mẫu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 532,
+    "raw": "mẫu tivi đều",
+    "cgo": "mẫu tivi đều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 533,
+    "raw": "tivi",
+    "cgo": "tivi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 534,
+    "raw": "samsung qn900b",
+    "cgo": "samsung qn900b",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 535,
+    "raw": "qn900b có công",
+    "cgo": "qn900b có công",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 536,
+    "raw": "công nghệ",
+    "cgo": "công_nghệ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 537,
+    "raw": "nghệ neo qled",
+    "cgo": "nghệ neo qled",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 538,
+    "raw": "neo",
+    "cgo": "neo",
+    "category": "dataset_word"
+  },
+  {
+    "id": 539,
+    "raw": "màn hình",
+    "cgo": "màn_hình",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 540,
+    "raw": "hình oled của",
+    "cgo": "hình oled của",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 541,
+    "raw": "oled",
+    "cgo": "oled",
+    "category": "dataset_word"
+  },
+  {
+    "id": 542,
+    "raw": "bộ xử",
+    "cgo": "bộ xử",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 543,
+    "raw": "xử lý cognitive",
+    "cgo": "xử_lý cognitive",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 544,
+    "raw": "tcl x915",
+    "cgo": "tcl x915",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 545,
+    "raw": "x915 có giá",
+    "cgo": "x915 có giá",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 546,
+    "raw": "những mẫu tivi",
+    "cgo": "những mẫu tivi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 547,
+    "raw": "panasonic jz2000",
+    "cgo": "panasonic jz2000",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 548,
+    "raw": "jz2000 có điểm",
+    "cgo": "jz2000 có điểm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 549,
+    "raw": "jz2000 nổi bật",
+    "cgo": "jz2000 nổi_bật",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 550,
+    "raw": "nổi",
+    "cgo": "nổi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 551,
+    "raw": "hisense u8h",
+    "cgo": "hisense u8h",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 552,
+    "raw": "u8h có gì",
+    "cgo": "u8h có gì",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 553,
+    "raw": "u8h là mẫu",
+    "cgo": "u8h là mẫu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 554,
+    "raw": "vizio quantum",
+    "cgo": "vizio quantum",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 555,
+    "raw": "quantum có những",
+    "cgo": "quantum có những",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 556,
+    "raw": "quantum nổi bật",
+    "cgo": "quantum nổi_bật",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 557,
+    "raw": "xin chào",
+    "cgo": "xin chào",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 558,
+    "raw": "chào chuyên gia",
+    "cgo": "chào chuyên_gia",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 559,
+    "raw": "chuyên",
+    "cgo": "chuyên",
+    "category": "dataset_word"
+  },
+  {
+    "id": 560,
+    "raw": "nước ngọt",
+    "cgo": "nước_ngọt",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 561,
+    "raw": "ngọt thường có",
+    "cgo": "ngọt thường có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 562,
+    "raw": "thường",
+    "cgo": "thường",
+    "category": "dataset_word"
+  },
+  {
+    "id": 563,
+    "raw": "ngoài đường",
+    "cgo": "ngoài đường",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 564,
+    "raw": "đường thường còn",
+    "cgo": "đường thường còn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 565,
+    "raw": "đường nước ngọt",
+    "cgo": "đường nước_ngọt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 566,
+    "raw": "nước",
+    "cgo": "nước",
+    "category": "dataset_word"
+  },
+  {
+    "id": 567,
+    "raw": "ngọt có những",
+    "cgo": "ngọt có những",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 568,
+    "raw": "hương liệu",
+    "cgo": "hương_liệu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 569,
+    "raw": "liệu trong nước",
+    "cgo": "liệu trong nước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 570,
+    "raw": "trong",
+    "cgo": "trong",
+    "category": "dataset_word"
+  },
+  {
+    "id": 571,
+    "raw": "những loại nước",
+    "cgo": "những loại nước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 572,
+    "raw": "có một",
+    "cgo": "có một",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 573,
+    "raw": "một số loại",
+    "cgo": "một số loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 574,
+    "raw": "những thành",
+    "cgo": "những thành",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 575,
+    "raw": "thành phần nào",
+    "cgo": "thành_phần nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 576,
+    "raw": "phần",
+    "cgo": "phần",
+    "category": "dataset_word"
+  },
+  {
+    "id": 577,
+    "raw": "số thành phần",
+    "cgo": "số thành_phần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 578,
+    "raw": "thành",
+    "cgo": "thành",
+    "category": "dataset_word"
+  },
+  {
+    "id": 579,
+    "raw": "loại nước ngọt",
+    "cgo": "loại nước_ngọt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 580,
+    "raw": "ngọt nào có",
+    "cgo": "ngọt nào có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 581,
+    "raw": "số loại nước",
+    "cgo": "số loại nước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 582,
+    "raw": "giữa và",
+    "cgo": "giữa và",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 583,
+    "raw": "và loại nào",
+    "cgo": "và loại nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 584,
+    "raw": "và pepsi",
+    "cgo": "và pepsi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 585,
+    "raw": "pepsi đều có",
+    "cgo": "pepsi đều có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 586,
+    "raw": "đều",
+    "cgo": "đều",
+    "category": "dataset_word"
+  },
+  {
+    "id": 587,
+    "raw": "ngọt có thể",
+    "cgo": "ngọt có thể",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 588,
+    "raw": "sử dụng",
+    "cgo": "sử_dụng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 589,
+    "raw": "dụng quá nhiều",
+    "cgo": "dụng quá nhiều",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 590,
+    "raw": "quá",
+    "cgo": "quá",
+    "category": "dataset_word"
+  },
+  {
+    "id": 591,
+    "raw": "nên cho trẻ",
+    "cgo": "nên cho trẻ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 592,
+    "raw": "cho",
+    "cgo": "cho",
+    "category": "dataset_word"
+  },
+  {
+    "id": 593,
+    "raw": "túi đeo",
+    "cgo": "túi đeo",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 594,
+    "raw": "đeo hông cho",
+    "cgo": "đeo hông cho",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 595,
+    "raw": "hông",
+    "cgo": "hông",
+    "category": "dataset_word"
+  },
+  {
+    "id": 596,
+    "raw": "đeo hông có",
+    "cgo": "đeo hông có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 597,
+    "raw": "đeo hông là",
+    "cgo": "đeo hông là",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 598,
+    "raw": "thương hiệu túi",
+    "cgo": "thương_hiệu túi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 599,
+    "raw": "chọn túi đeo",
+    "cgo": "chọn túi đeo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 600,
+    "raw": "cả túi đeo",
+    "cgo": "cả túi đeo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 601,
+    "raw": "số mẫu túi",
+    "cgo": "số mẫu túi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 602,
+    "raw": "đeo hông nào",
+    "cgo": "đeo hông nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 603,
+    "raw": "những người",
+    "cgo": "những người",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 604,
+    "raw": "người thích đi",
+    "cgo": "người thích đi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 605,
+    "raw": "thích",
+    "cgo": "thích",
+    "category": "dataset_word"
+  },
+  {
+    "id": 606,
+    "raw": "người thích chơi",
+    "cgo": "người thích chơi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 607,
+    "raw": "người thích thời",
+    "cgo": "người thích_thời",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 608,
+    "raw": "đeo chéo công",
+    "cgo": "đeo chéo công",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 609,
+    "raw": "chéo",
+    "cgo": "chéo",
+    "category": "dataset_word"
+  },
+  {
+    "id": 610,
+    "raw": "liệu nào được",
+    "cgo": "liệu nào được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 611,
+    "raw": "liệu da thật",
+    "cgo": "liệu da thật",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 612,
+    "raw": "kích thước",
+    "cgo": "kích_thước",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 613,
+    "raw": "thước nào phù",
+    "cgo": "thước nào phù",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 614,
+    "raw": "các thương",
+    "cgo": "các thương",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 615,
+    "raw": "phân khúc",
+    "cgo": "phân_khúc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 616,
+    "raw": "khúc giá của",
+    "cgo": "khúc giá của",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 617,
+    "raw": "giá",
+    "cgo": "giá",
+    "category": "dataset_word"
+  },
+  {
+    "id": 618,
+    "raw": "chọn mua túi",
+    "cgo": "chọn mua túi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 619,
+    "raw": "có thể tham",
+    "cgo": "có thể tham",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 620,
+    "raw": "loại túi",
+    "cgo": "loại túi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 621,
+    "raw": "túi đeo chéo",
+    "cgo": "túi đeo chéo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 622,
+    "raw": "với các",
+    "cgo": "với các",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 623,
+    "raw": "các bạn sinh",
+    "cgo": "các bạn sinh",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 624,
+    "raw": "tôi muốn biết",
+    "cgo": "tôi muốn biết",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 625,
+    "raw": "từng bước",
+    "cgo": "từng bước",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 626,
+    "raw": "bước nở hoa",
+    "cgo": "bước nở hoa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 627,
+    "raw": "loại từng",
+    "cgo": "loại từng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 628,
+    "raw": "từng bước nở",
+    "cgo": "từng bước nở",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 629,
+    "raw": "bước",
+    "cgo": "bước",
+    "category": "dataset_word"
+  },
+  {
+    "id": 630,
+    "raw": "của từng bước",
+    "cgo": "của từng bước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 631,
+    "raw": "từng",
+    "cgo": "từng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 632,
+    "raw": "những loại hỗ",
+    "cgo": "những loại hỗ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 633,
+    "raw": "hỗ trợ",
+    "cgo": "hỗ_trợ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 634,
+    "raw": "trợ tình dục",
+    "cgo": "trợ tình_dục",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 635,
+    "raw": "tình",
+    "cgo": "tình",
+    "category": "dataset_word"
+  },
+  {
+    "id": 636,
+    "raw": "máy thiết",
+    "cgo": "máy thiết",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 637,
+    "raw": "thiết kế nhỏ",
+    "cgo": "thiết_kế nhỏ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 638,
+    "raw": "nên mua loại",
+    "cgo": "nên mua loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 639,
+    "raw": "sự lựa",
+    "cgo": "sự lựa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 640,
+    "raw": "lựa chọn tùy",
+    "cgo": "lựa_chọn tùy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 641,
+    "raw": "nên lưu gì",
+    "cgo": "nên lưu gì",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 642,
+    "raw": "lưu",
+    "cgo": "lưu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 643,
+    "raw": "đọc kỹ",
+    "cgo": "đọc kỹ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 644,
+    "raw": "kỹ hướng dẫn",
+    "cgo": "kỹ hướng_dẫn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 645,
+    "raw": "hướng",
+    "cgo": "hướng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 646,
+    "raw": "có thể sử",
+    "cgo": "có thể sử",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 647,
+    "raw": "thời gian",
+    "cgo": "thời_gian",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 648,
+    "raw": "gian sử dụng",
+    "cgo": "gian sử_dụng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 649,
+    "raw": "loại hỗ trợ",
+    "cgo": "loại hỗ_trợ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 650,
+    "raw": "dụng hỗ trợ",
+    "cgo": "dụng hỗ_trợ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 651,
+    "raw": "cả của hỗ",
+    "cgo": "cả của hỗ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 652,
+    "raw": "sách nấu",
+    "cgo": "sách nấu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 653,
+    "raw": "nấu ăn có",
+    "cgo": "nấu_ăn có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 654,
+    "raw": "nấu ăn nào",
+    "cgo": "nấu_ăn nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 655,
+    "raw": "đối với",
+    "cgo": "đối với",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 656,
+    "raw": "với những người",
+    "cgo": "với những người",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 657,
+    "raw": "những",
+    "cgo": "những",
+    "category": "dataset_word"
+  },
+  {
+    "id": 658,
+    "raw": "số đầu sách",
+    "cgo": "số đầu_sách",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 659,
+    "raw": "đầu",
+    "cgo": "đầu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 660,
+    "raw": "giá sách",
+    "cgo": "giá_sách",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 661,
+    "raw": "sách nấu ăn",
+    "cgo": "sách nấu_ăn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 662,
+    "raw": "nấu",
+    "cgo": "nấu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 663,
+    "raw": "điểm của sách",
+    "cgo": "điểm của sách",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 664,
+    "raw": "nấu ăn việt",
+    "cgo": "nấu_ăn việt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 665,
+    "raw": "cách lựa",
+    "cgo": "cách lựa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 666,
+    "raw": "lựa chọn sách",
+    "cgo": "lựa_chọn sách",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 667,
+    "raw": "lựa chọn được",
+    "cgo": "lựa_chọn được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 668,
+    "raw": "những tác",
+    "cgo": "những tác",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 669,
+    "raw": "tác giả sách",
+    "cgo": "tác_giả sách",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 670,
+    "raw": "giả",
+    "cgo": "giả",
+    "category": "dataset_word"
+  },
+  {
+    "id": 671,
+    "raw": "số tác giả",
+    "cgo": "số tác_giả",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 672,
+    "raw": "tác",
+    "cgo": "tác",
+    "category": "dataset_word"
+  },
+  {
+    "id": 673,
+    "raw": "kẹp tóc",
+    "cgo": "kẹp_tóc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 674,
+    "raw": "tóc nơ tiểu",
+    "cgo": "tóc nơ tiểu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 675,
+    "raw": "của kẹp tóc",
+    "cgo": "của kẹp_tóc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 676,
+    "raw": "kẹp",
+    "cgo": "kẹp",
+    "category": "dataset_word"
+  },
+  {
+    "id": 677,
+    "raw": "nên mua kẹp",
+    "cgo": "nên mua kẹp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 678,
+    "raw": "máy giặt",
+    "cgo": "máy_giặt",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 679,
+    "raw": "giặt có những",
+    "cgo": "giặt có những",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 680,
+    "raw": "giặt có thể",
+    "cgo": "giặt có thể",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 681,
+    "raw": "thương hiệu máy",
+    "cgo": "thương_hiệu máy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 682,
+    "raw": "giặt cửa trước",
+    "cgo": "giặt cửa trước",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 683,
+    "raw": "cửa",
+    "cgo": "cửa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 684,
+    "raw": "số tính năng",
+    "cgo": "số tính_năng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 685,
+    "raw": "tính",
+    "cgo": "tính",
+    "category": "dataset_word"
+  },
+  {
+    "id": 686,
+    "raw": "chọn mua máy",
+    "cgo": "chọn mua máy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 687,
+    "raw": "sử dụng máy",
+    "cgo": "sử_dụng máy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 688,
+    "raw": "nên giặt quần",
+    "cgo": "nên giặt quần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 689,
+    "raw": "nhiệt độ",
+    "cgo": "nhiệt_độ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 690,
+    "raw": "độ giặt quần",
+    "cgo": "độ giặt quần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 691,
+    "raw": "loại bột",
+    "cgo": "loại bột",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 692,
+    "raw": "bột giặt bạn",
+    "cgo": "bột_giặt bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 693,
+    "raw": "gian giặt quần",
+    "cgo": "gian giặt quần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 694,
+    "raw": "nên vệ sinh",
+    "cgo": "nên vệ_sinh",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 695,
+    "raw": "mba marketing",
+    "cgo": "mba marketing",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 696,
+    "raw": "marketing là chương",
+    "cgo": "marketing là chương",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 697,
+    "raw": "những ai",
+    "cgo": "những ai",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 698,
+    "raw": "ai nên học",
+    "cgo": "ai nên học",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 699,
+    "raw": "marketing phù hợp",
+    "cgo": "marketing phù_hợp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 700,
+    "raw": "chương trình",
+    "cgo": "chương_trình",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 701,
+    "raw": "trình học mba",
+    "cgo": "trình học mba",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 702,
+    "raw": "học",
+    "cgo": "học",
+    "category": "dataset_word"
+  },
+  {
+    "id": 703,
+    "raw": "học mba",
+    "cgo": "học mba",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 704,
+    "raw": "mba marketing có",
+    "cgo": "mba marketing có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 705,
+    "raw": "marketing",
+    "cgo": "marketing",
+    "category": "dataset_word"
+  },
+  {
+    "id": 706,
+    "raw": "những trường",
+    "cgo": "những trường",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 707,
+    "raw": "trường đại học",
+    "cgo": "trường đại_học",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 708,
+    "raw": "đại",
+    "cgo": "đại",
+    "category": "dataset_word"
+  },
+  {
+    "id": 709,
+    "raw": "số trường đại",
+    "cgo": "số trường đại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 710,
+    "raw": "chi phí",
+    "cgo": "chi_phí",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 711,
+    "raw": "phí theo học",
+    "cgo": "phí theo học",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 712,
+    "raw": "theo",
+    "cgo": "theo",
+    "category": "dataset_word"
+  },
+  {
+    "id": 713,
+    "raw": "cơ hội",
+    "cgo": "cơ_hội",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 714,
+    "raw": "hội việc làm",
+    "cgo": "hội việc_làm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 715,
+    "raw": "việc",
+    "cgo": "việc",
+    "category": "dataset_word"
+  },
+  {
+    "id": 716,
+    "raw": "nên chuẩn bị",
+    "cgo": "nên chuẩn_bị",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 717,
+    "raw": "chuẩn",
+    "cgo": "chuẩn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 718,
+    "raw": "trước khi",
+    "cgo": "trước khi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 719,
+    "raw": "khi nộp đơn",
+    "cgo": "khi nộp đơn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 720,
+    "raw": "nộp",
+    "cgo": "nộp",
+    "category": "dataset_word"
+  },
+  {
+    "id": 721,
+    "raw": "kỳ nhập",
+    "cgo": "kỳ nhập",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 722,
+    "raw": "nhập học của",
+    "cgo": "nhập_học của",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 723,
+    "raw": "bia nhập",
+    "cgo": "bia nhập",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 724,
+    "raw": "nhập khẩu thường",
+    "cgo": "nhập_khẩu thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 725,
+    "raw": "khẩu",
+    "cgo": "khẩu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 726,
+    "raw": "nhập khẩu có",
+    "cgo": "nhập_khẩu có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 727,
+    "raw": "loại bia",
+    "cgo": "loại bia",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 728,
+    "raw": "bia nhập khẩu",
+    "cgo": "bia nhập_khẩu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 729,
+    "raw": "nhập",
+    "cgo": "nhập",
+    "category": "dataset_word"
+  },
+  {
+    "id": 730,
+    "raw": "với những",
+    "cgo": "với những",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 731,
+    "raw": "những người mới",
+    "cgo": "những người mới",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 732,
+    "raw": "người thích thưởng",
+    "cgo": "người thích thưởng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 733,
+    "raw": "túi vải",
+    "cgo": "túi vải",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 734,
+    "raw": "vải 100 năm",
+    "cgo": "vải 100 năm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 735,
+    "raw": "100",
+    "cgo": "100",
+    "category": "dataset_word"
+  },
+  {
+    "id": 736,
+    "raw": "những loại túi",
+    "cgo": "những loại túi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 737,
+    "raw": "nên chọn loại",
+    "cgo": "nên chọn loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 738,
+    "raw": "bạn đi du",
+    "cgo": "bạn đi du",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 739,
+    "raw": "của túi vải",
+    "cgo": "của túi vải",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 740,
+    "raw": "bể cá",
+    "cgo": "bể cá",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 741,
+    "raw": "cá cảnh kính",
+    "cgo": "cá_cảnh kính",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 742,
+    "raw": "cảnh",
+    "cgo": "cảnh",
+    "category": "dataset_word"
+  },
+  {
+    "id": 743,
+    "raw": "thước hồ cá",
+    "cgo": "thước hồ cá",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 744,
+    "raw": "bộ lọc",
+    "cgo": "bộ_lọc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 745,
+    "raw": "lọc nước thác",
+    "cgo": "lọc nước thác",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 746,
+    "raw": "máy sưởi",
+    "cgo": "máy sưởi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 747,
+    "raw": "sưởi nước tự",
+    "cgo": "sưởi nước tự",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 748,
+    "raw": "thức ăn",
+    "cgo": "thức_ăn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 749,
+    "raw": "ăn cho cá",
+    "cgo": "ăn cho cá",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 750,
+    "raw": "thuốc trị",
+    "cgo": "thuốc trị",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 751,
+    "raw": "trị bệnh cho",
+    "cgo": "trị bệnh cho",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 752,
+    "raw": "bệnh",
+    "cgo": "bệnh",
+    "category": "dataset_word"
+  },
+  {
+    "id": 753,
+    "raw": "cây thủy",
+    "cgo": "cây thủy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 754,
+    "raw": "thủy sinh ráy",
+    "cgo": "thủy_sinh ráy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 755,
+    "raw": "sinh",
+    "cgo": "sinh",
+    "category": "dataset_word"
+  },
+  {
+    "id": 756,
+    "raw": "cá bảy",
+    "cgo": "cá bảy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 757,
+    "raw": "bảy màu là",
+    "cgo": "bảy màu là",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 758,
+    "raw": "màu",
+    "cgo": "màu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 759,
+    "raw": "tép cảnh",
+    "cgo": "tép cảnh",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 760,
+    "raw": "cảnh baba là",
+    "cgo": "cảnh baba là",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 761,
+    "raw": "baba",
+    "cgo": "baba",
+    "category": "dataset_word"
+  },
+  {
+    "id": 762,
+    "raw": "ốc cảnh",
+    "cgo": "ốc cảnh",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 763,
+    "raw": "cảnh bươu đen",
+    "cgo": "cảnh bươu đen",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 764,
+    "raw": "bươu",
+    "cgo": "bươu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 765,
+    "raw": "túi đựng",
+    "cgo": "túi đựng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 766,
+    "raw": "đựng rác nào",
+    "cgo": "đựng rác nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 767,
+    "raw": "rác",
+    "cgo": "rác",
+    "category": "dataset_word"
+  },
+  {
+    "id": 768,
+    "raw": "nên chọn",
+    "cgo": "nên chọn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 769,
+    "raw": "chọn loại túi",
+    "cgo": "chọn loại túi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 770,
+    "raw": "với thực bạn",
+    "cgo": "với thực bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 771,
+    "raw": "thực",
+    "cgo": "thực",
+    "category": "dataset_word"
+  },
+  {
+    "id": 772,
+    "raw": "với vật",
+    "cgo": "với vật",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 773,
+    "raw": "vật sắc bạn",
+    "cgo": "vật sắc bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 774,
+    "raw": "sắc",
+    "cgo": "sắc",
+    "category": "dataset_word"
+  },
+  {
+    "id": 775,
+    "raw": "phân loại",
+    "cgo": "phân_loại",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 776,
+    "raw": "loại túi đựng",
+    "cgo": "loại túi đựng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 777,
+    "raw": "đựng rác được",
+    "cgo": "đựng rác được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 778,
+    "raw": "đựng rác tự",
+    "cgo": "đựng rác tự",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 779,
+    "raw": "đựng rác hdpe",
+    "cgo": "đựng rác hdpe",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 780,
+    "raw": "so sánh",
+    "cgo": "so_sánh",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 781,
+    "raw": "sánh túi đựng",
+    "cgo": "sánh túi đựng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 782,
+    "raw": "đựng rác pe",
+    "cgo": "đựng rác pe",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 783,
+    "raw": "một số thương",
+    "cgo": "một số thương",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 784,
+    "raw": "phần chung thường",
+    "cgo": "phần chung thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 785,
+    "raw": "các thành",
+    "cgo": "các thành",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 786,
+    "raw": "thành phần chung",
+    "cgo": "thành_phần chung",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 787,
+    "raw": "loại sản phẩm",
+    "cgo": "loại sản_phẩm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 788,
+    "raw": "sản",
+    "cgo": "sản",
+    "category": "dataset_word"
+  },
+  {
+    "id": 789,
+    "raw": "các sản",
+    "cgo": "các sản",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 790,
+    "raw": "sản phẩm làm",
+    "cgo": "sản_phẩm làm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 791,
+    "raw": "phẩm",
+    "cgo": "phẩm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 792,
+    "raw": "phẩm làm đẹp",
+    "cgo": "phẩm làm đẹp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 793,
+    "raw": "sử dụng sản",
+    "cgo": "sử_dụng sản",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 794,
+    "raw": "chọn được sản",
+    "cgo": "chọn được sản",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 795,
+    "raw": "thương hiệu sản",
+    "cgo": "thương_hiệu sản",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 796,
+    "raw": "số sản phẩm",
+    "cgo": "số sản_phẩm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 797,
+    "raw": "thuộc vào loại",
+    "cgo": "thuộc vào loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 798,
+    "raw": "cho mình",
+    "cgo": "cho mình",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 799,
+    "raw": "mình hỏi đèn",
+    "cgo": "mình hỏi đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 800,
+    "raw": "hỏi",
+    "cgo": "hỏi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 801,
+    "raw": "đế nơi",
+    "cgo": "đế nơi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 802,
+    "raw": "nơi cố định",
+    "cgo": "nơi cố_định",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 803,
+    "raw": "loại bóng đèn",
+    "cgo": "loại bóng_đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 804,
+    "raw": "bóng",
+    "cgo": "bóng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 805,
+    "raw": "bóng đèn",
+    "cgo": "bóng_đèn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 806,
+    "raw": "đèn sợi loại",
+    "cgo": "đèn sợi loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 807,
+    "raw": "sợi",
+    "cgo": "sợi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 808,
+    "raw": "có bao",
+    "cgo": "có bao",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 809,
+    "raw": "bao nhiêu loại",
+    "cgo": "bao nhiêu loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 810,
+    "raw": "nhiêu",
+    "cgo": "nhiêu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 811,
+    "raw": "nhiều loại đèn",
+    "cgo": "nhiều loại đèn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 812,
+    "raw": "loại đèn bàn",
+    "cgo": "loại đèn bàn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 813,
+    "raw": "đèn bàn",
+    "cgo": "đèn bàn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 814,
+    "raw": "bàn đèn bàn",
+    "cgo": "bàn_đèn bàn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 815,
+    "raw": "bàn trang trí",
+    "cgo": "bàn trang_trí",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 816,
+    "raw": "trang",
+    "cgo": "trang",
+    "category": "dataset_word"
+  },
+  {
+    "id": 817,
+    "raw": "sánh đèn bàn",
+    "cgo": "sánh đèn bàn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 818,
+    "raw": "bàn rạng đông",
+    "cgo": "bàn rạng_đông",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 819,
+    "raw": "rạng",
+    "cgo": "rạng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 820,
+    "raw": "loại đèn",
+    "cgo": "loại đèn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 821,
+    "raw": "đèn bàn nào",
+    "cgo": "đèn bàn nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 822,
+    "raw": "bàn",
+    "cgo": "bàn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 823,
+    "raw": "loại đèn nào",
+    "cgo": "loại đèn nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 824,
+    "raw": "hiện nay",
+    "cgo": "hiện_nay",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 825,
+    "raw": "nay có một",
+    "cgo": "nay có một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 826,
+    "raw": "bộ vest",
+    "cgo": "bộ vest",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 827,
+    "raw": "vest nam thường",
+    "cgo": "vest nam thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 828,
+    "raw": "các chi",
+    "cgo": "các chi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 829,
+    "raw": "chi tiết cấu",
+    "cgo": "chi_tiết cấu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 830,
+    "raw": "tiết",
+    "cgo": "tiết",
+    "category": "dataset_word"
+  },
+  {
+    "id": 831,
+    "raw": "một bộ",
+    "cgo": "một bộ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 832,
+    "raw": "bộ vest nam",
+    "cgo": "bộ vest nam",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 833,
+    "raw": "vest",
+    "cgo": "vest",
+    "category": "dataset_word"
+  },
+  {
+    "id": 834,
+    "raw": "những loại vest",
+    "cgo": "những loại vest",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 835,
+    "raw": "nhiều loại vest",
+    "cgo": "nhiều loại vest",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 836,
+    "raw": "vest nam",
+    "cgo": "vest nam",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 837,
+    "raw": "nam thường được",
+    "cgo": "nam thường được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 838,
+    "raw": "nam được mặc",
+    "cgo": "nam được mặc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 839,
+    "raw": "chọn được bộ",
+    "cgo": "chọn được bộ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 840,
+    "raw": "thể kết hợp",
+    "cgo": "thể kết_hợp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 841,
+    "raw": "kết",
+    "cgo": "kết",
+    "category": "dataset_word"
+  },
+  {
+    "id": 842,
+    "raw": "có thể kết",
+    "cgo": "có thể kết",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 843,
+    "raw": "thương hiệu vest",
+    "cgo": "thương_hiệu vest",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 844,
+    "raw": "cả của một",
+    "cgo": "cả của một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 845,
+    "raw": "mua bộ",
+    "cgo": "mua bộ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 846,
+    "raw": "nam có dễ",
+    "cgo": "nam có dễ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 847,
+    "raw": "việc giặt",
+    "cgo": "việc giặt",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 848,
+    "raw": "giặt và bảo",
+    "cgo": "giặt và bảo",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 849,
+    "raw": "nồi lẩu",
+    "cgo": "nồi lẩu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 850,
+    "raw": "lẩu điện có",
+    "cgo": "lẩu điện có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 851,
+    "raw": "một nồi",
+    "cgo": "một nồi",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 852,
+    "raw": "nồi lẩu điện",
+    "cgo": "nồi lẩu điện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 853,
+    "raw": "lẩu",
+    "cgo": "lẩu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 854,
+    "raw": "lẩu điện sử",
+    "cgo": "lẩu điện sử",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 855,
+    "raw": "lẩu điện thường",
+    "cgo": "lẩu điện thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 856,
+    "raw": "loại nồi lẩu",
+    "cgo": "loại nồi lẩu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 857,
+    "raw": "nay trên thị",
+    "cgo": "nay trên thị",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 858,
+    "raw": "trên",
+    "cgo": "trên",
+    "category": "dataset_word"
+  },
+  {
+    "id": 859,
+    "raw": "lẩu điện mini",
+    "cgo": "lẩu điện mini",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 860,
+    "raw": "lẩu điện đa",
+    "cgo": "lẩu điện đa",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 861,
+    "raw": "lẩu điện chuyên",
+    "cgo": "lẩu điện chuyên",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 862,
+    "raw": "lẩu điện nào",
+    "cgo": "lẩu điện nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 863,
+    "raw": "chọn được nồi",
+    "cgo": "chọn được nồi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 864,
+    "raw": "lẩu điện sunhouse",
+    "cgo": "lẩu điện sunhouse",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 865,
+    "raw": "nên mua",
+    "cgo": "nên mua",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 866,
+    "raw": "mua nồi lẩu",
+    "cgo": "mua nồi lẩu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 867,
+    "raw": "nên mua nồi",
+    "cgo": "nên mua nồi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 868,
+    "raw": "lẩu điện cần",
+    "cgo": "lẩu điện cần",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 869,
+    "raw": "thoại bàn có",
+    "cgo": "thoại bàn có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 870,
+    "raw": "thoại bàn thông",
+    "cgo": "thoại bàn thông",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 871,
+    "raw": "các thuộc",
+    "cgo": "các thuộc",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 872,
+    "raw": "thuộc tính của",
+    "cgo": "thuộc_tính của",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 873,
+    "raw": "thuộc tính thường",
+    "cgo": "thuộc_tính thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 874,
+    "raw": "thoại bàn được",
+    "cgo": "thoại bàn được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 875,
+    "raw": "gợi cho",
+    "cgo": "gợi cho",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 876,
+    "raw": "cho tôi một",
+    "cgo": "cho tôi một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 877,
+    "raw": "tôi",
+    "cgo": "tôi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 878,
+    "raw": "số mẫu điện",
+    "cgo": "số mẫu điện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 879,
+    "raw": "thoại bàn và",
+    "cgo": "thoại bàn và",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 880,
+    "raw": "nên lựa",
+    "cgo": "nên lựa",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 881,
+    "raw": "lựa chọn điện",
+    "cgo": "lựa_chọn điện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 882,
+    "raw": "chọn giữa điện",
+    "cgo": "chọn giữa điện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 883,
+    "raw": "giữa",
+    "cgo": "giữa",
+    "category": "dataset_word"
+  },
+  {
+    "id": 884,
+    "raw": "có nên mua",
+    "cgo": "có nên mua",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 885,
+    "raw": "trên thị",
+    "cgo": "trên thị",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 886,
+    "raw": "thị trường hiện",
+    "cgo": "thị_trường hiện",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 887,
+    "raw": "máy xay",
+    "cgo": "máy_xay",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 888,
+    "raw": "xay sinh tố",
+    "cgo": "xay sinh_tố",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 889,
+    "raw": "xay cầm tay",
+    "cgo": "xay cầm tay",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 890,
+    "raw": "cầm",
+    "cgo": "cầm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 891,
+    "raw": "xay đa năng",
+    "cgo": "xay đa_năng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 892,
+    "raw": "mua máy xay",
+    "cgo": "mua máy_xay",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 893,
+    "raw": "máy",
+    "cgo": "máy",
+    "category": "dataset_word"
+  },
+  {
+    "id": 894,
+    "raw": "một số máy",
+    "cgo": "một số máy",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 895,
+    "raw": "trong tầm",
+    "cgo": "trong tầm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 896,
+    "raw": "tầm giá dưới",
+    "cgo": "tầm giá dưới",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 897,
+    "raw": "tầm giá từ",
+    "cgo": "tầm giá từ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 898,
+    "raw": "tầm giá trên",
+    "cgo": "tầm giá trên",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 899,
+    "raw": "để xay",
+    "cgo": "để xay",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 900,
+    "raw": "xay các loại",
+    "cgo": "xay các loại",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 901,
+    "raw": "sure prevent",
+    "cgo": "sure prevent",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 902,
+    "raw": "prevent gold ht",
+    "cgo": "prevent gold ht",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 903,
+    "raw": "gold",
+    "cgo": "gold",
+    "category": "dataset_word"
+  },
+  {
+    "id": 904,
+    "raw": "thuộc tính",
+    "cgo": "thuộc_tính",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 905,
+    "raw": "tính của sản",
+    "cgo": "tính của sản",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 906,
+    "raw": "gợi sản",
+    "cgo": "gợi sản",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 907,
+    "raw": "sản phẩm sure",
+    "cgo": "sản_phẩm sure",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 908,
+    "raw": "sánh sure prevent",
+    "cgo": "sánh sure prevent",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 909,
+    "raw": "sure",
+    "cgo": "sure",
+    "category": "dataset_word"
+  },
+  {
+    "id": 910,
+    "raw": "thể mua sure",
+    "cgo": "thể mua sure",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 911,
+    "raw": "cần lưu",
+    "cgo": "cần lưu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 912,
+    "raw": "lưu gì khi",
+    "cgo": "lưu gì khi",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 913,
+    "raw": "sử dụng sure",
+    "cgo": "sử_dụng sure",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 914,
+    "raw": "tác dụng phụ",
+    "cgo": "tác_dụng phụ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 915,
+    "raw": "tác dụng",
+    "cgo": "tác_dụng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 916,
+    "raw": "dụng phụ có",
+    "cgo": "dụng phụ có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 917,
+    "raw": "phụ",
+    "cgo": "phụ",
+    "category": "dataset_word"
+  },
+  {
+    "id": 918,
+    "raw": "những cách",
+    "cgo": "những cách",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 919,
+    "raw": "cách để tránh",
+    "cgo": "cách để tránh",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 920,
+    "raw": "để tránh",
+    "cgo": "để tránh",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 921,
+    "raw": "tránh tác dụng",
+    "cgo": "tránh tác_dụng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 922,
+    "raw": "sách thiếu",
+    "cgo": "sách thiếu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 923,
+    "raw": "thiếu nhi nào",
+    "cgo": "thiếu_nhi nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 924,
+    "raw": "nhi",
+    "cgo": "nhi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 925,
+    "raw": "với trẻ",
+    "cgo": "với trẻ",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 926,
+    "raw": "trẻ mầm bạn",
+    "cgo": "trẻ mầm bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 927,
+    "raw": "mầm",
+    "cgo": "mầm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 928,
+    "raw": "những cuốn",
+    "cgo": "những cuốn",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 929,
+    "raw": "cuốn sách thiếu",
+    "cgo": "cuốn sách thiếu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 930,
+    "raw": "số cuốn sách",
+    "cgo": "số cuốn sách",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 931,
+    "raw": "cuốn",
+    "cgo": "cuốn",
+    "category": "dataset_word"
+  },
+  {
+    "id": 932,
+    "raw": "thiếu nhi được",
+    "cgo": "thiếu_nhi được",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 933,
+    "raw": "thiếu nhi thường",
+    "cgo": "thiếu_nhi thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 934,
+    "raw": "trẻ tiểu bạn",
+    "cgo": "trẻ tiểu bạn",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 935,
+    "raw": "tiểu",
+    "cgo": "tiểu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 936,
+    "raw": "thiếu nhi có",
+    "cgo": "thiếu_nhi có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 937,
+    "raw": "trẻ trung học",
+    "cgo": "trẻ_trung học",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 938,
+    "raw": "trung",
+    "cgo": "trung",
+    "category": "dataset_word"
+  },
+  {
+    "id": 939,
+    "raw": "thiếu nhi việt",
+    "cgo": "thiếu_nhi việt",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 940,
+    "raw": "của sách thiếu",
+    "cgo": "của sách thiếu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 941,
+    "raw": "có sau",
+    "cgo": "có sau",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 942,
+    "raw": "sau đây là",
+    "cgo": "sau đây là",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 943,
+    "raw": "đây",
+    "cgo": "đây",
+    "category": "dataset_word"
+  },
+  {
+    "id": 944,
+    "raw": "bền của những",
+    "cgo": "bền của những",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 945,
+    "raw": "bền của ví",
+    "cgo": "bền của ví",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 946,
+    "raw": "ví tommy",
+    "cgo": "ví tommy",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 947,
+    "raw": "tommy hilfiger có",
+    "cgo": "tommy hilfiger có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 948,
+    "raw": "hilfiger",
+    "cgo": "hilfiger",
+    "category": "dataset_word"
+  },
+  {
+    "id": 949,
+    "raw": "ví da",
+    "cgo": "ví_da",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 950,
+    "raw": "da đứng dáng",
+    "cgo": "da đứng dáng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 951,
+    "raw": "đứng",
+    "cgo": "đứng",
+    "category": "dataset_word"
+  },
+  {
+    "id": 952,
+    "raw": "những mẫu ví",
+    "cgo": "những mẫu ví",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 953,
+    "raw": "ngoài mẫu",
+    "cgo": "ngoài mẫu",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 954,
+    "raw": "mẫu ví đã",
+    "cgo": "mẫu ví đã",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 955,
+    "raw": "ví đứng",
+    "cgo": "ví đứng",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 956,
+    "raw": "đứng thông thường",
+    "cgo": "đứng thông_thường",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 957,
+    "raw": "thông",
+    "cgo": "thông",
+    "category": "dataset_word"
+  },
+  {
+    "id": 958,
+    "raw": "đứng thường có",
+    "cgo": "đứng thường có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 959,
+    "raw": "ngoài tính",
+    "cgo": "ngoài tính",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 960,
+    "raw": "tính thẩm mỹ",
+    "cgo": "tính thẩm_mỹ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 961,
+    "raw": "thẩm",
+    "cgo": "thẩm",
+    "category": "dataset_word"
+  },
+  {
+    "id": 962,
+    "raw": "tôi thích",
+    "cgo": "tôi thích",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 963,
+    "raw": "thích kiểu dáng",
+    "cgo": "thích kiểu_dáng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 964,
+    "raw": "kiểu",
+    "cgo": "kiểu",
+    "category": "dataset_word"
+  },
+  {
+    "id": 965,
+    "raw": "hiện một",
+    "cgo": "hiện một",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 966,
+    "raw": "đứng da thật",
+    "cgo": "đứng da thật",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 967,
+    "raw": "muốn tìm một",
+    "cgo": "muốn tìm một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 968,
+    "raw": "để tìm",
+    "cgo": "để tìm",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 969,
+    "raw": "tìm một chiếc",
+    "cgo": "tìm một chiếc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 970,
+    "raw": "đồ gia",
+    "cgo": "đồ gia",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 971,
+    "raw": "gia dụng nào",
+    "cgo": "gia_dụng nào",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 972,
+    "raw": "gia đình có",
+    "cgo": "gia_đình có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 973,
+    "raw": "sản phẩm đồ",
+    "cgo": "sản_phẩm đồ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 974,
+    "raw": "cả của đồ",
+    "cgo": "cả của đồ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 975,
+    "raw": "thiết kế",
+    "cgo": "thiết_kế",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 976,
+    "raw": "kế của đồ",
+    "cgo": "kế của đồ",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 977,
+    "raw": "xin mình",
+    "cgo": "xin mình",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 978,
+    "raw": "mình thấy có",
+    "cgo": "mình thấy có",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 979,
+    "raw": "thấy",
+    "cgo": "thấy",
+    "category": "dataset_word"
+  },
+  {
+    "id": 980,
+    "raw": "chào ví",
+    "cgo": "chào ví",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 981,
+    "raw": "ví nam gồm",
+    "cgo": "ví nam gồm",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 982,
+    "raw": "ví dài",
+    "cgo": "ví dài",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 983,
+    "raw": "dài có ưu",
+    "cgo": "dài có ưu",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 984,
+    "raw": "điểm của ví",
+    "cgo": "điểm của ví",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 985,
+    "raw": "thể gợi một",
+    "cgo": "thể gợi một",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 986,
+    "raw": "gợi",
+    "cgo": "gợi",
+    "category": "dataset_word"
+  },
+  {
+    "id": 987,
+    "raw": "nhiều mẫu ví",
+    "cgo": "nhiều mẫu ví",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 988,
+    "raw": "ví ngang",
+    "cgo": "ví ngang",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 989,
+    "raw": "ngang có đặc",
+    "cgo": "ngang có đặc",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 990,
+    "raw": "ngang có kích",
+    "cgo": "ngang có kích",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 991,
+    "raw": "đứng có gì",
+    "cgo": "đứng có gì",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 992,
+    "raw": "đứng có thiết",
+    "cgo": "đứng có thiết",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 993,
+    "raw": "ví nam",
+    "cgo": "ví nam",
+    "category": "dataset_phrase_2w"
+  },
+  {
+    "id": 994,
+    "raw": "nam làm bằng",
+    "cgo": "nam làm bằng",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 995,
+    "raw": "nam nào phù",
+    "cgo": "nam nào phù",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 996,
+    "raw": "nam phù hợp",
+    "cgo": "nam phù_hợp",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 997,
+    "raw": "thể giặt ví",
+    "cgo": "thể giặt ví",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 998,
+    "raw": "nên giặt ví",
+    "cgo": "nên giặt ví",
+    "category": "dataset_phrase_3w"
+  },
+  {
+    "id": 999,
+    "raw": "nên bảo",
+    "cgo": "nên bảo",
+    "category": "dataset_phrase_2w"
+  }
+]

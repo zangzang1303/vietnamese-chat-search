@@ -30,8 +30,8 @@ if hasattr(sys.stdout, 'reconfigure'):
 VANILLA_URL = "http://localhost:9201"
 PLUGIN_URL = "http://localhost:9202"
 INDEX_NAME = "messages"
-VANILLA_CONTAINER = "os_test_foreground"
-PLUGIN_CONTAINER = "os_plugin_run"
+VANILLA_CONTAINER = "os_vanilla_bench"
+PLUGIN_CONTAINER = "os_plugin_bench"
 
 # =============================================================================
 # HỆ THỐNG CÔ LẬP MÔI TRƯỜNG & DỌN DẸP CACHE
@@ -462,9 +462,9 @@ def aggregate_and_render(matrix_configs, search_summary=None):
     # Vẽ biểu đồ bằng matplotlib (thử py -3.13 trước vì có cài sẵn matplotlib)
     print("\n📈 Đang tự động vẽ 5 biểu đồ trực quan hóa...")
     chart_rendered = False
-    for py_cmd in [["py", "-3.13", "benchmarks/generate_empirical_charts.py"], [sys.executable, "benchmarks/generate_empirical_charts.py"]]:
+    for py_cmd in [[sys.executable, "benchmarks/generate_empirical_charts.py"], ["py", "-3.13", "benchmarks/generate_empirical_charts.py"]]:
         try:
-            p = subprocess.run(py_cmd, capture_output=True, text=True)
+            p = subprocess.run(py_cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
             if p.returncode == 0:
                 print("🎉 Đã xuất thành công 5 biểu đồ độ phân giải cao vào thư mục image/")
                 chart_rendered = True
@@ -478,7 +478,7 @@ def aggregate_and_render(matrix_configs, search_summary=None):
     # Cập nhật báo cáo markdown
     print("\n📝 Đang cập nhật báo cáo docs/benchmark_opensearch_plugin_report.md...")
     try:
-        subprocess.run([sys.executable, "benchmarks/update_report_from_matrix.py"])
+        subprocess.run([sys.executable, "benchmarks/update_report_from_matrix.py"], encoding="utf-8", errors="replace")
     except Exception as e:
         print(f"⚠️ Cập nhật báo cáo: {e}")
 

@@ -26,8 +26,8 @@
             "filter": [
               "lowercase",
               "underscore_filter",
-              "custom_edge_ngram",
-              "icu_folding"
+              "icu_folding",
+              "custom_edge_ngram"
             ],
             "char_filter": [
               "html_strip"
@@ -90,7 +90,8 @@
         "type": "keyword"
       },
       "text": {
-        "type": "text"
+        "type": "text",
+        "analyzer": "standard"
       },
       "text_edge": {
         "type": "text",

@@ -223,5 +223,22 @@ def main():
     if search_data:
         plot_search_query_latency(search_data)
 
+    # Đồng bộ sang benchmark_charts/
+    import shutil
+    os.makedirs("benchmark_charts", exist_ok=True)
+    chart_names = [
+        "benchmark_throughput_scaling.png",
+        "benchmark_latency_distribution.png",
+        "benchmark_jvm_gc_stats.png",
+        "benchmark_storage_segments.png",
+        "benchmark_search_latency.png"
+    ]
+    for cname in chart_names:
+        src = os.path.join("image", cname)
+        dst = os.path.join("benchmark_charts", cname)
+        if os.path.exists(src):
+            shutil.copy(src, dst)
+    print("📁 Đã đồng bộ biểu đồ vào thư mục benchmark_charts/")
+
 if __name__ == "__main__":
     main()

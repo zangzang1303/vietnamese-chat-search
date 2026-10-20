@@ -1,0 +1,37 @@
+[
+  {
+    "concurrency": 1,
+    "operations": 100000,
+    "duration_sec": 1.269037897,
+    "ops_per_sec": 78799.85320879665,
+    "errors": 0
+  },
+  {
+    "concurrency": 4,
+    "operations": 100000,
+    "duration_sec": 1.747476857,
+    "ops_per_sec": 57225.364444411636,
+    "errors": 0
+  },
+  {
+    "concurrency": 8,
+    "operations": 100000,
+    "duration_sec": 1.701675962,
+    "ops_per_sec": 58765.59476251214,
+    "errors": 0
+  },
+  {
+    "concurrency": 16,
+    "operations": 100000,
+    "duration_sec": 1.752869631,
+    "ops_per_sec": 57049.30830648865,
+    "errors": 0
+  },
+  {
+    "concurrency": 32,
+    "operations": 100000,
+    "duration_sec": 1.732651578,
+    "ops_per_sec": 57715.00818152373,
+    "errors": 0
+  }
+]
