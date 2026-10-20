@@ -1,0 +1,23 @@
+	Command being timed: "/mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/bench_runner_final_linux -mode=plugin -concurrency=32 -batch=1000 -max_docs=1000000 -duration_sec=0 -dataset=/mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/dataset_real_1m.jsonl -dict=/mnt/d/CODE/VSF/vietnamese-chat-search/data/dicts/coccoc_plugin_final -plugin_url=http://localhost:9202 -output=/mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/final_run/final_20261020_093100/supplement/raw/batch_rep2_plugin_c32_b1000.json"
+	User time (seconds): 9.82
+	System time (seconds): 1.56
+	Percent of CPU this job got: 6%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:48.91
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1168140
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 156
+	Minor (reclaiming a frame) page faults: 334066
+	Voluntary context switches: 71261
+	Involuntary context switches: 210
+	Swaps: 0
+	File system inputs: 11408
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

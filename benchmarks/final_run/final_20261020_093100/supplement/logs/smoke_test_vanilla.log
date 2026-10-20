@@ -1,0 +1,14 @@
+📂 Đang nạp dataset từ /mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/dataset_real_1m.jsonl (tối đa 5000 docs)...
+✅ Đã nạp thành công 5000 docs vào RAM!
+
+🚀 Bắt đầu Benchmark [vanilla_cgo] -> http://localhost:9201 (Docs: 5,000, Batch: 500, Concurrency: 4)
+   ⏳ [=>                  ]   6.0% | 2,500 ops |   8313 ops/s | Chạy:  0.3s | Còn: 4.7s     ⏳ [==>                 ]  12.0% | 6,500 ops |  10829 ops/s | Chạy:  0.6s | Còn: 4.4s     ⏳ [===>                ]  18.0% | 15,000 ops |  16657 ops/s | Chạy:  0.9s | Còn: 4.1s     ⏳ [====>               ]  24.0% | 26,000 ops |  21651 ops/s | Chạy:  1.2s | Còn: 3.8s     ⏳ [======>             ]  30.0% | 38,000 ops |  25323 ops/s | Chạy:  1.5s | Còn: 3.5s     ⏳ [=======>            ]  36.0% | 47,500 ops |  26384 ops/s | Chạy:  1.8s | Còn: 3.2s     ⏳ [========>           ]  42.0% | 57,000 ops |  27130 ops/s | Chạy:  2.1s | Còn: 2.9s     ⏳ [=========>          ]  48.0% | 68,000 ops |  28323 ops/s | Chạy:  2.4s | Còn: 2.6s     ⏳ [==========>         ]  54.0% | 79,500 ops |  29438 ops/s | Chạy:  2.7s | Còn: 2.3s     ⏳ [============>       ]  60.0% | 90,000 ops |  29988 ops/s | Chạy:  3.0s | Còn: 2.0s     ⏳ [=============>      ]  66.0% | 101,500 ops |  30750 ops/s | Chạy:  3.3s | Còn: 1.7s     ⏳ [==============>     ]  72.0% | 112,500 ops |  31243 ops/s | Chạy:  3.6s | Còn: 1.4s     ⏳ [===============>    ]  78.0% | 121,500 ops |  31147 ops/s | Chạy:  3.9s | Còn: 1.1s     ⏳ [================>   ]  84.0% | 132,000 ops |  31422 ops/s | Chạy:  4.2s | Còn: 0.8s     ⏳ [==================> ]  90.0% | 142,500 ops |  31659 ops/s | Chạy:  4.5s | Còn: 0.5s     ⏳ [===================>]  96.0% | 152,000 ops |  31664 ops/s | Chạy:  4.8s | Còn: 0.2s     ✅ [====================] 100.0% | 161,500 ops hoàn tất trong 5.06s!                     
+📊 Kết quả [vanilla_cgo] (Concurrency=4):
+   - Docs indexed: 161500 docs trong 5.06s
+   - Thông lượng Throughput: 31920.37 docs/sec (28.58 MB/sec)
+   - Latency (ms): p50=49.21 | p90=70.06 | p95=96.01 | p99=190.32 | max=204.02
+   - End-to-end latency (ms): p50=55.25 | p95=103.97 | p99=195.50
+   - JVM GC Delta: 32 collections, 283 ms pause
+   - Storage: 0.00 MB, Segments: 7, Merge Time: 0 ms
+
+💾 Kết quả chi tiết đã được lưu vào /mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/final_run/final_20261020_093100/supplement/raw/smoke_test_vanilla.json

@@ -17,6 +17,7 @@ Tham chiếu đề bài gốc: [`REQUIREMENTS.md`](REQUIREMENTS.md)
 | **Phase 6** | Kiểm thử so sánh chất lượng search & Benchmark hiệu năng (MRR, NDCG) | ✅ Hoàn thành | 1-2 ngày |
 | **Phase 7** | Hoàn thiện tài liệu báo cáo & tổng kết | ✅ Hoàn thành | 1 ngày |
 | **Phase 8** | Tự xây dựng Động cơ Lưu trữ & Tìm kiếm Nhị phân độc lập (Custom Engine thuần Go) | ✅ Hoàn thành | 2-3 ngày |
+| **Phase 9** | Đóng gói Cốc Cốc Tokenizer thành Go Module độc lập (`coccoc-tokenizer-go`) | ✅ Hoàn thành | 2-3 ngày |
 
 ---
 
@@ -141,3 +142,28 @@ Tham chiếu đề bài gốc: [`REQUIREMENTS.md`](REQUIREMENTS.md)
     - Cột 1: Cốc Cốc Tokenizer (Elasticsearch 8.x)
     - Cột 2: Standard Baseline (Elasticsearch 8.x)
     - Cột 3: Custom Engine (Go Binary Disk Persistence, 0% Docker, ~3ms Latency).
+
+---
+
+### 🔹 Phase 9 (Task 2 Mở Rộng): Đóng Gói Cốc Cốc Tokenizer Thành Go Module Độc Lập (`coccoc-tokenizer-go`)
+- [x] **TASK-9.1: Khởi tạo Cấu Trúc Repository Độc Lập & Tách Lọc C++ Engine**
+  - [x] Tạo skeleton repo tại `coccoc-tokenizer-go/` với `go.mod` (`github.com/vntk/coccoc-tokenizer-go`).
+  - [x] Đóng gói toàn bộ header-only C++ DATrie trong `csrc/include/tokenizer/` và cầu nối `csrc/include/coccoc_bridge.h` / `csrc/src/coccoc_bridge.cpp`.
+  - [x] Tạo `bridge.cpp` làm compilation unit duy nhất cho CGO, cấu hình `#cgo` build flags chuẩn xác.
+- [x] **TASK-9.2: Xây Dựng Kiến Trúc Dual-Mode & Public API Chuẩn Idiomatic Go**
+  - [x] Định nghĩa Interface: `Segment`, `Tokenize`, `TokenizeFull` (Byte Offsets & Token Types), `Close`.
+  - [x] Cấu hình Functional Options Pattern: `WithDictPath`, `WithLoadNontone`, `WithNormalizeLowercase`, `WithFallbackToPureGo`, `WithCustomWords`.
+  - [x] Triển khai Pure-Go Forward Maximum Matching (`tokenizer_pure.go`) nhúng sẵn 40.074 từ ghép (`//go:embed dicts/words.txt`).
+  - [x] Quản lý con trỏ C/Go an toàn tuyệt đối (Zero Memory Leak).
+- [x] **TASK-9.3: Bộ Tiện Ích Từ Điển (`dictutil`) & Kiểm Thử Toàn Diện**
+  - [x] Package `dictutil`: Tự động tìm kiếm cache (`~/.cache/coccoc/dicts`, `%LOCALAPPDATA%`), kiểm tra tính hợp lệ và tự động tải từ điển.
+  - [x] Unit test suite (`tokenizer_test.go`): Kiểm tra từ ghép, bẫy đa nghĩa, dấu câu, ngoại ngữ và đa luồng (50 Goroutines concurrent).
+  - [x] Stress-test bộ nhớ (`leak_test.go`): 50.000 requests liên tục khẳng định không rò rỉ RAM native C++ (HeapAlloc delta ~13KB).
+  - [x] Micro-benchmarking (`benchmark_test.go`): Đo ns/op, B/op, allocs/op cho câu ngắn, vừa, dài.
+- [x] **TASK-9.4: Ví Dụ Mẫu, Tài Liệu Hóa & CI/CD Pipeline**
+  - [x] `examples/basic/`: Ví dụ cơ bản tách từ, lấy token và byte offsets.
+  - [x] `examples/http_server/`: Microservice REST API đa luồng chuẩn RFC.
+  - [x] `examples/opensearch_indexer/`: Pipeline tiền xử lý 4 trường (`text`, `text_vi`, `text_raw`, `text_edge`) khớp 100% Task 1.
+  - [x] GitHub Actions: `.github/workflows/test.yml` (Linux CGO + Pure-Go Multi-OS matrix), `benchmark.yml`, `release.yml`.
+  - [x] Hoàn thiện `README.md` chuyên nghiệp với badges, Quickstart, Docker multi-stage hướng dẫn.
+  - [x] Viết báo cáo hoàn thành tại [`docs/task2_coccoc_tokenizer_go_module_report.md`](docs/task2_coccoc_tokenizer_go_module_report.md).

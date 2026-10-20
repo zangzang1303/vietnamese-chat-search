@@ -1,0 +1,257 @@
+[
+    {
+        "Id": "6d934bf6e008eafad96189534d33f17a01dabdbc8bfb2a3a7a93473469903260",
+        "Created": "2026-10-20T02:16:37.609136613Z",
+        "Path": "./opensearch-docker-entrypoint.sh",
+        "Args": [
+            "opensearch"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 602,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-20T02:27:41.515265491Z",
+            "FinishedAt": "2026-10-20T02:25:21.099078002Z"
+        },
+        "Image": "sha256:1f6ad83f76a380bf62f5a95bb6ad92c4da150074eb478e41c56ffc739ca3d99f",
+        "ResolvConfPath": "/var/lib/docker/containers/6d934bf6e008eafad96189534d33f17a01dabdbc8bfb2a3a7a93473469903260/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/6d934bf6e008eafad96189534d33f17a01dabdbc8bfb2a3a7a93473469903260/hostname",
+        "HostsPath": "/var/lib/docker/containers/6d934bf6e008eafad96189534d33f17a01dabdbc8bfb2a3a7a93473469903260/hosts",
+        "LogPath": "/var/lib/docker/containers/6d934bf6e008eafad96189534d33f17a01dabdbc8bfb2a3a7a93473469903260/6d934bf6e008eafad96189534d33f17a01dabdbc8bfb2a3a7a93473469903260-json.log",
+        "Name": "/os_plugin_bench",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "benchmarks_default",
+            "PortBindings": {
+                "9200/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "9202"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 3221225472,
+            "NanoCpus": 4000000000,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 6442450944,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "6d934bf6e008",
+            "Domainname": "",
+            "User": "opensearch",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "9200/tcp": {},
+                "9300/tcp": {},
+                "9600/tcp": {},
+                "9650/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "node.name=node-plugin",
+                "discovery.type=single-node",
+                "OPENSEARCH_JAVA_OPTS=-Xms1536m -Xmx1536m",
+                "DISABLE_SECURITY_PLUGIN=true",
+                "DISABLE_INSTALL_DEMO_CONFIG=true",
+                "cluster.name=bench-plugin-cluster",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/share/opensearch/jdk/bin:/usr/share/opensearch/bin",
+                "JAVA_HOME=/usr/share/opensearch/jdk",
+                "LD_LIBRARY_PATH=/usr/share/opensearch/plugins/opensearch-knn/lib"
+            ],
+            "Cmd": [
+                "opensearch"
+            ],
+            "Image": "os-plugin:2.19.0",
+            "Volumes": null,
+            "WorkingDir": "/usr/share/opensearch",
+            "Entrypoint": [
+                "./opensearch-docker-entrypoint.sh"
+            ],
+            "Labels": {
+                "DOCKERFILE": "https://github.com/opensearch-project/opensearch-build/blob/main/docker/release/dockerfiles/opensearch.al2.dockerfile",
+                "com.docker.compose.config-hash": "157bc06f3a2eb67b21434a0f82011c54f934ba4a6c2b9d506727c2a4d6097c1d",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:1f6ad83f76a380bf62f5a95bb6ad92c4da150074eb478e41c56ffc739ca3d99f",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "benchmarks",
+                "com.docker.compose.project.config_files": "/mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/docker-compose.benchmark.yml",
+                "com.docker.compose.project.working_dir": "/mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks",
+                "com.docker.compose.service": "opensearch-plugin",
+                "com.docker.compose.version": "5.1.4",
+                "org.label-schema.build-date": "2025-02-15T19:12:52Z",
+                "org.label-schema.description": "10796",
+                "org.label-schema.license": "Apache-2.0",
+                "org.label-schema.name": "opensearch",
+                "org.label-schema.schema-version": "1.0",
+                "org.label-schema.url": "https://opensearch.org",
+                "org.label-schema.vcs-url": "https://github.com/opensearch-project/OpenSearch",
+                "org.label-schema.vendor": "OpenSearch",
+                "org.label-schema.version": "2.19.0"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "55ddb92727fc275f510daa15236695305b1f2e7bfd5aae2c28fc7eed9ebc219f",
+            "SandboxKey": "/var/run/docker/netns/55ddb92727fc",
+            "Ports": {
+                "9200/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "9202"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "9202"
+                    }
+                ],
+                "9300/tcp": null,
+                "9600/tcp": null,
+                "9650/tcp": null
+            },
+            "Networks": {
+                "benchmarks_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "os_plugin_bench",
+                        "opensearch-plugin"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "1ce6531b920d991b1b7ea2406b1bddf5e39b35472284024968949be6eaef4e6e",
+                    "EndpointID": "c609eaaa5ef3fb4f958f9b4c8d4500eb38e2c92224fadd67899d536e8c4a20c6",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "MacAddress": "aa:12:0f:dc:ef:8d",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "os_plugin_bench",
+                        "opensearch-plugin",
+                        "6d934bf6e008"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:9b9ea973b275043d0ef90b062e1ee97e4f1b1b9704096dbd027668e95f497c6c",
+            "size": 2776,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

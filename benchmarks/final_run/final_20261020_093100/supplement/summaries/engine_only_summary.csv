@@ -1,0 +1,3 @@
+concurrency,batch_size,docs,repetitions,vanilla_pretokenized_throughput_median,plugin_raw_throughput_median,engine_throughput_ratio_vanilla_vs_plugin,vanilla_container_cpu_median_pct,plugin_container_cpu_median_pct,vanilla_gc_time_ms_median,plugin_gc_time_ms_median,note
+8,1000,100000,3,13565.59,4968.05,2.731,279.96,230.02,220,271,Engine-only isolates engine indexing cost by pre-tokenizing Model A corpus in RAM outside timing loop. Shows pure OpenSearch ingestion rate.
+16,1000,100000,3,13909.12,3723.72,3.735,289.62,170.32,170,278,Engine-only isolates engine indexing cost by pre-tokenizing Model A corpus in RAM outside timing loop. Shows pure OpenSearch ingestion rate.

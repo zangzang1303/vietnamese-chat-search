@@ -1,0 +1,776 @@
+{
+  "run_id": "final_20261020_093100",
+  "concurrency_matrix": [
+    {
+      "concurrency": 1,
+      "repetitions_vanilla": 5,
+      "repetitions_plugin": 5,
+      "vanilla": {
+        "throughput": {
+          "median": 11044.54,
+          "mean": 11370.84,
+          "std": 3807.2,
+          "min": 7912.68,
+          "max": 17441.06,
+          "cv_pct": 33.48,
+          "ci95_low": 6644.34,
+          "ci95_high": 16097.34
+        },
+        "latency_p50_ms": {
+          "median": 35.27,
+          "mean": 38.71,
+          "std": 9.13,
+          "min": 32.99,
+          "max": 54.86,
+          "cv_pct": 23.6,
+          "ci95_low": 27.37,
+          "ci95_high": 50.05
+        },
+        "latency_p95_ms": {
+          "median": 208.73,
+          "mean": 200.8,
+          "std": 84.12,
+          "min": 74.59,
+          "max": 308.26,
+          "cv_pct": 41.89,
+          "ci95_low": 96.37,
+          "ci95_high": 305.24
+        },
+        "end_to_end_p50_ms": {
+          "median": 44.99,
+          "mean": 50.13,
+          "std": 13.06,
+          "min": 42.67,
+          "max": 73.33,
+          "cv_pct": 26.05,
+          "ci95_low": 33.91,
+          "ci95_high": 66.34
+        },
+        "jvm_gc_time_ms": {
+          "median": 1679,
+          "mean": 1696.2,
+          "std": 52.2,
+          "min": 1654,
+          "max": 1787,
+          "cv_pct": 3.08,
+          "ci95_low": 1631.4,
+          "ci95_high": 1761.0
+        },
+        "jvm_gc_count": {
+          "median": 290,
+          "mean": 289.8,
+          "std": 3.96,
+          "min": 285,
+          "max": 295,
+          "cv_pct": 1.37,
+          "ci95_low": 284.88,
+          "ci95_high": 294.72
+        },
+        "disk_store_mb": {
+          "median": 623.23,
+          "mean": 618.54,
+          "std": 20.06,
+          "min": 594.82,
+          "max": 646.38,
+          "cv_pct": 3.24,
+          "ci95_low": 593.63,
+          "ci95_high": 643.44
+        }
+      },
+      "plugin": {
+        "throughput": {
+          "median": 9408.67,
+          "mean": 9801.35,
+          "std": 2230.6,
+          "min": 7797.79,
+          "max": 13041.75,
+          "cv_pct": 22.76,
+          "ci95_low": 7032.15,
+          "ci95_high": 12570.56
+        },
+        "latency_p50_ms": {
+          "median": 53.36,
+          "mean": 56.44,
+          "std": 10.74,
+          "min": 44.45,
+          "max": 73.57,
+          "cv_pct": 19.03,
+          "ci95_low": 43.1,
+          "ci95_high": 69.77
+        },
+        "latency_p95_ms": {
+          "median": 165.39,
+          "mean": 171.59,
+          "std": 44.13,
+          "min": 126.5,
+          "max": 233.67,
+          "cv_pct": 25.72,
+          "ci95_low": 116.81,
+          "ci95_high": 226.37
+        },
+        "end_to_end_p50_ms": {
+          "median": 57.23,
+          "mean": 60.26,
+          "std": 10.73,
+          "min": 48.14,
+          "max": 77.28,
+          "cv_pct": 17.81,
+          "ci95_low": 46.94,
+          "ci95_high": 73.59
+        },
+        "jvm_gc_time_ms": {
+          "median": 2351,
+          "mean": 2360.8,
+          "std": 107.42,
+          "min": 2221,
+          "max": 2488,
+          "cv_pct": 4.55,
+          "ci95_low": 2227.45,
+          "ci95_high": 2494.15
+        },
+        "jvm_gc_count": {
+          "median": 392,
+          "mean": 392.8,
+          "std": 6.38,
+          "min": 387,
+          "max": 402,
+          "cv_pct": 1.62,
+          "ci95_low": 384.88,
+          "ci95_high": 400.72
+        },
+        "disk_store_mb": {
+          "median": 561.12,
+          "mean": 573.42,
+          "std": 19.32,
+          "min": 556.89,
+          "max": 596.61,
+          "cv_pct": 3.37,
+          "ci95_low": 549.43,
+          "ci95_high": 597.41
+        }
+      },
+      "effect_size": {
+        "throughput_diff_percent": 17.39,
+        "latency_p50_diff_percent": -33.9,
+        "gc_overhead_plugin_percent": 40.02
+      }
+    },
+    {
+      "concurrency": 4,
+      "repetitions_vanilla": 5,
+      "repetitions_plugin": 5,
+      "vanilla": {
+        "throughput": {
+          "median": 13406.45,
+          "mean": 15845.82,
+          "std": 5153.18,
+          "min": 10542.75,
+          "max": 22300.92,
+          "cv_pct": 32.52,
+          "ci95_low": 9448.32,
+          "ci95_high": 22243.31
+        },
+        "latency_p50_ms": {
+          "median": 134.47,
+          "mean": 133.78,
+          "std": 10.93,
+          "min": 117.89,
+          "max": 147.58,
+          "cv_pct": 8.17,
+          "ci95_low": 120.22,
+          "ci95_high": 147.35
+        },
+        "latency_p95_ms": {
+          "median": 585.17,
+          "mean": 562.23,
+          "std": 200.81,
+          "min": 357.9,
+          "max": 864.21,
+          "cv_pct": 35.72,
+          "ci95_low": 312.93,
+          "ci95_high": 811.52
+        },
+        "end_to_end_p50_ms": {
+          "median": 148.05,
+          "mean": 145.61,
+          "std": 11.37,
+          "min": 128.72,
+          "max": 158.89,
+          "cv_pct": 7.81,
+          "ci95_low": 131.5,
+          "ci95_high": 159.73
+        },
+        "jvm_gc_time_ms": {
+          "median": 1939,
+          "mean": 1966.6,
+          "std": 114.0,
+          "min": 1846,
+          "max": 2153,
+          "cv_pct": 5.8,
+          "ci95_low": 1825.08,
+          "ci95_high": 2108.12
+        },
+        "jvm_gc_count": {
+          "median": 293,
+          "mean": 294.6,
+          "std": 7.33,
+          "min": 286,
+          "max": 306,
+          "cv_pct": 2.49,
+          "ci95_low": 285.49,
+          "ci95_high": 303.71
+        },
+        "disk_store_mb": {
+          "median": 638.83,
+          "mean": 626.6,
+          "std": 31.46,
+          "min": 571.34,
+          "max": 646.17,
+          "cv_pct": 5.02,
+          "ci95_low": 587.54,
+          "ci95_high": 665.66
+        }
+      },
+      "plugin": {
+        "throughput": {
+          "median": 10669.95,
+          "mean": 10043.39,
+          "std": 1901.99,
+          "min": 7738.03,
+          "max": 11932.2,
+          "cv_pct": 18.94,
+          "ci95_low": 7682.13,
+          "ci95_high": 12404.64
+        },
+        "latency_p50_ms": {
+          "median": 179.16,
+          "mean": 218.12,
+          "std": 70.77,
+          "min": 158.05,
+          "max": 298.4,
+          "cv_pct": 32.45,
+          "ci95_low": 130.26,
+          "ci95_high": 305.98
+        },
+        "latency_p95_ms": {
+          "median": 1165.33,
+          "mean": 1310.28,
+          "std": 493.71,
+          "min": 739.87,
+          "max": 1862.32,
+          "cv_pct": 37.68,
+          "ci95_low": 697.36,
+          "ci95_high": 1923.2
+        },
+        "end_to_end_p50_ms": {
+          "median": 183.49,
+          "mean": 222.36,
+          "std": 71.04,
+          "min": 161.86,
+          "max": 303.49,
+          "cv_pct": 31.95,
+          "ci95_low": 134.17,
+          "ci95_high": 310.55
+        },
+        "jvm_gc_time_ms": {
+          "median": 2504,
+          "mean": 2521.2,
+          "std": 203.46,
+          "min": 2309,
+          "max": 2845,
+          "cv_pct": 8.07,
+          "ci95_low": 2268.62,
+          "ci95_high": 2773.78
+        },
+        "jvm_gc_count": {
+          "median": 393,
+          "mean": 394.2,
+          "std": 3.56,
+          "min": 391,
+          "max": 400,
+          "cv_pct": 0.9,
+          "ci95_low": 389.78,
+          "ci95_high": 398.62
+        },
+        "disk_store_mb": {
+          "median": 553.2,
+          "mean": 554.36,
+          "std": 28.03,
+          "min": 527.49,
+          "max": 597.38,
+          "cv_pct": 5.06,
+          "ci95_low": 519.56,
+          "ci95_high": 589.16
+        }
+      },
+      "effect_size": {
+        "throughput_diff_percent": 25.65,
+        "latency_p50_diff_percent": -24.94,
+        "gc_overhead_plugin_percent": 29.14
+      }
+    },
+    {
+      "concurrency": 8,
+      "repetitions_vanilla": 5,
+      "repetitions_plugin": 5,
+      "vanilla": {
+        "throughput": {
+          "median": 10984.11,
+          "mean": 11202.2,
+          "std": 1517.57,
+          "min": 9390.3,
+          "max": 12796.03,
+          "cv_pct": 13.55,
+          "ci95_low": 9318.19,
+          "ci95_high": 13086.21
+        },
+        "latency_p50_ms": {
+          "median": 319.15,
+          "mean": 353.8,
+          "std": 79.75,
+          "min": 288.62,
+          "max": 488.49,
+          "cv_pct": 22.54,
+          "ci95_low": 254.79,
+          "ci95_high": 452.82
+        },
+        "latency_p95_ms": {
+          "median": 1826.08,
+          "mean": 2058.25,
+          "std": 619.08,
+          "min": 1529.69,
+          "max": 2989.98,
+          "cv_pct": 30.08,
+          "ci95_low": 1289.69,
+          "ci95_high": 2826.82
+        },
+        "end_to_end_p50_ms": {
+          "median": 329.15,
+          "mean": 365.94,
+          "std": 79.99,
+          "min": 300.9,
+          "max": 500.17,
+          "cv_pct": 21.86,
+          "ci95_low": 266.63,
+          "ci95_high": 465.24
+        },
+        "jvm_gc_time_ms": {
+          "median": 1895,
+          "mean": 2001.4,
+          "std": 269.05,
+          "min": 1843,
+          "max": 2481,
+          "cv_pct": 13.44,
+          "ci95_low": 1667.39,
+          "ci95_high": 2335.41
+        },
+        "jvm_gc_count": {
+          "median": 286,
+          "mean": 288.4,
+          "std": 5.03,
+          "min": 284,
+          "max": 296,
+          "cv_pct": 1.74,
+          "ci95_low": 282.16,
+          "ci95_high": 294.64
+        },
+        "disk_store_mb": {
+          "median": 597.78,
+          "mean": 600.31,
+          "std": 18.06,
+          "min": 578.7,
+          "max": 627.36,
+          "cv_pct": 3.01,
+          "ci95_low": 577.89,
+          "ci95_high": 622.72
+        }
+      },
+      "plugin": {
+        "throughput": {
+          "median": 10090.89,
+          "mean": 11736.73,
+          "std": 4322.38,
+          "min": 7768.74,
+          "max": 16452.88,
+          "cv_pct": 36.83,
+          "ci95_low": 6370.64,
+          "ci95_high": 17102.81
+        },
+        "latency_p50_ms": {
+          "median": 357.44,
+          "mean": 394.47,
+          "std": 65.68,
+          "min": 344.8,
+          "max": 493.69,
+          "cv_pct": 16.65,
+          "ci95_low": 312.94,
+          "ci95_high": 476.01
+        },
+        "latency_p95_ms": {
+          "median": 2458.09,
+          "mean": 2261.65,
+          "std": 974.31,
+          "min": 1179.72,
+          "max": 3392.71,
+          "cv_pct": 43.08,
+          "ci95_low": 1052.08,
+          "ci95_high": 3471.23
+        },
+        "end_to_end_p50_ms": {
+          "median": 361.52,
+          "mean": 398.8,
+          "std": 66.09,
+          "min": 349.53,
+          "max": 499.22,
+          "cv_pct": 16.57,
+          "ci95_low": 316.75,
+          "ci95_high": 480.85
+        },
+        "jvm_gc_time_ms": {
+          "median": 2535,
+          "mean": 2625.2,
+          "std": 270.3,
+          "min": 2429,
+          "max": 3096,
+          "cv_pct": 10.3,
+          "ci95_low": 2289.63,
+          "ci95_high": 2960.77
+        },
+        "jvm_gc_count": {
+          "median": 398,
+          "mean": 395.6,
+          "std": 6.88,
+          "min": 384,
+          "max": 401,
+          "cv_pct": 1.74,
+          "ci95_low": 387.06,
+          "ci95_high": 404.14
+        },
+        "disk_store_mb": {
+          "median": 563.05,
+          "mean": 564.68,
+          "std": 22.02,
+          "min": 532.03,
+          "max": 592.69,
+          "cv_pct": 3.9,
+          "ci95_low": 537.34,
+          "ci95_high": 592.02
+        }
+      },
+      "effect_size": {
+        "throughput_diff_percent": 8.85,
+        "latency_p50_diff_percent": -10.71,
+        "gc_overhead_plugin_percent": 33.77
+      }
+    },
+    {
+      "concurrency": 16,
+      "repetitions_vanilla": 5,
+      "repetitions_plugin": 5,
+      "vanilla": {
+        "throughput": {
+          "median": 11549.79,
+          "mean": 11656.99,
+          "std": 3861.84,
+          "min": 7463.33,
+          "max": 17276.37,
+          "cv_pct": 33.13,
+          "ci95_low": 6862.65,
+          "ci95_high": 16451.32
+        },
+        "latency_p50_ms": {
+          "median": 808.77,
+          "mean": 853.74,
+          "std": 245.19,
+          "min": 576.28,
+          "max": 1160.45,
+          "cv_pct": 28.72,
+          "ci95_low": 549.34,
+          "ci95_high": 1158.13
+        },
+        "latency_p95_ms": {
+          "median": 3354.67,
+          "mean": 5418.82,
+          "std": 3096.93,
+          "min": 3115.02,
+          "max": 9789.26,
+          "cv_pct": 57.15,
+          "ci95_low": 1574.09,
+          "ci95_high": 9263.55
+        },
+        "end_to_end_p50_ms": {
+          "median": 827.63,
+          "mean": 871.32,
+          "std": 250.52,
+          "min": 586.65,
+          "max": 1178.24,
+          "cv_pct": 28.75,
+          "ci95_low": 560.31,
+          "ci95_high": 1182.34
+        },
+        "jvm_gc_time_ms": {
+          "median": 2038,
+          "mean": 2138.6,
+          "std": 198.74,
+          "min": 2014,
+          "max": 2485,
+          "cv_pct": 9.29,
+          "ci95_low": 1891.88,
+          "ci95_high": 2385.32
+        },
+        "jvm_gc_count": {
+          "median": 290,
+          "mean": 292.0,
+          "std": 6.44,
+          "min": 287,
+          "max": 303,
+          "cv_pct": 2.21,
+          "ci95_low": 284.0,
+          "ci95_high": 300.0
+        },
+        "disk_store_mb": {
+          "median": 605.26,
+          "mean": 607.42,
+          "std": 18.09,
+          "min": 586.91,
+          "max": 632.8,
+          "cv_pct": 2.98,
+          "ci95_low": 584.96,
+          "ci95_high": 629.88
+        }
+      },
+      "plugin": {
+        "throughput": {
+          "median": 15187.84,
+          "mean": 14468.75,
+          "std": 4653.68,
+          "min": 7826.92,
+          "max": 20112.45,
+          "cv_pct": 32.16,
+          "ci95_low": 8691.38,
+          "ci95_high": 20246.13
+        },
+        "latency_p50_ms": {
+          "median": 761.57,
+          "mean": 764.21,
+          "std": 91.64,
+          "min": 653.24,
+          "max": 905.11,
+          "cv_pct": 11.99,
+          "ci95_low": 650.44,
+          "ci95_high": 877.98
+        },
+        "latency_p95_ms": {
+          "median": 2204.98,
+          "mean": 3637.37,
+          "std": 2715.5,
+          "min": 1560.48,
+          "max": 7991.85,
+          "cv_pct": 74.66,
+          "ci95_low": 266.18,
+          "ci95_high": 7008.56
+        },
+        "end_to_end_p50_ms": {
+          "median": 765.88,
+          "mean": 768.49,
+          "std": 91.75,
+          "min": 657.85,
+          "max": 909.74,
+          "cv_pct": 11.94,
+          "ci95_low": 654.59,
+          "ci95_high": 882.39
+        },
+        "jvm_gc_time_ms": {
+          "median": 2786,
+          "mean": 2757.8,
+          "std": 194.93,
+          "min": 2437,
+          "max": 2935,
+          "cv_pct": 7.07,
+          "ci95_low": 2515.8,
+          "ci95_high": 2999.8
+        },
+        "jvm_gc_count": {
+          "median": 398,
+          "mean": 397.6,
+          "std": 5.68,
+          "min": 389,
+          "max": 404,
+          "cv_pct": 1.43,
+          "ci95_low": 390.54,
+          "ci95_high": 404.66
+        },
+        "disk_store_mb": {
+          "median": 576.95,
+          "mean": 570.01,
+          "std": 25.15,
+          "min": 531.25,
+          "max": 598.94,
+          "cv_pct": 4.41,
+          "ci95_low": 538.79,
+          "ci95_high": 601.23
+        }
+      },
+      "effect_size": {
+        "throughput_diff_percent": -23.95,
+        "latency_p50_diff_percent": 6.2,
+        "gc_overhead_plugin_percent": 36.7
+      }
+    },
+    {
+      "concurrency": 32,
+      "repetitions_vanilla": 5,
+      "repetitions_plugin": 5,
+      "vanilla": {
+        "throughput": {
+          "median": 10702.15,
+          "mean": 12325.44,
+          "std": 4242.44,
+          "min": 8280.28,
+          "max": 17212.43,
+          "cv_pct": 34.42,
+          "ci95_low": 7058.61,
+          "ci95_high": 17592.28
+        },
+        "latency_p50_ms": {
+          "median": 1499.92,
+          "mean": 1751.01,
+          "std": 691.63,
+          "min": 1122.94,
+          "max": 2845.0,
+          "cv_pct": 39.5,
+          "ci95_low": 892.37,
+          "ci95_high": 2609.65
+        },
+        "latency_p95_ms": {
+          "median": 9583.43,
+          "mean": 7937.92,
+          "std": 3538.64,
+          "min": 3335.84,
+          "max": 11914.42,
+          "cv_pct": 44.58,
+          "ci95_low": 3544.83,
+          "ci95_high": 12331.01
+        },
+        "end_to_end_p50_ms": {
+          "median": 1517.43,
+          "mean": 1775.85,
+          "std": 690.95,
+          "min": 1148.05,
+          "max": 2859.1,
+          "cv_pct": 38.91,
+          "ci95_low": 918.06,
+          "ci95_high": 2633.64
+        },
+        "jvm_gc_time_ms": {
+          "median": 2195,
+          "mean": 2287.2,
+          "std": 247.77,
+          "min": 2117,
+          "max": 2712,
+          "cv_pct": 10.83,
+          "ci95_low": 1979.6,
+          "ci95_high": 2594.8
+        },
+        "jvm_gc_count": {
+          "median": 302,
+          "mean": 303.8,
+          "std": 4.27,
+          "min": 300,
+          "max": 311,
+          "cv_pct": 1.4,
+          "ci95_low": 298.5,
+          "ci95_high": 309.1
+        },
+        "disk_store_mb": {
+          "median": 619.48,
+          "mean": 618.92,
+          "std": 21.21,
+          "min": 586.97,
+          "max": 638.57,
+          "cv_pct": 3.43,
+          "ci95_low": 592.59,
+          "ci95_high": 645.24
+        }
+      },
+      "plugin": {
+        "throughput": {
+          "median": 11873.85,
+          "mean": 12180.48,
+          "std": 2805.92,
+          "min": 8271.84,
+          "max": 15723.64,
+          "cv_pct": 23.04,
+          "ci95_low": 8697.02,
+          "ci95_high": 15663.93
+        },
+        "latency_p50_ms": {
+          "median": 1610.19,
+          "mean": 1785.38,
+          "std": 507.03,
+          "min": 1468.25,
+          "max": 2682.52,
+          "cv_pct": 28.4,
+          "ci95_low": 1155.92,
+          "ci95_high": 2414.83
+        },
+        "latency_p95_ms": {
+          "median": 8458.68,
+          "mean": 7232.51,
+          "std": 2210.1,
+          "min": 3918.11,
+          "max": 9186.06,
+          "cv_pct": 30.56,
+          "ci95_low": 4488.74,
+          "ci95_high": 9976.27
+        },
+        "end_to_end_p50_ms": {
+          "median": 1614.07,
+          "mean": 1792.15,
+          "std": 508.59,
+          "min": 1478.88,
+          "max": 2692.5,
+          "cv_pct": 28.38,
+          "ci95_low": 1160.75,
+          "ci95_high": 2423.54
+        },
+        "jvm_gc_time_ms": {
+          "median": 2963,
+          "mean": 2983.4,
+          "std": 96.51,
+          "min": 2875,
+          "max": 3132,
+          "cv_pct": 3.23,
+          "ci95_low": 2863.59,
+          "ci95_high": 3103.21
+        },
+        "jvm_gc_count": {
+          "median": 405,
+          "mean": 408.6,
+          "std": 8.02,
+          "min": 400,
+          "max": 419,
+          "cv_pct": 1.96,
+          "ci95_low": 398.65,
+          "ci95_high": 418.55
+        },
+        "disk_store_mb": {
+          "median": 575.53,
+          "mean": 566.55,
+          "std": 29.13,
+          "min": 529.33,
+          "max": 594.86,
+          "cv_pct": 5.14,
+          "ci95_low": 530.38,
+          "ci95_high": 602.71
+        }
+      },
+      "effect_size": {
+        "throughput_diff_percent": -9.87,
+        "latency_p50_diff_percent": -6.85,
+        "gc_overhead_plugin_percent": 34.99
+      }
+    }
+  ],
+  "updated_at": "2026-10-20T04:50:48.811457+00:00"
+}

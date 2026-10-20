@@ -1,0 +1,36 @@
+M TASKS.md
+ M benchmark_charts/benchmark_jvm_gc_stats.png
+ M benchmark_charts/benchmark_latency_distribution.png
+ M benchmark_charts/benchmark_search_latency.png
+ M benchmark_charts/benchmark_storage_segments.png
+ M benchmark_charts/benchmark_throughput_scaling.png
+ M benchmarks/bench_runner.go
+ M benchmarks/docker-compose.benchmark.yml
+ M benchmarks/full_matrix_results.json
+ M benchmarks/generate_empirical_charts.py
+ M benchmarks/mapping_plugin.json
+ M benchmarks/mapping_vanilla.json
+ M benchmarks/run_empirical_experiment.py
+ M benchmarks/update_report_from_matrix.py
+ M docs/benchmark_opensearch_plugin_report.md
+?? benchmarks/bench_runner_final_linux
+?? benchmarks/collect_manifest.py
+?? benchmarks/final_run/
+?? benchmarks/res_1m_comparison.json
+?? benchmarks/res_1m_plugin.json
+?? benchmarks/res_1m_vanilla.json
+?? benchmarks/run_1m_quick_compare.py
+?? benchmarks/run_final_parity.py
+?? benchmarks/smoke_plugin_final.json
+?? benchmarks/smoke_vanilla_final.json
+?? benchmarks/tmp_test.json
+?? benchmarks/tokenize_corpus.go
+?? benchmarks/tokenize_corpus_final_linux
+?? coccoc-tokenizer-go/
+?? data/dicts/coccoc_plugin_final/
+?? docs/task2_coccoc_tokenizer_go_module_report.md
+?? image/benchmark_jvm_gc_stats.png
+?? image/benchmark_latency_distribution.png
+?? image/benchmark_search_latency.png
+?? image/benchmark_storage_segments.png
+?? image/benchmark_throughput_scaling.png

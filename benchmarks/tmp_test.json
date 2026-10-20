@@ -1,0 +1,27 @@
+[
+  {
+    "mode": "vanilla_cgo",
+    "target_url": "http://localhost:9201",
+    "total_docs": 1000,
+    "total_batches": 2,
+    "total_bytes": 674970,
+    "duration": 74257000,
+    "docs_per_sec": 13466.743875998221,
+    "mb_per_sec": 8.668563951475639,
+    "latency_p50_ms": 71.11019999999999,
+    "latency_p90_ms": 71.11019999999999,
+    "latency_p95_ms": 71.11019999999999,
+    "latency_p99_ms": 71.11019999999999,
+    "latency_max_ms": 71.11019999999999,
+    "errors": 0,
+    "concurrency": 2,
+    "batch_size": 500,
+    "jvm_heap_used_mb": 0,
+    "jvm_gc_count": 0,
+    "jvm_gc_time_ms": 0,
+    "disk_store_mb": 135.4300127029419,
+    "segments_count": 20,
+    "flush_time_ms": 0,
+    "merge_time_ms": 0
+  }
+]

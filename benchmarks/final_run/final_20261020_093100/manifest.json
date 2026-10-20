@@ -1,0 +1,101 @@
+{
+  "run_id": "final_20261020_093100",
+  "created_at": "2026-10-20T02:31:09.659889+00:00",
+  "git": {
+    "sha": "a07af82915e6b91d29bb1ea8dc2163dd1d5cd7b7",
+    "status_summary": [
+      "M TASKS.md",
+      " M benchmark_charts/benchmark_jvm_gc_stats.png",
+      " M benchmark_charts/benchmark_latency_distribution.png",
+      " M benchmark_charts/benchmark_search_latency.png",
+      " M benchmark_charts/benchmark_storage_segments.png",
+      " M benchmark_charts/benchmark_throughput_scaling.png",
+      " M benchmarks/bench_runner.go",
+      " M benchmarks/docker-compose.benchmark.yml",
+      " M benchmarks/full_matrix_results.json",
+      " M benchmarks/generate_empirical_charts.py",
+      " M benchmarks/mapping_plugin.json",
+      " M benchmarks/mapping_vanilla.json",
+      " M benchmarks/run_empirical_experiment.py",
+      " M benchmarks/update_report_from_matrix.py",
+      " M docs/benchmark_opensearch_plugin_report.md",
+      "?? benchmarks/bench_runner_final_linux",
+      "?? benchmarks/collect_manifest.py",
+      "?? benchmarks/final_run/",
+      "?? benchmarks/res_1m_comparison.json",
+      "?? benchmarks/res_1m_plugin.json"
+    ]
+  },
+  "system": {
+    "uname": "Linux Lemon 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 GNU/Linux",
+    "go_version": "go version go1.26.0 linux/amd64",
+    "docker_version": "Docker version 29.1.3, build 29.1.3-0ubuntu4.1",
+    "java_version": [
+      "openjdk version \"21.0.6\" 2025-01-21",
+      "OpenJDK Runtime Environment Temurin-21.0.6+7 (build 21.0.6+7-LTS)",
+      "OpenJDK 64-Bit Server VM Temurin-21.0.6+7 (build 21.0.6+7-LTS, mixed mode, sharing)"
+    ]
+  },
+  "resource_limits": {
+    "vanilla": {
+      "NanoCPUs": 4000000000,
+      "Memory": 3221225472,
+      "CpuQuota": 400000,
+      "CpuPeriod": 100000,
+      "JvmHeap": "1536m"
+    },
+    "plugin": {
+      "NanoCPUs": 4000000000,
+      "Memory": 3221225472,
+      "CpuQuota": 400000,
+      "CpuPeriod": 100000,
+      "JvmHeap": "1536m"
+    }
+  },
+  "provenance": {
+    "opensearch_plugin_vietnamese": "unknown (pre-built from Dockerfile without git commit provenance)",
+    "coccoc_tokenizer_library": "unknown (pre-compiled binary in Docker image)",
+    "dictionary_source": "extracted from os-plugin:2.19.0 to data/dicts/coccoc_plugin_final for byte-for-byte parity"
+  },
+  "checksums": {
+    "dataset_real_1m": {
+      "path": "benchmarks/dataset_real_1m.jsonl",
+      "sha256": "b5debf3580d675d99d8b74690cb7ffaf269fc0c5ec2a59b388bf007f1b2b3d6a",
+      "size_bytes": 367805772
+    },
+    "mapping_vanilla": {
+      "path": "benchmarks/mapping_vanilla.json",
+      "sha256": "aa6cdf907273049a54ffc97c2909481e016191990ba63ddf2c306b68276a2e24"
+    },
+    "mapping_plugin": {
+      "path": "benchmarks/mapping_plugin.json",
+      "sha256": "a7dbc5c7dc00773993f360b04ddfea5d2637c247188653e5d08475b36a1d163e"
+    },
+    "bench_runner_final_linux": {
+      "path": "benchmarks/bench_runner_final_linux",
+      "sha256": "2b206e36d86ef0469227e1a9424a16634820f2a3dc62648fee3e29538ba15deb"
+    },
+    "tokenize_corpus_final_linux": {
+      "path": "benchmarks/tokenize_corpus_final_linux",
+      "sha256": "713730e0bf9089f9adf79ecc1a1375fd9fd59465a9cb8b0ea5ccb9eb73377d09"
+    },
+    "dictionary_coccoc_plugin_final": {
+      "alphabetic": "c66df315f0165da504b33d493b63bd2d331ab764b0a7d7d0ea6193738322a9b5",
+      "d_and_gi.txt": "f0bf8922ce1f618571474c9df4834f10d02f952ebaab087757ce1753c3f87135",
+      "i_and_y.txt": "e43fb11da40a4726de82f4e30829d5de302d2a860206400ea7c6ae3c0feb7254",
+      "multiterm_trie.dump": "5fc6d700cb745fba33d30d83007e28b409a732fc60b2ce0d7565f34a166b7d0a",
+      "nontone_pair_freq_map.dump": "b4ab9c6fd49249f655c750cce5c3f169b492f4fd3fd56aa3eaa6cc1ebaf1c5ae",
+      "numeric": "ed4311d818d091232266aabfe3be145d8936fdb71be463002f2611e1bdb85330",
+      "syllable_trie.dump": "f59e6e5b07ff6a6c9c003f4ad482e7b0742316b07f435278d6ad0148be2fbbca"
+    },
+    "dictionary_coccoc": {
+      "alphabetic": "162311a627e9eb750ae89e2f4a3fe9dd86be53ecb115719f8f30b4498c0c234b",
+      "d_and_gi.txt": "f0bf8922ce1f618571474c9df4834f10d02f952ebaab087757ce1753c3f87135",
+      "i_and_y.txt": "e43fb11da40a4726de82f4e30829d5de302d2a860206400ea7c6ae3c0feb7254",
+      "multiterm_trie.dump": "c923f1ef10563a065f76c82f7981f5dd1ee0cdbaf1ee2290340b9f46cab226d4",
+      "nontone_pair_freq_map.dump": "b4ab9c6fd49249f655c750cce5c3f169b492f4fd3fd56aa3eaa6cc1ebaf1c5ae",
+      "numeric": "cecf1312b58c4cea50603e2dfc4411ee536a1a47482a0fbab88fde0accfe1ba1",
+      "syllable_trie.dump": "6985f132db640ea1d3654fae921e95b05fb504a1bed70efc4b13b0b6f488da6a"
+    }
+  }
+}

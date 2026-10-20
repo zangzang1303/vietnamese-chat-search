@@ -1,0 +1,281 @@
+{
+  "design": "paired randomized AB/BA, five repetitions per model and concurrency",
+  "primary_metric": "docs_per_sec",
+  "median_interval_method": "percentile bootstrap, 50,000 resamples, deterministic seed",
+  "paired_interval_method": "two-sided 95% Student-t interval on within-repetition A-B differences, df=4",
+  "multiple_comparison_note": "No multiplicity-adjusted significance claim is made.",
+  "interpretation": "A result is conclusive only when the paired 95% CI excludes zero.",
+  "concurrency_results": [
+    {
+      "concurrency": 1,
+      "vanilla_throughput": {
+        "n": 5,
+        "median": 11044.543,
+        "median_bootstrap_ci95": [
+          7912.677,
+          17441.062
+        ],
+        "mean": 11370.838,
+        "mean_t_ci95": [
+          6643.581,
+          16098.096
+        ],
+        "std": 3807.196,
+        "cv_pct": 33.482,
+        "min": 7912.677,
+        "max": 17441.062
+      },
+      "plugin_throughput": {
+        "n": 5,
+        "median": 9408.673,
+        "median_bootstrap_ci95": [
+          7797.787,
+          13041.746
+        ],
+        "mean": 9801.353,
+        "mean_t_ci95": [
+          7031.703,
+          12571.003
+        ],
+        "std": 2230.595,
+        "cv_pct": 22.758,
+        "min": 7797.787,
+        "max": 13041.746
+      },
+      "paired_difference_a_minus_b": {
+        "values": [
+          6500.162,
+          -1017.458,
+          -977.051,
+          3226.883,
+          114.89
+        ],
+        "mean": 1569.485,
+        "mean_t_ci95": [
+          -2470.768,
+          5609.738
+        ],
+        "cohen_dz": 0.482,
+        "direction_consistency": "3/5 A>B",
+        "statistically_conclusive_at_0_05": false
+      }
+    },
+    {
+      "concurrency": 4,
+      "vanilla_throughput": {
+        "n": 5,
+        "median": 13406.451,
+        "median_bootstrap_ci95": [
+          10542.747,
+          22300.918
+        ],
+        "mean": 15845.816,
+        "mean_t_ci95": [
+          9447.294,
+          22244.337
+        ],
+        "std": 5153.182,
+        "cv_pct": 32.521,
+        "min": 10542.747,
+        "max": 22300.918
+      },
+      "plugin_throughput": {
+        "n": 5,
+        "median": 10669.951,
+        "median_bootstrap_ci95": [
+          7738.031,
+          11932.199
+        ],
+        "mean": 10043.387,
+        "mean_t_ci95": [
+          7681.75,
+          12405.023
+        ],
+        "std": 1901.993,
+        "cv_pct": 18.938,
+        "min": 7738.031,
+        "max": 11932.199
+      },
+      "paired_difference_a_minus_b": {
+        "values": [
+          1092.383,
+          9669.93,
+          13970.864,
+          2804.716,
+          1474.252
+        ],
+        "mean": 5802.429,
+        "mean_t_ci95": [
+          -1319.162,
+          12924.02
+        ],
+        "cohen_dz": 1.012,
+        "direction_consistency": "5/5 A>B",
+        "statistically_conclusive_at_0_05": false
+      }
+    },
+    {
+      "concurrency": 8,
+      "vanilla_throughput": {
+        "n": 5,
+        "median": 10984.113,
+        "median_bootstrap_ci95": [
+          9390.296,
+          12796.035
+        ],
+        "mean": 11202.199,
+        "mean_t_ci95": [
+          9317.883,
+          13086.514
+        ],
+        "std": 1517.573,
+        "cv_pct": 13.547,
+        "min": 9390.296,
+        "max": 12796.035
+      },
+      "plugin_throughput": {
+        "n": 5,
+        "median": 10090.889,
+        "median_bootstrap_ci95": [
+          7768.742,
+          16452.88
+        ],
+        "mean": 11736.727,
+        "mean_t_ci95": [
+          6369.782,
+          17103.671
+        ],
+        "std": 4322.381,
+        "cv_pct": 36.828,
+        "min": 7768.742,
+        "max": 16452.88
+      },
+      "paired_difference_a_minus_b": {
+        "values": [
+          -7062.584,
+          4711.279,
+          2603.382,
+          3215.37,
+          -6140.087
+        ],
+        "mean": -534.528,
+        "mean_t_ci95": [
+          -7488.526,
+          6419.47
+        ],
+        "cohen_dz": -0.095,
+        "direction_consistency": "3/5 A>B",
+        "statistically_conclusive_at_0_05": false
+      }
+    },
+    {
+      "concurrency": 16,
+      "vanilla_throughput": {
+        "n": 5,
+        "median": 11549.793,
+        "median_bootstrap_ci95": [
+          7463.327,
+          17276.368
+        ],
+        "mean": 11656.989,
+        "mean_t_ci95": [
+          6861.886,
+          16452.092
+        ],
+        "std": 3861.836,
+        "cv_pct": 33.129,
+        "min": 7463.327,
+        "max": 17276.368
+      },
+      "plugin_throughput": {
+        "n": 5,
+        "median": 15187.836,
+        "median_bootstrap_ci95": [
+          7826.923,
+          20112.453
+        ],
+        "mean": 14468.751,
+        "mean_t_ci95": [
+          8690.449,
+          20247.053
+        ],
+        "std": 4653.676,
+        "cv_pct": 32.164,
+        "min": 7826.923,
+        "max": 20112.453
+      },
+      "paired_difference_a_minus_b": {
+        "values": [
+          -9392.782,
+          -1998.061,
+          -2836.085,
+          3722.87,
+          -3554.756
+        ],
+        "mean": -2811.763,
+        "mean_t_ci95": [
+          -8610.014,
+          2986.489
+        ],
+        "cohen_dz": -0.602,
+        "direction_consistency": "1/5 A>B",
+        "statistically_conclusive_at_0_05": false
+      }
+    },
+    {
+      "concurrency": 32,
+      "vanilla_throughput": {
+        "n": 5,
+        "median": 10702.148,
+        "median_bootstrap_ci95": [
+          8280.275,
+          17212.434
+        ],
+        "mean": 12325.444,
+        "mean_t_ci95": [
+          7057.762,
+          17593.126
+        ],
+        "std": 4242.437,
+        "cv_pct": 34.42,
+        "min": 8280.275,
+        "max": 17212.434
+      },
+      "plugin_throughput": {
+        "n": 5,
+        "median": 11873.845,
+        "median_bootstrap_ci95": [
+          8271.839,
+          15723.645
+        ],
+        "mean": 12180.478,
+        "mean_t_ci95": [
+          8696.463,
+          15664.493
+        ],
+        "std": 2805.924,
+        "cv_pct": 23.036,
+        "min": 8271.839,
+        "max": 15723.645
+      },
+      "paired_difference_a_minus_b": {
+        "values": [
+          -3106.951,
+          4637.503,
+          8940.596,
+          -7443.369,
+          -2302.951
+        ],
+        "mean": 144.965,
+        "mean_t_ci95": [
+          -7989.973,
+          8279.904
+        ],
+        "cohen_dz": 0.022,
+        "direction_consistency": "2/5 A>B",
+        "statistically_conclusive_at_0_05": false
+      }
+    }
+  ],
+  "overall_conclusion": "No concurrency level has a paired 95% CI excluding zero; observed median differences are descriptive, not confirmed wins."
+}

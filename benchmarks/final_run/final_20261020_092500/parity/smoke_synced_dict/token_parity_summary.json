@@ -1,0 +1,17 @@
+{
+  "documents": 50,
+  "fields": [
+    "text",
+    "text_vi",
+    "text_raw",
+    "text_edge"
+  ],
+  "comparisons_expected": 200,
+  "comparisons_matched": 160,
+  "parity_percent": 80.0,
+  "vanilla_request_errors": 0,
+  "plugin_request_errors": 0,
+  "mismatch_count": 40,
+  "token_type_metadata_divergences": 110,
+  "passed": false
+}

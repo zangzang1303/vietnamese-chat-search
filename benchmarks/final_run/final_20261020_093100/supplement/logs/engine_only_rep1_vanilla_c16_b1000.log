@@ -1,0 +1,16 @@
+📂 Đang nạp dataset từ /mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/dataset_real_1m.jsonl (tối đa 100000 docs)...
+✅ Đã nạp thành công 100000 docs vào RAM!
+⚡ Tiền xử lý Cốc Cốc trước ngoài vùng đo cho 100000 docs...
+✅ Đã tiền xử lý xong 100000 docs trong 1.23s!
+
+🚀 Bắt đầu Benchmark [vanilla_pretokenized] -> http://localhost:9201 (Docs: 100,000, Batch: 1000, Concurrency: 16)
+   ⏳ [>                   ]   3.0% | 3,000/100,000 docs |   4999 docs/s | Chạy:  0.6s | Còn: 19.4s    ⏳ [=>                  ]   7.0% | 7,000/100,000 docs |   7774 docs/s | Chạy:  0.9s | Còn: 12.0s    ⏳ [==>                 ]  11.0% | 11,000/100,000 docs |   9162 docs/s | Chạy:  1.2s | Còn: 9.7s     ⏳ [===>                ]  15.0% | 15,000/100,000 docs |   9995 docs/s | Chạy:  1.5s | Còn: 8.5s     ⏳ [===>                ]  18.0% | 18,000/100,000 docs |   9993 docs/s | Chạy:  1.8s | Còn: 8.2s     ⏳ [====>               ]  20.0% | 20,000/100,000 docs |   9520 docs/s | Chạy:  2.1s | Còn: 8.4s     ⏳ [====>               ]  23.0% | 23,000/100,000 docs |   9579 docs/s | Chạy:  2.4s | Còn: 8.0s     ⏳ [=====>              ]  27.0% | 27,000/100,000 docs |   9998 docs/s | Chạy:  2.7s | Còn: 7.3s     ⏳ [=====>              ]  29.0% | 29,000/100,000 docs |   9666 docs/s | Chạy:  3.0s | Còn: 7.3s     ⏳ [======>             ]  33.0% | 33,000/100,000 docs |   9998 docs/s | Chạy:  3.3s | Còn: 6.7s     ⏳ [=======>            ]  36.0% | 36,000/100,000 docs |   9997 docs/s | Chạy:  3.6s | Còn: 6.4s     ⏳ [========>           ]  40.0% | 40,000/100,000 docs |  10255 docs/s | Chạy:  3.9s | Còn: 5.9s     ⏳ [=========>          ]  45.0% | 45,000/100,000 docs |  10712 docs/s | Chạy:  4.2s | Còn: 5.1s     ⏳ [==========>         ]  50.0% | 50,000/100,000 docs |  11111 docs/s | Chạy:  4.5s | Còn: 4.5s     ⏳ [===========>        ]  55.0% | 55,000/100,000 docs |  11456 docs/s | Chạy:  4.8s | Còn: 3.9s     ⏳ [============>       ]  61.0% | 61,000/100,000 docs |  11959 docs/s | Chạy:  5.1s | Còn: 3.3s     ⏳ [=============>      ]  67.0% | 67,000/100,000 docs |  12406 docs/s | Chạy:  5.4s | Còn: 2.7s     ⏳ [==============>     ]  71.0% | 71,000/100,000 docs |  12455 docs/s | Chạy:  5.7s | Còn: 2.3s     ⏳ [===============>    ]  77.0% | 77,000/100,000 docs |  12832 docs/s | Chạy:  6.0s | Còn: 1.8s     ⏳ [================>   ]  84.0% | 84,000/100,000 docs |  13332 docs/s | Chạy:  6.3s | Còn: 1.2s     ⏳ [=================>  ]  88.0% | 88,000/100,000 docs |  13331 docs/s | Chạy:  6.6s | Còn: 0.9s     ⏳ [==================> ]  94.0% | 94,000/100,000 docs |  13621 docs/s | Chạy:  6.9s | Còn: 0.4s     ✅ [====================] 100.0% | 100,000/100,000 docs hoàn tất trong 7.18s!                     
+📊 Kết quả [vanilla_pretokenized] (Concurrency=16):
+   - Docs indexed: 100000 docs trong 7.18s
+   - Thông lượng Throughput: 13925.68 docs/sec (29.54 MB/sec)
+   - Latency (ms): p50=914.03 | p90=1474.55 | p95=1585.13 | p99=1602.77 | max=1620.07
+   - End-to-end latency (ms): p50=922.34 | p95=1597.71 | p99=1613.56
+   - JVM GC Delta: 25 collections, 218 ms pause
+   - Storage: 103.62 MB, Segments: 8, Merge Time: 0 ms
+
+💾 Kết quả chi tiết đã được lưu vào /mnt/d/CODE/VSF/vietnamese-chat-search/benchmarks/final_run/final_20261020_093100/supplement/raw/engine_only_rep1_vanilla_c16_b1000.json
